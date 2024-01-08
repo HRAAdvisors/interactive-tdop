@@ -3,7 +3,7 @@ import '../../index.css'
 
 const IntroOne = () => {
   return (
-        <div className='w-screen h-full md:h-screen px-4 font-sans shadow-gradient'>
+        <div className='w-screen h-full md:h-full px-4 font-sans shadow-gradient'>
             <div className=' grid md:grid-cols-12'>
                 <div className='flex flex-col md:col-start-4 md:col-span-6 justify-center items-center pt-[10vh]'>
                     {/* <TexasStripes /> */}
@@ -13,7 +13,7 @@ const IntroOne = () => {
                     <br />
                     The Broadband Development Office, known as the BDO, listened to you on these issues and learned about the different digital experiences of Texans.
                     </p>
-                    <p className='py-12'>
+                    <p>
                     Over the past year, the State of Texas connected with state agencies, internet service providers, community organizations, and everyday internet users to hear about digital problems and possibilities facing Texans today.                
                     <br />  
                     <br />
