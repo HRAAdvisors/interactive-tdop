@@ -1,8 +1,9 @@
 import React from 'react'
+import '../../index.css'
 
 const IntroOne = () => {
   return (
-        <div className='w-screen h-full md:h-screen px-4 font-sans'>
+        <div className='w-screen h-full md:h-screen px-4 font-sans shadow-gradient'>
             <div className=' grid md:grid-cols-12'>
                 <div className='flex flex-col md:col-start-4 md:col-span-6 justify-center items-center pt-[10vh]'>
                     {/* <TexasStripes /> */}

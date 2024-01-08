@@ -44,14 +44,14 @@ const SingleStackedBarChart = ({ width, height }) => {
       .attr('y', height*0.1)
       .attr('width', width)
       .attr('height', height*.8)
-      .attr('fill', '#ececec');
+      .attr('fill', '#BE0B31');
 
     const foregroundBar = svg.append('rect')
       .attr('x', 0)
       .attr('y', height*0.1)
       .attr('width', 0)
       .attr('height', height*.8)
-      .attr('fill', '#666');
+      .attr('fill', '#FF6989');
     
     // Animate the width of the bar
     foregroundBar.transition()
