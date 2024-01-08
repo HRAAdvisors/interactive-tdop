@@ -3,17 +3,19 @@ import { useDisclosure } from '@mantine/hooks';
 import CollapsibleCard from '../../components/CollapsibleCard';
 import MapContainer from '../../components/MapContainer';
 import SingleStackedBarChart from '../../components/SingleStackedBarChart';
+import CollapsibleCardNative from '../../components/CollapsibleCard_Native';
 
 const NeedsTwo = () => {
   const [opened, { toggle }] = useDisclosure(false);
   return (
-    <div className='w-full h-full bg-[#FFFDF6] px-4'>
-        <div className='flex flex-col items-center mb-[5vh] md:col-start-7 md:col-span-3 lg:col-start-8 lg:col-span-2 font-sans'>
-          <div className='w-[90vw] md:w-[70vw] mx-auto mb-40'>
+    <div className='w-full h-full bg-[#FFFDF6] px-4 font-sans'>
+    <div className='grid md:grid-cols-12'>
+        <div className='flex flex-col md:col-start-3 md:col-span-9 justify-center items-center'>
+          <div className='mx-auto mb-20'>
           <h1 className='md:text-6xl text-2xl uppercase my-5 font-montserrat'>Goal No. 1</h1>
           <p>All Texans have access to reliable, affordable broadband internet service at home. Click below to learn more!</p>
           <hr className='my-5'/>
-          <CollapsibleCard
+          <CollapsibleCardNative
               goalNumber="1"
               taskNumber="1"
               color="#333333"
@@ -26,7 +28,7 @@ const NeedsTwo = () => {
               strategy2="Fund local partners"
               strategy3="Promote internet adoption"
           />
-          <CollapsibleCard
+          <CollapsibleCardNative
                 goalNumber="1"
                 taskNumber="2"
                 color="#002768"
@@ -34,10 +36,10 @@ const NeedsTwo = () => {
                 description="Today, 32% of Texan households do not subscribe to broadband internet. 
 
                 Certain regions of Texas have higher rates of subscription, while others are lower. At right, the map visualizes subscription rates for each of the twelve regions of the state."
-                leftPanelContent={<SingleStackedBarChart />}
+                leftPanelContent={<SingleStackedBarChart width={200} height={20} value={68}/>}
                 rightPanelContent={<MapContainer />}
           />
-          <CollapsibleCard
+          <CollapsibleCardNative
                 goalNumber="1"
                 taskNumber="3"
                 color="#BE0B31"
@@ -50,12 +52,12 @@ const NeedsTwo = () => {
           />
           </div>
         </div>
-        <div className='flex flex-col items-center mb-[5vh] md:col-start-7 md:col-span-3 lg:col-start-8 lg:col-span-2'>
-          <div className='w-[90vw] md:w-[70vw] mx-auto mb-20 font-sans'>
+        <div className='flex flex-col md:col-start-3 md:col-span-9 justify-center items-center'>
+          <div className='mx-auto mb-20'>
           <h1 className='md:text-6xl text-2xl uppercase my-5 font-montserrat'>Goal No. 2</h1>
           <p className='font-sans'>All Texans have access to reliable, affordable broadband internet service at home. Click below to learn more!</p>
           <hr className='my-5'/>
-          <CollapsibleCard
+          <CollapsibleCardNative
               goalNumber="1"
               taskNumber="1"
               color="#333333"
@@ -68,7 +70,7 @@ const NeedsTwo = () => {
               strategy2="Fund local partners"
               strategy3="Promote internet adoption"
           />
-          <CollapsibleCard
+          <CollapsibleCardNative
                   goalNumber="1"
                   taskNumber="2"
                   color="#002768"
@@ -81,6 +83,7 @@ const NeedsTwo = () => {
           />
           </div>
         </div>
+    </div>
     </div>
   )
 }
