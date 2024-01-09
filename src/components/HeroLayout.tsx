@@ -34,7 +34,7 @@ const HeroLayout = () => {
             <p className='font-sans'>Scroll to explore the Texas Digital Opportunity Plan</p>
             <div className='flex justify-center py-8'>
               <Link to='intro' smooth={true} duration={800}>
-                <ScrollArrow />
+                <ScrollArrow onClick={scrollToNextSection} />
               </Link>
             </div>
           </div>

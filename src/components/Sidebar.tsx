@@ -53,7 +53,7 @@ function Sidebar({}: { currentPage: any}) {
           activeClass='font-bold'
           onSetActive={() => setActiveIndex(index)}
         >
-          <p>{item.name}</p>
+          <p className='cursor-pointer'>{item.name}</p>
         </Link>
       ))}
     </div>

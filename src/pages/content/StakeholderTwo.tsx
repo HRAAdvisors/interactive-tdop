@@ -1,5 +1,5 @@
 // import { useDisclosure } from '@mantine/hooks';
-import StakeholderCards from '../../types/StakeholderCards';
+import StakeholderCards from '../../static/StakeholderCards';
 import CardTerms from '@/components/CardTerms';
 
 const StakeholderTwo = () => {

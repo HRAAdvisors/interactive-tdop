@@ -1,12 +1,12 @@
-import HeroLayout from './HeroLayout'
+import HeroLayout from './HeroLayout';
 import IntroPage from '../pages/IntroPage';
 import VisionPage from '../pages/VisionPage';
-import NeedsAndAssetsPage from '../pages/NeedsAndAssetsPage'
+import NeedsAndAssetsPage from '../pages/NeedsAndAssetsPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
 import StakeholderEngagementPage from '../pages/StakeholderEngagementPage';
-import StrategiesPage from '../pages/StrategiesPage';
-import ConclusionPage from '../pages/ConclusionPage';
+import StrategiesPage from '@/pages/StrategiesPage';
+
 
 export default function Router () {
     return (
@@ -23,5 +23,5 @@ export default function Router () {
             </Routes>
         </ScrollToTop>
       </BrowserRouter>
-    )
+    );
 }
