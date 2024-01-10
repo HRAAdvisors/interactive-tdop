@@ -32,6 +32,7 @@ module.exports = {
         "varsIgnorePattern": "^_"
       }
     ],
+    "@typescript-eslint/no-explicit-any": "warning",
     "import/no-named-as-default-member": "off",
     "no-unused-vars": "warn",
     "semi": [2, "always"],

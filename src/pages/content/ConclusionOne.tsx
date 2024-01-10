@@ -1,8 +1,8 @@
 import 'react-dropdown/style.css';
 
 import TexasStripes from '@/components/TexasStripes';
-import ButtonDark from '@/components/ButtonDark';
-import ButtonLight from '@/components/ButtonLight';
+import ButtonDark from '@/components/ui/ButtonDark';
+import ButtonLight from '@/components/ui/ButtonLight';
 
 const ConclusionOne = () => {
   return (

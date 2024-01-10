@@ -7,12 +7,14 @@ import ScrollableTitle from '../components/ScrollableTitle';
 import StrategiesTwo from './content/StrategiesTwo';
 import StrategiesOne from './content/StrategiesOne';
 
-const StrategiesPage = ({ handlePageChange }: { handlePageChange: Function }) => {
+const StrategiesPage = ({ handlePageChange }: { handlePageChange?: Function }) => {
   const [localSections] = useState(['section1', 'section2']);
 
   useEffect(() => {
     // Call handlePageChange when VisionPage mounts
-    handlePageChange('strategies', localSections);
+    if (handlePageChange) {
+      handlePageChange('strategies', localSections);
+    }
   }, []);
   const header = (
     <ScrollableTitle

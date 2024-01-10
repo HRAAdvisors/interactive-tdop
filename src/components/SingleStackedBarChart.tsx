@@ -3,10 +3,20 @@
 import { useRef, useEffect, useState } from 'react';
 import * as d3 from 'd3';
 
-const SingleStackedBarChart = ({ width, height }: { width: number; height: number , value?: number}) => {
-  const ref = useRef<HTMLElement>(null);
-  const [chartData, setChartData] = useState<number| null>(null);
-  const [tooltip, setTooltip] = useState({ display: false, data: null });
+const SingleStackedBarChart = ({
+  width,
+  height,
+}: {
+  width: number;
+  height: number;
+  value?: number;
+}) => {
+  const ref = useRef<SVGSVGElement>(null);
+  const [chartData, setChartData] = useState<number | null>(null);
+  const [tooltip, setTooltip] = useState<{ display: boolean; data: any; x?: number; y?: number }>({
+    display: false,
+    data: null,
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -94,10 +104,10 @@ const SingleStackedBarChart = ({ width, height }: { width: number; height: numbe
       });
     };
 
-    const handleMouseMove = (e) => {
-      const svgPosition = ref.current?.getBoundingClientRect();
+    const handleMouseMove = () => {
+      // const _svgPosition = ref.current?.getBoundingClientRect();
       setTooltip({
-        display:  true, // Replace 'visible' with 'true'
+        display: true, // Replace 'visible' with 'true'
         data: `${Math.round(chartData)}%`,
       });
     };
@@ -121,8 +131,8 @@ const SingleStackedBarChart = ({ width, height }: { width: number; height: numbe
         <div
           style={{
             position: 'absolute',
-            left: `${tooltip.x}px`,
-            top: `${tooltip.y}px`,
+            left: `${tooltip?.x}px`,
+            top: `${tooltip?.y}px`,
             backgroundColor: '#111',
             color: '#fff',
             border: '2px solid #111',

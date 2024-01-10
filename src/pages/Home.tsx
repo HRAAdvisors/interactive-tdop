@@ -36,8 +36,8 @@ const FadeInSection = ({ children }: { children: ReactNode }) => {
 };
 
 const Home = () => {
-  const [currentPage, setCurrentPage] = useState('');
-  const [currentSection, setCurrentSection] = useState(0);
+  const [currentPage, setCurrentPage] = useState({});
+  const [_currentSection, setCurrentSection] = useState(0);
   const [showNav, setShowNav] = useState(false);
 
   const handlePageChange = (pageName: number, sections: any[]) => {

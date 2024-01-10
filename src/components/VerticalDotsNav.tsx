@@ -9,7 +9,7 @@ const VerticalDotsNav = ({
 }) => {
   return (
     <div className='vertical-dots-nav'>
-      {sectionData.map((section, index) => (
+      {sectionData.map((_section, index) => (
         <div
           key={index}
           className={`dot ${currentSection === index ? 'active' : ''}`}

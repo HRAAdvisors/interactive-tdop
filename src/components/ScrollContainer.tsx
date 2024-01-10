@@ -1,4 +1,4 @@
-import ButtonLight from './ButtonLight.js';
+import ButtonLight from './ui/ButtonLight.js';
 import SingleStackedBarChart from './SingleStackedBarChart.js';
 
 const ScrollContainer = ({

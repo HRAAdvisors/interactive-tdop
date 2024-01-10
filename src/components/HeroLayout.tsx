@@ -1,6 +1,6 @@
 import ScrollArrow from './ScrollArrow';
-import ButtonLight from './ButtonLight';
-import ButtonDark from './ButtonDark';
+import ButtonLight from './ui/ButtonLight';
+import ButtonDark from './ui/ButtonDark';
 import { Link, animateScroll as scroll } from 'react-scroll';
 import one from '../assets/1.jpg';
 

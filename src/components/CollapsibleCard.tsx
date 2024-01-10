@@ -1,5 +1,5 @@
 import { Card, Accordion, AccordionItem, Grid, Text } from '@mantine/core';
-import ButtonLight from './ButtonLight';
+import ButtonLight from './ui/ButtonLight';
 
 const CollapsibleCard = ({
   goalNumber,
@@ -24,23 +24,17 @@ const CollapsibleCard = ({
             <Grid className='uppercase font-sans'>
               <Grid.Col span={2} style={{ display: 'flex', background: `${color}` }}>
                 <Grid.Col span={{ base: 12, md: 7 }} style={{ color: '#B9B9B9' }}>
-                  <Text size='xs'>
-                    GOAL NO.{goalNumber} |{' '}
-                  </Text>
+                  <Text size='xs'>GOAL NO.{goalNumber} | </Text>
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, md: 6 }} style={{ color: '#FFF' }}>
-                  <Text size='xs'>
-                    Task {taskNumber}
-                  </Text>
+                  <Text size='xs'>Task {taskNumber}</Text>
                 </Grid.Col>
               </Grid.Col>
               <Grid.Col
                 span={10}
                 style={{ display: 'flex', alignItems: 'center', background: '#ececec' }}
               >
-                <Text size='xs'>
-                  {goalTitle}
-                </Text>
+                <Text size='xs'>{goalTitle}</Text>
               </Grid.Col>
             </Grid>
           </Accordion.Control>

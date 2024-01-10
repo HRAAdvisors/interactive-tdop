@@ -11,8 +11,8 @@ const DumbbellChart = ({
     startValue: number;
     endValue: number;
   }[];
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
 }) => {
   const ref = useRef<SVGSVGElement>(null);
 
@@ -20,10 +20,15 @@ const DumbbellChart = ({
     if (!data || data.length === 0) return;
 
     // Clear the SVG to prevent duplication
-    d3.select(ref.current as any  ).selectAll('*').remove();
+    d3.select(ref.current as any)
+      .selectAll('*')
+      .remove();
 
     // Create SVG canvas
-    const svg = d3.select(ref.current as any).attr('width', width).attr('height', height);
+    const svg = d3
+      .select(ref.current as any)
+      .attr('width', width)
+      .attr('height', height);
 
     // Create the scales for x and y axes
     const xScale = d3
@@ -33,11 +38,11 @@ const DumbbellChart = ({
     const yScale = d3
       .scaleLinear()
       .range([height, 0])
-      .domain([0, d3.max(data, (d) => Math.max(d.startValue, d.endValue))]);
+      .domain([0, d3.max(data, (d) => Math.max(d.startValue, d.endValue))] as any);
 
     // Draw the dumbbells
-    data.forEach((d: any) => {
-      const x = xScale(d.name) + xScale.bandwidth() / 2;
+    data.forEach((d) => {
+      const x = (xScale as any)(d.name) + xScale.bandwidth() / 2;
       const startY = yScale(d.startValue * 0.8);
       const endY = yScale(d.endValue * 0.8);
 

@@ -13,7 +13,7 @@ class ScrollytellingComponent extends PureComponent {
     data: 0,
   };
 
-  onStepEnter = (e) => {
+  onStepEnter = (e: any) => {
     this.setState({ data: e.data });
   };
 
@@ -28,7 +28,7 @@ class ScrollytellingComponent extends PureComponent {
   };
 
   render() {
-    const { classes } = this.props;
+    // const { classes } = this.props;
     const { data } = this.state;
 
     const dataDumbbell = [

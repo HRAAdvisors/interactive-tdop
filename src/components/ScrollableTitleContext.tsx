@@ -1,6 +1,9 @@
-import  { ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext, useState } from 'react';
 
-export const ScrollableTitleContext = createContext({});
+export const ScrollableTitleContext = createContext<{
+  refs: any[];
+  addScrollableTitleRef?: (ref: any) => void;
+}>({ refs: [] });
 
 export const ScrollableTitleProvider = ({ children }: { children: ReactNode }) => {
   const [refs, setRefs] = useState([]);
