@@ -9,38 +9,38 @@ const IntroCards = {
         img: 'Broadband.webp',
         altText: 'Broadband',
         title: 'Broadband',
-        description: 'Reliable, available internet with download speeds of at least 100 mbps and upload speeds of 20 mbps is considered broadband service.',
+        description: 'Always-on, high-speed internet service. The FCC’s benchmark for high-speed internet is at least 25 megabits per second (Mbps) for downloads and 3 Mbps for uploads. ',
     },
-    Affordability :{
+    Affordable_Access  :{
         img: 'Affordability.jpg',
-        altText: 'Affordability',
-        title: 'Affordability',
-        description: 'Broadband service is affordable if the cost to maintain always-on, high-speed service in the home or a business is not a barrier to subscription. Devices are affordable if the cost for a device that meets a household or business needs is not a barrier.',
+        altText: 'Affordable Access',
+        title: 'Affordable Access',
+        description: 'Access to affordable, high-quality broadband service means that the cost of high-speed, reliable internet is not out of reach for households and businesses, and that Texans do not have to choose between internet service and other necessities. Texans should also have access to the internet-enabled devices that meet their needs, such as computers, tablets, or assistive devices.  ',
     },
-    Adoption :{
+    Internet_Adoption :{
         img: 'Adoption.jpeg',
-        altText: 'Adoption',
-        title: 'Adoption',
+        altText: 'Internet Adoption',
+        title: 'Internet Adoption',
         description: 'Internet adoption refers to the share of households that subscribe to the internet.',
     },
     Digital_Literacy :{
         img: 'DigitalLiteracy.jpg',
-        altText: 'Digital Literacy',
-        title: 'Digital Literacy',
-        description: 'The skills associated with using technology to enable users to find, evaluate, organize, create, and communicate information.',
+        altText: 'Digital Literacy and Skills',
+        title: 'Digital Literacy and Skills',
+        description: 'Knowing how to use technology. Digital skills help people find and understand information, create content, and talk to others online. Digital skills can also help people find new jobs and career pathways.',
     },
     Devices :{
         img: 'Devices.jpg',
         altText: 'Access to Devices and Technical Support',
         title: 'Access to Devices and Technical Support',
-        description: 'Access to internet-connected devices and resources, tools, or individuals who can assist with technological issues.',
+        description: 'Having access to devices that connect to the internet and getting help with tech problems from tools or people.',
     },
     Cybersecurity :{
         img: 'Cybersecurity.jpg',
         altText: 'Cybersecurity',
         title: 'Cybersecurity',
-        description: 'Cybersecurity is defined as security online. This includes privacy and protection from scams, harassement, and other risks that can come with online connectivity.',
+        description: 'Cybersecurity is safety online. This includes privacy and protection from scams, harassment and other online risks.',
     },
-}
+};
 
-export default IntroCards
+export default IntroCards;

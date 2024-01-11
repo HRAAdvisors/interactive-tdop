@@ -1,6 +1,7 @@
-import { Card, Accordion, AccordionItem, Grid, Text } from '@mantine/core';
-import ButtonLight from './ButtonLight'
-import '../index.css'
+import React, { useState, useRef, useEffect } from 'react';
+import ButtonLight from './ButtonLight';
+import PlusIcon from './PlusIcon';
+import MinusIcon from './MinusIcon';
 
 const CollapsibleCard = ({
   goalNumber,
@@ -15,93 +16,95 @@ const CollapsibleCard = ({
   strategy2,
   strategy3
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [height, setHeight] = useState(0);
+  const contentRef = useRef(null);
+
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
+  };
+
+  useEffect(() => {
+    // Update the height state to trigger the animation
+    setHeight(isOpen ? contentRef.current.scrollHeight : 0);
+  }, [isOpen]);
+
   return (
-    <Card shadow="sm" padding="0" radius="0" style={{ background: '#FFFDF6' }} className='my-2'>
-    <Accordion>
-        <AccordionItem value={`goal-${goalNumber}`}>
-          <Accordion.Control className="AccordionControlClassName" style={{ alignItems: 'center', background: `${color}`}}>
-            <Grid className='uppercase font-sans' >
-              <Grid.Col span={2} style={{ display: 'flex', background: `${color}`}}>
-                <Grid.Col span={{ base: 12, md: 7}}  style={{color: '#B9B9B9' }}>
-                  <Text size="xs" weight={300} >GOAL NO.{goalNumber} | </Text>
-                </Grid.Col>
-                <Grid.Col span={{ base: 12, md: 6}}  style={{color: '#FFF' }}>
-                  <Text size="xs" weight={700}>Task {taskNumber}</Text>
-                </Grid.Col>
-              </Grid.Col>
-              <Grid.Col span={10} style={{ display: 'flex', alignItems: 'center', color: 'white'}}>
-                <Text size="xs" weight={700}>{goalTitle}</Text>
-              </Grid.Col>
-            </Grid>
-          </Accordion.Control>
-          <Accordion.Panel className='mx-2' style={{ background: '#FFFDF6' }}>
-                        <Grid className='font-sans my-6'>
-                            <Grid.Col span={2} style={{ display: 'flex', alignContent: 'center'}}>
-                                <Text className='font-bold text-4xl'>{taskNumber}</Text>
-                            </Grid.Col>
-                            <Grid.Col span={10} style={{ display: 'flex', alignItems: 'center'}}>
-                                <Text className='font-bold text-xl'>{goalTitle}</Text>
-                            </Grid.Col>
-                        </Grid>
-                        <Grid className='h-full'>
-                            <Grid.Col span={{ base: 12, md: 6}} className='my-4'>
-                                <div className='text-xs mb-8'>{description}</div> 
-                                <h1 className='my-2 text-xs uppercase font-bold'>2030 Target</h1>
-                                <hr className='my-2'></hr>
-                                <Grid>
-                                    <Grid.Col span={6}>
-                                    <div className='text-xs'>{targetText}</div>
-                                    </Grid.Col>
-                                    <Grid.Col span={6}>
-                                    {leftPanelContent}
-                                    </Grid.Col>
-                                </Grid>
-                                <h1 className='my-2 text-xs uppercase font-bold'>How will Texas get there?</h1>
-                                <hr className='my-2'></hr>
-                                <Grid className='my-8'>
-                                    <Grid.Col span={4}>
-                                        <Grid>
-                                            <Grid.Col span={3}>
-                                                <Text className='text-lg font-bold'>1</Text>
-                                            </Grid.Col>
-                                            <Grid.Col span={9}>
-                                                <Text className='text-xs'>{strategy1}</Text>
-                                            </Grid.Col>
-                                        </Grid>
-                                    </Grid.Col>
-                                    <Grid.Col span={4}>
-                                        <Grid>
-                                            <Grid.Col span={3}>
-                                                <Text className='text-lg font-bold'>2</Text>
-                                            </Grid.Col>
-                                            <Grid.Col span={9}>
-                                                <Text className='text-xs'>{strategy2}</Text>
-                                            </Grid.Col>
-                                        </Grid>                                    
-                                    </Grid.Col>
-                                    <Grid.Col span={4}>
-                                        <Grid>
-                                            <Grid.Col span={3}>
-                                                <Text className='text-lg font-bold'>3</Text>
-                                            </Grid.Col>
-                                            <Grid.Col span={9}>
-                                                <Text className='text-xs'>{strategy3}</Text>
-                                            </Grid.Col>
-                                        </Grid>  
-                                    </Grid.Col>
-                                </Grid>
-                                <ButtonLight text='Dive deeper into broadband availability.'
-                                />             
-                            </Grid.Col>
-                            <Grid.Col span={{ base: 12, md: 6}} className='my-4'>
-                                {rightPanelContent}
-                            </Grid.Col>
-                        </Grid>
-                    </Accordion.Panel>
-                </AccordionItem>
-            </Accordion>
-    </Card>
-    );
+    <div className="bg-[#FFFDF6] my-4 shadow-md rounded-none">
+      <div
+        className={`flex md:grid md:grid-cols-12 items-center justify-between bg-[#ECECEC] cursor-pointer md:hover:shadow-md md:hover:scale-[101%] duration-300`}
+        onClick={toggleAccordion}
+      >
+        <div className='flex md:grid md:col-span-2 md:grid-cols-2 p-4 uppercase text-white text-xs' style={{ background: `${color}` }}>
+          <p className='md:mr-8 w-full text-[#B9B9B9]'>GOAL NO.{goalNumber}</p>
+          <p className=''>Task {taskNumber}</p>
+        </div>
+        <div className="flex items-center md:grid md:grid-cols-11 md:col-span-10 p-4 text-xs uppercase">
+          <span className="md:col-span-10 col-span-8">{goalTitle}</span>
+          <div className="w-4 h-4 md:col-span-1 transition-transform transform-origin duration-300" style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}>
+            <PlusIcon />
+          </div>
+        </div>
+      </div>
+
+      <div
+        className="overflow-hidden transition-max-height duration-300 ease-in-out"
+        style={{ maxHeight: `${height}px` }}
+        ref={contentRef}
+      >
+        <div className="p-2 bg-[#FFFDF6]">
+          <div className="grid grid-cols-12 p-2 my-6">
+            <div className="col-span-1 flex items-center font-bold text-4xl">
+              {taskNumber}
+            </div>
+            <div className="col-span-10 md:col-span-10 flex items-center justify-start font-bold text-xl">
+              {goalTitle}
+            </div>
+          </div>
+
+          <div className="p-2 block md:grid md:grid-cols-12 md:gap-10">
+            {/* Left Panel Content */}
+            <div className="md:col-span-6">
+              <div className="text-xs mb-8">{description}</div>
+              <h1 className="text-xs uppercase font-bold my-2">2030 Target</h1>
+              <hr className="my-2" />
+              <div className="grid grid-cols-12 gap-4">
+              <div className="col-span-12 md:col-span-6 text-xs">
+                {targetText}
+              </div>
+              <div className="col-span-12 md:col-span-6">
+                {leftPanelContent}
+              </div>
+              
+              </div>
+              <h1 className="text-xs uppercase font-bold my-2">How will Texas get there?</h1>
+            <hr className="my-2" />
+            <div className="grid grid-cols-12 gap-4 my-8">
+              <div className="col-span-12 md:col-span-4">
+                <div className="text-lg font-bold">1</div>
+                <div className="text-xs">{strategy1}</div>
+              </div>
+              <div className="col-span-12 md:col-span-4">
+                <div className="text-lg font-bold">2</div>
+                <div className="text-xs">{strategy2}</div>
+              </div>
+              <div className="col-span-12 md:col-span-4">
+                <div className="text-lg font-bold">3</div>
+                <div className="text-xs">{strategy3}</div>
+              </div>
+            </div>
+            <ButtonLight text='Dive deeper into broadband availability.' />
+            </div>
+
+            {/* Right Panel Content */}
+            <div className="md:col-span-6 md:col-start-7">
+              {rightPanelContent}
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default CollapsibleCard;

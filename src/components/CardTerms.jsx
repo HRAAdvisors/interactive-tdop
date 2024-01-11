@@ -57,11 +57,10 @@ const FlipCard = ({ img, title, description }) => {
         </div>
 
         {/* Back of the card */}
-        <div style={flipCardStyles.back} className="bg-[#111] shadow-sm">
-          <div className="p-8 h-full items-center justify-center text-white">
-            <p className="text-md font-sm ">{title}</p> {/* Updated this line */}
-            <hr className='my-4'/>
-            <p className="text-sm mb-4">{description}</p>
+        <div style={flipCardStyles.back} className="bg-[white] shadow-sm">
+          <div className="p-8 h-full items-center justify-center">
+          <p className='text-md font-medium my-4'>{title}</p> {/* Updated this line */}
+            <p className='text-sm mb-4'>{description}</p>
             <br></br>
           </div>
         </div>
