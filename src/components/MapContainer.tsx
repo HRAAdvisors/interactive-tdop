@@ -4,58 +4,9 @@ import mapboxgl, { Map } from 'mapbox-gl';
 import { bbox } from '@turf/turf';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useGetBoundaryDataBulkMutation, useGetChartDataBulkMutation } from '@/services/map';
-
-mapboxgl.accessToken =
-  'pk.eyJ1IjoiZWRkaWVqb2VhbnRvbmlvIiwiYSI6ImNscGhtbmo1cTAzbjcyanRiMG9wcWJuZWIifQ.yG4IQ3nHdGUlgZCBkq9-Jw';
-
-const getAggregateData = (choroplethData: any) =>
-  choroplethData
-    ? choroplethData.data.reduce((acc: any, item: any) => {
-        const geoId = item.geo_id;
-        if (!acc[geoId]) {
-          acc[geoId] = {};
-        }
-        Object.keys(item).forEach((key) => {
-          if (key !== 'geo_id') {
-            acc[geoId][`${key}_${item.internet_access_type}`] = item[key];
-          }
-        });
-
-        return acc;
-      }, {})
-    : {};
-
-const transformToGeoJSON = (aggregatedChoroplethData: any, boundaryDataArray: any) => {
-  const features = [];
-  boundaryDataArray.forEach((boundaryItem) => {
-    const geoId = boundaryItem.geoId;
-
-    if (aggregatedChoroplethData[geoId]) {
-      const noInternetProportion =
-        aggregatedChoroplethData[geoId]['households_no_internet'] /
-        aggregatedChoroplethData[geoId]['households_total_households'];
-
-      features.push({
-        type: 'Feature',
-        geometry: boundaryItem.feature.geometry,
-        properties: {
-          ...aggregatedChoroplethData[geoId],
-          ...boundaryItem.feature.properties,
-          noInternetProportion, // Add the calculated proportion to the properties
-        },
-      });
-    } else {
-      // console.log(`No matching choropleth data for geoId: ${geoId}`);
-    }
-  });
-
-  const geojsonData = {
-    type: 'FeatureCollection',
-    features,
-  };
-
-  return geojsonData;
-};
+import _ from 'lodash';
+import { transformToGeoJSON } from '@/utils/geoJson';
+import { useAppSelector } from '@/app/hooks';
 
 const MapContainer = () => {
   const mapContainer = useRef(null);
@@ -63,6 +14,8 @@ const MapContainer = () => {
   const [isMapInit, setIsMapInit] = useState(false);
   const [selectedCounty, setSelectedCounty] = useState('');
   const [geoJsonFeatures, setGeoJsonFeatures] = useState([]);
+
+  const aggregateData = useAppSelector((store) => store.map.aggregateChartData);
 
   const [getBoundaries, { data: boundaryData = null, isLoading: isLoadingBoundary }] =
     useGetBoundaryDataBulkMutation();
@@ -90,11 +43,11 @@ const MapContainer = () => {
 
   useEffect(() => {
     if (!map.current || !boundaryData || !choroplethData) return;
-    const boundaryDataArray = Object.values(boundaryData);
-    const aggregatedChoroplethData = getAggregateData(choroplethData);
-    const geojsonData = transformToGeoJSON(aggregatedChoroplethData, boundaryDataArray);
+
+    const geojsonData = transformToGeoJSON(aggregateData, boundaryData);
 
     setGeoJsonFeatures(geojsonData);
+    console.log(geojsonData);
 
     map.current.on('load', () => {
       if (map.current) {

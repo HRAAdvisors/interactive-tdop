@@ -6,7 +6,6 @@ import swarmA from '../assets/swarmA.png';
 import swarmB from '../assets/swarmB.png';
 import MapContainer from './MapContainer';
 import DumbbellChart from './DumbbellChart';
-import DualMap from './DualMap';
 
 class ScrollytellingComponent extends PureComponent {
   state = {
@@ -81,7 +80,7 @@ class ScrollytellingComponent extends PureComponent {
       // <img src={BlankMap} alt="Description of image one" />,
       // <img src={RegionsMap} alt="Description of image three" />,
       <MapContainer />,
-      <DualMap />,
+      // <DualMap />,
       // <img src={ComparativeMap} alt="Description of image two" />,
       <DumbbellChart data={dataDumbbell} />,
       // <img src={dumbellA} alt="Description of image three" />,

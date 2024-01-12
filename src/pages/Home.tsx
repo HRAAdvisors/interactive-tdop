@@ -1,6 +1,5 @@
 // App.js
 import { ReactNode, useEffect, useState } from 'react';
-import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
 import { Element } from 'react-scroll';
 import { useInView } from 'react-intersection-observer';
@@ -68,47 +67,45 @@ const Home = () => {
   //   });
   // };
   return (
-    <MantineProvider>
-      <ScrollableTitleProvider>
-        {showNav && <Sidebar currentPage={currentPage} />}
-        {showNav && <Navbar />}
-        <Element name='hero'>
-          <FadeInSection>
-            <HeroLayout />
-          </FadeInSection>
-        </Element>
-        <Element name='intro'>
-          <FadeInSection>
-            <IntroPage handlePageChange={handlePageChange} />
-          </FadeInSection>
-        </Element>
-        <Element name='vision'>
-          <FadeInSection>
-            <VisionPage />
-          </FadeInSection>
-        </Element>
-        <Element name='needsandassets'>
-          <FadeInSection>
-            <NeedsAndAssetsPage />
-          </FadeInSection>
-        </Element>
-        <Element name='stakeholderengagement'>
-          <FadeInSection>
-            <StakeholderEngagementPage />
-          </FadeInSection>
-        </Element>
-        <Element name='strategies'>
-          <FadeInSection>
-            <StrategiesPage handlePageChange={handlePageChange} />
-          </FadeInSection>
-        </Element>
-        <Element name='conclusion'>
-          <FadeInSection>
-            <ConclusionPage handlePageChange={handlePageChange} />
-          </FadeInSection>
-        </Element>
-      </ScrollableTitleProvider>
-    </MantineProvider>
+    <ScrollableTitleProvider>
+      {showNav && <Sidebar currentPage={currentPage} />}
+      {showNav && <Navbar />}
+      <Element name='hero'>
+        <FadeInSection>
+          <HeroLayout />
+        </FadeInSection>
+      </Element>
+      <Element name='intro'>
+        <FadeInSection>
+          <IntroPage handlePageChange={handlePageChange} />
+        </FadeInSection>
+      </Element>
+      <Element name='vision'>
+        <FadeInSection>
+          <VisionPage />
+        </FadeInSection>
+      </Element>
+      <Element name='needsandassets'>
+        <FadeInSection>
+          <NeedsAndAssetsPage />
+        </FadeInSection>
+      </Element>
+      <Element name='stakeholderengagement'>
+        <FadeInSection>
+          <StakeholderEngagementPage />
+        </FadeInSection>
+      </Element>
+      <Element name='strategies'>
+        <FadeInSection>
+          <StrategiesPage handlePageChange={handlePageChange} />
+        </FadeInSection>
+      </Element>
+      <Element name='conclusion'>
+        <FadeInSection>
+          <ConclusionPage handlePageChange={handlePageChange} />
+        </FadeInSection>
+      </Element>
+    </ScrollableTitleProvider>
   );
 };
 

@@ -1,8 +1,23 @@
 import { useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import Logo from './Logo';
-import NavDropDown from './NavDropdown';
+import { NavDropDown, NavLink, NavLinkList } from './NavDropdown';
 import { Link } from 'react-router-dom';
+
+const navbarLinks: NavLink[] = [
+  {
+    link: '/geoIntro',
+    text: 'Geographic Introduction',
+  },
+  {
+    link: '/',
+    text: 'Interactive TDOP',
+  },
+  {
+    link: '/dashboard',
+    text: 'Data Dashboard',
+  },
+];
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -30,7 +45,7 @@ const Navbar = () => {
       </Link>
       <ul className='hidden md:flex items-center'>
         <li className='p-8 uppercase tracking-widest text-xs'>
-          <NavDropDown />
+          <NavDropDown navLinks={navbarLinks} />
         </li>
         <Link to='/about'>
           <li className='p-8 uppercase tracking-widest text-xs'>About</li>
@@ -50,12 +65,8 @@ const Navbar = () => {
           <h1 className='w-full text-sm uppercase font-bold p-10 text-[#fff] bg-[#111]'>
             Texas Digital Opportunity Plan
           </h1>
+          <NavLinkList navLinks={navbarLinks} />
         </div>
-        <ul className='uppercase p-4'>
-          <li className='p-4  text-white border-b'>Geographic Introduction</li>
-          <li className='p-4  text-white border-b'>Interactive TDOP</li>
-          <li className='p-4  text-white border-b'>Data Dashboards</li>
-        </ul>
       </div>
     </div>
   );

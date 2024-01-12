@@ -1,4 +1,5 @@
 import baseApi from '@/app/baseApi';
+import { ChartBulkResponse, GeoDataCollection } from '@/types/MapData';
 import _ from 'lodash';
 
 type GeoData = {
@@ -24,26 +25,28 @@ const defaultBody = [
 // Define a service using a base URL and expected endpoints
 export const MapApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getBoundaryDataBulk: builder.mutation<any, GeoData[] | void>({
+    getBoundaryDataBulk: builder.mutation<GeoDataCollection, GeoData[] | void>({
       invalidatesTags: ['MapData'],
       query: (body = defaultBody) => ({
         method: 'POST',
         url: `/reports/65820ff1903ab0943c07dbc6/output/boundaries`,
         body,
       }),
-      transformResponse: (response: any) => 
-         response.boundaries[2022]
+      transformResponse: (res: any) => {
+       return  res.boundaries[2022]
+      }
       ,
     }),
-    getChartDataBulk: builder.mutation<any, GeoData[] | void>({
+    getChartDataBulk: builder.mutation<ChartBulkResponse, GeoData[] | void>({
       invalidatesTags: ['MapData'],
       query: (body = defaultBody) => ({
         method: 'POST',
         url: `/reports/65820ff1903ab0943c07dbc6/output/charts`,
         body,
       }),
-      transformResponse: (response: any) => 
-         _.first(response.charts),
+      transformResponse: (res: { charts: any[]}) => {
+        return _.first(res.charts);
+      }
     }),
 
     // getBoundaryDataBulk: builder.mutation<{ data: any }, any>({
