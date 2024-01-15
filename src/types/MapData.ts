@@ -13,20 +13,12 @@ interface Properties {
   AWATER: number;
 }
 
-interface Feature {
-  type: string;
-  geometry: {
-      type: string;
-      coordinates: number[][][];
-  };
-  properties: Properties;
-}
 
 interface GeoData {
   _id: string;
   geoId: string;
   scale: string;
-  feature: Feature;
+  feature: GeoJSON.Feature<any, Properties>;
   year: number;
 }
 
@@ -42,5 +34,4 @@ export interface ChoroplethChartData {
 }
 export interface ChartBulkResponse {
   data: ChoroplethChartData[]
-
 }

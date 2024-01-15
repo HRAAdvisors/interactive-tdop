@@ -2,7 +2,7 @@ import baseApi from '@/app/baseApi';
 import { ChartBulkResponse, GeoDataCollection } from '@/types/MapData';
 import _ from 'lodash';
 
-type GeoData = {
+export type GeoData = {
   geoId: string;
   id: string;
   regionSetup: {
@@ -25,7 +25,7 @@ const defaultBody = [
 // Define a service using a base URL and expected endpoints
 export const MapApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getBoundaryDataBulk: builder.mutation<GeoDataCollection, GeoData[] | void>({
+    getBoundaryDataBulk: builder.mutation<GeoDataCollection, GeoData[] | undefined | void>({
       invalidatesTags: ['MapData'],
       query: (body = defaultBody) => ({
         method: 'POST',
@@ -37,7 +37,7 @@ export const MapApi = baseApi.injectEndpoints({
       }
       ,
     }),
-    getChartDataBulk: builder.mutation<ChartBulkResponse, GeoData[] | void>({
+    getChartDataBulk: builder.mutation<ChartBulkResponse, GeoData[] | undefined | void>({
       invalidatesTags: ['MapData'],
       query: (body = defaultBody) => ({
         method: 'POST',

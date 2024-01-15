@@ -1,8 +1,8 @@
 import baseApi from '@/app/baseApi';
 import { ChartBulkResponse } from '@/types/MapData';
-import { getAggregateData } from '@/utils/geoJson';
+import { getAggregateChartData } from '@/utils/transformGeoJSON';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-// import { map } from '@/services/auth'
+
 interface MapSliceState {
   aggregateChartData?: {} ; 
 }
@@ -12,13 +12,12 @@ const initialState: MapSliceState = {
 
 const mapsSlice = createSlice({
   extraReducers: (builder) => {
-    console.log(baseApi);
     builder
     // .addMatcher(authApi.endpoints.login.matchPending, (_state, action) => {
     //   console.log('pending', action)
     // })
     .addMatcher((baseApi.endpoints as any).getChartDataBulk.matchFulfilled, (state: MapSliceState, action: PayloadAction< ChartBulkResponse>) => {
-      state.aggregateChartData = getAggregateData(action.payload.data)
+      state.aggregateChartData = getAggregateChartData(action.payload.data)
     })
     // .addMatcher(authApi.endpoints.login.matchRejected, (state, action) => {
     //   // console.log('rejected', action)

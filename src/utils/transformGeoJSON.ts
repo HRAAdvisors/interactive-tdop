@@ -1,12 +1,11 @@
-import { ChoroplethChartData, GeoDataCollection } from "@/types/MapData";
-import _ from "lodash";
+import { ChoroplethChartData, GeoDataCollection } from '@/types/MapData';
+import _ from 'lodash';
 
-export const getAggregateData = (choroplethData: ChoroplethChartData[]) =>
+export const getAggregateChartData = (choroplethData: ChoroplethChartData[]) =>
   _.chain(choroplethData)
     .groupBy('geo_id')
-    .reduce(
-      (state, inf, key) => _.extend(state, { [key]: _.groupBy(inf, 'internet_access_type') }),
-      {},
+    .mapValues((inf) =>
+      _.mapValues(_.groupBy(inf, 'internet_access_type'), (infGroup) => _.first(infGroup)),
     )
     .value();
 
@@ -16,9 +15,11 @@ export const transformToGeoJSON = (
 ) => {
   const features = _.map(geoDataCollection, (boundaryItem) => {
     const geoId = boundaryItem.geoId;
-    const noInternetProportion =
+    const noInternetProportion = (
       parseInt(aggregatedChoroplethData[geoId]['no_internet']['households']) /
-      parseInt(aggregatedChoroplethData[geoId]['total_households']['households']);
+      parseInt(aggregatedChoroplethData[geoId]['total_households']['households'])
+    ).toFixed(2);
+
     return {
       type: 'Feature',
       geometry: boundaryItem.feature.geometry,
