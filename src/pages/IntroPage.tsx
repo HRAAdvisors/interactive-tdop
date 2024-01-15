@@ -1,6 +1,5 @@
 // IntroPage.js
 import { Element as ScrollElement } from 'react-scroll';
-import IntroOne from './content/IntroOne';
 import IntroTwo from './content/IntroTwo';
 import ScrollableTitle from '../components/ScrollableTitle';
 import IntroCards from '../static/IntroCards';
