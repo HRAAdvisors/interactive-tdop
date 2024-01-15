@@ -9,7 +9,6 @@
     "dev": "vite",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "yarn lint --fix",
-    "prepare": "husky install",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest"
