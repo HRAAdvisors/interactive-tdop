@@ -9,25 +9,25 @@ const StrategiesCards = {
         img: 'Statewide.png',
         altText: 'Partner with and fund statewide organizations',
         title: 'Partner with and fund statewide organizations. ',
-        description: 'The BDO will work with a range of state agencies and other statewide partners already actively involved in advancing digital opportunity across the state, ensuring that work is supportive of realizing the goals of this plan. The BDO will partner and collaboratively plan with agencies such as the Texas Workforce Commission and Texas State Libraries and Archives Commission, with the goal of enhancing and expanding those agencies’ programs through funding available from the state’s forthcoming Capacity Grant.',
+        description: 'The BDO will work with different state agencies and partners to increase digital opportunity. The BDO will work with groups like the Texas Workforce Commission (TWC) and Texas State Libraries and Archives Commission (TSLAC). They will help agencies do more with funds they may receive from the state’s new Capacity Grant.',
     },
     Promotion :{
         img: 'Promotion.jpg',
         altText: 'Promote Internet Adoption',
         title: 'Promote Internet Adoption',
-        description: 'The BDO recognizes that building the physical infrastructure to connect unserved and underserved Texans to broadband is only one component of expanding broadband adoption. Therefore, the BDO will promote activities to support Texans in signing up for and using internet as it is made available across the state – benefitting Texans, multiple statewide priorities and the telecom industry through an expanded customer base.',
+        description: 'The BDO recognizes that building the physical infrastructure to connect unserved and underserved Texans to broadband is only one component of expanding broadband adoption. Therefore, the BDO will promote activities to support Texans in signing up for and using the internet as it is made available across the state – benefitting Texans, multiple statewide priorities and the telecom industry through an expanded customer base.',
     },
     Local :{
         img: 'Local.png',
         altText: 'Fund local partners.',
         title: 'Fund local partners.',
-        description: 'Broadband adoption, digital literacy, device access and many other aspects of digital opportunity require locally based, culturally appropriate efforts. Leadership should come from the same communities that these efforts aim to serve; trust, safety and confidence are essential components of digital opportunity. The BDO will allocate a portion of its Capacity Grant to create a digital opportunity grant program, comparable to the BOOT program for broadband infrastructure, to fund local initiatives addressing the gaps in digital opportunity for covered populations and underserved regions.',
+        description: 'Broadband adoption, digital literacy, device access and many other aspects of digital opportunity need local solutions. Leaders should be from the communities they serve:. Trust, safety, and confidence are very important to this process. The BDO will use some of its Capacity Grant money for a new grant program. Similar to the BOOT program for broadband, the new grant program will fund local projects that address digital opportunity, especially in areas that need it most.',
     },
     Living_Plan :{
         img: 'LivingPlan.jpeg',
         altText: 'Maintain a living Digital Opportunity Plan.',
         title: 'Maintain a living Digital Opportunity Plan.',
-        description: 'The BDO envisions this plan as a living document, to be updated through continued research. The BDO has gathered extensive baseline data, established relationships with stakeholders and residents and gained a firm understanding of the needs and barriers of Texans statewide – regionally and among covered populations. The BDO aims to build upon this foundation and make this plan a sustainable resource to support digital opportunity statewide by measuring progress and continuing to collect critical data to enable the state and its local partners to advance and iterate impactful programs.',
+        description: 'The BDO sees this plan as a guide that changes over time as they continue to learn from residents about their digital opportunity experiences. This ongoing community input will help the BDO make continued improvements to the plan. As the plan is implemented, the BDO will measure progress towards its goals and improve programs that create digital opportunity.',
     },
 };
 

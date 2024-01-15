@@ -1,5 +1,5 @@
-import CardTerms from '@/components/CardTerms';
 import VisionCards from '@/static/VisionCards';
+import CardTerms from '../../components/CardTerms';
 import 'react-dropdown/style.css';
 
 const VisionTwo = () => {
@@ -11,8 +11,7 @@ const VisionTwo = () => {
       <div className='grid md:grid-cols-12'>
         <div className='flex flex-col md:col-start-4 md:col-span-6 justify-center gap-2'>
           <p className='py-12'>
-            To achieve this vision, the BDO is investing in digital opportunity to advance the
-            following state priority outcome areas: 
+            Achieving this vision will advance state policy priorities and efforts in six areas:
           </p>
         </div>
       </div>

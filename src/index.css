@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer tailwind {
+  @tailwind base;
+}
+
+@layer utilities {
+  .rotate-y-180 {
+    --tw-rotate-y: 180deg;
+    transform: rotateY(var(--tw-rotate-y));
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
+
+body {
+  font-family: "Montserrat", Helvetica, sans-serif;
+  background-color: #fffdf6;
+  overflow-x: hidden;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in.active {
+  opacity: 1;
+}
+
+.shadow-gradient {
+  /* Adjust the colors and spread to suit your design */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to right, #fffdf6, #fffdf6);
+}
+
+.AccordionControlClassName {
+  border: none !important;
+  box-shadow: none !important;
+}

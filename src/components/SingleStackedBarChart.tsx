@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import * as d3 from 'd3';
 
 const SingleStackedBarChart = ({
@@ -13,10 +11,12 @@ const SingleStackedBarChart = ({
 }) => {
   const ref = useRef<SVGSVGElement>(null);
   const [chartData, setChartData] = useState<number | null>(null);
-  const [tooltip, setTooltip] = useState<{ display: boolean; data: any; x?: number; y?: number }>({
-    display: false,
-    data: null,
-  });
+  const [tooltip, setTooltip] = useState<{
+    x?: number;
+    y?: number;
+    display: boolean;
+    data: string | null;
+  }>({ display: false, data: null });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,7 +58,7 @@ const SingleStackedBarChart = ({
       .attr('y', height * 0.1)
       .attr('width', width)
       .attr('height', height * 0.8)
-      .attr('fill', '#ececec');
+      .attr('fill', '#BE0B31');
 
     const foregroundBar = svg
       .append('rect')
@@ -66,7 +66,7 @@ const SingleStackedBarChart = ({
       .attr('y', height * 0.1)
       .attr('width', 0)
       .attr('height', height * 0.8)
-      .attr('fill', '#666');
+      .attr('fill', '#FF6989');
 
     // Animate the width of the bar
     foregroundBar
@@ -104,10 +104,10 @@ const SingleStackedBarChart = ({
       });
     };
 
-    const handleMouseMove = () => {
-      // const _svgPosition = ref.current?.getBoundingClientRect();
+    const handleMouseMove: React.MouseEventHandler = (e) => {
+      // const svgPosition = ref.current.getBoundingClientRect();
       setTooltip({
-        display: true, // Replace 'visible' with 'true'
+        display: false, // Replace 'visible' with 'true'
         data: `${Math.round(chartData)}%`,
       });
     };
@@ -126,13 +126,13 @@ const SingleStackedBarChart = ({
   return (
     <div className='font-sans'>
       <p className='py-2 text-xs'>Statewide</p>
-      <svg ref={ref} />
+      <svg ref={ref}></svg>
       {tooltip.display && (
         <div
           style={{
             position: 'absolute',
-            left: `${tooltip?.x}px`,
-            top: `${tooltip?.y}px`,
+            left: `${tooltip.x}px`,
+            top: `${tooltip.y}px`,
             backgroundColor: '#111',
             color: '#fff',
             border: '2px solid #111',
