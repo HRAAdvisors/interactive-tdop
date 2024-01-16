@@ -14,7 +14,7 @@ const KPIContainer = ({
   return (
     <div
       id={id}
-      className='px-4 my-10 md:my-0 py-[12vh] font-sans mr-[1vw] bg-[rgba(0,0,0,0.5)] text-white border-2 border-white'
+      className='px-4 my-10 md:my-0 py-[12vh] mr-[1vw] bg-[rgba(0,0,0,0.5)] text-white border-2 border-white'
     >
       <div>
         <p className='text-xs text-[#ececec]'>{goal}</p>

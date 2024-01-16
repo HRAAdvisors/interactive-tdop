@@ -7,20 +7,20 @@ const IntroTwo = () => {
   // const [opened, { toggle }] = useDisclosure(false);
 
   return (
-    <div className='w-full h-full bg-[#FFFDF6] px-4 font-sans'>
+    <div className='w-full h-full bg-[#FFFDF6] font-sans'>
       <div className='grid md:grid-cols-12'>
-        <div className='flex flex-col col-start-4 col-span-6 justify-center pt-0 pb-20'>
+        <div className='flex flex-col col-start-4 col-span-6 justify-center pt-20 pb-20 mx-[2rem]'>
           <p className=''>
             The Digital Opportunity Plan contains some technical language to refer to proven methods
             to expand digital opportunity.
             <br />
             <br />
-            Click on the pictures to learn about important words and ideas in Digital Opportunity
-            Plan, or scroll down to keep reading.
+            <strong>Click on the pictures</strong> to learn about important words and ideas in
+            Digital Opportunity Plan, or scroll down to keep reading.
           </p>
         </div>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-2 mb-[40vh]'>
+      <div className='grid grid-cols-2 md:grid-cols-12 lg:grid-cols-12 gap-2 mb-[40vh] mx-2'>
         <div className='flex flex-col items-center mb-[5vh] md:col-start-4 md:col-span-3 lg:col-start-4 lg:col-span-2'>
           <CardTerms
             img={IntroCards.Broadband.img}

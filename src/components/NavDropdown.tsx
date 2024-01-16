@@ -41,3 +41,5 @@ export const NavLinkList = ({ navLinks }: { navLinks: NavLink[] }) => {
     </ul>
   );
 };
+
+export default NavDropDown;

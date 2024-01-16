@@ -7,9 +7,9 @@ const StrategiesTwo = () => {
   // const [opened, { toggle }] = useDisclosure(false);
 
   return (
-    <div className='w-full h-full bg-[#FFFDF6] px-4 font-sans'>
+    <div className='w-full h-full bg-[#FFFDF6] px-4'>
       <div className='grid md:grid-cols-12'>
-        <div className='flex flex-col col-start-4 col-span-6 justify-center pb-20'>
+        <div className='flex flex-col col-start-4 col-span-6 justify-center pt-4 pb-20'>
           <p className=''>
             Click on the images to read about the strategies that will ensure the success of the
             Texas Digital Opportunity Plan.
@@ -51,10 +51,13 @@ const StrategiesTwo = () => {
         </div>
       </div>
       <div className='grid md:grid-cols-12'>
-        <div className='flex flex-col col-start-4 col-span-6 justify-center items-center pt-[10vh] pb-[40vh]'>
+        <div className='flex flex-col col-start-4 col-span-6 justify-center items-center pt-20 pb-[40vh]'>
           <p>
-            The BDO will implement the four strategies in collaboration with State agencies, local
-            partners, community members, and others from the Texas digital opportunity ecosystem.{' '}
+            The BDO will implement the four strategies{' '}
+            <strong>
+              in collaboration with State agencies, local partners, community members, and others
+              from the Texas digital opportunity ecosystem.
+            </strong>{' '}
           </p>
         </div>
       </div>

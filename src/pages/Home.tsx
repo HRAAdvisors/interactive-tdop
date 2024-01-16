@@ -71,39 +71,25 @@ const Home = () => {
       {showNav && <Sidebar currentPage={currentPage} />}
       {showNav && <Navbar />}
       <Element name='hero'>
-        <FadeInSection>
-          <HeroLayout />
-        </FadeInSection>
+        <HeroLayout />
       </Element>
       <Element name='intro'>
-        <FadeInSection>
-          <IntroPage handlePageChange={handlePageChange} />
-        </FadeInSection>
+        <IntroPage handlePageChange={handlePageChange} />
       </Element>
       <Element name='vision'>
-        <FadeInSection>
-          <VisionPage />
-        </FadeInSection>
+        <VisionPage />
       </Element>
       <Element name='needsandassets'>
-        <FadeInSection>
-          <NeedsAndAssetsPage />
-        </FadeInSection>
+        <NeedsAndAssetsPage />
       </Element>
       <Element name='stakeholderengagement'>
-        <FadeInSection>
-          <StakeholderEngagementPage />
-        </FadeInSection>
+        <StakeholderEngagementPage />
       </Element>
       <Element name='strategies'>
-        <FadeInSection>
-          <StrategiesPage handlePageChange={handlePageChange} />
-        </FadeInSection>
+        <StrategiesPage handlePageChange={handlePageChange} />
       </Element>
       <Element name='conclusion'>
-        <FadeInSection>
-          <ConclusionPage handlePageChange={handlePageChange} />
-        </FadeInSection>
+        <ConclusionPage handlePageChange={handlePageChange} />
       </Element>
     </ScrollableTitleProvider>
   );

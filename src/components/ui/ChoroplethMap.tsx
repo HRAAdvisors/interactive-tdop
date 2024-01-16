@@ -18,7 +18,7 @@ interface ChoroplethMapProps {
 }
 
 const getToolTip = (feature: any) => `
-<strong class="font-sans uppercase">${feature.properties.NAME} County</strong>
+<strong class="uppercase">${feature.properties.NAME} County</strong>
 <hr class="my-2"/>
 Share of households with No Internet Subscription: 
 <span class="font-bold">${feature.properties.noInternetProportion}</span>

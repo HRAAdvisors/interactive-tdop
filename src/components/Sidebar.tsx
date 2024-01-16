@@ -37,7 +37,7 @@ function Sidebar({}: { currentPage: any }) {
   return (
     <div
       ref={sidebarRef}
-      className={`z-50 hidden md:block md:fixed left-10 top-1/2 transform -translate-y-1/2 w-40 flex-col uppercase ${
+      className={`z-10 hidden md:block md:fixed left-10 top-1/2 transform -translate-y-1/2 w-40 flex-col uppercase ${
         isOverlapping ? 'text-white' : 'text-black'
       }`}
     >

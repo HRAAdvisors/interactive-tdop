@@ -13,7 +13,7 @@ const IntroPage = ({ handlePageChange: _ }: { handlePageChange?: Function }) => 
       title={IntroCards.Header.title}
     />
   );
-  const sections = [header, <IntroOne />, <IntroTwo />];
+  const sections = [<IntroOne />, <IntroTwo />];
   // const [activeSection, setActiveSection] = useState(0);
 
   // const handleSectionClick = (index) => {

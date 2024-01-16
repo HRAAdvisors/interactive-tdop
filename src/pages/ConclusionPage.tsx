@@ -15,7 +15,7 @@ const ConclusionPage = ({ handlePageChange }: { handlePageChange?: Function }) =
       title={ConclusionCards.Header.title}
     />
   );
-  const sections = [header, <ConclusionOne />];
+  const sections = [<ConclusionOne />];
   // const [activeSection, setActiveSection] = useState(0);
 
   // const handleSectionClick = (index) => {
