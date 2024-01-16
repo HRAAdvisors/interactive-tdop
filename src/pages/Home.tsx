@@ -1,8 +1,7 @@
 // App.js
-import { ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import '@mantine/core/styles.css';
 import { Element } from 'react-scroll';
-import { useInView } from 'react-intersection-observer';
 import NeedsAndAssetsPage from './NeedsAndAssetsPage';
 import VisionPage from './VisionPage';
 import IntroPage from './IntroPage';
@@ -14,25 +13,25 @@ import Sidebar from '@/components/Sidebar';
 import Navbar from '@/components/Navbar';
 import { ScrollableTitleProvider } from '@/components/ScrollableTitleContext';
 
-const FadeInSection = ({ children }: { children: ReactNode }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.01, // Adjust as needed
-  });
+// const FadeInSection = ({ children }: { children: ReactNode }) => {
+//   const [ref, inView] = useInView({
+//     triggerOnce: true,
+//     threshold: 0.01, // Adjust as needed
+//   });
 
-  const props = {
-    style: {
-      opacity: inView ? 1 : 0,
-      transition: 'opacity 0.5s',
-    },
-  };
+//   const props = {
+//     style: {
+//       opacity: inView ? 1 : 0,
+//       transition: 'opacity 0.5s',
+//     },
+//   };
 
-  return (
-    <div ref={ref} {...props}>
-      {children}
-    </div>
-  );
-};
+//   return (
+//     <div ref={ref} {...props}>
+//       {children}
+//     </div>
+//   );
+// };
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState({});
@@ -71,39 +70,25 @@ const Home = () => {
       {showNav && <Sidebar currentPage={currentPage} />}
       {showNav && <Navbar />}
       <Element name='hero'>
-        <FadeInSection>
-          <HeroLayout />
-        </FadeInSection>
+        <HeroLayout />
       </Element>
       <Element name='intro'>
-        <FadeInSection>
-          <IntroPage handlePageChange={handlePageChange} />
-        </FadeInSection>
+        <IntroPage handlePageChange={handlePageChange} />
       </Element>
       <Element name='vision'>
-        <FadeInSection>
-          <VisionPage />
-        </FadeInSection>
+        <VisionPage />
       </Element>
       <Element name='needsandassets'>
-        <FadeInSection>
-          <NeedsAndAssetsPage />
-        </FadeInSection>
+        <NeedsAndAssetsPage />
       </Element>
       <Element name='stakeholderengagement'>
-        <FadeInSection>
-          <StakeholderEngagementPage />
-        </FadeInSection>
+        <StakeholderEngagementPage />
       </Element>
       <Element name='strategies'>
-        <FadeInSection>
-          <StrategiesPage handlePageChange={handlePageChange} />
-        </FadeInSection>
+        <StrategiesPage handlePageChange={handlePageChange} />
       </Element>
       <Element name='conclusion'>
-        <FadeInSection>
-          <ConclusionPage handlePageChange={handlePageChange} />
-        </FadeInSection>
+        <ConclusionPage handlePageChange={handlePageChange} />
       </Element>
     </ScrollableTitleProvider>
   );

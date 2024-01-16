@@ -6,7 +6,7 @@ import SingleStackedBarChart from '@/components/SingleStackedBarChart';
 const NeedsTwo = () => {
   // const [opened, { toggle }] = useDisclosure(false);
   return (
-    <div className='w-full h-full bg-[#FFFDF6] px-4 font-sans'>
+    <div className='w-full h-full bg-[#FFFDF6] px-4'>
       <div className='grid md:grid-cols-12'>
         <div className='flex flex-col md:col-start-3 md:col-span-9 justify-center items-center'>
           <div className='mx-auto mb-20'>
@@ -112,7 +112,7 @@ const NeedsTwo = () => {
         <div className='flex flex-col md:col-start-3 md:col-span-9 justify-center items-center'>
           <div className='mx-auto mb-40'>
             <h1 className='md:text-6xl text-2xl uppercase my-5 font-montserrat'>Goal No. 2</h1>
-            <p className='font-sans'>
+            <p>
               All Texans have access to reliable, affordable broadband internet service at home.
               Click below to learn more!
             </p>

@@ -3,19 +3,17 @@ import { useState, useEffect } from 'react';
 import { Element as ScrollElement } from 'react-scroll';
 import '@mantine/core/styles.css';
 import ConclusionOne from './content/ConclusionOne';
-import ConclusionCards from '@/static/ConclusionCards';
-import ScrollableTitle from '@/components/ScrollableTitle';
 
 const ConclusionPage = ({ handlePageChange }: { handlePageChange?: Function }) => {
   const [localSections] = useState(['section1', 'section2', 'section3']);
-  const header = (
-    <ScrollableTitle
-      img={ConclusionCards.Header.img}
-      altText={ConclusionCards.Header.altText}
-      title={ConclusionCards.Header.title}
-    />
-  );
-  const sections = [header, <ConclusionOne />];
+  // const header = (
+  //   <ScrollableTitle
+  //     img={ConclusionCards.Header.img}
+  //     altText={ConclusionCards.Header.altText}
+  //     title={ConclusionCards.Header.title}
+  //   />
+  // );
+  const sections = [<ConclusionOne />];
   // const [activeSection, setActiveSection] = useState(0);
 
   // const handleSectionClick = (index) => {
