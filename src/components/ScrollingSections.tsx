@@ -1,3 +1,4 @@
+// ScrollingSections.tsx
 import React, { PureComponent } from 'react';
 import { Scrollama, Step } from 'react-scrollama';
 import ScrollingCard from './ScrollingCard';
@@ -14,7 +15,7 @@ interface ScrollingSectionsState {
 }
 
 class ScrollingSections extends PureComponent<ScrollingSectionsProps, ScrollingSectionsState> {
-  state: ScrollingSectionsState = {
+  state = {
     activeStepIndex: 0,
     isBackgroundVisible: false,
   };
@@ -28,7 +29,8 @@ class ScrollingSections extends PureComponent<ScrollingSectionsProps, ScrollingS
   }
 
   handleScroll = () => {
-    const element = document.getElementById(this.props.id);
+    const { id } = this.props;
+    const element = document.getElementById(id);
     if (element) {
       const rect = element.getBoundingClientRect();
       const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;

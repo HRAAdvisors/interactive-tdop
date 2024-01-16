@@ -3,7 +3,7 @@ import { Button } from '@mantine/core';
 function ButtonLight({ text }: { text: string; className?: string }) {
   return (
     <div
-      className='bg-[#FFFDF6;] p-1' // This creates the offset with a blue background
+      className='bg-[#FFFDF6] p-1' // This creates the offset with a blue background
       style={{
         display: 'inline-block',
         padding: '0px', // Adjust the padding for the desired offset
@@ -16,7 +16,7 @@ function ButtonLight({ text }: { text: string; className?: string }) {
         className='uppercase text-xs tracking-widest bg-[#002768] border-black shadow-md'
         styles={{
           root: {
-            backgroundColor: '#002768;', // Button color
+            backgroundColor: '#002768', // Button color
             borderWidth: 0, // Removes border
           },
           label: {

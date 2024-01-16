@@ -41,14 +41,6 @@ const ConclusionOne = () => {
       <ScrollingSections steps={steps} id='unique-id-2' backgroundImagePath='Needs.jpg' />
       <div className='bg-[#FFFDF6] w-full h-full px-4 font-sans'>
         <div className='grid md:grid-cols-12 font-sans'>
-          {/* <div className='font-sans flex flex-col md:col-start-4 md:col-span-6 justify-center pt-[10vh]'>
-            <TexasStripes />
-            <p className='py-12'>
-              The Texas Digital Opportunity Plan offers strategies to help with digital needs across
-              the state, helping all Texans have access to the same tools and information needed to
-              thrive in today's society.
-            </p>
-          </div> */}
           <div className='flex flex-col md:col-start-4 md:col-span-6'>
             <div className='flex justify-between py-[10vh] w-full'>
               <ButtonDark text='Interactive Plan' className='flex-1'></ButtonDark>

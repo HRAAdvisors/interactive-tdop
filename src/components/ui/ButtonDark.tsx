@@ -16,7 +16,7 @@ function ButtonLight({ text }: { text: string; className?: string }) {
         className='uppercase text-xs tracking-widest bg-[#111] border-black shadow-md'
         styles={{
           root: {
-            backgroundColor: '#002768;', // Button color
+            backgroundColor: '#111', // Button color
             borderWidth: 0, // Removes border
           },
           label: {
