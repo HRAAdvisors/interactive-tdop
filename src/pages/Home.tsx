@@ -1,8 +1,7 @@
 // App.js
-import { ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import '@mantine/core/styles.css';
 import { Element } from 'react-scroll';
-import { useInView } from 'react-intersection-observer';
 import NeedsAndAssetsPage from './NeedsAndAssetsPage';
 import VisionPage from './VisionPage';
 import IntroPage from './IntroPage';
