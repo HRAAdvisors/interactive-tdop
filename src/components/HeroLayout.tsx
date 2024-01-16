@@ -5,11 +5,6 @@ import { Link, animateScroll as scroll } from 'react-scroll';
 import one from '../assets/1.jpg';
 
 const HeroLayout = () => {
-  const scrollToNextSection = () => {
-    // Use the 'react-scroll' library to smoothly scroll to the next section
-    scroll.scrollMore(100, { smooth: 'easeInOutQuart' });
-  };
-
   return (
     <div className='z-50 w-full h-full bg-[#FFFDF6] md:overflow-x-hidden'>
       <div className='block md:grid md:grid-cols-12'>

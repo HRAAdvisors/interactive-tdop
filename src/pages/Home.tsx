@@ -14,25 +14,25 @@ import Sidebar from '@/components/Sidebar';
 import Navbar from '@/components/Navbar';
 import { ScrollableTitleProvider } from '@/components/ScrollableTitleContext';
 
-const FadeInSection = ({ children }: { children: ReactNode }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.01, // Adjust as needed
-  });
+// const FadeInSection = ({ children }: { children: ReactNode }) => {
+//   const [ref, inView] = useInView({
+//     triggerOnce: true,
+//     threshold: 0.01, // Adjust as needed
+//   });
 
-  const props = {
-    style: {
-      opacity: inView ? 1 : 0,
-      transition: 'opacity 0.5s',
-    },
-  };
+//   const props = {
+//     style: {
+//       opacity: inView ? 1 : 0,
+//       transition: 'opacity 0.5s',
+//     },
+//   };
 
-  return (
-    <div ref={ref} {...props}>
-      {children}
-    </div>
-  );
-};
+//   return (
+//     <div ref={ref} {...props}>
+//       {children}
+//     </div>
+//   );
+// };
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState({});

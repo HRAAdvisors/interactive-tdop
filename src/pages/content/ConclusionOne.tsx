@@ -1,5 +1,5 @@
 import ButtonDark from '@/components/ui/ButtonDark';
-import TexasStripes from '../../components/TexasStripes';
+// import TexasStripes from '../../components/TexasStripes';
 import 'react-dropdown/style.css';
 import ButtonLight from '@/components/ui/ButtonLight';
 import ScrollingSections from '@/components/ScrollingSections';

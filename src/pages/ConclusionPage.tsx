@@ -8,13 +8,13 @@ import ScrollableTitle from '@/components/ScrollableTitle';
 
 const ConclusionPage = ({ handlePageChange }: { handlePageChange?: Function }) => {
   const [localSections] = useState(['section1', 'section2', 'section3']);
-  const header = (
-    <ScrollableTitle
-      img={ConclusionCards.Header.img}
-      altText={ConclusionCards.Header.altText}
-      title={ConclusionCards.Header.title}
-    />
-  );
+  // const header = (
+  //   <ScrollableTitle
+  //     img={ConclusionCards.Header.img}
+  //     altText={ConclusionCards.Header.altText}
+  //     title={ConclusionCards.Header.title}
+  //   />
+  // );
   const sections = [<ConclusionOne />];
   // const [activeSection, setActiveSection] = useState(0);
 

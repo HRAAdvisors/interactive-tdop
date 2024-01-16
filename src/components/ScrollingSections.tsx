@@ -1,9 +1,20 @@
-import { PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { Scrollama, Step } from 'react-scrollama';
 import ScrollingCard from './ScrollingCard';
 
-class ScrollingSections extends PureComponent {
-  state = {
+interface ScrollingSectionsProps {
+  id: string;
+  steps: React.ReactNode[];
+  backgroundImagePath: string;
+}
+
+interface ScrollingSectionsState {
+  activeStepIndex: number;
+  isBackgroundVisible: boolean;
+}
+
+class ScrollingSections extends PureComponent<ScrollingSectionsProps, ScrollingSectionsState> {
+  state: ScrollingSectionsState = {
     activeStepIndex: 0,
     isBackgroundVisible: false,
   };
@@ -17,14 +28,15 @@ class ScrollingSections extends PureComponent {
   }
 
   handleScroll = () => {
-    const { id } = this.props;
-    const element = document.getElementById(id);
-    const rect = element.getBoundingClientRect();
-    const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
-    this.setState({ isBackgroundVisible: isVisible });
+    const element = document.getElementById(this.props.id);
+    if (element) {
+      const rect = element.getBoundingClientRect();
+      const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+      this.setState({ isBackgroundVisible: isVisible });
+    }
   };
 
-  onStepEnter = ({ data }) => {
+  onStepEnter = ({ data }: { data: number }) => {
     this.setState({ activeStepIndex: data });
   };
 

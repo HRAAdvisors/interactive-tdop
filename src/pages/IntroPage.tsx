@@ -6,13 +6,13 @@ import IntroCards from '../static/IntroCards';
 import IntroOne from './content/IntroOne';
 
 const IntroPage = ({ handlePageChange: _ }: { handlePageChange?: Function }) => {
-  const header = (
-    <ScrollableTitle
-      img={IntroCards.Header.img}
-      altText={IntroCards.Header.altText}
-      title={IntroCards.Header.title}
-    />
-  );
+  // const header = (
+  //   <ScrollableTitle
+  //     img={IntroCards.Header.img}
+  //     altText={IntroCards.Header.altText}
+  //     title={IntroCards.Header.title}
+  //   />
+  // );
   const sections = [<IntroOne />, <IntroTwo />];
   // const [activeSection, setActiveSection] = useState(0);
 
