@@ -8,6 +8,8 @@ import {
 import _ from 'lodash';
 import { getAggregateChartData, transformToGeoJSON } from '@/utils/transformGeoJSON';
 import ChoroplethMap from './ui/ChoroplethMap';
+import AOS from 'aos';
+import { animateScroll as scroll } from 'react-scroll';
 
 interface GeoScrollViewProps {
   cardContent: (
@@ -19,7 +21,7 @@ interface GeoScrollViewProps {
 const GeoScrollView = ({ cardContent, input }: GeoScrollViewProps) => {
   const mapRef = useRef<Map>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isMouseOverCard, setIsMouseOverCard] = useState(false);
+  const [isScrollingUp, setIsScrollingUp] = useState(false);
 
   const [geoJsonFeatures, setGeoJsonFeatures] =
     useState<GeoJSON.FeatureCollection<GeoJSON.Geometry> | null>(null);
@@ -42,27 +44,22 @@ const GeoScrollView = ({ cardContent, input }: GeoScrollViewProps) => {
     init();
   }, []);
 
-  const scrollToEnd: React.WheelEventHandler<HTMLElement> = (e) => {
+  const scrollToEnd: React.WheelEventHandler<HTMLElement> = _.debounce((e) => {
     const containerElm = containerRef.current;
 
-    if (containerElm && isMouseOverCard) {
+    if (containerElm) {
       e.preventDefault();
-      console.log(containerElm.scrollHeight);
       if (e.deltaY > 0) {
-        window.scrollTo({
-          top: containerElm.scrollHeight,
-          behavior: 'smooth',
-        });
+        setIsScrollingUp(true);
+        AOS.refresh();
+        scroll.scrollTo(containerElm.offsetTop + containerElm.offsetHeight);
       } else if (e.deltaY < 0) {
-        window.scrollTo({
-          top: containerElm.scrollHeight - containerElm.offsetHeight,
-          behavior: 'smooth',
-        });
+        setIsScrollingUp(false);
+        AOS.refresh();
+        scroll.scrollTo(containerElm.offsetTop - containerElm.offsetHeight);
       }
-
-      // Check if the user has scrolled to the bottom (with some buffer)
     }
-  };
+  }, 100);
 
   return (
     <div className='h-screen w-full' ref={containerRef}>
@@ -79,8 +76,8 @@ const GeoScrollView = ({ cardContent, input }: GeoScrollViewProps) => {
         >
           <div
             className='max-w-2xl px-10 py-6 bg-white rounded-lg shadow-md w-96 z-10 top-44 left-32 absolute min-h-[400px]'
-            onMouseEnter={() => setIsMouseOverCard(true)}
-            onMouseLeave={() => setIsMouseOverCard(false)}
+            data-aos={isScrollingUp ? 'fade-down' : 'fade-up'}
+            data-aos-duration='750'
             onWheel={scrollToEnd}
           >
             <div className='mt-2'>{cardContent(geoJsonFeatures)}</div>
