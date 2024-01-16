@@ -104,7 +104,7 @@ const SingleStackedBarChart = ({
       });
     };
 
-    const handleMouseMove: React.MouseEventHandler = (e) => {
+    const handleMouseMove: React.MouseEventHandler = () => {
       // const svgPosition = ref.current.getBoundingClientRect();
       setTooltip({
         display: false, // Replace 'visible' with 'true'
