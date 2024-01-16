@@ -12,9 +12,8 @@ export const NavDropDown = ({ navLinks }: { navLinks: NavLink[] }) => {
     <Menu shadow='md' radius='0' width={200} position='bottom-start'>
       <Menu.Target>
         <Button
-          color='#FFFDF6'
           radius={0}
-          className='uppercase text-xs tracking-widest font-light'
+          className='uppercase bg-transparent text-xs tracking-widest font-light'
           styles={{ label: { color: 'black' } }}
         >
           Navigate

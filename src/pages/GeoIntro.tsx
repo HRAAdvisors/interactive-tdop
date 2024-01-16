@@ -1,12 +1,10 @@
 // App.js
-import { ReactNode, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import '@mantine/core/styles.css';
 import GeoScrollView from '@/components/GeoScrollView';
+import NavbarPlain from '@/components/NavbarPlan';
 
 const GeoIntro = () => {
-  const [_currentSection, setCurrentSection] = useState(0);
-  const [showNav, setShowNav] = useState(false);
-
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -14,18 +12,9 @@ const GeoIntro = () => {
     });
   }, []);
 
-  // const scrollToSection = (sectionName: string) => {
-  //   scroller.scrollTo(sectionName, {
-  //     duration: 800,
-  //     delay: 0,
-  //     smooth: 'easeInOutQuart',
-  //     offset: -50, // Adjust as needed
-  //   });
-  // };
   return (
     <>
-      {/* {showNav && <Navbar />} */}
-
+      <NavbarPlain />
       <GeoScrollView
         cardContent={() => (
           <>
