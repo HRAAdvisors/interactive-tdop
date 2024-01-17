@@ -38,6 +38,8 @@ const Home = () => {
   // const [_currentSection, setCurrentSection] = useState(0);
   // const [_latestSection, setLatestSection] = useState(0);
   const [showNav, setShowNav] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
+  let lastScrollY = window.scrollY; // Initialize lastScrollY outside of the useEffect
 
   const handlePageChange = (pageName: number, sections: any[]) => {
     setCurrentPage({ name: pageName, sections });
@@ -45,14 +47,28 @@ const Home = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const isScrollingUp = currentScrollY < lastScrollY;
+
+      setShowNav(isScrollingUp);
+      lastScrollY = currentScrollY; // Update lastScrollY for the next scroll event
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
       const scrollY = window.scrollY; // Get the number of pixels scrolled vertically
 
       // Set showNav to true only if scrolled more than 8vh and less than 16vh
       const scrolledMoreThan8vh = scrollY > 8 * window.innerHeight;
-      console.log(scrolledMoreThan8vh);
-
       const scrolledLessThan16vh = scrollY < 25 * window.innerHeight;
-      setShowNav(scrolledMoreThan8vh && scrolledLessThan16vh);
+      setShowSidebar(scrolledMoreThan8vh && scrolledLessThan16vh);
     };
 
     // Add the event listener when the component mounts
@@ -66,8 +82,8 @@ const Home = () => {
 
   return (
     <ScrollableTitleProvider>
-      {showNav && <Sidebar currentPage={currentPage} />}
-      {showNav && <Navbar />}
+      {showSidebar && <Sidebar currentPage={currentPage} />}
+      <Navbar show={showNav} />
       <Element name='hero'>
         <HeroLayout />
       </Element>
