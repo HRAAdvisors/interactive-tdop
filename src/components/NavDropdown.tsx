@@ -9,7 +9,7 @@ export interface NavLink {
 
 export const NavDropDown = ({ navLinks }: { navLinks: NavLink[] }) => {
   return (
-    <Menu shadow='md' radius='0' width={200} position='bottom-start'>
+    <Menu shadow='md' offset={14} radius='0' width={200} position='bottom-start'>
       <Menu.Target>
         <Button
           radius={0}
@@ -21,9 +21,11 @@ export const NavDropDown = ({ navLinks }: { navLinks: NavLink[] }) => {
       </Menu.Target>
       <Menu.Dropdown className='bg-[#666] border-b-2 border-[#666]'>
         {_.map(navLinks, (navLink, index) => (
-          <Menu.Item key={index} color='#dedede' className='uppercase text-xs py-10 text-white'>
-            <Link to={navLink.link}>{navLink.text}</Link>
-          </Menu.Item>
+          <Link to={navLink.link} key={index}>
+            <Menu.Item color='#dedede' className='uppercase text-xs py-10 text-white'>
+              {navLink.text}
+            </Menu.Item>
+          </Link>
         ))}
       </Menu.Dropdown>
     </Menu>
@@ -41,5 +43,3 @@ export const NavLinkList = ({ navLinks }: { navLinks: NavLink[] }) => {
     </ul>
   );
 };
-
-export default NavDropDown;

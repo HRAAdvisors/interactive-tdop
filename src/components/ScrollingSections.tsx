@@ -39,6 +39,7 @@ class ScrollingSections extends PureComponent<ScrollingSectionsProps, ScrollingS
   };
 
   onStepEnter = ({ data }: { data: number }) => {
+    console.log('working');
     this.setState({ activeStepIndex: data });
   };
 

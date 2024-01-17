@@ -1,7 +1,7 @@
-import { bbox } from '@turf/turf';
+import { bbox, center } from '@turf/turf';
 import _ from 'lodash';
 import mapboxgl from 'mapbox-gl';
-import type { Map, PaddingOptions } from 'mapbox-gl';
+import type { GeoJSONSource, Map, PaddingOptions } from 'mapbox-gl';
 import { MutableRefObject, ReactNode, useEffect, useRef } from 'react';
 
 interface ChoroplethMapProps {
@@ -15,10 +15,11 @@ interface ChoroplethMapProps {
   children?: ReactNode;
   mapBoxExpression?: any[];
   padding?: number | PaddingOptions;
+  mapContainerClassName?: string;
 }
 
 const getToolTip = (feature: any) => `
-<strong class="uppercase">${feature.properties.NAME} County</strong>
+<strong class="font-sans uppercase">${feature.properties.NAME} County</strong>
 <hr class="my-2"/>
 Share of households with No Internet Subscription: 
 <span class="font-bold">${feature.properties.noInternetProportion}</span>
@@ -38,18 +39,49 @@ const ChoroplethMap = ({
   ],
   mapBoxExpression = ['to-number', ['get', 'noInternetProportion']],
   tooltipContent = getToolTip,
-  center = [-99.7431, 31.2672],
+  // center = [-99.7431, 31.2672],
   padding = 20,
   children,
+  mapContainerClassName = 'relative h-full w-full',
 }: ChoroplethMapProps) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
+
+  const getCenter = () => {
+    const coOrdinate = center(geoJSONFeatureCollection);
+    return coOrdinate.geometry.coordinates as [number, number];
+  };
+
+  const fitBound = () => {
+    const bounds = bbox(geoJSONFeatureCollection);
+    mapRef.current?.fitBounds(
+      [
+        [bounds[0], bounds[1]],
+        [bounds[2], bounds[3]],
+      ],
+      {
+        padding,
+      },
+    );
+  };
+
   useEffect(() => {
     if (!geoJSONFeatureCollection || !!mapRef.current) return;
+
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current as HTMLElement,
       style: 'mapbox://styles/mapbox/light-v11',
-      center, // Coordinates for Austin, Texas
+      center: getCenter(), // Coordinates for Austin, Texas
     });
+  }, []);
+
+  useEffect(() => {
+    if (!mapRef.current || !mapContainerRef.current) return;
+    mapRef.current?.setCenter(getCenter());
+    const sourceData = mapRef.current?.getSource(sourceId);
+    if (sourceData) {
+      (sourceData as GeoJSONSource).setData(geoJSONFeatureCollection);
+      fitBound();
+    }
   }, [geoJSONFeatureCollection]);
 
   useEffect(() => {
@@ -63,24 +95,12 @@ const ChoroplethMap = ({
           mapRef.current.removeLayer(layerId);
           mapRef.current.removeSource(sourceId);
         }
-        const firstOne = _.first(geoJSONFeatureCollection.features);
-        if (firstOne) {
-          const bounds = bbox(firstOne);
-          mapRef.current.fitBounds(
-            [
-              [bounds[0], bounds[1]],
-              [bounds[2], bounds[3]],
-            ],
-            {
-              padding,
-            },
-          );
-        }
 
         mapRef.current.addSource(sourceId, {
           type: 'geojson',
           data: geoJSONFeatureCollection,
         });
+        fitBound();
 
         mapRef.current.addLayer(
           {
@@ -129,12 +149,12 @@ const ChoroplethMap = ({
         });
       }
     });
-  }, [geoJSONFeatureCollection, mapRef, layerId, sourceId, colorStops, tooltipContent]);
+  }, [geoJSONFeatureCollection, layerId, sourceId, colorStops, tooltipContent, center]);
 
   return (
-    <div className='relative w-full h-full'>
+    <div className={mapContainerClassName}>
       {children}
-      <div ref={mapContainerRef} className='h-full w-full' />
+      <div ref={mapContainerRef} className={`h-full w-full ${mapContainerClassName}`} />
     </div>
   );
 };
