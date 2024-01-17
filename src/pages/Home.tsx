@@ -45,7 +45,6 @@ const Home = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const vh = window.innerHeight / 100; // Calculate the value of 1vh
       const scrollY = window.scrollY; // Get the number of pixels scrolled vertically
 
       // Set showNav to true only if scrolled more than 8vh and less than 16vh
