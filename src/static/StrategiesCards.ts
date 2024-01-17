@@ -1,6 +1,6 @@
 const StrategiesCards = {
     Header :{
-        img: 'Strategies.png',
+        img: 'Strategies.jpg',
         altText: 'Implementation Strategies',
         title: 'Implementation Strategies',
         description: '',
