@@ -1,4 +1,3 @@
-// ScrollingSections.tsx
 import React, { PureComponent } from 'react';
 import { Scrollama, Step } from 'react-scrollama';
 import ScrollingCard from './ScrollingCard';
@@ -6,93 +5,92 @@ import ScrollingCard from './ScrollingCard';
 interface ScrollingSectionsProps {
   id: string;
   steps: React.ReactNode[];
-  backgroundImagePath: string;
+  backgroundImagePaths: string[];
 }
 
 interface ScrollingSectionsState {
   activeStepIndex: number;
-  isBackgroundVisible: boolean;
+  backgroundStyles: React.CSSProperties[];
 }
 
 class ScrollingSections extends PureComponent<ScrollingSectionsProps, ScrollingSectionsState> {
-  state = {
-    activeStepIndex: 0,
-    isBackgroundVisible: false,
+  constructor(props: ScrollingSectionsProps) {
+    super(props);
+
+    // Initialize background styles with opacity 0
+    const backgroundStyles = props.backgroundImagePaths.map((path) => ({
+      backgroundImage: `url(${path})`,
+      opacity: 0,
+      transition: 'opacity 0.375s ease-in-out',
+      position: 'fixed' as 'fixed',
+      width: '100%',
+      height: '100vh',
+      top: 0,
+      left: 0,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
+      zIndex: -1,
+    }));
+
+    this.state = {
+      activeStepIndex: 0,
+      backgroundStyles,
+    };
+  }
+
+  onStepEnter = ({ data }: { data: number }) => {
+    this.setState((prevState) => {
+      const updatedStyles = prevState.backgroundStyles.map((style, index) => ({
+        ...style,
+        opacity: index === data ? 1 : 0,
+      }));
+      return {
+        activeStepIndex: data,
+        backgroundStyles: updatedStyles,
+      };
+    });
   };
 
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-  }
-
-  handleScroll = () => {
-    const { id } = this.props;
-    const element = document.getElementById(id);
-    if (element) {
-      const rect = element.getBoundingClientRect();
-      const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
-      this.setState({ isBackgroundVisible: isVisible });
+  onStepExit = ({ data, direction }: { data: number; direction: 'up' | 'down' }) => {
+    // If we're scrolling up and exiting the current active step, fade out the current step's background
+    if (direction === 'up' && data === this.state.activeStepIndex) {
+      this.setState((prevState) => {
+        const updatedStyles = prevState.backgroundStyles.map((style, index) => ({
+          ...style,
+          opacity: index === data - 1 ? 1 : 0,
+        }));
+        return {
+          activeStepIndex: data - 1,
+          backgroundStyles: updatedStyles,
+        };
+      });
     }
   };
 
-  onStepEnter = ({ data }: { data: number }) => {
-    console.log('working');
-    this.setState({ activeStepIndex: data });
-  };
+  renderBackgrounds() {
+    return this.state.backgroundStyles.map((style, index) => <div key={index} style={style} />);
+  }
 
   render() {
-    const { activeStepIndex, isBackgroundVisible } = this.state;
-    const { steps, backgroundImagePath, id } = this.props;
+    const { steps, id } = this.props;
 
     return (
       <div id={id} style={{ position: 'relative', overflow: 'hidden' }}>
-        {isBackgroundVisible && (
-          <div
-            style={{
-              position: 'fixed',
-              width: '100%',
-              height: '100vh',
-              backgroundImage: `url(${backgroundImagePath})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center center',
-              top: 0,
-              left: 0,
-              zIndex: -1,
-              transform: activeStepIndex === steps.length - 1 ? 'translateY(0)' : 'none',
-              transition: 'transform 0.5s ease-in-out',
-            }}
-          />
-        )}
-        <Scrollama onStepEnter={this.onStepEnter}>
+        {this.renderBackgrounds()}
+        <Scrollama onStepEnter={this.onStepEnter} onStepExit={this.onStepExit}>
           {steps.map((stepContent, index) => (
             <Step data={index} key={index}>
               <div
-                style={{
-                  minHeight: '100vh',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  zIndex: 2,
-                }}
+                style={{ minHeight: '150vh', display: 'flex', alignItems: 'center', zIndex: -1 }}
               >
-                <div
-                  style={{
-                    color: 'white',
-                    padding: '2rem',
-                    maxWidth: '35rem',
-                    margin: '2rem',
-                  }}
-                >
+                <div className='text-white p-[2rem] md:max-w-[25rem] max-w-[50rem] m-[5rem]'>
                   <ScrollingCard>{stepContent}</ScrollingCard>
                 </div>
               </div>
             </Step>
           ))}
         </Scrollama>
-        <div style={{ minHeight: '50vh' }}></div>
+        {/* <div style={{ minHeight: '50vh' }}></div> */}
       </div>
     );
   }

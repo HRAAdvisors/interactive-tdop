@@ -11,7 +11,7 @@ const SidebarItems = [
     },
     {
         key: 2,
-        name: "Needs and Assets",
+        name: "Goals",
         route: 'needsandassets'
     },
     {

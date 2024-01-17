@@ -35,7 +35,8 @@ import { ScrollableTitleProvider } from '@/components/ScrollableTitleContext';
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState({});
-  const [_currentSection, setCurrentSection] = useState(0);
+  // const [_currentSection, setCurrentSection] = useState(0);
+  // const [_latestSection, setLatestSection] = useState(0);
   const [showNav, setShowNav] = useState(false);
 
   const handlePageChange = (pageName: number, sections: any[]) => {
@@ -44,27 +45,26 @@ const Home = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2; // Adjust as needed
-      const newSection = Math.floor(scrollPosition / window.innerHeight);
-      setCurrentSection(newSection);
-      setShowNav(newSection >= 1);
+      const vh = window.innerHeight / 100; // Calculate the value of 1vh
+      const scrollY = window.scrollY; // Get the number of pixels scrolled vertically
+
+      // Set showNav to true only if scrolled more than 8vh and less than 16vh
+      const scrolledMoreThan8vh = scrollY > 8 * window.innerHeight;
+      console.log(scrolledMoreThan8vh);
+
+      const scrolledLessThan16vh = scrollY < 25 * window.innerHeight;
+      setShowNav(scrolledMoreThan8vh && scrolledLessThan16vh);
     };
 
+    // Add the event listener when the component mounts
     window.addEventListener('scroll', handleScroll);
 
+    // Remove the event listener when the component unmounts
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  // const scrollToSection = (sectionName: string) => {
-  //   scroller.scrollTo(sectionName, {
-  //     duration: 800,
-  //     delay: 0,
-  //     smooth: 'easeInOutQuart',
-  //     offset: -50, // Adjust as needed
-  //   });
-  // };
   return (
     <ScrollableTitleProvider>
       {showNav && <Sidebar currentPage={currentPage} />}

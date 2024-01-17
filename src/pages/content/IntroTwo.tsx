@@ -20,7 +20,7 @@ const IntroTwo = () => {
           </p>
         </div>
       </div>
-      <div className='grid grid-cols-2 md:grid-cols-12 lg:grid-cols-12 gap-2 mb-[40vh] mx-2'>
+      <div className='grid grid-cols-2 md:grid-cols-12 lg:grid-cols-12 gap-2 mx-2'>
         <div className='flex flex-col items-center mb-[5vh] md:col-start-4 md:col-span-3 lg:col-start-4 lg:col-span-2'>
           <CardTerms
             img={IntroCards.Broadband.img}
