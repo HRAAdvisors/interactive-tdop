@@ -3,6 +3,15 @@ import ButtonDark from '@/components/ui/ButtonDark';
 import 'react-dropdown/style.css';
 import ButtonLight from '@/components/ui/ButtonLight';
 import ScrollingSections from '@/components/ScrollingSections';
+
+const backgroundImagePaths = [
+  'Capitol.svg',
+  'Intro.png',
+  'Promotion.jpg',
+  'Needs.jpg',
+  'Capitol.jpg',
+];
+
 const steps = [
   <div>
     <p>
@@ -38,7 +47,11 @@ const steps = [
 const ConclusionOne = () => {
   return (
     <div>
-      <ScrollingSections steps={steps} id='unique-id-2' backgroundImagePath='Needs.jpg' />
+      <ScrollingSections
+        steps={steps}
+        id='unique-id-2'
+        backgroundImagePaths={backgroundImagePaths}
+      />
       <div className='bg-[#FFFDF6] w-full h-full px-4 font-sans'>
         <div className='grid md:grid-cols-12 font-sans'>
           <div className='flex flex-col md:col-start-4 md:col-span-6'>

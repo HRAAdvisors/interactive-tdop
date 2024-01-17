@@ -1,5 +1,13 @@
 import ScrollingSections from '@/components/ScrollingSections';
 
+const backgroundImagePaths = [
+  'Capitol.svg',
+  'LivingPlan.jpeg',
+  '2.jpg',
+  'Statewide.png',
+  'Vision.jpg',
+];
+
 const steps = [
   <p>
     More and more each day, our lives depend on using the internet. Once a luxury, the internet has
@@ -43,7 +51,11 @@ const steps = [
 const IntroOne = () => {
   return (
     <div>
-      <ScrollingSections steps={steps} id='unique-id-1' backgroundImagePath='Capitol.jpg' />
+      <ScrollingSections
+        steps={steps}
+        id='unique-id-1'
+        backgroundImagePaths={backgroundImagePaths}
+      />
     </div>
     // <div className='bg-[#FFFDF6] w-screen h-full md:h-screen px-4'>
     //   <div className=' grid md:grid-cols-12'>

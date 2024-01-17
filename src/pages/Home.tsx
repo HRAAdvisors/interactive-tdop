@@ -35,8 +35,11 @@ import { ScrollableTitleProvider } from '@/components/ScrollableTitleContext';
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState({});
-  const [_currentSection, setCurrentSection] = useState(0);
+  // const [_currentSection, setCurrentSection] = useState(0);
+  // const [_latestSection, setLatestSection] = useState(0);
   const [showNav, setShowNav] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
+  let lastScrollY = window.scrollY; // Initialize lastScrollY outside of the useEffect
 
   const handlePageChange = (pageName: number, sections: any[]) => {
     setCurrentPage({ name: pageName, sections });
@@ -44,10 +47,11 @@ const Home = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2; // Adjust as needed
-      const newSection = Math.floor(scrollPosition / window.innerHeight);
-      setCurrentSection(newSection);
-      setShowNav(newSection >= 1);
+      const currentScrollY = window.scrollY;
+      const isScrollingUp = currentScrollY < lastScrollY;
+
+      setShowNav(isScrollingUp);
+      lastScrollY = currentScrollY; // Update lastScrollY for the next scroll event
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -57,18 +61,29 @@ const Home = () => {
     };
   }, []);
 
-  // const scrollToSection = (sectionName: string) => {
-  //   scroller.scrollTo(sectionName, {
-  //     duration: 800,
-  //     delay: 0,
-  //     smooth: 'easeInOutQuart',
-  //     offset: -50, // Adjust as needed
-  //   });
-  // };
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY; // Get the number of pixels scrolled vertically
+
+      // Set showNav to true only if scrolled more than 8vh and less than 16vh
+      const scrolledMoreThan8vh = scrollY > 8 * window.innerHeight;
+      const scrolledLessThan16vh = scrollY < 25 * window.innerHeight;
+      setShowSidebar(scrolledMoreThan8vh && scrolledLessThan16vh);
+    };
+
+    // Add the event listener when the component mounts
+    window.addEventListener('scroll', handleScroll);
+
+    // Remove the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <ScrollableTitleProvider>
-      {showNav && <Sidebar currentPage={currentPage} />}
-      {showNav && <Navbar />}
+      {showSidebar && <Sidebar currentPage={currentPage} />}
+      <Navbar show={showNav} />
       <Element name='hero'>
         <HeroLayout />
       </Element>
