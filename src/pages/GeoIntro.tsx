@@ -2,9 +2,9 @@
 import { useEffect } from 'react';
 import '@mantine/core/styles.css';
 import NavbarPlain from '@/components/NavbarPlain';
-import GeoScrollCard from '@/components/GeoScrollCard';
 import HeroLayout from '@/components/HeroLayout';
 import { animateScroll as scroll } from 'react-scroll';
+import GeoScrollytelling from '@/components/GeoScrollytelling';
 
 const GeoIntro = () => {
   useEffect(() => {
@@ -15,8 +15,7 @@ const GeoIntro = () => {
     <>
       <NavbarPlain />
       <HeroLayout />
-      <GeoScrollCard />
-      <HeroLayout />
+      <GeoScrollytelling />
     </>
   );
 };
