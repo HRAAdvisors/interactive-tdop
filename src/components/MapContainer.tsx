@@ -68,7 +68,7 @@ const MapContainer = () => {
           <select
             value={selectedCounty}
             onChange={handleCountySelect}
-            className='absolute top-10 left-0 m-5 h-10 z-10 shadow-xl bg-black text-white'
+            className='absolute top-10 left-0 m-5 h-20 z-10 shadow-xl bg-black text-white'
           >
             <option value='' className='bg-black'>
               Zoom to...

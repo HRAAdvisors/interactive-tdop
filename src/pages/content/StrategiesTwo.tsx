@@ -51,7 +51,7 @@ const StrategiesTwo = () => {
         </div>
       </div>
       <div className='grid md:grid-cols-12'>
-        <div className='flex flex-col col-start-4 col-span-6 justify-center items-center pt-20 pb-[40vh]'>
+        <div className='flex flex-col col-start-4 col-span-6 justify-center items-center pt-20 pb-[20vh]'>
           <p>
             The BDO will implement the four strategies{' '}
             <strong>

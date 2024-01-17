@@ -3,7 +3,6 @@ import PlusIcon from './PlusIcon';
 import ButtonLight from './ui/ButtonLight';
 
 const CollapsibleCard = ({
-  goalNumber,
   taskNumber,
   color,
   goalTitle,
@@ -33,18 +32,19 @@ const CollapsibleCard = ({
   return (
     <div className='bg-[#FFFDF6] my-4 shadow-md rounded-none'>
       <div
-        className={`flex md:grid md:grid-cols-12 items-center justify-between bg-[#ECECEC] cursor-pointer md:hover:shadow-md md:hover:scale-[101%] duration-300`}
+        className={`flex md:grid md:grid-cols-12 items-center cursor-pointer md:hover:shadow-md md:hover:scale-[101%] duration-300`}
         onClick={toggleAccordion}
       >
         <div
-          className='flex md:grid md:col-span-2 md:grid-cols-2 p-4 uppercase text-white text-xs'
-          style={{ background: `${color}` }}
+          className='flex md:grid md:col-start-0 p-4 text-lg font-bold'
+          // style={{ background: `${color}` }}
         >
-          <p className='md:mr-8 w-full text-[#B9B9B9]'>GOAL NO.{goalNumber}</p>
-          <p className=''>Task {taskNumber}</p>
+          <p className='' style={{ color: `${color}` }}>
+            {taskNumber}
+          </p>
         </div>
-        <div className='flex items-center md:grid md:grid-cols-11 md:col-span-10 p-4 text-xs uppercase'>
-          <span className='md:col-span-10 col-span-8'>{goalTitle}</span>
+        <div className='flex items-center md:col-span-8 md:col-start-2 p-4 text-lg font-bold'>
+          <p>{goalTitle}</p>
           <div
             className='w-4 h-4 md:col-span-1 transition-transform transform-origin duration-300'
             style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}
@@ -60,12 +60,12 @@ const CollapsibleCard = ({
         ref={contentRef}
       >
         <div className='p-2 bg-[#FFFDF6]'>
-          <div className='grid grid-cols-12 p-2 my-6'>
+          {/* <div className='grid grid-cols-12 p-2 my-6'>
             <div className='col-span-1 flex items-center font-bold text-4xl'>{taskNumber}</div>
             <div className='col-span-10 md:col-span-10 flex items-center justify-start font-bold text-xl'>
               {goalTitle}
             </div>
-          </div>
+          </div> */}
 
           <div className='p-2 block md:grid md:grid-cols-12 md:gap-10'>
             {/* Left Panel Content */}

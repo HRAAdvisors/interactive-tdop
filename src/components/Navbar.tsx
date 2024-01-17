@@ -35,7 +35,7 @@ const Navbar = ({ show }: { show: boolean }) => {
     top: 0,
     left: 0,
     right: 0,
-    zIndex: 40, // Ensure it's above other content
+    zIndex: 10, // Ensure it's above other content
     // ...other styles
   };
 
@@ -50,9 +50,9 @@ const Navbar = ({ show }: { show: boolean }) => {
         <Link to='/'>
           <h1
             onClick={scrollToTop}
-            className='w-full text-xs whitespace-nowrap uppercase font-bold text-[#111] tracking-widest  pl-[10vw] pr-[20vw] md:px-[20vw]'
+            className='w-full text-xs whitespace-nowrap uppercase font-bold text-[#111] tracking-widest  pl-[3vw] sm:pl-[10vw] md:pl-[20vw] pr-[12vw] md:pr-[20vw] sm:px-[10vw]'
           >
-            The Texas Digital Opportunity Plan
+            Texas Digital Opportunity Plan
           </h1>
         </Link>
         <ul className='hidden md:flex items-center'>
@@ -69,8 +69,8 @@ const Navbar = ({ show }: { show: boolean }) => {
         <div
           className={
             nav
-              ? 'fixed left-0 top-0 w-[75%] h-screen ease-in-out duration-500 shadow-2xl'
-              : 'fixed left-[-100%] ease-in-out duration-500 shadow-2xl'
+              ? 'fixed left-0 top-0 w-[63%] h-screen ease-in-out duration-500 shadow-2xl'
+              : 'fixed left-[-100%] top-[0%] ease-in-out duration-500 shadow-2xl'
           }
         >
           <div className='h-screen bg-[#666]'>
