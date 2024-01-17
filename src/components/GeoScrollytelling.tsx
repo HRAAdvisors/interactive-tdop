@@ -20,7 +20,7 @@ const contents = [
         },
       },
     ],
-    getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
+    getContent: (_geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
       <>
         <div className='mt-2'>
           <h1 className='mt-2 text-lg font-semibold text-gray-800'>First Card</h1>
@@ -45,7 +45,7 @@ const contents = [
         },
       },
     ],
-    getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
+    getContent: (_geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
       <>
         <div className='mt-2'>
           <h1 className='mt-2 text-lg font-semibold text-gray-800'>Sceond</h1>
