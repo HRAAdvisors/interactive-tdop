@@ -22,7 +22,7 @@ const getToolTip = (feature: any) => `
 <strong class="font-sans uppercase">${feature.properties.NAME} County</strong>
 <hr class="my-2"/>
 Share of households with No Internet Subscription: 
-<span class="font-bold">${feature.properties.noInternetProportion}</span>
+<span class="font-bold">${feature.properties.dataPoint}</span>
 `;
 
 const ChoroplethMap = ({
@@ -37,16 +37,15 @@ const ChoroplethMap = ({
     { step: 0.35, color: '#32548C' },
     { step: 0.45, color: '#002768' },
   ],
-  mapBoxExpression = ['to-number', ['get', 'noInternetProportion']],
+  mapBoxExpression = ['to-number', ['get', 'dataPoint']],
   tooltipContent = getToolTip,
-  // center = [-99.7431, 31.2672],
   padding = 20,
   children,
   mapContainerClassName = 'relative h-full w-full',
 }: ChoroplethMapProps) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
 
-  const getCenter = () => {
+  const getCalculatedCenter = () => {
     const coOrdinate = center(geoJSONFeatureCollection);
     return coOrdinate.geometry.coordinates as [number, number];
   };
@@ -70,13 +69,18 @@ const ChoroplethMap = ({
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current as HTMLElement,
       style: 'mapbox://styles/mapbox/light-v11',
-      center: getCenter(), // Coordinates for Austin, Texas
+      center: getCalculatedCenter(), // Coordinates for Austin, Texas
     });
   }, []);
 
   useEffect(() => {
     if (!mapRef.current || !mapContainerRef.current) return;
-    mapRef.current?.setCenter(getCenter());
+
+    const currentCenter = mapRef.current.getCenter();
+    const calculatedCenter = getCalculatedCenter();
+    if (!_.isEqual(currentCenter, calculatedCenter)) {
+      mapRef.current?.setCenter(calculatedCenter);
+    }
     const sourceData = mapRef.current?.getSource(sourceId);
     if (sourceData) {
       (sourceData as GeoJSONSource).setData(geoJSONFeatureCollection);
@@ -136,7 +140,7 @@ const ChoroplethMap = ({
             // Highlight the hovered feature
             mapRef.current?.setPaintProperty(layerId, 'fill-opacity', [
               'case',
-              ['==', ['get', 'noInternetProportion'], feature?.properties?.noInternetProportion],
+              ['==', ['get', 'dataPoint'], feature?.properties?.dataPoint],
               0.8,
               0.6,
             ]);

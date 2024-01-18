@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import _ from 'lodash';
 import { useGetBoundaryDataBulkMutation, useGetChartDataBulkMutation } from '@/services/map';
-import { getAggregateChartData, transformToGeoJSON } from '@/utils/transformGeoJSON';
+import { transformToGeoJSON } from '@/utils/transformGeoJSON';
 import ChoroplethMap from './ui/ChoroplethMap';
 import { Map } from 'mapbox-gl';
 import { Scrollama, Step } from 'react-scrollama';
 import GeoScrollCard from './GeoScrollCard';
+import { DataPointGeneratorName } from '@/types/ChartIds';
 
 const contents = [
   {
@@ -20,6 +21,7 @@ const contents = [
         },
       },
     ],
+    dataPointName: DataPointGeneratorName.noInternetProportion,
     getContent: (_geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
       <>
         <div className='mt-2'>
@@ -37,14 +39,15 @@ const contents = [
     id: 2,
     data: [
       {
-        geoId: '49',
-        id: '6582102b903ab0943c07dbf8',
+        geoId: '48',
+        id: '65a6952ca3f05308cc4f280c',
         regionSetup: {
           peers: 'none',
           segments: 'county',
         },
       },
     ],
+    dataPointName: DataPointGeneratorName.hispeedShare,
     getContent: (_geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
       <>
         <div className='mt-2'>
@@ -58,13 +61,21 @@ const contents = [
         </div>
       </>
     ),
+    colorStops: [
+      { step: 0.05, color: '#C9DCF7' },
+      { step: 0.25, color: '#96AFD3' },
+      { step: 0.5, color: '#6481B0' },
+      { step: 0.75, color: '#32548C' },
+      { step: 0.1, color: '#002768' },
+    ],
   },
 ];
 
 const GeoScrollytelling = () => {
   const mapRef = useRef<Map>(null);
 
-  const [input, setInput] = useState<any>(_.first(contents)?.data);
+  const [input, setInput] = useState<any>(_.first(contents));
+  const [colorStops, setColorStops] = useState<any>(_.first(contents)?.colorStops);
 
   const [geoJsonFeatures, setGeoJsonFeatures] = useState<
     GeoJSON.FeatureCollection<GeoJSON.Geometry> | undefined
@@ -75,13 +86,10 @@ const GeoScrollytelling = () => {
 
   useEffect(() => {
     const init = async () => {
-      const boundaryies = await getBoundaries(input).unwrap();
-      const choroplethData = await getChartData(input).unwrap();
-      const aggregateChartData = getAggregateChartData(choroplethData.data);
-      const geoJSON = transformToGeoJSON(
-        aggregateChartData,
-        boundaryies,
-      ) as GeoJSON.FeatureCollection<GeoJSON.Geometry>;
+      const boundaryies = await getBoundaries(input.data).unwrap();
+      const choroplethData = await getChartData(input.data).unwrap();
+      const geoJSON = transformToGeoJSON(boundaryies, choroplethData, input.dataPointName);
+      console.log(geoJSON);
       setGeoJsonFeatures(geoJSON);
     };
 
@@ -105,6 +113,7 @@ const GeoScrollytelling = () => {
               top: 20,
               bottom: 20,
             }}
+            colorStops={colorStops}
             geoJSONFeatureCollection={geoJsonFeatures}
             mapRef={mapRef}
           />
@@ -113,11 +122,12 @@ const GeoScrollytelling = () => {
       <Scrollama
         offset={0.5}
         onStepEnter={({ data }: any) => {
+          setColorStops(data.setColorStops);
           setInput(data); // Set the input based on the received data
         }}
       >
         {_.map(contents, (d, i) => (
-          <Step data={d.data} key={i + 1} debug>
+          <Step data={d} key={i + 1} debug>
             <div>
               <GeoScrollCard>
                 <>{d.getContent(geoJsonFeatures)}</>

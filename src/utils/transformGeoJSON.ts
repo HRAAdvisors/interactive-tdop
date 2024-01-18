@@ -1,38 +1,61 @@
-import { ChoroplethChartData, GeoDataCollection } from '@/types/MapData';
+import { ChartId, DataPointGeneratorName } from '@/types/ChartIds';
+import { ChartBulkResponse, GeoDataCollection } from '@/types/MapData';
 import _ from 'lodash';
 
-export const getAggregateChartData = (choroplethData: ChoroplethChartData[]) =>
-  _.chain(choroplethData)
+export const getAggregateChartData = (choroplethData: ChartBulkResponse) => {
+  if(choroplethData.id === ChartId.TXAccess) {
+    return _.chain(choroplethData.data)
     .groupBy('geo_id')
     .mapValues((inf) =>
       _.mapValues(_.groupBy(inf, 'internet_access_type'), (infGroup) => _.first(infGroup)),
     )
-    .value();
+    .value();  
+  } else if(choroplethData.id === ChartId.TXAdoption) {
+    return _.chain(choroplethData.data)
+    .groupBy('geo_id')
+    .mapValues((inf) =>
+      _.mapValues(_.groupBy(inf, 'cohort'), (infGroup) => _.first(infGroup)),
+    )
+    .value(); 
+  }
+}
+
+const dataPointGenerator = (geoId: number, aggregatedChoroplethData: any, chartId: string , dataPointGeneratorName: DataPointGeneratorName) => {
+
+  if(dataPointGeneratorName === DataPointGeneratorName.noInternetProportion && ChartId.TXAccess === chartId) {
+      return (
+        parseInt(aggregatedChoroplethData[geoId]['no_internet']['households']) /
+        parseInt(aggregatedChoroplethData[geoId]['total_households']['households'])
+      ).toFixed(2);
+  } else if(dataPointGeneratorName === DataPointGeneratorName.hispeedShare && ChartId.TXAdoption === chartId) {
+      return aggregatedChoroplethData[geoId]['ALL']['hispeed_share'];
+  } else {
+    throw new Error('chartId and Datapoint Mismatch')
+  }
+
+}
+  
 
 export const transformToGeoJSON = (
-  aggregatedChoroplethData: any,
   geoDataCollection: GeoDataCollection,
+  chartBulkResponse: ChartBulkResponse,
+  dataPointGeneratorName: DataPointGeneratorName 
 ) => {
-  const features = _.map(geoDataCollection, (boundaryItem) => {
-    const geoId = boundaryItem.geoId;
-    const noInternetProportion = (
-      parseInt(aggregatedChoroplethData[geoId]['no_internet']['households']) /
-      parseInt(aggregatedChoroplethData[geoId]['total_households']['households'])
-    ).toFixed(2);
 
-    return {
-      type: 'Feature',
-      geometry: boundaryItem.feature.geometry,
-      properties: {
-        ..._.get(aggregatedChoroplethData, geoId, {}),
-        ...boundaryItem.feature.properties,
-        noInternetProportion, // Add the calculated proportion to the properties
-      },
-    };
-  });
+  const aggregateChartData =  getAggregateChartData(chartBulkResponse)
+
+  const features = _.map(geoDataCollection, (boundaryItem) => ({
+    type: 'Feature',
+    geometry: boundaryItem.feature.geometry,
+    properties: {
+      ..._.get(aggregateChartData, boundaryItem.geoId, {}),
+      ...boundaryItem.feature.properties,
+      dataPoint: dataPointGenerator(boundaryItem.geoId, aggregateChartData, chartBulkResponse.id , dataPointGeneratorName),
+    },
+  }));
 
   return {
     type: 'FeatureCollection',
     features,
-  };
+  } as GeoJSON.FeatureCollection<GeoJSON.Geometry>;
 };
