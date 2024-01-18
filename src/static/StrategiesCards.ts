@@ -12,7 +12,7 @@ const StrategiesCards = {
         description: 'The BDO will work with different state agencies and partners to increase digital opportunity. The BDO will work with groups like the Texas Workforce Commission (TWC) and Texas State Libraries and Archives Commission (TSLAC). They will help agencies do more with funds they may receive from the state’s new Capacity Grant.',
     },
     Promotion :{
-        img: 'Promotion.jpg',
+        img: 'Connectivity.jpg',
         altText: 'Promote Internet Adoption',
         title: 'Promote Internet Adoption',
         description: 'The BDO recognizes that building the physical infrastructure to connect unserved and underserved Texans to broadband is only one component of expanding broadband adoption. Therefore, the BDO will promote activities to support Texans in signing up for and using the internet as it is made available across the state – benefitting Texans, multiple statewide priorities and the telecom industry through an expanded customer base.',

@@ -4,7 +4,7 @@ const backgroundImagePaths = [
   'Capitol.svg',
   'LivingPlan.jpeg',
   '2.jpg',
-  'Statewide.png',
+  'Statewide.jpg',
   'Vision.jpg',
 ];
 

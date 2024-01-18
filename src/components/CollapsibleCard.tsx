@@ -77,7 +77,7 @@ const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
             {/* Left Panel Content */}
             <div className='md:col-span-6 md:col-start-2'>
               <p className='uppercase underline font-medium my-4'>{mapTitle}</p>
-              <div className='h-[40vh]'>{rightPanelContent}</div>
+              <div className='h-[60vh]'>{rightPanelContent}</div>
               <p className='my-4'>
                 <strong>Source</strong>: {mapSource}
               </p>
@@ -89,7 +89,7 @@ const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
               {leftPanelContent}
               <p className='uppercase underline font-medium mt-12'>How Will Texas Get There?</p>
               <div className='my-4'>
-                <p className='my-4'>Implementation Strategies</p>
+                {/* <p className='my-4'>Implementation Strategies</p> */}
                 <ol className='list-decimal list-inside'>
                   {/* Check if strategies is defined and is an array before mapping */}
                   {strategies &&
