@@ -79,9 +79,10 @@ const NeedsTwo = () => {
                 }
                 leftPanelContent={<SingleStackedBarChart width={200} height={20} value={68} />}
                 rightPanelContent={
-                  <div className='h-full flex items-center justify-center shadow-sm'>
-                    <p className='text-2xl m-4'>
-                      "Internet service is just <strong>too expensive</strong> in my area."
+                  <div className='h-full flex items-center'>
+                    <p className='text-2xl mx-auto'>
+                      "Internet service is just <strong>too expensive</strong> in my area. I know
+                      there are ways for me to get online for free, but they are hard to find."
                     </p>
                   </div>
                 }
