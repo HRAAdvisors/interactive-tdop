@@ -33,7 +33,7 @@ const NeedsTwo = () => {
                     </p>{' '}
                     <p>
                       Certain regions of Texas have higher rates of subscription, while others are
-                      lower. At right, the map visualizes subscription rates for each of the twelve
+                      lower. Below, the map visualizes subscription rates for each of the twelve
                       regions of the state.
                     </p>
                   </div>
@@ -56,18 +56,18 @@ const NeedsTwo = () => {
                 taskNumber='2'
                 color='#002768'
                 goalTitle='Decrease the percentage of individuals who cite cost as a barrier to home internet service'
-                mapTitle='Households by Cost as a Barrier to Subscription'
-                mapSource='Texas Public Survey'
+                // mapTitle='Households by Cost as a Barrier to Subscription'
+                mapSource='Southwest Focus Group Session'
                 description={
                   <div>
                     <p className='mb-2'>
-                      59% of Texas survey respondents stated that they do not subscribe to home
-                      internet services because they are too expensive.
+                      <strong>59% of Texas survey respondents</strong> stated that they do not
+                      subscribe to home internet services because they are too expensive.
                     </p>
                     <p>
                       Respondents from certain regions of Texas cited affordability issues at higher
-                      rates than others. At right, the map visualizes survey responses for each of
-                      the twelve regions of the state.
+                      rates than others. Below, the map visualizes survey responses for each of the
+                      twelve regions of the state.
                     </p>
                   </div>
                 }
@@ -78,7 +78,13 @@ const NeedsTwo = () => {
                   </p>
                 }
                 leftPanelContent={<SingleStackedBarChart width={200} height={20} value={68} />}
-                rightPanelContent={<MapContainer />}
+                rightPanelContent={
+                  <div className='h-full flex items-center justify-center shadow-sm'>
+                    <p className='text-2xl m-4'>
+                      "Internet service is just <strong>too expensive</strong> in my area."
+                    </p>
+                  </div>
+                }
                 strategies={['Promote internet adoption']}
               />
               <CollapsibleCard
