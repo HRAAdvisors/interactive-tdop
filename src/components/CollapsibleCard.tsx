@@ -1,20 +1,30 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, ReactNode } from 'react';
 import PlusIcon from './PlusIcon';
-import ButtonLight from './ui/ButtonLight';
 
-const CollapsibleCard = ({
+interface CollapsibleCardProps {
+  taskNumber: string;
+  color: string;
+  goalTitle: string;
+  description: ReactNode;
+  mapTitle?: string; // If this is optional, mark it as such
+  mapSource?: string; // If this is optional, mark it as such
+  targetText: ReactNode;
+  leftPanelContent: ReactNode;
+  rightPanelContent: ReactNode;
+  strategies: string[]; // Define as an array of strings
+}
+
+const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
   taskNumber,
   color,
   goalTitle,
   description,
+  mapTitle,
+  mapSource,
   targetText,
   leftPanelContent,
   rightPanelContent,
-  strategy1,
-  strategy2,
-  strategy3,
-}: {
-  [x: string]: string | React.ReactNode;
+  strategies,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [height, setHeight] = useState(0);
@@ -30,27 +40,24 @@ const CollapsibleCard = ({
   }, [isOpen]);
 
   return (
-    <div className='bg-[#FFFDF6] my-4 shadow-md rounded-none'>
+    <div className='bg-[#FFFDF6] my-4 shadow-md rounded-none w-[100%] border-2 border-black'>
       <div
-        className={`flex md:grid md:grid-cols-12 items-center cursor-pointer md:hover:shadow-md md:hover:scale-[101%] duration-300`}
+        className='flex md:grid md:grid-cols-12 cursor-pointer align-center md:hover:shadow-md md:hover:scale-[101%] duration-300 py-4 '
         onClick={toggleAccordion}
       >
-        <div
-          className='flex md:grid md:col-start-0 p-4 text-lg font-bold'
-          // style={{ background: `${color}` }}
-        >
+        <div className='flex md:grid md:col-start-0 px-8 text-lg font-bold'>
           <p className='' style={{ color: `${color}` }}>
             {taskNumber}
           </p>
         </div>
-        <div className='flex items-center md:col-span-8 md:col-start-2 p-4 text-lg font-bold'>
+        <div className='flex items-center md:col-span-8 md:col-start-2 text-lg font-bold'>
           <p>{goalTitle}</p>
-          <div
-            className='w-4 h-4 md:col-span-1 transition-transform transform-origin duration-300'
-            style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}
-          >
-            <PlusIcon />
-          </div>
+        </div>
+        <div
+          className='w-4 h-4 md:col-span-1 mx-10 transition-transform transform-origin duration-300'
+          style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}
+        >
+          <PlusIcon />
         </div>
       </div>
 
@@ -59,45 +66,41 @@ const CollapsibleCard = ({
         style={{ maxHeight: `${height}px` }}
         ref={contentRef}
       >
-        <div className='p-2 bg-[#FFFDF6]'>
-          {/* <div className='grid grid-cols-12 p-2 my-6'>
-            <div className='col-span-1 flex items-center font-bold text-4xl'>{taskNumber}</div>
-            <div className='col-span-10 md:col-span-10 flex items-center justify-start font-bold text-xl'>
-              {goalTitle}
+        <div className='bg-[#FFFDF6]'>
+          <div className='grid grid-cols-12 my-2'>
+            <div className='col-span-8 md:col-start-2 md:col-span-10 flex items-center'>
+              {description}
             </div>
-          </div> */}
+          </div>
 
-          <div className='p-2 block md:grid md:grid-cols-12 md:gap-10'>
+          <div className='p-2 block md:grid md:grid-cols-12'>
             {/* Left Panel Content */}
-            <div className='md:col-span-6'>
-              <div className='text-xs mb-8'>{description}</div>
-              <h1 className='text-xs uppercase font-bold my-2'>2030 Target</h1>
-              <hr className='my-2' />
-              <div className='grid grid-cols-12 gap-4'>
-                <div className='col-span-12 md:col-span-6 text-xs'>{targetText}</div>
-                <div className='col-span-12 md:col-span-6'>{leftPanelContent}</div>
-              </div>
-              <h1 className='text-xs uppercase font-bold my-2'>How will Texas get there?</h1>
-              <hr className='my-2' />
-              <div className='grid grid-cols-12 gap-4 my-8'>
-                <div className='col-span-12 md:col-span-4'>
-                  <div className='text-lg font-bold'>1</div>
-                  <div className='text-xs'>{strategy1}</div>
-                </div>
-                <div className='col-span-12 md:col-span-4'>
-                  <div className='text-lg font-bold'>2</div>
-                  <div className='text-xs'>{strategy2}</div>
-                </div>
-                <div className='col-span-12 md:col-span-4'>
-                  <div className='text-lg font-bold'>3</div>
-                  <div className='text-xs'>{strategy3}</div>
-                </div>
-              </div>
-              <ButtonLight text='Dive deeper into broadband availability.' />
+            <div className='md:col-span-6 md:col-start-2'>
+              <p className='uppercase underline font-medium my-4'>{mapTitle}</p>
+              <div className='h-[40vh]'>{rightPanelContent}</div>
+              <p className='my-4'>
+                <strong>Source</strong>: {mapSource}
+              </p>
             </div>
-
             {/* Right Panel Content */}
-            <div className='md:col-span-6 md:col-start-7'>{rightPanelContent}</div>
+            <div className='md:col-span-3 md:col-start-9'>
+              <p className='uppercase underline font-medium my-4'>2030 Target</p>
+              <div className='my-4'>{targetText}</div>
+              {leftPanelContent}
+              <p className='uppercase underline font-medium mt-12'>How Will Texas Get There?</p>
+              <div className='my-4'>
+                <p className='my-4'>Implementation Strategies</p>
+                <ol className='list-decimal list-inside'>
+                  {/* Check if strategies is defined and is an array before mapping */}
+                  {strategies &&
+                    strategies.map((strategy: string, index: number) => (
+                      <li key={index} className='mt-2 first:mt-0'>
+                        {strategy}
+                      </li>
+                    ))}
+                </ol>
+              </div>
+            </div>
           </div>
         </div>
       </div>

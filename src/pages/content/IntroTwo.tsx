@@ -7,7 +7,7 @@ const IntroTwo = () => {
   // const [opened, { toggle }] = useDisclosure(false);
 
   return (
-    <div className='w-full h-full bg-[#FFFDF6] font-sans'>
+    <div className='w-screen h-full bg-[#FFFDF6] font-sans'>
       <div className='grid md:grid-cols-12'>
         <div className='flex flex-col col-start-4 col-span-6 justify-center pt-20 pb-20 mx-[2rem]'>
           <p className=''>
