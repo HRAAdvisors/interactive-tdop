@@ -67,7 +67,7 @@ const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
         ref={contentRef}
       >
         <div className='bg-[#FFFDF6]'>
-          <div className='grid grid-cols-12 my-2'>
+          <div className='grid grid-cols-12 my-2 mt-4'>
             <div className='col-span-8 md:col-start-2 md:col-span-10 flex items-center'>
               {description}
             </div>
