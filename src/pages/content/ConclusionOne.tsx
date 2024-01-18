@@ -6,7 +6,7 @@ import ScrollingSections from '@/components/ScrollingSections';
 
 const backgroundImagePaths = [
   'Capitol.svg',
-  'Intro.png',
+  'LivingPlan.jpeg',
   'Promotion.jpg',
   'Needs.jpg',
   'Capitol.jpg',
@@ -33,14 +33,26 @@ const steps = [
     <p>
       We welcome your comments at{' '}
       <strong>
-        <a href='https://infinite-peak-70034.herokuapp.com/'>this link</a>
+        <a className='underline' href='https://infinite-peak-70034.herokuapp.com/'>
+          this link
+        </a>
       </strong>
-      , your feedback at our email address, and your continued participation in the expansion of
-      digital opportunity in Texas through public events or other forums.
+      , your feedback at our{' '}
+      <strong>
+        <a className='underline' href='mailto:broadband@cpa.texas.gov'>
+          email address
+        </a>
+      </strong>
+      , and your continued participation in the expansion of digital opportunity in Texas through
+      public events or other forums.
     </p>
   </div>,
   <div>
     <p> Click below to dive deeper into the state of digital opportunity in Texas.</p>
+    <div className=''>
+      <ButtonDark text='Interactive Plan'></ButtonDark>
+      <ButtonLight text='Data Dashboards'></ButtonLight>
+    </div>
   </div>,
 ];
 
@@ -54,17 +66,15 @@ const ConclusionOne = () => {
       />
       <div className='bg-[#FFFDF6] w-full h-full px-4 font-sans'>
         <div className='grid md:grid-cols-12 font-sans'>
-          <div className='flex flex-col md:col-start-4 md:col-span-6'>
+          {/* <div className='flex flex-col md:col-start-4 md:col-span-6'>
             <div className='flex justify-between py-[10vh] w-full'>
               <ButtonDark text='Interactive Plan' className='flex-1'></ButtonDark>
               <ButtonLight text='Data Dashboards' className='flex-1'></ButtonLight>
             </div>
-          </div>
-          <div className='flex flex-col md:col-start-0 md:col-span-12 bg-[#ececec]'>
-            <p className='py-12 mx-auto font-sans'>
-              © 2024 Texas Broadband Office
-              <br />
-              All rights reserved
+          </div> */}
+          <div className='flex flex-col md:col-start-4 md:col-span-12'>
+            <p className='py-12 font-sans'>
+              © 2024 Texas Broadband Office | All rights reserved
               <br />
               Created by the Texas Broadband Office in partnership with HR&A Advisors.{' '}
             </p>

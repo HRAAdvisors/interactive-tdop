@@ -83,7 +83,7 @@ class ScrollingSections extends PureComponent<ScrollingSectionsProps, ScrollingS
               <div
                 style={{ minHeight: '150vh', display: 'flex', alignItems: 'center', zIndex: -1 }}
               >
-                <div className='text-white p-[1rem] md:p-[2rem] md:max-w-[30%] max-w-[95%] md:m-[5rem] m-[1rem]'>
+                <div className='text-white p-[1rem] md:p-[2rem] md:max-w-[40%] lg:max-w-[35%] max-w-[95%] md:m-[5rem] m-[1rem]'>
                   <ScrollingCard>{stepContent}</ScrollingCard>
                 </div>
               </div>
