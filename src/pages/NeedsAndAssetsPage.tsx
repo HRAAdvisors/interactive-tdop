@@ -2,7 +2,7 @@
 import { Element as ScrollElement } from 'react-scroll';
 import '@mantine/core/styles.css';
 import NeedsOne from './content/NeedsOne';
-import NeedsCards from '../static/NeedsCards';
+import NeedsCards from '../static/NeedsCards.ts';
 import ScrollableTitle from '../components/ScrollableTitle';
 // import GoalsSection from '../components/GoalsSection';
 import NeedsTwo from './content/NeedsTwo';
