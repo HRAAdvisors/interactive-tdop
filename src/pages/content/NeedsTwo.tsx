@@ -1,7 +1,8 @@
 import CollapsibleCard from '@/components/CollapsibleCard';
 import MapContainer from '@/components/MapContainer';
+import QuoteBlock from '@/components/QuoteBlock';
 import SingleStackedBarChart from '@/components/SingleStackedBarChart';
-// import { useDisclosure } from '@mantine/hooks';
+import NeedsCards from '@/static/NeedsCards';
 
 const NeedsTwo = () => {
   // const [opened, { toggle }] = useDisclosure(false);
@@ -229,6 +230,7 @@ const NeedsTwo = () => {
                 taskNumber='2'
                 color='#002768'
                 goalTitle='Increase the availability of digital literacy programs and services.'
+                mapSource='Southwest Focus Group Session'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -244,7 +246,7 @@ const NeedsTwo = () => {
                   </p>
                 }
                 leftPanelContent={<SingleStackedBarChart width={200} height={20} />}
-                rightPanelContent={<MapContainer />}
+                rightPanelContent={<QuoteBlock quote={NeedsCards.KPI3_3.quote} />}
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
@@ -270,31 +272,7 @@ const NeedsTwo = () => {
                   </p>
                 }
                 leftPanelContent={<SingleStackedBarChart width={200} height={20} />}
-                rightPanelContent={
-                  <div className='relative my-8 mx-auto p-4'>
-                    <span className='absolute top-0 left-0 text-6xl lg:text-8xl font-bold transform -translate-y-1/2 text-[#002768]'>
-                      “
-                    </span>
-
-                    <p className='text-lg lg:text-xl my-8 relative z-10'>
-                      Texas has a unique opportunity to develop a skilled workforce in the digital
-                      space. Investments are needed in key pipelines to connect bright individuals
-                      to the resources they need to learn skills and technologies for today's
-                      economy.
-                    </p>
-
-                    <span className='absolute bottom-[-8] right-0 text-6xl lg:text-8xl font-bold transform translate-y-1/2 text-[#002768]'>
-                      ”
-                    </span>
-                  </div>
-
-                  // <div className='h-full flex items-center'>
-                  //   <p className='text-2xl mx-auto'>
-                  //     "Internet service is just <strong>too expensive</strong> in my area. I know
-                  //     there are ways for me to get online for free, but they are hard to find."
-                  //   </p>
-                  // </div>
-                }
+                rightPanelContent={<QuoteBlock quote={NeedsCards.KPI3_3.quote} />}
                 strategies={['Partner with and fund statewide organizations']}
               />
             </div>
