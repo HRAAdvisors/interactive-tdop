@@ -49,7 +49,7 @@ const steps = [
   </div>,
   <div>
     <p> Click below to dive deeper into the state of digital opportunity in Texas.</p>
-    <div className=''>
+    <div className='my-8'>
       <ButtonDark text='Interactive Plan'></ButtonDark>
       <ButtonLight text='Data Dashboards'></ButtonLight>
     </div>
@@ -64,19 +64,13 @@ const ConclusionOne = () => {
         id='unique-id-2'
         backgroundImagePaths={backgroundImagePaths}
       />
-      <div className='bg-[#FFFDF6] w-full h-full px-4 font-sans'>
-        <div className='grid md:grid-cols-12 font-sans'>
-          {/* <div className='flex flex-col md:col-start-4 md:col-span-6'>
-            <div className='flex justify-between py-[10vh] w-full'>
-              <ButtonDark text='Interactive Plan' className='flex-1'></ButtonDark>
-              <ButtonLight text='Data Dashboards' className='flex-1'></ButtonLight>
-            </div>
-          </div> */}
+      <div className='bg-[#FFFDF6] w-full h-full px-4'>
+        <div className='grid md:grid-cols-12'>
           <div className='flex flex-col md:col-start-4 md:col-span-12'>
-            <p className='py-12 font-sans'>
-              © 2024 Texas Broadband Office | All rights reserved
+            <p className='py-12'>
+              © 2024 Texas Broadband Development Office | All rights reserved
               <br />
-              Created by the Texas Broadband Office in partnership with HR&A Advisors.{' '}
+              Created by the Texas Broadband Development Office.
             </p>
           </div>
         </div>
