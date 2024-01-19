@@ -75,7 +75,7 @@ const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
             {/* Left Panel Content */}
             <div className='col-span-12 md:col-span-6 md:col-start-2'>
               <p className='uppercase underline font-medium my-4'>{mapTitle}</p>
-              <div className='h-[60vh]'>{rightPanelContent}</div>
+              <div className='h-[50vh]'>{rightPanelContent}</div>
               <p className='my-4'>
                 <strong>Source</strong>: {mapSource}
               </p>
