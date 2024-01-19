@@ -4,11 +4,11 @@ import 'react-dropdown/style.css';
 const NeedsOne = () => {
   return (
     <div>
-      <div className='w-screen h-full bg-[#FFFDF6] font-sans'>
+      <div className='w-screen h-full bg-[#FFFDF6] px-4'>
         <div className='grid md:grid-cols-12'>
           <div className='flex flex-col md:col-start-4 md:col-span-6'>
             <TexasStripes />
-            <p className='py-12 font-sans'>
+            <p className='py-12'>
               The Texas Digital Opportunity Plan explores the current state of digital opportunity
               across Texas. The data shows that different places and communities have different
               needs in terms of access to internet, devices and digital skills. So, the plan calls
@@ -19,13 +19,13 @@ const NeedsOne = () => {
               shows where we are today (providing a starting point or “baseline”). The plan explains
               strategies, or ways to make these goals happen.
             </p>
-            <p className='py-4 font-sans'>
+            <p className='py-4'>
               Each goal focuses on a problem Texans have with digital opportunity. The BDO uses
               something called a "key performance indicator" or "KPI" to show how digital
               opportunity will get better over time. A KPI is a task that the BDO will do to meet
               the goals of the plan.
             </p>
-            <p className='py-4 font-sans'>
+            <p className='py-4'>
               For example, one of the BDO’s goals is to :
               <br />
               <br />

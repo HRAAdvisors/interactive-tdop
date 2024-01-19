@@ -21,7 +21,7 @@ const StrategiesCards = {
         img: 'Local.png',
         altText: 'Fund local partners.',
         title: 'Fund local partners.',
-        description: 'Broadband adoption, digital literacy, device access and many other aspects of digital opportunity need local solutions. Leaders should be from the communities they serve:. Trust, safety, and confidence are very important to this process. The BDO will use some of its Capacity Grant money for a new grant program. Similar to the BOOT program for broadband, the new grant program will fund local projects that address digital opportunity, especially in areas that need it most.',
+        description: 'Broadband adoption, digital literacy, device access and many other aspects of digital opportunity need local solutions. Leaders should be from the communities they serve:. Trust, safety, and confidence are very important to this process. The BDO will use some of its Capacity Grant money for a new grant program. Similar to the BOOT program for broadband, the new grant program  will fund local projects that address digital opportunity, especially in areas that need it most.',
     },
     Living_Plan :{
         img: 'LivingPlan.jpeg',

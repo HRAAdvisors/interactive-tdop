@@ -16,6 +16,10 @@ const StakeholderCards = {
         altText: 'Outcome Area Task Forces',
         title: 'Outcome Area Task Forces',
         description: 'The BDO created groups of experts and informed citizens to work on the six areas the state wants to improve.',
+        link: {
+          url: 'https://infinite-peak-70034.herokuapp.com/images/app_a.pdf',
+          text: "Learn more about the state's outcome areas."
+      },
     },
     Regions_Texas :{
         img: 'Regions of Texas.jpeg',

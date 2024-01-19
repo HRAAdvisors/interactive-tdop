@@ -67,15 +67,13 @@ const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
         ref={contentRef}
       >
         <div className='bg-[#FFFDF6]'>
-          <div className='grid grid-cols-12 my-2 mt-4'>
-            <div className='col-span-8 md:col-start-2 md:col-span-10 flex items-center'>
-              {description}
-            </div>
+          <div className='p-2 grid grid-cols-12 my-2 mt-4'>
+            <div className='col-span-12 md:col-start-2 md:col-span-10'>{description}</div>
           </div>
 
           <div className='p-2 block md:grid md:grid-cols-12'>
             {/* Left Panel Content */}
-            <div className='md:col-span-6 md:col-start-2'>
+            <div className='col-span-12 md:col-span-6 md:col-start-2'>
               <p className='uppercase underline font-medium my-4'>{mapTitle}</p>
               <div className='h-[60vh]'>{rightPanelContent}</div>
               <p className='my-4'>
@@ -83,7 +81,7 @@ const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
               </p>
             </div>
             {/* Right Panel Content */}
-            <div className='md:col-span-3 md:col-start-9'>
+            <div className='col-span-12 md:col-span-3 md:col-start-9'>
               <p className='uppercase underline font-medium my-4'>2030 Target</p>
               <div className='my-4'>{targetText}</div>
               {leftPanelContent}
