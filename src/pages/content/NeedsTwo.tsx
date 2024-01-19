@@ -254,6 +254,7 @@ const NeedsTwo = () => {
                 taskNumber='3'
                 color='#002768'
                 goalTitle='Increase the percentage of Texas workers who have the level of digital skills training jobs require.'
+                mapSource='Southwest Focus Group Session'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -275,14 +276,14 @@ const NeedsTwo = () => {
                       “
                     </span>
 
-                    <p className='text-lg lg:text-xl my-8 mx-20 relative z-10'>
+                    <p className='text-lg lg:text-xl my-8 relative z-10'>
                       Texas has a unique opportunity to develop a skilled workforce in the digital
                       space. Investments are needed in key pipelines to connect bright individuals
                       to the resources they need to learn skills and technologies for today's
                       economy.
                     </p>
 
-                    <span className='absolute bottom-0 right-0 text-6xl lg:text-8xl font-bold transform translate-y-1/2'>
+                    <span className='absolute bottom-[-8] right-0 text-6xl lg:text-8xl font-bold transform translate-y-1/2 text-[#002768]'>
                       ”
                     </span>
                   </div>
