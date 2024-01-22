@@ -1,8 +1,6 @@
 import CollapsibleCard from '@/components/CollapsibleCard';
 import MapContainer from '@/components/MapContainer';
 import QuoteBlock from '@/components/QuoteBlock';
-import SingleStackedBarChart from '@/components/SingleStackedBarChart';
-// import StackedBar from '@/components/StackedBar';
 import NeedsCards from '@/static/NeedsCards';
 
 const NeedsTwo = () => {
