@@ -34,7 +34,7 @@ export const MapApi = baseApi.injectEndpoints({
       transformResponse: (res: any) => {
        return  res.boundaries[2022]
       },
-      providesTags: ['MapData'],
+      providesTags: ['Boundary'],
     }),
     getChartDataBulk: builder.query<ChartBulkResponse, GeoData[] | undefined | void>({
       query: (body = defaultBody) => ({
@@ -45,7 +45,7 @@ export const MapApi = baseApi.injectEndpoints({
       transformResponse: (res: { charts: any[]}) => {
         return _.first(res.charts);
       },
-      providesTags: ['MapData'],
+      providesTags: ['Chart'],
     }),
 
     // getBoundaryDataBulk: builder.mutation<{ data: any }, any>({

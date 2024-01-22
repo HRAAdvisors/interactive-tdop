@@ -29,7 +29,12 @@ const dataPointGenerator = (geoId: number, aggregatedChoroplethData: any, chartI
       ).toFixed(2);
   } else if(dataPointGeneratorName === DataPointGeneratorName.hispeedShare && ChartId.TXAdoption === chartId) {
       return aggregatedChoroplethData[geoId]['ALL']['hispeed_share'];
-  } else {
+  }
+  else if(dataPointGeneratorName === DataPointGeneratorName.lowIncomeInternetSmartphoneOnlyShare && ChartId.TXAdoption === chartId) {
+    return aggregatedChoroplethData[geoId]['LOW_INCOME']['internet_smartphone_only_share'];
+}  else if(dataPointGeneratorName === DataPointGeneratorName.internetSmartphoneOnlyShare && ChartId.TXAdoption === chartId) {
+  return aggregatedChoroplethData[geoId]['ALL']['internet_smartphone_only_share'];
+} else {
     throw new Error('chartId and Datapoint Mismatch')
   }
 

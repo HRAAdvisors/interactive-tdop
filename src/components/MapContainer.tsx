@@ -9,7 +9,7 @@ import { DataPointGeneratorName } from '@/types/ChartIds';
 import { useLazyGetBoundaryDataBulkQuery, useLazyGetChartDataBulkQuery } from '@/services/map';
 
 const MapContainer = () => {
-  const mapRef = useRef<Map>(null);
+  const mapRef = useRef<Map>();
   const [selectedCounty, setSelectedCounty] = useState('');
   const [geoJsonFeatures, setGeoJsonFeatures] =
     useState<GeoJSON.FeatureCollection<GeoJSON.Geometry> | null>(null);

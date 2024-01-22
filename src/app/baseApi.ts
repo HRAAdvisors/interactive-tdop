@@ -12,7 +12,7 @@ export const baseQuery = fetchBaseQuery({
 export const baseApi = createApi({
   baseQuery: baseQuery,
   endpoints: () => ({}),
-  tagTypes: ['MapData',],
+  tagTypes: ['Boundary', 'Chart'],
 });
 
 export default baseApi;

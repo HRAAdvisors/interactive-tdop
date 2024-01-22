@@ -4,9 +4,9 @@ import mapboxgl from 'mapbox-gl';
 import { Map, PaddingOptions } from 'mapbox-gl';
 import { MutableRefObject, ReactNode, useEffect, useRef, useState } from 'react';
 
-interface ChoroplethMapProps {
+export interface ChoroplethMapProps {
   geoJSONFeatureCollection: GeoJSON.FeatureCollection<GeoJSON.Geometry>;
-  mapRef: MutableRefObject<Map | null>;
+  mapRef?: MutableRefObject<Map | undefined>;
   layerId?: string;
   sourceId?: string;
   colorStops?: { step: number; color: string }[];
@@ -27,7 +27,7 @@ Share of households with No Internet Subscription:
 
 const ChoroplethMap = ({
   geoJSONFeatureCollection,
-  mapRef,
+  mapRef = useRef<Map>(),
   layerId = 'regionLayer',
   sourceId = 'regionData',
   colorStops = [
