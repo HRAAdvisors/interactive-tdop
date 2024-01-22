@@ -4,6 +4,10 @@ import mapboxgl from 'mapbox-gl';
 import { Map, PaddingOptions } from 'mapbox-gl';
 import { MutableRefObject, ReactNode, useEffect, useRef, useState } from 'react';
 
+const getCalculatedCenter = (geoJSONFeatureCollection: any) => {
+  const coOrdinate = turf.center(geoJSONFeatureCollection);
+  return coOrdinate.geometry.coordinates as [number, number];
+};
 export interface ChoroplethMapProps {
   geoJSONFeatureCollection: GeoJSON.FeatureCollection<GeoJSON.Geometry>;
   mapRef?: MutableRefObject<Map | undefined>;
@@ -16,6 +20,9 @@ export interface ChoroplethMapProps {
   mapBoxExpression?: any[];
   padding?: number | PaddingOptions;
   mapContainerClassName?: string;
+  zoom?: number;
+  onMove?: () => void;
+  syncCenterAndZoom?: boolean;
 }
 
 const getToolTip = (feature: any) => `
@@ -42,16 +49,14 @@ const ChoroplethMap = ({
   padding = 20,
   children,
   mapContainerClassName = 'relative h-full w-full',
+  center = getCalculatedCenter(geoJSONFeatureCollection),
+  zoom,
+  onMove,
+  syncCenterAndZoom = false,
 }: ChoroplethMapProps) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const localGeoJSON = useRef(geoJSONFeatureCollection);
 
-  const getCalculatedCenter = () => {
-    const coOrdinate = turf.center(geoJSONFeatureCollection);
-    return coOrdinate.geometry.coordinates as [number, number];
-  };
-
-  const [center] = useState<[number, number]>(getCalculatedCenter);
   const [fitBounds, setFitBound] = useState<number[]>([]);
 
   const fitBound = () => {
@@ -69,6 +74,26 @@ const ChoroplethMap = ({
       );
     }
   };
+
+  useEffect(() => {
+    if (syncCenterAndZoom) {
+      if (center && mapRef.current) {
+        const currentCenter = [
+          parseFloat(mapRef.current.getCenter().lng.toFixed(4)),
+          parseFloat(mapRef.current.getCenter().lat.toFixed(4)),
+        ];
+        if (!_.isEqual(currentCenter, center)) {
+          mapRef.current.setCenter(center);
+        }
+      }
+      if (zoom && mapRef.current) {
+        const currentZoom = parseFloat(mapRef.current.getZoom().toFixed(2));
+        if (!_.isEqual(currentZoom, zoom)) {
+          mapRef.current.setZoom(zoom);
+        }
+      }
+    }
+  }, [center, zoom]);
 
   const addSourceAndLayer = () => {
     if (!mapRef.current) return;
@@ -111,6 +136,10 @@ const ChoroplethMap = ({
         closeOnClick: false,
       });
 
+      if (onMove) {
+        mapRef.current.on('move', onMove);
+      }
+
       mapRef.current.on('mousemove', layerId, (e) => {
         const feature = _.first(e.features);
         if (feature) {
@@ -137,13 +166,18 @@ const ChoroplethMap = ({
   };
 
   useEffect(() => {
-    if (!geoJSONFeatureCollection || !!mapRef.current) return;
+    if (!geoJSONFeatureCollection || !!mapRef.current || !mapContainerRef.current) return;
 
-    mapRef.current = new mapboxgl.Map({
+    const obj = {
       container: mapContainerRef.current as HTMLElement,
       style: 'mapbox://styles/mapbox/light-v11',
-      center: center, // Coordinates for Austin, Texas
-    });
+      center, // Coordinates for Austin, Texas
+    };
+    if (zoom) {
+      _.assign(obj, { zoom });
+    }
+
+    mapRef.current = new mapboxgl.Map(obj);
     mapRef.current.on('load', onLoad);
   }, []);
 
@@ -154,20 +188,6 @@ const ChoroplethMap = ({
       _.isEqual(localGeoJSON.current, geoJSONFeatureCollection)
     )
       return;
-
-    // const currentCenter = mapRef.current.getCenter();
-
-    // const calculatedCenter = getCalculatedCenter();
-    // if (!_.isEqual(currentCenter, calculatedCenter)) {
-    //   mapRef.current?.setCenter(calculatedCenter);
-    // }
-
-    // fitBound();
-
-    // const sourceData = mapRef.current?.getSource(sourceId);
-    // if (sourceData) {
-    //   (sourceData as GeoJSONSource).setData(geoJSONFeatureCollection);
-    // }
     addSourceAndLayer();
     localGeoJSON.current = geoJSONFeatureCollection;
   }, [geoJSONFeatureCollection, colorStops]);

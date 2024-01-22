@@ -8,12 +8,16 @@ import ChoroplethMap, { ChoroplethMapProps } from './ui/ChoroplethMap';
 interface SplitPaneMapProps {
   leftMapProps: ChoroplethMapProps;
   righMapProps: ChoroplethMapProps;
+  width: string | number;
+  height: string | number;
 }
 
-const SplitPaneMap = ({ leftMapProps, righMapProps }: SplitPaneMapProps) => {
+const SplitPaneMap = ({ leftMapProps, righMapProps, width, height }: SplitPaneMapProps) => {
   const [paneWidths, setPaneWidths] = useState([50, 50]); // Initial widths
   const dividerRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [center, setCenter] = useState<[number, number]>();
+  const [zoom, setZoom] = useState<number>();
 
   const handleDragStart: MouseEventHandler = (e) => {
     e.preventDefault();
@@ -40,16 +44,31 @@ const SplitPaneMap = ({ leftMapProps, righMapProps }: SplitPaneMapProps) => {
   };
 
   return (
-    <div className='shadow w-[600px] relative h-[800px] flex justify-around' ref={containerRef}>
+    <div
+      className='shadow relative flex justify-around'
+      style={{ width, height }}
+      ref={containerRef}
+    >
       <div
         className='w-full z-10 h-full bg-green-200 overflow-hidden'
         style={{ width: `${paneWidths[0]}%` }}
       >
-        <div
-          className='h-full'
-          style={{ width: containerRef.current?.getBoundingClientRect().width }}
-        >
-          <ChoroplethMap {...leftMapProps} />
+        <div className='h-full' style={{ width }}>
+          <ChoroplethMap
+            center={center}
+            zoom={zoom}
+            onMove={() => {
+              if (leftMapProps?.mapRef?.current) {
+                setCenter([
+                  parseFloat(leftMapProps.mapRef.current.getCenter().lng.toFixed(4)),
+                  parseFloat(leftMapProps.mapRef.current.getCenter().lat.toFixed(4)),
+                ]);
+                setZoom(parseFloat(leftMapProps.mapRef.current.getZoom().toFixed(2)));
+              }
+            }}
+            syncCenterAndZoom={true}
+            {...leftMapProps}
+          />
         </div>
       </div>
       <div
@@ -69,11 +88,22 @@ const SplitPaneMap = ({ leftMapProps, righMapProps }: SplitPaneMapProps) => {
         className='w-full h-full  bg-red-200 overflow-hidden'
         style={{ width: `${paneWidths[1]}%` }}
       >
-        <div
-          className='h-full absolute left-0'
-          style={{ width: containerRef.current?.getBoundingClientRect().width }}
-        >
-          <ChoroplethMap {...righMapProps} />
+        <div className='h-full absolute left-0' style={{ width }}>
+          <ChoroplethMap
+            center={center}
+            zoom={zoom}
+            onMove={() => {
+              if (righMapProps?.mapRef?.current) {
+                setCenter([
+                  parseFloat(righMapProps.mapRef.current.getCenter().lng.toFixed(4)),
+                  parseFloat(righMapProps.mapRef.current.getCenter().lat.toFixed(4)),
+                ]);
+                setZoom(parseFloat(righMapProps.mapRef.current.getZoom().toFixed(2)));
+              }
+            }}
+            syncCenterAndZoom={true}
+            {...righMapProps}
+          />
         </div>
       </div>
     </div>
@@ -175,15 +205,17 @@ const SplitPaneMapWrapper = () => {
           }}
           righMapProps={{
             colorStops: [
-              { step: 0.05, color: '#f7c9c9' },
-              { step: 0.15, color: '#d39696' },
-              { step: 0.25, color: '#b06464' },
-              { step: 0.35, color: '#8c3232' },
-              { step: 0.45, color: '#680000' },
+              { step: 0.1, color: '#F7CAC9' },
+              { step: 0.3, color: '#E9A5A3' },
+              { step: 0.5, color: '#DB6D84' },
+              { step: 0.7, color: '#C92C4D' },
+              { step: 0.9, color: '#BE0B31' },
             ],
             geoJSONFeatureCollection: geoJsonFeaturesRight,
             mapRef: rightMap,
           }}
+          width='600px'
+          height='600px'
         />
       )}
     </div>

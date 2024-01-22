@@ -8,5 +8,6 @@ export enum DataPointGeneratorName {
   noInternetProportion,
   hispeedShare,
   lowIncomeInternetSmartphoneOnlyShare,
-  internetSmartphoneOnlyShare
+  internetSmartphoneOnlyShare,
+  internetwithdeviceshare
 }
