@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import _ from 'lodash';
-import { useGetBoundaryDataBulkMutation, useGetChartDataBulkMutation } from '@/services/map';
 import { transformToGeoJSON } from '@/utils/transformGeoJSON';
 import ChoroplethMap from './ui/ChoroplethMap';
 import { Map } from 'mapbox-gl';
 import { Scrollama, Step } from 'react-scrollama';
 import GeoScrollCard from './GeoScrollCard';
 import { DataPointGeneratorName } from '@/types/ChartIds';
+import { useLazyGetBoundaryDataBulkQuery, useLazyGetChartDataBulkQuery } from '@/services/map';
 
 const contents = [
   {
@@ -34,6 +34,13 @@ const contents = [
         </div>
       </>
     ),
+    colorStops: [
+      { step: 0.05, color: '#C9DCF7' },
+      { step: 0.15, color: '#96AFD3' },
+      { step: 0.25, color: '#6481B0' },
+      { step: 0.35, color: '#32548C' },
+      { step: 0.45, color: '#002768' },
+    ],
   },
   {
     id: 2,
@@ -62,11 +69,11 @@ const contents = [
       </>
     ),
     colorStops: [
-      { step: 0.05, color: '#C9DCF7' },
-      { step: 0.25, color: '#96AFD3' },
-      { step: 0.5, color: '#6481B0' },
-      { step: 0.75, color: '#32548C' },
-      { step: 0.1, color: '#002768' },
+      { step: 0.21, color: '#C9DCF7' },
+      { step: 0.51, color: '#96AFD3' },
+      { step: 0.61, color: '#6481B0' },
+      { step: 0.71, color: '#32548C' },
+      { step: 0.81, color: '#002768' },
     ],
   },
 ];
@@ -75,21 +82,22 @@ const GeoScrollytelling = () => {
   const mapRef = useRef<Map>(null);
 
   const [input, setInput] = useState<any>(_.first(contents));
-  const [colorStops, setColorStops] = useState<any>(_.first(contents)?.colorStops);
 
   const [geoJsonFeatures, setGeoJsonFeatures] = useState<
     GeoJSON.FeatureCollection<GeoJSON.Geometry> | undefined
   >();
 
-  const [getBoundaries] = useGetBoundaryDataBulkMutation();
-  const [getChartData] = useGetChartDataBulkMutation();
+  const [getBoundaries] = useLazyGetBoundaryDataBulkQuery();
+  const [getChartData] = useLazyGetChartDataBulkQuery();
 
   useEffect(() => {
     const init = async () => {
       const boundaryies = await getBoundaries(input.data).unwrap();
       const choroplethData = await getChartData(input.data).unwrap();
       const geoJSON = transformToGeoJSON(boundaryies, choroplethData, input.dataPointName);
-      console.log(geoJSON);
+
+      const dataPoint = _.map(geoJSON.features, (f) => f.properties?.dataPoint);
+      console.log(dataPoint);
       setGeoJsonFeatures(geoJSON);
     };
 
@@ -113,7 +121,7 @@ const GeoScrollytelling = () => {
               top: 20,
               bottom: 20,
             }}
-            colorStops={colorStops}
+            colorStops={input?.colorStops}
             geoJSONFeatureCollection={geoJsonFeatures}
             mapRef={mapRef}
           />
@@ -122,7 +130,6 @@ const GeoScrollytelling = () => {
       <Scrollama
         offset={0.5}
         onStepEnter={({ data }: any) => {
-          setColorStops(data.setColorStops);
           setInput(data); // Set the input based on the received data
         }}
       >

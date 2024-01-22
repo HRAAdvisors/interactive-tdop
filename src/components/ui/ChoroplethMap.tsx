@@ -1,8 +1,8 @@
-import { bbox, center } from '@turf/turf';
+import * as turf from '@turf/turf';
 import _ from 'lodash';
 import mapboxgl from 'mapbox-gl';
-import type { GeoJSONSource, Map, PaddingOptions } from 'mapbox-gl';
-import { MutableRefObject, ReactNode, useEffect, useRef } from 'react';
+import { Map, PaddingOptions } from 'mapbox-gl';
+import { MutableRefObject, ReactNode, useEffect, useRef, useState } from 'react';
 
 interface ChoroplethMapProps {
   geoJSONFeatureCollection: GeoJSON.FeatureCollection<GeoJSON.Geometry>;
@@ -44,23 +44,96 @@ const ChoroplethMap = ({
   mapContainerClassName = 'relative h-full w-full',
 }: ChoroplethMapProps) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
+  const localGeoJSON = useRef(geoJSONFeatureCollection);
 
   const getCalculatedCenter = () => {
-    const coOrdinate = center(geoJSONFeatureCollection);
+    const coOrdinate = turf.center(geoJSONFeatureCollection);
     return coOrdinate.geometry.coordinates as [number, number];
   };
 
+  const [center] = useState<[number, number]>(getCalculatedCenter);
+  const [fitBounds, setFitBound] = useState<number[]>([]);
+
   const fitBound = () => {
-    const bounds = bbox(geoJSONFeatureCollection);
-    mapRef.current?.fitBounds(
-      [
-        [bounds[0], bounds[1]],
-        [bounds[2], bounds[3]],
-      ],
+    const newBounds = turf.bbox(geoJSONFeatureCollection);
+    if (!_.isEqual(newBounds, fitBounds)) {
+      setFitBound(newBounds);
+      mapRef.current?.fitBounds(
+        [
+          [newBounds[0], newBounds[1]],
+          [newBounds[2], newBounds[3]],
+        ],
+        {
+          padding,
+        },
+      );
+    }
+  };
+
+  const addSourceAndLayer = () => {
+    if (!mapRef.current) return;
+
+    if (mapRef.current.getSource(sourceId)) {
+      mapRef.current.removeLayer(layerId);
+      mapRef.current.removeSource(sourceId);
+    }
+    fitBound();
+    mapRef.current.addSource(sourceId, {
+      type: 'geojson',
+      data: geoJSONFeatureCollection,
+    });
+
+    mapRef.current.addLayer(
       {
-        padding,
+        id: layerId,
+        type: 'fill',
+        source: sourceId,
+        paint: {
+          'fill-color': [
+            'step', // Convert 'households' to a number
+            mapBoxExpression,
+            '#ffffff',
+            ..._.flatMap(colorStops, (stop) => [stop.step, stop.color]),
+          ],
+          'fill-opacity': 0.9,
+        },
       },
+      'settlement-subdivision-label',
     );
+  };
+
+  const onLoad = () => {
+    if (mapRef.current) {
+      addSourceAndLayer();
+
+      const tooltip = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false,
+      });
+
+      mapRef.current.on('mousemove', layerId, (e) => {
+        const feature = _.first(e.features);
+        if (feature) {
+          tooltip
+            .setLngLat(e.lngLat)
+            .setHTML(tooltipContent(feature))
+            .addTo(mapRef.current as Map);
+
+          // Highlight the hovered feature
+          mapRef.current?.setPaintProperty(layerId, 'fill-opacity', [
+            'case',
+            ['==', ['get', 'dataPoint'], feature?.properties?.dataPoint],
+            0.8,
+            0.6,
+          ]);
+        }
+      });
+
+      mapRef.current.on('mouseleave', layerId, () => {
+        tooltip.remove();
+        mapRef.current?.setPaintProperty(layerId, 'fill-opacity', 0.6);
+      });
+    }
   };
 
   useEffect(() => {
@@ -69,91 +142,35 @@ const ChoroplethMap = ({
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current as HTMLElement,
       style: 'mapbox://styles/mapbox/light-v11',
-      center: getCalculatedCenter(), // Coordinates for Austin, Texas
+      center: center, // Coordinates for Austin, Texas
     });
+    mapRef.current.on('load', onLoad);
   }, []);
 
   useEffect(() => {
-    if (!mapRef.current || !mapContainerRef.current) return;
+    if (
+      !mapRef.current ||
+      !mapContainerRef.current ||
+      _.isEqual(localGeoJSON.current, geoJSONFeatureCollection)
+    )
+      return;
 
-    const currentCenter = mapRef.current.getCenter();
-    const calculatedCenter = getCalculatedCenter();
-    if (!_.isEqual(currentCenter, calculatedCenter)) {
-      mapRef.current?.setCenter(calculatedCenter);
-    }
-    const sourceData = mapRef.current?.getSource(sourceId);
-    if (sourceData) {
-      (sourceData as GeoJSONSource).setData(geoJSONFeatureCollection);
-      fitBound();
-    }
-  }, [geoJSONFeatureCollection]);
+    // const currentCenter = mapRef.current.getCenter();
 
-  useEffect(() => {
-    if (!mapRef.current || !mapContainerRef.current) return;
+    // const calculatedCenter = getCalculatedCenter();
+    // if (!_.isEqual(currentCenter, calculatedCenter)) {
+    //   mapRef.current?.setCenter(calculatedCenter);
+    // }
 
-    // setIsMapInit(true);
+    // fitBound();
 
-    mapRef.current.on('load', () => {
-      if (mapRef.current) {
-        if (mapRef.current.getSource(sourceId)) {
-          mapRef.current.removeLayer(layerId);
-          mapRef.current.removeSource(sourceId);
-        }
-
-        mapRef.current.addSource(sourceId, {
-          type: 'geojson',
-          data: geoJSONFeatureCollection,
-        });
-        fitBound();
-
-        mapRef.current.addLayer(
-          {
-            id: layerId,
-            type: 'fill',
-            source: sourceId,
-            paint: {
-              'fill-color': [
-                'step', // Convert 'households' to a number
-                mapBoxExpression,
-                '#ffffff',
-                ..._.flatMap(colorStops, (stop) => [stop.step, stop.color]),
-              ],
-              'fill-opacity': 0.9,
-            },
-          },
-          'settlement-subdivision-label',
-        );
-
-        const tooltip = new mapboxgl.Popup({
-          closeButton: false,
-          closeOnClick: false,
-        });
-
-        mapRef.current.on('mousemove', layerId, (e) => {
-          const feature = _.first(e.features);
-          if (feature) {
-            tooltip
-              .setLngLat(e.lngLat)
-              .setHTML(tooltipContent(feature))
-              .addTo(mapRef.current as Map);
-
-            // Highlight the hovered feature
-            mapRef.current?.setPaintProperty(layerId, 'fill-opacity', [
-              'case',
-              ['==', ['get', 'dataPoint'], feature?.properties?.dataPoint],
-              0.8,
-              0.6,
-            ]);
-          }
-        });
-
-        mapRef.current.on('mouseleave', layerId, () => {
-          tooltip.remove();
-          mapRef.current?.setPaintProperty(layerId, 'fill-opacity', 0.6);
-        });
-      }
-    });
-  }, [geoJSONFeatureCollection, layerId, sourceId, colorStops, tooltipContent, center]);
+    // const sourceData = mapRef.current?.getSource(sourceId);
+    // if (sourceData) {
+    //   (sourceData as GeoJSONSource).setData(geoJSONFeatureCollection);
+    // }
+    addSourceAndLayer();
+    localGeoJSON.current = geoJSONFeatureCollection;
+  }, [geoJSONFeatureCollection, colorStops]);
 
   return (
     <div className={mapContainerClassName}>
