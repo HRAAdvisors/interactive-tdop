@@ -5,6 +5,7 @@ import NavbarPlain from '@/components/NavbarPlain';
 import HeroLayout from '@/components/HeroLayout';
 import { animateScroll as scroll } from 'react-scroll';
 import GeoScrollytelling from '@/components/GeoScrollytelling';
+import OvelaySplitCard from '@/components/ovelaySplitCard';
 
 const GeoIntro = () => {
   useEffect(() => {
@@ -16,6 +17,7 @@ const GeoIntro = () => {
       <NavbarPlain />
       <HeroLayout />
       <GeoScrollytelling />
+      <OvelaySplitCard />
     </>
   );
 };
