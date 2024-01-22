@@ -1,11 +1,12 @@
 /* tslint:disable */
 import { useRef, useEffect, useState } from 'react';
 import { Map } from 'mapbox-gl';
-import { useGetBoundaryDataBulkMutation, useGetChartDataBulkMutation } from '@/services/map';
 import _ from 'lodash';
-import { getAggregateChartData, transformToGeoJSON } from '@/utils/transformGeoJSON';
+import { transformToGeoJSON } from '@/utils/transformGeoJSON';
 import ChoroplethMap from './ui/ChoroplethMap';
 import { bbox } from '@turf/turf';
+import { DataPointGeneratorName } from '@/types/ChartIds';
+import { useLazyGetBoundaryDataBulkQuery, useLazyGetChartDataBulkQuery } from '@/services/map';
 
 const MapContainer = () => {
   const mapRef = useRef<Map>(null);
@@ -13,18 +14,18 @@ const MapContainer = () => {
   const [geoJsonFeatures, setGeoJsonFeatures] =
     useState<GeoJSON.FeatureCollection<GeoJSON.Geometry> | null>(null);
 
-  const [getBoundaries, { data: boundaryData }] = useGetBoundaryDataBulkMutation();
-  const [getChartData] = useGetChartDataBulkMutation();
+  const [getBoundaries, { data: boundaryData }] = useLazyGetBoundaryDataBulkQuery();
+  const [getChartData] = useLazyGetChartDataBulkQuery();
 
   useEffect(() => {
     const init = async () => {
       const boundaryies = await getBoundaries().unwrap();
       const choroplethData = await getChartData().unwrap();
-      const aggregateChartData = getAggregateChartData(choroplethData.data);
       const geoJSON = transformToGeoJSON(
-        aggregateChartData,
         boundaryies,
-      ) as GeoJSON.FeatureCollection<GeoJSON.Geometry>;
+        choroplethData,
+        DataPointGeneratorName.noInternetProportion,
+      );
       setGeoJsonFeatures(geoJSON);
     };
 

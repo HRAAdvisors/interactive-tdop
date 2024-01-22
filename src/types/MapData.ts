@@ -1,4 +1,4 @@
-interface Properties {
+interface Properties1 {
   STATEFP: string;
   COUNTYFP: string;
   COUNTYNS: string;
@@ -16,9 +16,9 @@ interface Properties {
 
 interface GeoData {
   _id: string;
-  geoId: string;
+  geoId: number;
   scale: string;
-  feature: GeoJSON.Feature<any, Properties>;
+  feature: GeoJSON.Feature<any, Properties1>;
   year: number;
 }
 
@@ -33,5 +33,6 @@ export interface ChoroplethChartData {
  year: string;
 }
 export interface ChartBulkResponse {
+  id: string;
   data: ChoroplethChartData[]
 }

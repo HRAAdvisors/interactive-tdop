@@ -1,6 +1,5 @@
 import baseApi from '@/app/baseApi';
 import { ChartBulkResponse } from '@/types/MapData';
-import { getAggregateChartData } from '@/utils/transformGeoJSON';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface MapSliceState {
@@ -17,8 +16,9 @@ const mapsSlice = createSlice({
       // })
       .addMatcher(
         (baseApi.endpoints as any).getChartDataBulk.matchFulfilled,
-        (state: MapSliceState, action: PayloadAction<ChartBulkResponse>) => {
-          state.aggregateChartData = getAggregateChartData(action.payload.data);
+        (_state: MapSliceState, _action: PayloadAction<ChartBulkResponse>) => {
+
+          // state.aggregateChartData = getAggregateChartData(action.payload.data);
         },
       );
     // .addMatcher(authApi.endpoints.login.matchRejected, (state, action) => {
