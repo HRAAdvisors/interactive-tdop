@@ -1,119 +1,84 @@
-import React, { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
 
-const SingleStackedBarChart = ({
-  width,
-  height,
-  data, // Added data prop
-}: {
-  width: number;
-  height: number;
-  data: number; // Assume data is a number for simplicity
-}) => {
+const StackedBar = ({ data, goal, isOpen }: { data: number; goal: number; isOpen: boolean }) => {
   const ref = useRef<SVGSVGElement>(null);
-  const [tooltip, setTooltip] = useState<{
-    x?: number;
-    y?: number;
-    display: boolean;
-    data: string | null;
-  }>({ display: false, data: null });
 
   useEffect(() => {
-    if (!ref.current || data === null) return;
+    if (!ref.current || !ref.current.parentElement || data === null) return;
 
+    // Get the root font-size to calculate rem in pixels
+    const remInPixels = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const height = remInPixels * 1.5;
+
+    const containerWidth = ref.current.parentElement.offsetWidth;
     d3.select(ref.current).selectAll('*').remove();
 
-    const svg = d3.select(ref.current).attr('width', width).attr('height', height);
-
+    const svg = d3.select(ref.current).attr('width', containerWidth).attr('height', height);
     svg
       .append('rect')
       .attr('x', 0)
       .attr('y', height * 0.1)
-      .attr('width', width)
+      .attr('width', containerWidth)
       .attr('height', height * 0.8)
       .attr('fill', '#BE0B31');
 
-    const foregroundBar = svg
-      .append('rect')
-      .attr('x', 0)
-      .attr('y', height * 0.1)
-      .attr('width', 0)
-      .attr('height', height * 0.8)
-      .attr('fill', '#FF6989');
+    const animateBar = () => {
+      const foregroundBar = svg
+        .append('rect')
+        .attr('x', 0)
+        .attr('y', height * 0.1)
+        .attr('width', 0)
+        .attr('height', height * 0.8)
+        .attr('fill', '#FF6989');
 
-    foregroundBar
-      .transition()
-      .duration(750)
-      .attr('width', width * (data / 100))
-      .on('end', () => {
-        svg
-          .append('line')
-          .attr('x1', width * (data / 95))
-          .attr('y1', 0)
-          .attr('x2', width * (data / 95))
-          .attr('y2', height)
-          .attr('stroke', 'black')
-          .attr('stroke-width', 2.5);
-      });
+      foregroundBar
+        .transition()
+        .duration(750)
+        .attr('width', containerWidth * (data / 100))
+        .on('end', () => {
+          // Create the line with initial y2 value set to 0
+          const line = svg
+            .append('line')
+            .attr('x1', containerWidth * (goal / 100))
+            .attr('y1', height / 2)
+            .attr('x2', containerWidth * (goal / 100))
+            .attr('y2', height / 2)
+            .attr('stroke', 'black')
+            .attr('stroke-width', 2.5);
 
-    svg
-      .append('text')
-      .attr('x', (width * (data / 100)) / 2)
-      .attr('y', height / 2)
-      .attr('dy', '.35em')
-      .attr('fill', 'white')
-      .attr('font-weight', 'bold')
-      .attr('text-align', 'middle')
-      .attr('font', 'sans')
-      .text(`${Math.round(data)}%`);
+          // Animate the line to the final y2 value
+          line.transition().duration(500).attr('y1', 0).attr('y2', height);
+        });
 
-    const handleMouseOver = () => {
-      setTooltip({
-        display: true,
-        data: `Percent with Internet Subscriptions: ${Math.round(data)}%`,
-      });
+      svg
+        .append('text')
+        .attr('x', (containerWidth * (data / 100)) / 2)
+        .attr('y', height / 2)
+        .attr('dy', '.35em')
+        .attr('fill', 'white')
+        .attr('font-weight', 'bold')
+        .attr('text-align', 'middle')
+        .attr('font', 'sans')
+        .text(`${Math.round(data)}%`);
+
+      foregroundBar;
     };
-
-    const handleMouseMove: React.MouseEventHandler = () => {
-      setTooltip({
-        display: false,
-        data: `${Math.round(data)}%`,
-      });
-    };
-
-    const handleMouseOut = () => {
-      setTooltip({ display: false, data: null });
-    };
-
-    foregroundBar
-      .on('mouseover', handleMouseOver)
-      .on('mousemove', handleMouseMove)
-      .on('mouseout', handleMouseOut);
-  }, [data, width, height]);
+    // Trigger the animation when the card is opened
+    if (isOpen) {
+      animateBar();
+    }
+  }, [data, isOpen]);
 
   return (
-    <div className='font-sans'>
+    <div className='stacked-bar-container' style={{ width: '100%' }}>
       <p className='py-2 text-xs'>Statewide</p>
       <svg ref={ref}></svg>
-      {tooltip.display && (
-        <div
-          style={{
-            position: 'absolute',
-            left: `${tooltip.x}px`,
-            top: `${tooltip.y}px`,
-            backgroundColor: '#111',
-            color: '#fff',
-            border: '2px solid #111',
-            padding: '8px',
-            pointerEvents: 'none',
-          }}
-        >
-          {tooltip.data}
-        </div>
-      )}
-      <p className='float-right py-2 text-xs'>Overall Target: 95%</p>
+      <p className='float-right py-4 text-xs'>
+        Overall Target: <strong>{goal}%</strong>
+      </p>
     </div>
   );
 };
 
-export default SingleStackedBarChart;
+export default StackedBar;

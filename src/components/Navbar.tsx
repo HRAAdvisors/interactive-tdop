@@ -41,7 +41,7 @@ const Navbar = ({ show }: { show: boolean }) => {
 
   return (
     <div style={navbarStyle}>
-      <div className='z-40 flex sticky items-center top-0 h-16 shadow-md text-[#111] bg-[#FFFDF6] w-screen'>
+      <div className='z-20 flex sticky items-center top-0 h-16 shadow-md text-[#111] bg-[#FFFDF6] w-screen'>
         <div className='hidden md:flex ml-10 top-8 w-contain'>
           <a href='https://comptroller.texas.gov/programs/broadband/'>
             <Logo />

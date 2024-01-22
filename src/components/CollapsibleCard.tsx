@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, ReactNode } from 'react';
 import PlusIcon from './PlusIcon';
+import StackedBar from './StackedBar';
 
 interface CollapsibleCardProps {
   taskNumber: string;
@@ -9,7 +10,9 @@ interface CollapsibleCardProps {
   mapTitle?: string; // If this is optional, mark it as such
   mapSource?: string; // If this is optional, mark it as such
   targetText: ReactNode;
-  leftPanelContent: ReactNode;
+  stackedBarData: number;
+  stackedBarGoal: number;
+  // leftPanelContent: ReactNode;
   rightPanelContent: ReactNode;
   strategies: string[]; // Define as an array of strings
 }
@@ -22,7 +25,8 @@ const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
   mapTitle,
   mapSource,
   targetText,
-  leftPanelContent,
+  stackedBarData,
+  stackedBarGoal,
   rightPanelContent,
   strategies,
 }) => {
@@ -77,14 +81,14 @@ const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
               <p className='uppercase underline font-medium my-4'>{mapTitle}</p>
               <div className='h-[50vh]'>{rightPanelContent}</div>
               <p className='my-4'>
-                <strong>Source</strong>: {mapSource}
+                <span className='underline uppercase'>Source</span>: {mapSource}
               </p>
             </div>
             {/* Right Panel Content */}
             <div className='col-span-12 md:col-span-3 md:col-start-9'>
               <p className='uppercase underline font-medium my-4'>2030 Target</p>
               <div className='my-4'>{targetText}</div>
-              {leftPanelContent}
+              <StackedBar data={stackedBarData} goal={stackedBarGoal} isOpen={isOpen} />
               <p className='uppercase underline font-medium mt-12'>How Will Texas Get There?</p>
               <div className='my-4'>
                 {/* <p className='my-4'>Implementation Strategies</p> */}

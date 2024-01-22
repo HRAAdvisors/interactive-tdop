@@ -2,6 +2,7 @@ import CollapsibleCard from '@/components/CollapsibleCard';
 import MapContainer from '@/components/MapContainer';
 import QuoteBlock from '@/components/QuoteBlock';
 import SingleStackedBarChart from '@/components/SingleStackedBarChart';
+// import StackedBar from '@/components/StackedBar';
 import NeedsCards from '@/static/NeedsCards';
 
 const NeedsTwo = () => {
@@ -45,7 +46,10 @@ const NeedsTwo = () => {
                     2030.
                   </p>
                 }
-                leftPanelContent={<SingleStackedBarChart width={200} height={20} value={68} />}
+                // leftPanelContent={<SingleStackedBarChart width={200} height={20} value={68} />}
+                // leftPanelContent={<StackedBar height={20} data={68} goal={80} />}
+                stackedBarData={68}
+                stackedBarGoal={80}
                 rightPanelContent={<MapContainer />}
                 strategies={[
                   'Partner with and fund statewide organizations',
@@ -78,7 +82,8 @@ const NeedsTwo = () => {
                     by 2030.
                   </p>
                 }
-                leftPanelContent={<SingleStackedBarChart width={200} height={20} value={68} />}
+                stackedBarData={59}
+                stackedBarGoal={50}
                 rightPanelContent={<MapContainer />}
                 strategies={['Promote internet adoption']}
               />
@@ -106,7 +111,8 @@ const NeedsTwo = () => {
                     enrolled by 2030.
                   </p>
                 }
-                leftPanelContent={<SingleStackedBarChart width={200} height={20} />}
+                stackedBarData={38}
+                stackedBarGoal={60}
                 rightPanelContent={<MapContainer />}
                 strategies={['Promote internet adoption']}
               />
@@ -148,7 +154,8 @@ const NeedsTwo = () => {
                     device by 2030.
                   </p>
                 }
-                leftPanelContent={<SingleStackedBarChart width={200} height={20} value={68} />}
+                stackedBarData={11}
+                stackedBarGoal={10}
                 rightPanelContent={<MapContainer />}
                 strategies={[
                   'Partner with and fund statewide organizations',
@@ -173,7 +180,8 @@ const NeedsTwo = () => {
                     technical support by 2030.
                   </p>
                 }
-                leftPanelContent={<SingleStackedBarChart width={200} height={20} />}
+                stackedBarData={16}
+                stackedBarGoal={25}
                 rightPanelContent={<MapContainer />}
                 strategies={[
                   'Partner with and fund statewide organizations',
@@ -219,7 +227,8 @@ const NeedsTwo = () => {
                     skills by 2030.
                   </p>
                 }
-                leftPanelContent={<SingleStackedBarChart width={200} height={20} value={68} />}
+                stackedBarData={88}
+                stackedBarGoal={95}
                 rightPanelContent={<MapContainer />}
                 strategies={[
                   'Partner with and fund statewide organizations',
@@ -245,7 +254,8 @@ const NeedsTwo = () => {
                     technical support by 2030.
                   </p>
                 }
-                leftPanelContent={<SingleStackedBarChart width={200} height={20} />}
+                stackedBarData={16}
+                stackedBarGoal={25}
                 rightPanelContent={<QuoteBlock quote={NeedsCards.KPI3_3.quote} />}
                 strategies={[
                   'Partner with and fund statewide organizations',
@@ -271,7 +281,8 @@ const NeedsTwo = () => {
                     for most jobs statewide by 2030.
                   </p>
                 }
-                leftPanelContent={<SingleStackedBarChart width={200} height={20} />}
+                stackedBarData={45}
+                stackedBarGoal={55}
                 rightPanelContent={<QuoteBlock quote={NeedsCards.KPI3_3.quote} />}
                 strategies={['Partner with and fund statewide organizations']}
               />
@@ -313,7 +324,8 @@ const NeedsTwo = () => {
                     set them up on their devices by 2030.
                   </p>
                 }
-                leftPanelContent={<SingleStackedBarChart width={200} height={20} value={68} />}
+                stackedBarData={86}
+                stackedBarGoal={99}
                 rightPanelContent={<MapContainer />}
                 strategies={[
                   'Partner with and fund statewide organizations',
@@ -355,7 +367,8 @@ const NeedsTwo = () => {
                     2030.
                   </p>
                 }
-                leftPanelContent={<SingleStackedBarChart width={200} height={20} value={68} />}
+                stackedBarData={82}
+                stackedBarGoal={90}
                 rightPanelContent={<MapContainer />}
                 strategies={[
                   'Partner with and fund statewide organizations',
