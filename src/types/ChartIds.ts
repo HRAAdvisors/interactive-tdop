@@ -6,5 +6,8 @@ export  enum ChartId {
 
 export enum DataPointGeneratorName {
   noInternetProportion,
-  hispeedShare
+  hispeedShare,
+  lowIncomeInternetSmartphoneOnlyShare,
+  internetSmartphoneOnlyShare,
+  internetwithdeviceshare
 }

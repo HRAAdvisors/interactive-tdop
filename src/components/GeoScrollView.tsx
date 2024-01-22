@@ -20,7 +20,7 @@ interface GeoScrollViewProps {
 }
 
 const GeoScrollView = ({ cardContent, input }: GeoScrollViewProps) => {
-  const mapRef = useRef<Map>(null);
+  const mapRef = useRef<Map>();
   const containerRef = useRef<HTMLDivElement>(null);
   const [isScrollingUp, setIsScrollingUp] = useState(false);
 

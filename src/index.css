@@ -41,3 +41,32 @@ body {
   border: none !important;
   box-shadow: none !important;
 }
+
+
+.caret-container {
+  position: relative;
+  display: inline-block;
+}
+
+.caret-container::before,
+.caret-container::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.caret-container::before {
+  right: -20px;
+  border-width: 8px 0 8px 12px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.caret-container::after {
+  left: -20px;
+  border-width: 8px 12px 8px 0;
+  border-color: transparent #fff transparent transparent;
+}

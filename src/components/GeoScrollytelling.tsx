@@ -79,7 +79,7 @@ const contents = [
 ];
 
 const GeoScrollytelling = () => {
-  const mapRef = useRef<Map>(null);
+  const mapRef = useRef<Map>();
 
   const [input, setInput] = useState<any>(_.first(contents));
 
@@ -96,8 +96,6 @@ const GeoScrollytelling = () => {
       const choroplethData = await getChartData(input.data).unwrap();
       const geoJSON = transformToGeoJSON(boundaryies, choroplethData, input.dataPointName);
 
-      const dataPoint = _.map(geoJSON.features, (f) => f.properties?.dataPoint);
-      console.log(dataPoint);
       setGeoJsonFeatures(geoJSON);
     };
 
