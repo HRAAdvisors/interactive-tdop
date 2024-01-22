@@ -2,11 +2,11 @@ import { useRef, useEffect, useState } from 'react';
 import { Map } from 'mapbox-gl';
 import {
   GeoData,
-  useGetBoundaryDataBulkMutation,
-  useGetChartDataBulkMutation,
+  useLazyGetBoundaryDataBulkQuery,
+  useLazyGetChartDataBulkQuery,
 } from '@/services/map';
 import _ from 'lodash';
-import { getAggregateChartData, transformToGeoJSON } from '@/utils/transformGeoJSON';
+import { transformToGeoJSON } from '@/utils/transformGeoJSON';
 import ChoroplethMap from './ui/ChoroplethMap';
 import AOS from 'aos';
 import { animateScroll as scroll } from 'react-scroll';
@@ -27,8 +27,8 @@ const GeoScrollView = ({ cardContent, input }: GeoScrollViewProps) => {
   const [geoJsonFeatures, setGeoJsonFeatures] =
     useState<GeoJSON.FeatureCollection<GeoJSON.Geometry> | null>(null);
 
-  const [getBoundaries] = useGetBoundaryDataBulkMutation();
-  const [getChartData] = useGetChartDataBulkMutation();
+  const [getBoundaries] = useLazyGetBoundaryDataBulkQuery();
+  const [getChartData] = useLazyGetChartDataBulkQuery();
 
   useEffect(() => {
     const init = async () => {
