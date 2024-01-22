@@ -143,6 +143,7 @@ const ChoroplethMap = ({
       mapRef.current.on('mousemove', layerId, (e) => {
         const feature = _.first(e.features);
         if (feature) {
+          tooltip.addClassName('z-30');
           tooltip
             .setLngLat(e.lngLat)
             .setHTML(tooltipContent(feature))
