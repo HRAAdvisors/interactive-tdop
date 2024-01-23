@@ -36,7 +36,7 @@ export const MapApi = baseApi.injectEndpoints({
        return  res.boundaries[2022]
       },
       keepUnusedDataFor: 60,
-      providesTags: (result, error, arg) => {
+      providesTags: (result, _error, arg) => {
         return result && arg ? [{ id: arg[0].id , type: 'Boundary'}] : ['Boundary'];
        },
     }),
@@ -50,7 +50,7 @@ export const MapApi = baseApi.injectEndpoints({
         return _.first(res.charts);
       },
       keepUnusedDataFor: 60,
-      providesTags: (result, error, arg) => {
+      providesTags: (result) => {
        return result ? [{ id: result.id , type: 'Chart'}] : ['Chart'];
       }
       ,
