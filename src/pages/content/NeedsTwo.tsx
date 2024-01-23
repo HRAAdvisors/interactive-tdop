@@ -1,9 +1,9 @@
-// import { useState, useEffect, useRef } from 'react';
-// import { transformToGeoJSON } from '@/utils/transformGeoJSON';
-// import { useGetBoundaryDataBulkQuery, useGetChartDataBulkQuery } from '@/services/map';
-// import ChoroplethMap from '@/components/ui/ChoroplethMap';
-// import { DataPointGeneratorName } from '@/types/ChartIds';
-// import { Map } from 'mapbox-gl';
+import { useState, useEffect, useRef } from 'react';
+import { transformToGeoJSON } from '@/utils/transformGeoJSON';
+import { useGetBoundaryDataBulkQuery, useGetChartDataBulkQuery } from '@/services/map';
+import ChoroplethMap from '@/components/ui/ChoroplethMap';
+import { DataPointGeneratorName } from '@/types/ChartIds';
+import { Map } from 'mapbox-gl';
 
 import CollapsibleCard from '@/components/CollapsibleCard';
 import MapContainer from '@/components/MapContainer';
@@ -84,11 +84,11 @@ const NeedsTwo = () => {
                     2030.
                   </p>
                 }
-                // leftPanelContent={<SingleStackedBarChart width={200} height={20} value={68} />}
-                // leftPanelContent={<StackedBar height={20} data={68} goal={80} />}
                 stackedBarData={68}
                 stackedBarGoal={80}
-                rightPanelContent={<MapContainer />}
+                rightPanelContent={
+                  <ChoroplethMap geoJSONFeatureCollection={geoJsonFeatures} mapRef={mapRef} />
+                }
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
