@@ -4,9 +4,8 @@ import { transformToGeoJSON } from '@/utils/transformGeoJSON';
 import ChoroplethMap from './ui/ChoroplethMap';
 import { Map } from 'mapbox-gl';
 import { Scrollama, Step } from 'react-scrollama';
-import GeoScrollCard from './GeoScrollCard';
-import { DataPointGeneratorName } from '@/types/ChartIds';
-import { useLazyGetBoundaryDataBulkQuery, useLazyGetChartDataBulkQuery } from '@/services/map';
+import { ChartId, DataPointGeneratorName } from '@/types/ChartIds';
+import { useGetBoundaryDataBulkQuery, useGetChartDataBulkQuery } from '@/services/map';
 
 const contents = [
   {
@@ -14,7 +13,7 @@ const contents = [
     data: [
       {
         geoId: '48',
-        id: '6582102b903ab0943c07dbf8',
+        id: ChartId.TXAccess,
         regionSetup: {
           peers: 'none',
           segments: 'county',
@@ -23,16 +22,16 @@ const contents = [
     ],
     dataPointName: DataPointGeneratorName.noInternetProportion,
     getContent: (_geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
-      <>
-        <div className='mt-2'>
-          <h1 className='mt-2 text-lg font-semibold text-gray-800'>First Card</h1>
-          <p className='mt-2 text-gray-600 '>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam
-            aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus
-            delectus nihil quis facere in modi ratione libero!
+      <div className='mt-2'>
+        <h3 className='text-xl font-bold uppercase my-5 font-montserrat'>Subscription</h3>
+        <div className='mt-2 text-xl font-helvetica'>
+          <p>31% of Texas households do not subscribe to high-speed internet at home.</p>
+          <p>
+            Statewide, region A, region, and region C have the lowest rates of high-speed internet
+            subscription at home.
           </p>
         </div>
-      </>
+      </div>
     ),
     colorStops: [
       { step: 0.05, color: '#C9DCF7' },
@@ -47,7 +46,7 @@ const contents = [
     data: [
       {
         geoId: '48',
-        id: '65a6952ca3f05308cc4f280c',
+        id: ChartId.TXAdoption,
         regionSetup: {
           peers: 'none',
           segments: 'county',
@@ -56,17 +55,18 @@ const contents = [
     ],
     dataPointName: DataPointGeneratorName.hispeedShare,
     getContent: (_geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
-      <>
-        <div className='mt-2'>
-          <h1 className='mt-2 text-lg font-semibold text-gray-800'>Sceond</h1>
-
-          <p className='mt-2 text-gray-600 s'>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam
-            aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus
-            delectus nihil quis facere in modi ratione libero!
+      <div className='mt-2'>
+        <h3 className='text-xl font-bold uppercase my-5 font-montserrat'>Access</h3>
+        <div className='mt-2 text-xl font-helvetica'>
+          <p className='py-2'>
+            31% of Texas households do not subscribe to high-speed internet at home.
+          </p>
+          <p className='py-2'>
+            Statewide, region A, region, and region C have the lowest rates of high-speed internet
+            subscription at home.
           </p>
         </div>
-      </>
+      </div>
     ),
     colorStops: [
       { step: 0.21, color: '#C9DCF7' },
@@ -87,20 +87,14 @@ const GeoScrollytelling = () => {
     GeoJSON.FeatureCollection<GeoJSON.Geometry> | undefined
   >();
 
-  const [getBoundaries] = useLazyGetBoundaryDataBulkQuery();
-  const [getChartData] = useLazyGetChartDataBulkQuery();
-
+  const { data: boundaryData } = useGetBoundaryDataBulkQuery(input.data);
+  const { data: choroplethData } = useGetChartDataBulkQuery(input.data);
   useEffect(() => {
-    const init = async () => {
-      const boundaryies = await getBoundaries(input.data).unwrap();
-      const choroplethData = await getChartData(input.data).unwrap();
-      const geoJSON = transformToGeoJSON(boundaryies, choroplethData, input.dataPointName);
-
+    if (boundaryData && choroplethData && choroplethData.id == input.data[0].id) {
+      const geoJSON = transformToGeoJSON(boundaryData, choroplethData, input.dataPointName);
       setGeoJsonFeatures(geoJSON);
-    };
-
-    init();
-  }, [input]);
+    }
+  }, [boundaryData, choroplethData]);
 
   return (
     <div className='w-full'>
@@ -119,6 +113,9 @@ const GeoScrollytelling = () => {
               top: 20,
               bottom: 20,
             }}
+            onLoad={() => {
+              mapRef.current?.scrollZoom.disable();
+            }}
             colorStops={input?.colorStops}
             geoJSONFeatureCollection={geoJsonFeatures}
             mapRef={mapRef}
@@ -133,10 +130,10 @@ const GeoScrollytelling = () => {
       >
         {_.map(contents, (d, i) => (
           <Step data={d} key={i + 1} debug>
-            <div>
-              <GeoScrollCard>
-                <>{d.getContent(geoJsonFeatures)}</>
-              </GeoScrollCard>
+            <div className='h-screen w-1/2 z-10 relative bg-transparent'>
+              <div className='max-w-2xl px-10 py-6 bg-white rounded-lg shadow-md w-96 absolute min-h-[400px] inset-1/3'>
+                <div className='mt-2'>{d.getContent(geoJsonFeatures)}</div>
+              </div>
             </div>
           </Step>
         ))}

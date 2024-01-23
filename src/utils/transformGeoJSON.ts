@@ -36,19 +36,19 @@ const dataPointGenerator = (
     dataPointGeneratorName === DataPointGeneratorName.hispeedShare &&
     ChartId.TXAdoption === chartId
   ) {
-    return aggregatedChoroplethData[geoId]['ALL']['hispeed_share'];
+    return (parseFloat(aggregatedChoroplethData[geoId]['ALL']['hispeed_share'])/100).toFixed(2); 
   } else if (
     dataPointGeneratorName === DataPointGeneratorName.lowIncomeInternetSmartphoneOnlyShare &&
     ChartId.TXAdoption === chartId
   ) {
-    return aggregatedChoroplethData[geoId]['LOW_INCOME']['internet_smartphone_only_share'];
+    return (parseFloat(aggregatedChoroplethData[geoId]['LOW_INCOME']['internet_smartphone_only_share'])/100).toFixed(2); 
   } else if (
     dataPointGeneratorName === DataPointGeneratorName.internetSmartphoneOnlyShare &&
     ChartId.TXAdoption === chartId
   ) {
-    return aggregatedChoroplethData[geoId]['ALL']['internet_smartphone_only_share'];
+    return (parseFloat(aggregatedChoroplethData[geoId]['ALL']['internet_smartphone_only_share'])/100).toFixed(2); 
   } else {
-    throw new Error('chartId and Datapoint Mismatch');
+    console.error('chartId and Datapoint Mismatch');
   }
 };
 

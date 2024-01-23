@@ -28,12 +28,12 @@ const SplitPaneMap = ({ leftMapProps, righMapProps, width, height }: SplitPaneMa
   const handleDragMove: (this: Document, ev: MouseEvent) => any = (e) => {
     if (dividerRef.current && containerRef.current) {
       const dividerRect = dividerRef.current.getBoundingClientRect();
-      const totalWidth = containerRef.current.clientWidth;
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const clientx = e.clientX - containerRect.left;
 
-      const leftPaneWidth = ((e.clientX - dividerRect.width / 2) / totalWidth) * 100;
-      if (leftPaneWidth <= 100) {
-        const rightPaneWidth = 100 - leftPaneWidth;
-        setPaneWidths([leftPaneWidth, rightPaneWidth]);
+      const leftPaneWidth = ((clientx - dividerRect.width / 2) / containerRect.width) * 100;
+      if (leftPaneWidth <= 100 && leftPaneWidth >= 0) {
+        setPaneWidths([leftPaneWidth, 100 - leftPaneWidth]);
       }
     }
   };
@@ -44,11 +44,7 @@ const SplitPaneMap = ({ leftMapProps, righMapProps, width, height }: SplitPaneMa
   };
 
   return (
-    <div
-      className='shadow relative flex justify-around'
-      style={{ width, height }}
-      ref={containerRef}
-    >
+    <div className='relative flex justify-around' style={{ width, height }} ref={containerRef}>
       <div
         className='w-full z-10 h-full bg-green-200 overflow-hidden'
         style={{ width: `${paneWidths[0]}%` }}
@@ -189,35 +185,45 @@ const SplitPaneMapWrapper = () => {
   }, []);
 
   return (
-    <div className='w-full h-screen p-2'>
-      {geoJsonFeaturesLeft && geoJsonFeaturesRight && (
-        <SplitPaneMap
-          leftMapProps={{
-            colorStops: [
-              { step: 0.05, color: '#C9DCF7' },
-              { step: 0.15, color: '#96AFD3' },
-              { step: 0.25, color: '#6481B0' },
-              { step: 0.35, color: '#32548C' },
-              { step: 0.45, color: '#002768' },
-            ],
-            geoJSONFeatureCollection: geoJsonFeaturesLeft,
-            mapRef: leftMap,
-          }}
-          righMapProps={{
-            colorStops: [
-              { step: 0.1, color: '#F7CAC9' },
-              { step: 0.3, color: '#E9A5A3' },
-              { step: 0.5, color: '#DB6D84' },
-              { step: 0.7, color: '#C92C4D' },
-              { step: 0.9, color: '#BE0B31' },
-            ],
-            geoJSONFeatureCollection: geoJsonFeaturesRight,
-            mapRef: rightMap,
-          }}
-          width='600px'
-          height='600px'
-        />
-      )}
+    <div className='w-full h-screen p-2 flex'>
+      <div className='w-1/2 flex items-center justify-center'>
+        <div className='max-w-2xl px-10 py-6 bg-white rounded-lg shadow-md w-96 h-1/2'>
+          <h3 className='text-xl font-bold uppercase my-5 font-montserrat'>Money Matters</h3>
+          <div className='mt-2 text-xl font-helvetica'>
+            Many people do not have high speed internet because it's too expensive.
+          </div>
+        </div>
+      </div>
+      <div className='w-1/2 flex items-center justify-center'>
+        {geoJsonFeaturesLeft && geoJsonFeaturesRight && (
+          <SplitPaneMap
+            leftMapProps={{
+              colorStops: [
+                { step: 0.1, color: '#C9DCF7' },
+                { step: 0.3, color: '#96AFD3' },
+                { step: 0.5, color: '#6481B0' },
+                { step: 0.7, color: '#32548C' },
+                { step: 0.9, color: '#002768' },
+              ],
+              geoJSONFeatureCollection: geoJsonFeaturesLeft,
+              mapRef: leftMap,
+            }}
+            righMapProps={{
+              colorStops: [
+                { step: 0.1, color: '#F7CAC9' },
+                { step: 0.3, color: '#E9A5A3' },
+                { step: 0.5, color: '#DB6D84' },
+                { step: 0.7, color: '#C92C4D' },
+                { step: 0.9, color: '#BE0B31' },
+              ],
+              geoJSONFeatureCollection: geoJsonFeaturesRight,
+              mapRef: rightMap,
+            }}
+            width='600px'
+            height='80vh'
+          />
+        )}
+      </div>
     </div>
   );
 };
