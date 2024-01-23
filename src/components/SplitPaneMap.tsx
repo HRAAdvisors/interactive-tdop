@@ -123,7 +123,7 @@ const SplitPaneMapWrapper = () => {
 
   useEffect(() => {
     const init = async () => {
-      const boundaryies = await getBoundaries([
+      const params = [
         {
           geoId: '48',
           id: '65a6952ca3f05308cc4f280c',
@@ -132,53 +132,25 @@ const SplitPaneMapWrapper = () => {
             segments: 'county',
           },
         },
-      ]).unwrap();
-      const choroplethData = await getChartData([
-        {
-          geoId: '48',
-          id: '65a6952ca3f05308cc4f280c',
-          regionSetup: {
-            peers: 'none',
-            segments: 'county',
-          },
-        },
-      ]).unwrap();
+      ];
+      const boundaryies = await getBoundaries(params).unwrap();
+      const choroplethData = await getChartData(params).unwrap();
 
-      const geoJsonLeft = transformToGeoJSON(
-        boundaryies,
-        choroplethData,
-        DataPointGeneratorName.hispeedShare,
+      setGeoJsonFeaturesLeft(
+        transformToGeoJSON(
+          boundaryies,
+          choroplethData,
+          DataPointGeneratorName.internetwithdeviceshare,
+        ),
       );
-
-      const boundaryiesRight = await getBoundaries([
-        {
-          geoId: '48',
-          id: '6582102b903ab0943c07dbf8',
-          regionSetup: {
-            peers: 'none',
-            segments: 'county',
-          },
-        },
-      ]).unwrap();
-      const choroplethDataRight = await getChartData([
-        {
-          geoId: '48',
-          id: '6582102b903ab0943c07dbf8',
-          regionSetup: {
-            peers: 'none',
-            segments: 'county',
-          },
-        },
-      ]).unwrap();
 
       setGeoJsonFeaturesRight(
         transformToGeoJSON(
-          boundaryiesRight,
-          choroplethDataRight,
-          DataPointGeneratorName.noInternetProportion,
+          boundaryies,
+          choroplethData,
+          DataPointGeneratorName.lowIncomeInternetwithdeviceshare,
         ),
       );
-      setGeoJsonFeaturesLeft(geoJsonLeft);
     };
 
     init();

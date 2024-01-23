@@ -38,6 +38,17 @@ const dataPointGenerator = (
   ) {
     return (parseFloat(aggregatedChoroplethData[geoId]['ALL']['hispeed_share'])/100).toFixed(2); 
   } else if (
+    dataPointGeneratorName === DataPointGeneratorName.lowIncomeInternetwithdeviceshare &&
+    ChartId.TXAdoption === chartId
+  ) {
+    return (parseFloat(aggregatedChoroplethData[geoId]['LOW_INCOME']['internet_with_device_share'])/100).toFixed(2); 
+  } else if (
+    dataPointGeneratorName === DataPointGeneratorName.internetwithdeviceshare &&
+    ChartId.TXAdoption === chartId
+  ) {
+    return (parseFloat(aggregatedChoroplethData[geoId]['ALL']['internet_with_device_share'])/100).toFixed(2); 
+  } 
+  else if (
     dataPointGeneratorName === DataPointGeneratorName.lowIncomeInternetSmartphoneOnlyShare &&
     ChartId.TXAdoption === chartId
   ) {
