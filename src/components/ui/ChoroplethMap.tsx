@@ -22,6 +22,7 @@ export interface ChoroplethMapProps {
   mapContainerClassName?: string;
   zoom?: number;
   onMove?: () => void;
+  onLoad?: () => void;
   syncCenterAndZoom?: boolean;
 }
 
@@ -52,6 +53,7 @@ const ChoroplethMap = ({
   center = getCalculatedCenter(geoJSONFeatureCollection),
   zoom,
   onMove,
+  onLoad,
   syncCenterAndZoom = false,
 }: ChoroplethMapProps) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -127,9 +129,12 @@ const ChoroplethMap = ({
     );
   };
 
-  const onLoad = () => {
+  const onLoadHandler = () => {
     if (mapRef.current) {
       addSourceAndLayer();
+      if (onLoad) {
+        onLoad();
+      }
 
       const tooltip = new mapboxgl.Popup({
         closeButton: false,
@@ -143,7 +148,7 @@ const ChoroplethMap = ({
       mapRef.current.on('mousemove', layerId, (e) => {
         const feature = _.first(e.features);
         if (feature) {
-          tooltip.addClassName('z-30');
+          tooltip.addClassName('z-50');
           tooltip
             .setLngLat(e.lngLat)
             .setHTML(tooltipContent(feature))
@@ -179,7 +184,7 @@ const ChoroplethMap = ({
     }
 
     mapRef.current = new mapboxgl.Map(obj);
-    mapRef.current.on('load', onLoad);
+    mapRef.current.on('load', onLoadHandler);
   }, []);
 
   useEffect(() => {

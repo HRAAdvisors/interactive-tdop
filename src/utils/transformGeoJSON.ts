@@ -7,13 +7,26 @@ export const getAggregateChartData = (choroplethData: ChartBulkResponse) => {
     return _.chain(choroplethData.data)
       .groupBy('geo_id')
       .mapValues((inf) =>
-        _.mapValues(_.groupBy(inf, 'internet_access_type'), (infGroup) => _.first(infGroup)),
+      _.chain(inf)
+          .groupBy('internet_access_type')
+          .mapValues((infGroup) => _.first(infGroup))
+          .value(),
       )
       .value();
   } else if (choroplethData.id === ChartId.TXAdoption) {
     return _.chain(choroplethData.data)
       .groupBy('geo_id')
-      .mapValues((inf) => _.mapValues(_.groupBy(inf, 'cohort'), (infGroup) => _.first(infGroup)))
+      .mapValues((inf) =>
+        _.chain(inf)
+          .groupBy('cohort')
+          .mapValues((infGroup) => _.first(infGroup))
+          .value(),
+      )
+      .value();
+  } else if (choroplethData.id === ChartId.TxReliability) {
+    return _.chain(choroplethData.data)
+      .groupBy('geo_id')
+      .mapValues((inf) => _.first(inf))
       .value();
   }
 };
@@ -36,19 +49,38 @@ const dataPointGenerator = (
     dataPointGeneratorName === DataPointGeneratorName.hispeedShare &&
     ChartId.TXAdoption === chartId
   ) {
-    return aggregatedChoroplethData[geoId]['ALL']['hispeed_share'];
+    return (parseFloat(aggregatedChoroplethData[geoId]['ALL']['hispeed_share']) / 100).toFixed(2);
+  } else if (
+    dataPointGeneratorName === DataPointGeneratorName.lowIncomeInternetwithdeviceshare &&
+    ChartId.TXAdoption === chartId
+  ) {
+    return (
+      parseFloat(aggregatedChoroplethData[geoId]['LOW_INCOME']['internet_with_device_share']) / 100
+    ).toFixed(2);
+  } else if (
+    dataPointGeneratorName === DataPointGeneratorName.internetwithdeviceshare &&
+    ChartId.TXAdoption === chartId
+  ) {
+    return (
+      parseFloat(aggregatedChoroplethData[geoId]['ALL']['internet_with_device_share']) / 100
+    ).toFixed(2);
   } else if (
     dataPointGeneratorName === DataPointGeneratorName.lowIncomeInternetSmartphoneOnlyShare &&
     ChartId.TXAdoption === chartId
   ) {
-    return aggregatedChoroplethData[geoId]['LOW_INCOME']['internet_smartphone_only_share'];
+    return (
+      parseFloat(aggregatedChoroplethData[geoId]['LOW_INCOME']['internet_smartphone_only_share']) /
+      100
+    ).toFixed(2);
   } else if (
     dataPointGeneratorName === DataPointGeneratorName.internetSmartphoneOnlyShare &&
     ChartId.TXAdoption === chartId
   ) {
-    return aggregatedChoroplethData[geoId]['ALL']['internet_smartphone_only_share'];
+    return (
+      parseFloat(aggregatedChoroplethData[geoId]['ALL']['internet_smartphone_only_share']) / 100
+    ).toFixed(2);
   } else {
-    throw new Error('chartId and Datapoint Mismatch');
+    console.error('chartId and Datapoint Mismatch');
   }
 };
 

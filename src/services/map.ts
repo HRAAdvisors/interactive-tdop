@@ -22,6 +22,7 @@ const defaultBody = [
   },
 ];
 
+
 // Define a service using a base URL and expected endpoints
 export const MapApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -34,7 +35,10 @@ export const MapApi = baseApi.injectEndpoints({
       transformResponse: (res: any) => {
        return  res.boundaries[2022]
       },
-      providesTags: ['Boundary'],
+      keepUnusedDataFor: 60,
+      providesTags: (result, _error, arg) => {
+        return result && arg ? [{ id: arg[0].id , type: 'Boundary'}] : ['Boundary'];
+       },
     }),
     getChartDataBulk: builder.query<ChartBulkResponse, GeoData[] | undefined | void>({
       query: (body = defaultBody) => ({
@@ -45,7 +49,11 @@ export const MapApi = baseApi.injectEndpoints({
       transformResponse: (res: { charts: any[]}) => {
         return _.first(res.charts);
       },
-      providesTags: ['Chart'],
+      keepUnusedDataFor: 60,
+      providesTags: (result) => {
+       return result ? [{ id: result.id , type: 'Chart'}] : ['Chart'];
+      }
+      ,
     }),
 
     // getBoundaryDataBulk: builder.mutation<{ data: any }, any>({
@@ -62,4 +70,4 @@ export const MapApi = baseApi.injectEndpoints({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useLazyGetBoundaryDataBulkQuery, useLazyGetChartDataBulkQuery } = MapApi;
+export const { useLazyGetBoundaryDataBulkQuery, useGetBoundaryDataBulkQuery, useLazyGetChartDataBulkQuery, useGetChartDataBulkQuery } = MapApi;

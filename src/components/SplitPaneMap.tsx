@@ -1,18 +1,25 @@
 import { MouseEventHandler, useEffect, useRef, useState } from 'react';
 import { transformToGeoJSON } from '@/utils/transformGeoJSON';
-import { useLazyGetBoundaryDataBulkQuery, useLazyGetChartDataBulkQuery } from '@/services/map';
+import { useGetBoundaryDataBulkQuery, useGetChartDataBulkQuery } from '@/services/map';
 import { DataPointGeneratorName } from '@/types/ChartIds';
 import { Map } from 'mapbox-gl';
 import ChoroplethMap, { ChoroplethMapProps } from './ui/ChoroplethMap';
 
 interface SplitPaneMapProps {
-  leftMapProps: ChoroplethMapProps;
-  righMapProps: ChoroplethMapProps;
+  leftMapProps: Partial<ChoroplethMapProps>;
+  righMapProps: Partial<ChoroplethMapProps>;
   width: string | number;
   height: string | number;
+  containerClassName?: string;
 }
 
-const SplitPaneMap = ({ leftMapProps, righMapProps, width, height }: SplitPaneMapProps) => {
+const SplitPaneMap = ({
+  leftMapProps,
+  righMapProps,
+  width,
+  height,
+  containerClassName,
+}: SplitPaneMapProps) => {
   const [paneWidths, setPaneWidths] = useState([50, 50]); // Initial widths
   const dividerRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -28,12 +35,12 @@ const SplitPaneMap = ({ leftMapProps, righMapProps, width, height }: SplitPaneMa
   const handleDragMove: (this: Document, ev: MouseEvent) => any = (e) => {
     if (dividerRef.current && containerRef.current) {
       const dividerRect = dividerRef.current.getBoundingClientRect();
-      const totalWidth = containerRef.current.clientWidth;
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const clientx = e.clientX - containerRect.left;
 
-      const leftPaneWidth = ((e.clientX - dividerRect.width / 2) / totalWidth) * 100;
-      if (leftPaneWidth <= 100) {
-        const rightPaneWidth = 100 - leftPaneWidth;
-        setPaneWidths([leftPaneWidth, rightPaneWidth]);
+      const leftPaneWidth = ((clientx - dividerRect.width / 2) / containerRect.width) * 100;
+      if (leftPaneWidth <= 100 && leftPaneWidth >= 0) {
+        setPaneWidths([leftPaneWidth, 100 - leftPaneWidth]);
       }
     }
   };
@@ -45,7 +52,7 @@ const SplitPaneMap = ({ leftMapProps, righMapProps, width, height }: SplitPaneMa
 
   return (
     <div
-      className='shadow relative flex justify-around'
+      className={`relative flex justify-around ${containerClassName}`}
       style={{ width, height }}
       ref={containerRef}
     >
@@ -53,22 +60,25 @@ const SplitPaneMap = ({ leftMapProps, righMapProps, width, height }: SplitPaneMa
         className='w-full z-10 h-full bg-green-200 overflow-hidden'
         style={{ width: `${paneWidths[0]}%` }}
       >
-        <div className='h-full' style={{ width }}>
-          <ChoroplethMap
-            center={center}
-            zoom={zoom}
-            onMove={() => {
-              if (leftMapProps?.mapRef?.current) {
-                setCenter([
-                  parseFloat(leftMapProps.mapRef.current.getCenter().lng.toFixed(4)),
-                  parseFloat(leftMapProps.mapRef.current.getCenter().lat.toFixed(4)),
-                ]);
-                setZoom(parseFloat(leftMapProps.mapRef.current.getZoom().toFixed(2)));
-              }
-            }}
-            syncCenterAndZoom={true}
-            {...leftMapProps}
-          />
+        <div className='h-full' style={{ width: containerRef.current?.clientWidth }}>
+          {leftMapProps.geoJSONFeatureCollection && (
+            <ChoroplethMap
+              center={center}
+              zoom={zoom}
+              onMove={() => {
+                if (leftMapProps?.mapRef?.current) {
+                  setCenter([
+                    parseFloat(leftMapProps.mapRef.current.getCenter().lng.toFixed(4)),
+                    parseFloat(leftMapProps.mapRef.current.getCenter().lat.toFixed(4)),
+                  ]);
+                  setZoom(parseFloat(leftMapProps.mapRef.current.getZoom().toFixed(2)));
+                }
+              }}
+              syncCenterAndZoom={true}
+              geoJSONFeatureCollection={leftMapProps.geoJSONFeatureCollection}
+              {...leftMapProps}
+            />
+          )}
         </div>
       </div>
       <div
@@ -88,27 +98,44 @@ const SplitPaneMap = ({ leftMapProps, righMapProps, width, height }: SplitPaneMa
         className='w-full h-full  bg-red-200 overflow-hidden'
         style={{ width: `${paneWidths[1]}%` }}
       >
-        <div className='h-full absolute left-0' style={{ width }}>
-          <ChoroplethMap
-            center={center}
-            zoom={zoom}
-            onMove={() => {
-              if (righMapProps?.mapRef?.current) {
-                setCenter([
-                  parseFloat(righMapProps.mapRef.current.getCenter().lng.toFixed(4)),
-                  parseFloat(righMapProps.mapRef.current.getCenter().lat.toFixed(4)),
-                ]);
-                setZoom(parseFloat(righMapProps.mapRef.current.getZoom().toFixed(2)));
-              }
-            }}
-            syncCenterAndZoom={true}
-            {...righMapProps}
-          />
+        <div
+          className='h-full absolute left-0'
+          style={{ width: containerRef.current?.clientWidth }}
+        >
+          {righMapProps.geoJSONFeatureCollection && (
+            <ChoroplethMap
+              center={center}
+              zoom={zoom}
+              onMove={() => {
+                if (righMapProps?.mapRef?.current) {
+                  setCenter([
+                    parseFloat(righMapProps.mapRef.current.getCenter().lng.toFixed(4)),
+                    parseFloat(righMapProps.mapRef.current.getCenter().lat.toFixed(4)),
+                  ]);
+                  setZoom(parseFloat(righMapProps.mapRef.current.getZoom().toFixed(2)));
+                }
+              }}
+              geoJSONFeatureCollection={righMapProps.geoJSONFeatureCollection}
+              syncCenterAndZoom={true}
+              {...righMapProps}
+            />
+          )}
         </div>
       </div>
     </div>
   );
 };
+
+const params = [
+  {
+    geoId: '48',
+    id: '65a6952ca3f05308cc4f280c',
+    regionSetup: {
+      peers: 'none',
+      segments: 'county',
+    },
+  },
+];
 
 const SplitPaneMapWrapper = () => {
   const leftMap = useRef<Map>();
@@ -122,83 +149,48 @@ const SplitPaneMapWrapper = () => {
     GeoJSON.FeatureCollection<GeoJSON.Geometry> | undefined
   >();
 
-  const [getBoundaries] = useLazyGetBoundaryDataBulkQuery();
-  const [getChartData] = useLazyGetChartDataBulkQuery();
+  const { data: boundaries } = useGetBoundaryDataBulkQuery(params);
+  const { data: choroplethData } = useGetChartDataBulkQuery(params);
 
   useEffect(() => {
-    const init = async () => {
-      const boundaryies = await getBoundaries([
-        {
-          geoId: '48',
-          id: '65a6952ca3f05308cc4f280c',
-          regionSetup: {
-            peers: 'none',
-            segments: 'county',
-          },
-        },
-      ]).unwrap();
-      const choroplethData = await getChartData([
-        {
-          geoId: '48',
-          id: '65a6952ca3f05308cc4f280c',
-          regionSetup: {
-            peers: 'none',
-            segments: 'county',
-          },
-        },
-      ]).unwrap();
-
-      const geoJsonLeft = transformToGeoJSON(
-        boundaryies,
-        choroplethData,
-        DataPointGeneratorName.hispeedShare,
+    if (boundaries && choroplethData) {
+      setGeoJsonFeaturesLeft(
+        transformToGeoJSON(
+          boundaries,
+          choroplethData,
+          DataPointGeneratorName.internetwithdeviceshare,
+        ),
       );
-
-      const boundaryiesRight = await getBoundaries([
-        {
-          geoId: '48',
-          id: '6582102b903ab0943c07dbf8',
-          regionSetup: {
-            peers: 'none',
-            segments: 'county',
-          },
-        },
-      ]).unwrap();
-      const choroplethDataRight = await getChartData([
-        {
-          geoId: '48',
-          id: '6582102b903ab0943c07dbf8',
-          regionSetup: {
-            peers: 'none',
-            segments: 'county',
-          },
-        },
-      ]).unwrap();
 
       setGeoJsonFeaturesRight(
         transformToGeoJSON(
-          boundaryiesRight,
-          choroplethDataRight,
-          DataPointGeneratorName.noInternetProportion,
+          boundaries,
+          choroplethData,
+          DataPointGeneratorName.lowIncomeInternetwithdeviceshare,
         ),
       );
-      setGeoJsonFeaturesLeft(geoJsonLeft);
-    };
-
-    init();
-  }, []);
+    }
+  }, [boundaries, choroplethData]);
 
   return (
-    <div className='w-full h-screen p-2'>
-      {geoJsonFeaturesLeft && geoJsonFeaturesRight && (
+    <div className='w-full h-screen p-2 flex'>
+      <div className='w-1/2 flex relative'>
+        <div className='z-20 max-w-2xl px-10 py-6 bg-white rounded-lg shadow-md w-96 absolute inset-1/3'>
+          <h3 className='text-xl font-bold uppercase my-5 font-montserrat'>Money Matters</h3>
+          <div className='mt-2 text-xl font-helvetica'>
+            Many people do not have high speed internet because it's too expensive.
+          </div>
+        </div>
+      </div>
+      <div className='w-1/2 flex items-center justify-center'>
         <SplitPaneMap
           leftMapProps={{
             colorStops: [
-              { step: 0.05, color: '#C9DCF7' },
-              { step: 0.15, color: '#96AFD3' },
-              { step: 0.25, color: '#6481B0' },
-              { step: 0.35, color: '#32548C' },
-              { step: 0.45, color: '#002768' },
+              { step: 0.1, color: '#C9DCF7' },
+              { step: 0.3, color: '#96AFD3' },
+              { step: 0.5, color: '#6481B0' },
+              { step: 0.7, color: '#32548C' },
+              { step: 0.9, color: '#002768' },
             ],
             geoJSONFeatureCollection: geoJsonFeaturesLeft,
             mapRef: leftMap,
@@ -214,10 +206,11 @@ const SplitPaneMapWrapper = () => {
             geoJSONFeatureCollection: geoJsonFeaturesRight,
             mapRef: rightMap,
           }}
-          width='600px'
-          height='600px'
+          containerClassName='max-w-[600px]'
+          width='100%'
+          height='80vh'
         />
-      )}
+      </div>
     </div>
   );
 };
