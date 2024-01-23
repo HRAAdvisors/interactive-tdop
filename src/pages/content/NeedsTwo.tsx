@@ -1,10 +1,50 @@
+// import { useState, useEffect, useRef } from 'react';
+// import { transformToGeoJSON } from '@/utils/transformGeoJSON';
+// import { useGetBoundaryDataBulkQuery, useGetChartDataBulkQuery } from '@/services/map';
+// import ChoroplethMap from '@/components/ui/ChoroplethMap';
+// import { DataPointGeneratorName } from '@/types/ChartIds';
+// import { Map } from 'mapbox-gl';
+
 import CollapsibleCard from '@/components/CollapsibleCard';
 import MapContainer from '@/components/MapContainer';
 import QuoteBlock from '@/components/QuoteBlock';
 import NeedsCards from '@/static/NeedsCards';
 
+// const params = [
+//   {
+//     geoId: '48',
+//     id: '65a6952ca3f05308cc4f280c',
+//     regionSetup: {
+//       peers: 'none',
+//       segments: 'county',
+//     },
+//   },
+// ];
+
 const NeedsTwo = () => {
-  // const [opened, { toggle }] = useDisclosure(false);
+  // const mapRef = useRef<Map>();
+
+  // const [geoJsonFeatures, setGeoJsonFeatures] = useState<
+  //   GeoJSON.FeatureCollection<GeoJSON.Geometry>
+  // >(
+  //   { type: 'FeatureCollection', features: [] }, // Default empty FeatureCollection
+  // );
+
+  // const { data: boundaries } = useGetBoundaryDataBulkQuery(params);
+  // const { data: choroplethData } = useGetChartDataBulkQuery(params);
+
+  // useEffect(() => {
+  //   if (boundaries && choroplethData) {
+  //     setGeoJsonFeatures(
+  //       transformToGeoJSON(
+  //         boundaries,
+  //         choroplethData,
+  //         DataPointGeneratorName.internetwithdeviceshare,
+  //       ),
+  //     );
+  //   }
+  // }, [boundaries, choroplethData]);
+
   return (
     <div>
       <div className='w-screen h-full bg-[#FFFDF6] px-4'>
@@ -44,11 +84,12 @@ const NeedsTwo = () => {
                     2030.
                   </p>
                 }
-                // leftPanelContent={<SingleStackedBarChart width={200} height={20} value={68} />}
-                // leftPanelContent={<StackedBar height={20} data={68} goal={80} />}
                 stackedBarData={68}
                 stackedBarGoal={80}
                 rightPanelContent={<MapContainer />}
+                // rightPanelContent={
+                //   <ChoroplethMap geoJSONFeatureCollection={geoJsonFeatures} mapRef={mapRef} />
+                // }
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
