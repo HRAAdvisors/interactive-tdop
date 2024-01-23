@@ -1,49 +1,49 @@
-import { useState, useEffect, useRef } from 'react';
-import { transformToGeoJSON } from '@/utils/transformGeoJSON';
-import { useGetBoundaryDataBulkQuery, useGetChartDataBulkQuery } from '@/services/map';
-import ChoroplethMap from '@/components/ui/ChoroplethMap';
-import { DataPointGeneratorName } from '@/types/ChartIds';
-import { Map } from 'mapbox-gl';
+// import { useState, useEffect, useRef } from 'react';
+// import { transformToGeoJSON } from '@/utils/transformGeoJSON';
+// import { useGetBoundaryDataBulkQuery, useGetChartDataBulkQuery } from '@/services/map';
+// import ChoroplethMap from '@/components/ui/ChoroplethMap';
+// import { DataPointGeneratorName } from '@/types/ChartIds';
+// import { Map } from 'mapbox-gl';
 
 import CollapsibleCard from '@/components/CollapsibleCard';
 import MapContainer from '@/components/MapContainer';
 import QuoteBlock from '@/components/QuoteBlock';
 import NeedsCards from '@/static/NeedsCards';
 
-const params = [
-  {
-    geoId: '48',
-    id: '65a6952ca3f05308cc4f280c',
-    regionSetup: {
-      peers: 'none',
-      segments: 'county',
-    },
-  },
-];
+// const params = [
+//   {
+//     geoId: '48',
+//     id: '65a6952ca3f05308cc4f280c',
+//     regionSetup: {
+//       peers: 'none',
+//       segments: 'county',
+//     },
+//   },
+// ];
 
 const NeedsTwo = () => {
-  const mapRef = useRef<Map>();
+  // const mapRef = useRef<Map>();
 
-  const [geoJsonFeatures, setGeoJsonFeatures] = useState<
-    GeoJSON.FeatureCollection<GeoJSON.Geometry>
-  >(
-    { type: 'FeatureCollection', features: [] }, // Default empty FeatureCollection
-  );
+  // const [geoJsonFeatures, setGeoJsonFeatures] = useState<
+  //   GeoJSON.FeatureCollection<GeoJSON.Geometry>
+  // >(
+  //   { type: 'FeatureCollection', features: [] }, // Default empty FeatureCollection
+  // );
 
-  const { data: boundaries } = useGetBoundaryDataBulkQuery(params);
-  const { data: choroplethData } = useGetChartDataBulkQuery(params);
+  // const { data: boundaries } = useGetBoundaryDataBulkQuery(params);
+  // const { data: choroplethData } = useGetChartDataBulkQuery(params);
 
-  useEffect(() => {
-    if (boundaries && choroplethData) {
-      setGeoJsonFeatures(
-        transformToGeoJSON(
-          boundaries,
-          choroplethData,
-          DataPointGeneratorName.internetwithdeviceshare,
-        ),
-      );
-    }
-  }, [boundaries, choroplethData]);
+  // useEffect(() => {
+  //   if (boundaries && choroplethData) {
+  //     setGeoJsonFeatures(
+  //       transformToGeoJSON(
+  //         boundaries,
+  //         choroplethData,
+  //         DataPointGeneratorName.internetwithdeviceshare,
+  //       ),
+  //     );
+  //   }
+  // }, [boundaries, choroplethData]);
 
   return (
     <div>
@@ -86,9 +86,10 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={68}
                 stackedBarGoal={80}
-                rightPanelContent={
-                  <ChoroplethMap geoJSONFeatureCollection={geoJsonFeatures} mapRef={mapRef} />
-                }
+                rightPanelContent={<MapContainer />}
+                // rightPanelContent={
+                //   <ChoroplethMap geoJSONFeatureCollection={geoJsonFeatures} mapRef={mapRef} />
+                // }
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
