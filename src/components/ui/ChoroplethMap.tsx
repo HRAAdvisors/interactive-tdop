@@ -29,7 +29,7 @@ export interface ChoroplethMapProps {
 const getToolTip = (feature: any) => `
 <strong class="font-sans uppercase">${feature.properties.NAME} County</strong>
 <hr class="my-2"/>
-Share of households with No Internet Subscription: 
+Percent:
 <span class="font-bold">${feature.properties.dataPoint}</span>
 `;
 
@@ -122,7 +122,7 @@ const ChoroplethMap = ({
             '#ffffff',
             ..._.flatMap(colorStops, (stop) => [stop.step, stop.color]),
           ],
-          'fill-opacity': 0.9,
+          'fill-opacity': 1,
         },
       },
       'settlement-subdivision-label',
