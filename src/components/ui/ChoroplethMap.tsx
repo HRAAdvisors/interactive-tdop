@@ -71,6 +71,7 @@ const ChoroplethMap = ({
           [newBounds[2], newBounds[3]],
         ],
         {
+          animate: false,
           padding,
         },
       );
@@ -155,18 +156,18 @@ const ChoroplethMap = ({
             .addTo(mapRef.current as Map);
 
           // Highlight the hovered feature
-          mapRef.current?.setPaintProperty(layerId, 'fill-opacity', [
-            'case',
-            ['==', ['get', 'dataPoint'], feature?.properties?.dataPoint],
-            0.8,
-            0.6,
-          ]);
+          // mapRef.current?.setPaintProperty(layerId, 'fill-opacity', [
+          //   'case',
+          //   ['==', ['get', 'dataPoint'], feature?.properties?.dataPoint],
+          //   0.8,
+          //   0.6,
+          // ]);
         }
       });
 
       mapRef.current.on('mouseleave', layerId, () => {
         tooltip.remove();
-        mapRef.current?.setPaintProperty(layerId, 'fill-opacity', 0.6);
+        // mapRef.current?.setPaintProperty(layerId, 'fill-opacity', 0.6);
       });
     }
   };

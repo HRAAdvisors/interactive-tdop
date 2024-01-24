@@ -5,36 +5,48 @@ import _ from 'lodash';
 import { transformToGeoJSON } from '@/utils/transformGeoJSON';
 import ChoroplethMap from './ui/ChoroplethMap';
 import { bbox } from '@turf/turf';
-import { DataPointGeneratorName } from '@/types/ChartIds';
-import { useLazyGetBoundaryDataBulkQuery, useLazyGetChartDataBulkQuery } from '@/services/map';
+import { ChartId, DataPointGeneratorName } from '@/types/ChartIds';
+import { useGetBoundaryDataBulkQuery, useGetChartDataBulkQuery } from '@/services/map';
 
-const MapContainer = () => {
+interface MapContainerProps {
+  chartId?: ChartId;
+  dataPointerGenerator?: DataPointGeneratorName;
+}
+
+const MapContainer = ({
+  chartId = ChartId.TXAccess,
+  dataPointerGenerator = DataPointGeneratorName.noInternetProportion,
+}: MapContainerProps) => {
   const mapRef = useRef<Map>();
+
+  const params = [
+    {
+      geoId: '48',
+      id: chartId,
+      regionSetup: {
+        peers: 'none',
+        segments: 'county',
+      },
+    },
+  ];
+
   const [selectedCounty, setSelectedCounty] = useState('');
   const [geoJsonFeatures, setGeoJsonFeatures] =
     useState<GeoJSON.FeatureCollection<GeoJSON.Geometry> | null>(null);
 
-  const [getBoundaries, { data: boundaryData }] = useLazyGetBoundaryDataBulkQuery();
-  const [getChartData] = useLazyGetChartDataBulkQuery();
+  const { data: boundaries } = useGetBoundaryDataBulkQuery(params);
+  const { data: choroplethData } = useGetChartDataBulkQuery(params);
 
   useEffect(() => {
-    const init = async () => {
-      const boundaryies = await getBoundaries().unwrap();
-      const choroplethData = await getChartData().unwrap();
-      const geoJSON = transformToGeoJSON(
-        boundaryies,
-        choroplethData,
-        DataPointGeneratorName.noInternetProportion,
-      );
-      setGeoJsonFeatures(geoJSON);
-    };
+    if (boundaries && choroplethData) {
+      setGeoJsonFeatures(transformToGeoJSON(boundaries, choroplethData, dataPointerGenerator));
+    }
+  }, [boundaries, choroplethData]);
 
-    init();
-  }, []);
   // console.log(boundaryData);
 
-  const counties = boundaryData
-    ? _.map(boundaryData, (item) => ({
+  const counties = boundaries
+    ? _.map(boundaries, (item) => ({
         name: item.feature.properties.NAME,
         data: item.feature,
       }))

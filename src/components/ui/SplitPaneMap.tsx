@@ -1,9 +1,5 @@
-import { MouseEventHandler, useEffect, useRef, useState } from 'react';
-import { transformToGeoJSON } from '@/utils/transformGeoJSON';
-import { useGetBoundaryDataBulkQuery, useGetChartDataBulkQuery } from '@/services/map';
-import { DataPointGeneratorName } from '@/types/ChartIds';
-import { Map } from 'mapbox-gl';
-import ChoroplethMap, { ChoroplethMapProps } from './ui/ChoroplethMap';
+import { MouseEventHandler, useRef, useState } from 'react';
+import ChoroplethMap, { ChoroplethMapProps } from './ChoroplethMap';
 
 interface SplitPaneMapProps {
   leftMapProps: Partial<ChoroplethMapProps>;
@@ -126,93 +122,4 @@ const SplitPaneMap = ({
   );
 };
 
-const params = [
-  {
-    geoId: '48',
-    id: '65a6952ca3f05308cc4f280c',
-    regionSetup: {
-      peers: 'none',
-      segments: 'county',
-    },
-  },
-];
-
-const SplitPaneMapWrapper = () => {
-  const leftMap = useRef<Map>();
-  const rightMap = useRef<Map>();
-
-  const [geoJsonFeaturesLeft, setGeoJsonFeaturesLeft] = useState<
-    GeoJSON.FeatureCollection<GeoJSON.Geometry> | undefined
-  >();
-
-  const [geoJsonFeaturesRight, setGeoJsonFeaturesRight] = useState<
-    GeoJSON.FeatureCollection<GeoJSON.Geometry> | undefined
-  >();
-
-  const { data: boundaries } = useGetBoundaryDataBulkQuery(params);
-  const { data: choroplethData } = useGetChartDataBulkQuery(params);
-
-  useEffect(() => {
-    if (boundaries && choroplethData) {
-      setGeoJsonFeaturesLeft(
-        transformToGeoJSON(
-          boundaries,
-          choroplethData,
-          DataPointGeneratorName.internetwithdeviceshare,
-        ),
-      );
-
-      setGeoJsonFeaturesRight(
-        transformToGeoJSON(
-          boundaries,
-          choroplethData,
-          DataPointGeneratorName.lowIncomeInternetwithdeviceshare,
-        ),
-      );
-    }
-  }, [boundaries, choroplethData]);
-
-  return (
-    <div className='w-full h-screen p-2 flex'>
-      <div className='w-1/2 flex relative'>
-        <div className='z-20 max-w-2xl px-10 py-6 bg-white rounded-lg shadow-md w-96 absolute inset-1/3'>
-          <h3 className='text-xl font-bold uppercase my-5 font-montserrat'>Money Matters</h3>
-          <div className='mt-2 text-xl font-helvetica'>
-            Many people do not have high speed internet because it's too expensive.
-          </div>
-        </div>
-      </div>
-      <div className='w-1/2 flex items-center justify-center'>
-        <SplitPaneMap
-          leftMapProps={{
-            colorStops: [
-              { step: 0.1, color: '#C9DCF7' },
-              { step: 0.3, color: '#96AFD3' },
-              { step: 0.5, color: '#6481B0' },
-              { step: 0.7, color: '#32548C' },
-              { step: 0.9, color: '#002768' },
-            ],
-            geoJSONFeatureCollection: geoJsonFeaturesLeft,
-            mapRef: leftMap,
-          }}
-          righMapProps={{
-            colorStops: [
-              { step: 0.1, color: '#F7CAC9' },
-              { step: 0.3, color: '#E9A5A3' },
-              { step: 0.5, color: '#DB6D84' },
-              { step: 0.7, color: '#C92C4D' },
-              { step: 0.9, color: '#BE0B31' },
-            ],
-            geoJSONFeatureCollection: geoJsonFeaturesRight,
-            mapRef: rightMap,
-          }}
-          containerClassName='max-w-[600px]'
-          width='100%'
-          height='80vh'
-        />
-      </div>
-    </div>
-  );
-};
-
-export default SplitPaneMapWrapper;
+export default SplitPaneMap;

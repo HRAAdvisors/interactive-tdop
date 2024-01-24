@@ -10,6 +10,9 @@ export default {
         montserrat: ['Montserrat', 'sans-serif'],
         helvetica: ['Helvetica', 'sans-serif'],
       },
+      colors: {
+        basic: '#fffdf6',
+      },
   },
 },
   plugins: [],
