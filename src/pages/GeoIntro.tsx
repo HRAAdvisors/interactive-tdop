@@ -5,7 +5,6 @@ import NavbarPlain from '@/components/NavbarPlain';
 import HeroLayout from '@/components/HeroLayout';
 import { animateScroll as scroll } from 'react-scroll';
 import GeoScrollytelling from '@/components/GeoScrollytelling';
-import SplitPaneMapContainer from '@/components/SplitPaneMapContainer';
 
 const GeoIntro = () => {
   useEffect(() => {
