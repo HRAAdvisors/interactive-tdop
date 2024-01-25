@@ -11,11 +11,13 @@ import { useGetBoundaryDataBulkQuery, useGetChartDataBulkQuery } from '@/service
 interface MapContainerProps {
   chartId?: ChartId;
   dataPointerGenerator?: DataPointGeneratorName;
+  shouldDropdownShow?: boolean;
 }
 
 const MapContainer = ({
   chartId = ChartId.TXAccess,
   dataPointerGenerator = DataPointGeneratorName.noInternetProportion,
+  shouldDropdownShow = true,
 }: MapContainerProps) => {
   const mapRef = useRef<Map>();
 
@@ -78,20 +80,22 @@ const MapContainer = ({
     <>
       {geoJsonFeatures && (
         <ChoroplethMap geoJSONFeatureCollection={geoJsonFeatures} mapRef={mapRef}>
-          <select
-            value={selectedCounty}
-            onChange={handleCountySelect}
-            className='absolute top-10 left-0 m-5 h-20 z-10 shadow-xl bg-black text-white'
-          >
-            <option value='' className='bg-black'>
-              Zoom to...
-            </option>
-            {counties.map((county, index) => (
-              <option key={index} value={county.name} className='bg-black'>
-                {county.name}
+          {shouldDropdownShow && (
+            <select
+              value={selectedCounty}
+              onChange={handleCountySelect}
+              className='absolute top-10 left-0 m-5 h-20 z-10 shadow-xl bg-black text-white'
+            >
+              <option value='' className='bg-black'>
+                Zoom to...
               </option>
-            ))}
-          </select>
+              {counties.map((county, index) => (
+                <option key={index} value={county.name} className='bg-black'>
+                  {county.name}
+                </option>
+              ))}
+            </select>
+          )}
         </ChoroplethMap>
       )}
     </>

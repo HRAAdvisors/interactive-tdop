@@ -22,7 +22,7 @@ export interface ChoroplethMapProps {
   mapContainerClassName?: string;
   zoom?: number;
   onMove?: () => void;
-  onLoad?: () => void;
+  onLoad?: (map: Map) => void;
   syncCenterAndZoom?: boolean;
 }
 
@@ -134,7 +134,7 @@ const ChoroplethMap = ({
     if (mapRef.current) {
       addSourceAndLayer();
       if (onLoad) {
-        onLoad();
+        onLoad(mapRef.current);
       }
 
       const tooltip = new mapboxgl.Popup({
