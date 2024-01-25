@@ -28,7 +28,7 @@ export const getAggregateChartData = (choroplethData: ChartBulkResponse) => {
       .groupBy('geo_id')
       .mapValues((inf) => _.first(inf))
       .value();
-  }
+  } 
 };
 
 const dataPointGenerator = (

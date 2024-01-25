@@ -85,7 +85,12 @@ const Home = () => {
       {showSidebar && <Sidebar currentPage={currentPage} />}
       <Navbar show={showNav} />
       <Element name='hero'>
-        <HeroLayout />
+        <HeroLayout
+          leftButtonLink='/geoIntro'
+          leftButtonText='Geographic Intro'
+          rightButtonLink='/'
+          rightButtonText='Data Dashboards'
+        />
       </Element>
       <Element name='intro'>
         <IntroPage handlePageChange={handlePageChange} />

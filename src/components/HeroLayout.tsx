@@ -4,7 +4,17 @@ import ButtonDark from './ui/ButtonDark';
 import { Link } from 'react-scroll';
 import one from '../assets/1.jpg';
 
-const HeroLayout = () => {
+const HeroLayout = ({
+  leftButtonLink,
+  leftButtonText,
+  rightButtonLink,
+  rightButtonText,
+}: {
+  leftButtonLink: string;
+  leftButtonText: string;
+  rightButtonLink: string;
+  rightButtonText: string;
+}) => {
   return (
     <div className='z-20 w-full h-full bg-[#FFFDF6] md:overflow-x-hidden'>
       <div className='block md:grid md:grid-cols-12'>
@@ -22,8 +32,8 @@ const HeroLayout = () => {
             {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nihil, qui quisquam reprehenderit, maxime dicta officiis saepe provident, aperiam incidunt id quis dolor delectus deserunt accusamus exercitationem ipsum. */}
           </p>
           <div className='flex justify-between py-8 w-full'>
-            <ButtonDark text='Interactive Plan'></ButtonDark>
-            <ButtonLight text='Data Dashboards'></ButtonLight>
+            <ButtonDark link={leftButtonLink} text={leftButtonText}></ButtonDark>
+            <ButtonLight link={rightButtonLink} text={rightButtonText}></ButtonLight>
           </div>
           <div className='mx-auto justify-center content-center text-center'>
             <p>Scroll to explore the Texas Digital Opportunity Plan</p>

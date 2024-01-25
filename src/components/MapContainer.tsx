@@ -111,7 +111,7 @@ const MapContainer = ({
             {' '}
             <span className='uppercase underline'>Source</span>: {mapSource}
           </div>
-          <div>{colorStops && <Legend colorStops={colorStops} />}</div>
+          <div className='pb-8'>{colorStops && <Legend colorStops={colorStops} />}</div>
         </>
       )}
     </>
