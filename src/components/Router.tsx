@@ -1,4 +1,4 @@
-import HeroLayout from './HeroLayout';
+// import HeroLayout from './HeroLayout';
 import IntroPage from '../pages/IntroPage';
 import VisionPage from '../pages/VisionPage';
 import NeedsAndAssetsPage from '../pages/NeedsAndAssetsPage';
@@ -13,7 +13,7 @@ export default function Router() {
     <BrowserRouter>
       <ScrollToTop>
         <Routes>
-          <Route path='/' element={<HeroLayout />} />
+          {/* <Route path='/' element={<HeroLayout />} /> */}
           <Route path='intro' element={<IntroPage />} />
           <Route path='vision' element={<VisionPage />} />
           <Route path='needsandassets' element={<NeedsAndAssetsPage />} />

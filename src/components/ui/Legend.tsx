@@ -5,7 +5,7 @@ interface LegendProps {
 }
 
 const Legend = ({ colorStops }: LegendProps) => {
-  console.log(colorStops);
+  // console.log(colorStops);
   return (
     <div className='w-full'>
       <div className='w-full text-[8px] leading-3 grid grid-cols-5'>

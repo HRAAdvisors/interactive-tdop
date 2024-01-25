@@ -19,7 +19,6 @@ const NeedsTwo = () => {
               <hr className='my-5' />
               <CollapsibleCard
                 taskNumber='1'
-                color='#333333'
                 goalTitle='Increase the percentage of Texans with reliable broadband subscriptions available in their homes.'
                 mapTitle='Households by Subscription Share'
                 description={
@@ -60,7 +59,6 @@ const NeedsTwo = () => {
               />
               <CollapsibleCard
                 taskNumber='2'
-                color='#002768'
                 goalTitle='Decrease the percentage of individuals who cite cost as a barrier to home internet service'
                 mapTitle='Households by Cost as a Barrier to Subscription'
                 description={
@@ -95,7 +93,6 @@ const NeedsTwo = () => {
               />
               <CollapsibleCard
                 taskNumber='3'
-                color='#BE0B31'
                 goalTitle='Increase the percentage of Texans who are aware of and enrolled in the Affordable Connectivity Program (ACP) and/or other low-cost or subsidized internet service options.'
                 mapTitle='Eligible Households by Subscription in ACP'
                 description={
@@ -141,7 +138,6 @@ const NeedsTwo = () => {
               <hr className='my-5' />
               <CollapsibleCard
                 taskNumber='1'
-                color='#333333'
                 goalTitle='Increase the percentage of Texans who have home access to affordable internet-enabled devices other than a smartphone.'
                 description={
                   <div>
@@ -175,7 +171,6 @@ const NeedsTwo = () => {
               />
               <CollapsibleCard
                 taskNumber='2'
-                color='#002768'
                 goalTitle='Increase access to technical support for more Texans with internet-enabled devices.'
                 description={
                   <div>
@@ -214,7 +209,6 @@ const NeedsTwo = () => {
               <hr className='my-5' />
               <CollapsibleCard
                 taskNumber='1'
-                color='#333333'
                 goalTitle='Increase the percentage of Texans who have basic digital literacy skills.'
                 description={
                   <div>
@@ -248,7 +242,6 @@ const NeedsTwo = () => {
               />
               <CollapsibleCard
                 taskNumber='2'
-                color='#002768'
                 goalTitle='Increase the availability of digital literacy programs and services.'
                 description={
                   <div>
@@ -274,7 +267,6 @@ const NeedsTwo = () => {
               />
               <CollapsibleCard
                 taskNumber='3'
-                color='#002768'
                 goalTitle='Increase the percentage of Texas workers who have the level of digital skills training jobs require.'
                 description={
                   <div>
@@ -309,7 +301,6 @@ const NeedsTwo = () => {
               <hr className='my-5' />
               <CollapsibleCard
                 taskNumber='1'
-                color='#333333'
                 goalTitle='Increase the percentage of Texans who are familiar with cybersecurity and online privacy measures.'
                 description={
                   <div>
@@ -355,7 +346,6 @@ const NeedsTwo = () => {
               <hr className='my-5' />
               <CollapsibleCard
                 taskNumber='1'
-                color='#333333'
                 goalTitle='Increase the percentage of Texans who utilize and understand how to use the internet for public resources and services.  '
                 description={
                   <div>

@@ -4,7 +4,6 @@ import StackedBar from './StackedBar';
 
 interface CollapsibleCardProps {
   taskNumber: string;
-  color: string;
   goalTitle: string;
   description: ReactNode;
   mapTitle?: string; // If this is optional, mark it as such
@@ -18,7 +17,6 @@ interface CollapsibleCardProps {
 
 const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
   taskNumber,
-  color,
   goalTitle,
   description,
   mapTitle,
@@ -48,9 +46,7 @@ const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
         onClick={toggleAccordion}
       >
         <div className='flex md:grid md:col-start-0 px-8 text-lg font-bold'>
-          <p className='' style={{ color: `${color}` }}>
-            {taskNumber}
-          </p>
+          <p>{taskNumber}</p>
         </div>
         <div className='flex items-center md:col-span-8 md:col-start-2 text-lg font-bold'>
           <p>{goalTitle}</p>
@@ -64,39 +60,37 @@ const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
       </div>
 
       <div
-        className='overflow-hidden transition-max-height duration-300 ease-in-out'
-        style={{ maxHeight: `${height}px` }}
+        className='overflow-hidden transition-height duration-300 ease-in-out'
+        style={{ height: `${height}px` }}
         ref={contentRef}
       >
-        <div className='bg-[#FFFDF6]'>
-          <div className='p-2 grid grid-cols-12 my-2 mt-4'>
-            <div className='col-span-12 md:col-start-2 md:col-span-10'>{description}</div>
-          </div>
+        <div className='p-2 grid grid-cols-12 my-2 mt-4'>
+          <div className='col-span-12 md:col-start-2 md:col-span-10'>{description}</div>
+        </div>
 
-          <div className='p-2 block md:grid md:grid-cols-12'>
-            {/* Left Panel Content */}
-            <div className='col-span-12 md:col-span-6 md:col-start-2'>
-              <p className='uppercase underline font-medium my-4'>{mapTitle}</p>
-              <div className='h-[50vh]'>{leftPanelContent}</div>
-            </div>
-            {/* Right Panel Content */}
-            <div className='mt-20 md:mt-0 col-span-12 md:col-span-3 md:col-start-9'>
-              <p className='uppercase underline font-medium my-4'>2030 Target</p>
-              <div className='my-4'>{targetText}</div>
-              <StackedBar data={stackedBarData} goal={stackedBarGoal} isOpen={isOpen} />
-              <p className='uppercase underline font-medium mt-12'>How Will Texas Get There?</p>
-              <div className='my-4'>
-                {/* <p className='my-4'>Implementation Strategies</p> */}
-                <ol className='list-decimal list-inside'>
-                  {/* Check if strategies is defined and is an array before mapping */}
-                  {strategies &&
-                    strategies.map((strategy: string, index: number) => (
-                      <li key={index} className='mt-2 first:mt-0'>
-                        {strategy}
-                      </li>
-                    ))}
-                </ol>
-              </div>
+        <div className='p-2 block md:grid md:grid-cols-12'>
+          {/* Left Panel Content */}
+          <div className='h-full col-span-12 md:col-span-6 md:col-start-2'>
+            <p className='uppercase underline font-medium my-4'>{mapTitle}</p>
+            <div className='h-[50vh]'>{leftPanelContent}</div>
+          </div>
+          {/* Right Panel Content */}
+          <div className='mt-20 md:mt-0 col-span-12 md:col-span-3 md:col-start-9'>
+            <p className='uppercase underline font-medium my-4'>2030 Target</p>
+            <div className='my-4'>{targetText}</div>
+            <StackedBar data={stackedBarData} goal={stackedBarGoal} isOpen={isOpen} />
+            <p className='uppercase underline font-medium mt-12'>How Will Texas Get There?</p>
+            <div className='my-4'>
+              {/* <p className='my-4'>Implementation Strategies</p> */}
+              <ol className='list-decimal list-inside'>
+                {/* Check if strategies is defined and is an array before mapping */}
+                {strategies &&
+                  strategies.map((strategy: string, index: number) => (
+                    <li key={index} className='mt-2 first:mt-0'>
+                      {strategy}
+                    </li>
+                  ))}
+              </ol>
             </div>
           </div>
         </div>

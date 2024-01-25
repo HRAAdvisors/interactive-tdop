@@ -50,8 +50,8 @@ const steps = [
   <div>
     <p> Click below to dive deeper into the state of digital opportunity in Texas.</p>
     <div className='my-8'>
-      <ButtonDark text='Interactive Plan'></ButtonDark>
-      <ButtonLight text='Data Dashboards'></ButtonLight>
+      <ButtonDark text='Geographic Intro' link='/geoIntro'></ButtonDark>
+      <ButtonLight text='Data Dashboards' link='/'></ButtonLight>
     </div>
   </div>,
 ];

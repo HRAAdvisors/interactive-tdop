@@ -14,7 +14,12 @@ const GeoIntro = () => {
   return (
     <>
       <NavbarPlain />
-      <HeroLayout />
+      <HeroLayout
+        leftButtonLink='/'
+        leftButtonText='Interactive TDOP'
+        rightButtonLink='/'
+        rightButtonText='Data Dashboards'
+      />
       <GeoScrollytelling />
     </>
   );
