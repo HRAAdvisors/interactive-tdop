@@ -125,7 +125,7 @@ const GeoScrollytelling = () => {
           />
         </div>
       )}
-      <div className='absolute  w-full top-0 bottom-0'>
+      <div className='absolute lg:w-1/2 w-full top-0 bottom-0'>
         <Scrollama
           offset={0.5}
           onStepEnter={({ data }: any) => {
@@ -134,7 +134,7 @@ const GeoScrollytelling = () => {
         >
           {_.map(contents, (d, i) => (
             <Step data={d} key={i + 1}>
-              <div className='h-screen w-full lg:w-1/2 z-10 bg-transparent flex justify-center items-center'>
+              <div className='h-screen w-full z-10 bg-transparent flex justify-center items-center'>
                 <div className='max-w-sm px-12 py-8 bg-white z-30 rounded-lg shadow-md w-full  min-h-[400px]'>
                   {d.getContent(geoJsonFeatures)}
                 </div>
@@ -142,7 +142,9 @@ const GeoScrollytelling = () => {
             </Step>
           ))}
           <Step>
-            <SplitPaneMapContainer />
+            <div className='w-screen'>
+              <SplitPaneMapContainer />
+            </div>
           </Step>
         </Scrollama>
       </div>

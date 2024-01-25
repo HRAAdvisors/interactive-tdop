@@ -54,8 +54,8 @@ const SplitPaneMapContainer = () => {
   }, [boundaries, choroplethData]);
 
   return (
-    <div className='w-full h-screen p-2 flex bg-basic'>
-      <div className='w-1/2 flex items-center justify-center'>
+    <div className='w-full h-screen p-2 flex bg-basic flex-col lg:flex-row'>
+      <div className='lg:w-1/2 w-full flex items-center justify-center'>
         <div className='max-w-md px-12 py-8 bg-white z-30 rounded-lg shadow-md w-full  min-h-[400px]'>
           <div className='mt-2'>
             <h3 className='text-xl font-bold uppercase my-5 font-montserrat'>Subscription</h3>

@@ -1,46 +1,10 @@
 import CollapsibleCard from '@/components/CollapsibleCard';
 import MapContainer from '@/components/MapContainer';
 import QuoteBlock from '@/components/QuoteBlock';
-import ChoroplethMap from '@/components/ui/ChoroplethMap';
-import { useGetBoundaryDataBulkQuery, useGetChartDataBulkQuery } from '@/services/map';
 import NeedsCards from '@/static/NeedsCards';
-import { DataPointGeneratorName } from '@/types/ChartIds';
-import { transformToGeoJSON } from '@/utils/transformGeoJSON';
-import { Map } from 'mapbox-gl';
-import { useEffect, useRef, useState } from 'react';
-
-const params = [
-  {
-    geoId: '48',
-    id: '65a6952ca3f05308cc4f280c',
-    regionSetup: {
-      peers: 'none',
-      segments: 'county',
-    },
-  },
-];
+import { ChartId, DataPointGeneratorName } from '@/types/ChartIds';
 
 const NeedsTwo = () => {
-  const mapRef = useRef<Map>();
-
-  const [geoJsonFeatures, setGeoJsonFeatures] =
-    useState<GeoJSON.FeatureCollection<GeoJSON.Geometry>>();
-
-  const { data: boundaries } = useGetBoundaryDataBulkQuery(params);
-  const { data: choroplethData } = useGetChartDataBulkQuery(params);
-
-  useEffect(() => {
-    if (boundaries && choroplethData) {
-      setGeoJsonFeatures(
-        transformToGeoJSON(
-          boundaries,
-          choroplethData,
-          DataPointGeneratorName.internetwithdeviceshare,
-        ),
-      );
-    }
-  }, [boundaries, choroplethData]);
-
   return (
     <div>
       <div className='w-screen h-full bg-[#FFFDF6] px-4'>
@@ -82,11 +46,12 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={68}
                 stackedBarGoal={80}
-                // rightPanelContent={<MapContainer />}
                 rightPanelContent={
-                  geoJsonFeatures && (
-                    <ChoroplethMap geoJSONFeatureCollection={geoJsonFeatures} mapRef={mapRef} />
-                  )
+                  <MapContainer
+                    shouldDropdownShow={false}
+                    chartId={ChartId.TXAdoption}
+                    dataPointerGenerator={DataPointGeneratorName.internetwithdeviceshare}
+                  />
                 }
                 strategies={[
                   'Partner with and fund statewide organizations',
@@ -121,7 +86,7 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={59}
                 stackedBarGoal={50}
-                rightPanelContent={<MapContainer />}
+                rightPanelContent={<MapContainer shouldDropdownShow={false} />}
                 strategies={['Promote internet adoption']}
               />
               <CollapsibleCard
