@@ -1,4 +1,4 @@
-import HeroLayout from './HeroLayout';
+// import HeroLayout from './HeroLayout';
 import IntroPage from '../pages/IntroPage';
 import VisionPage from '../pages/VisionPage';
 import NeedsAndAssetsPage from '../pages/NeedsAndAssetsPage';
