@@ -8,17 +8,20 @@ import { bbox } from '@turf/turf';
 import { ChartId, DataPointGeneratorName } from '@/types/ChartIds';
 import { useGetBoundaryDataBulkQuery, useGetChartDataBulkQuery } from '@/services/map';
 import { getColorStops } from '@/utils/getColorStop';
+import Legend from './ui/Legend';
 
 interface MapContainerProps {
   chartId?: ChartId;
   dataPointerGenerator?: DataPointGeneratorName;
   shouldDropdownShow?: boolean;
+  mapSource?: string;
 }
 
 const MapContainer = ({
   chartId = ChartId.TXAccess,
   dataPointerGenerator = DataPointGeneratorName.noInternetProportion,
   shouldDropdownShow = true,
+  mapSource = 'Source',
 }: MapContainerProps) => {
   const mapRef = useRef<Map>();
 
@@ -45,6 +48,7 @@ const MapContainer = ({
       setGeoJsonFeatures(transformToGeoJSON(boundaries, choroplethData, dataPointerGenerator));
     }
   }, [boundaries, choroplethData]);
+  const colorStops = geoJsonFeatures ? getColorStops(geoJsonFeatures) : null;
 
   // console.log(boundaryData);
 
@@ -80,28 +84,35 @@ const MapContainer = ({
   return (
     <>
       {geoJsonFeatures && (
-        <ChoroplethMap
-          geoJSONFeatureCollection={geoJsonFeatures}
-          colorStops={getColorStops(geoJsonFeatures)}
-          mapRef={mapRef}
-        >
-          {shouldDropdownShow && (
-            <select
-              value={selectedCounty}
-              onChange={handleCountySelect}
-              className='absolute top-10 left-0 m-5 h-20 z-10 shadow-xl bg-black text-white'
-            >
-              <option value='' className='bg-black'>
-                Zoom to...
-              </option>
-              {counties.map((county, index) => (
-                <option key={index} value={county.name} className='bg-black'>
-                  {county.name}
+        <>
+          <ChoroplethMap
+            geoJSONFeatureCollection={geoJsonFeatures}
+            colorStops={getColorStops(geoJsonFeatures)}
+            mapRef={mapRef}
+          >
+            {shouldDropdownShow && (
+              <select
+                value={selectedCounty}
+                onChange={handleCountySelect}
+                className='absolute top-10 left-0 m-5 h-20 z-10 shadow-xl bg-black text-white'
+              >
+                <option value='' className='bg-black'>
+                  Zoom to...
                 </option>
-              ))}
-            </select>
-          )}
-        </ChoroplethMap>
+                {counties.map((county, index) => (
+                  <option key={index} value={county.name} className='bg-black'>
+                    {county.name}
+                  </option>
+                ))}
+              </select>
+            )}
+          </ChoroplethMap>
+          <div className='my-2 text-xs'>
+            {' '}
+            <span className='uppercase underline'>Source</span>: {mapSource}
+          </div>
+          <div>{colorStops && <Legend colorStops={colorStops} />}</div>
+        </>
       )}
     </>
   );

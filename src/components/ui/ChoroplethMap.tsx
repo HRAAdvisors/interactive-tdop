@@ -26,11 +26,12 @@ export interface ChoroplethMapProps {
   syncCenterAndZoom?: boolean;
 }
 
-const getToolTip = (feature: any) => `
-<strong class="font-sans uppercase">${feature.properties.NAME} County</strong>
-<hr class="my-2"/>
-Percent:
-<span class="font-bold">${feature.properties.dataPoint}</span>
+const getToolTip = (feature: any) => `<div class="text-white">
+<strong class="text-white uppercase">${feature.properties.NAME} County</strong>
+<br>
+<span class="text-white font-bold">${feature.properties.dataPoint}%</span>
+of Households
+</div>
 `;
 
 const ChoroplethMap = ({
@@ -123,7 +124,8 @@ const ChoroplethMap = ({
             '#ffffff',
             ..._.flatMap(colorStops, (stop) => [stop.step, stop.color]),
           ],
-          'fill-opacity': 1,
+          'fill-opacity': 1, // Initialize with zero opacity
+          'fill-outline-color': 'white',
         },
       },
       'settlement-subdivision-label',

@@ -70,3 +70,13 @@ body {
   border-width: 8px 12px 8px 0;
   border-color: transparent #fff transparent transparent;
 }
+
+.mapboxgl-popup-content {
+  background-color: #111 !important;
+  border-radius: 0px !important;
+  color:white;
+}
+
+.mapboxgl-popup-tip {
+  border-style: #111 !important;
+}
