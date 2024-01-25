@@ -8,12 +8,11 @@ interface CollapsibleCardProps {
   goalTitle: string;
   description: ReactNode;
   mapTitle?: string; // If this is optional, mark it as such
-  mapSource?: string; // If this is optional, mark it as such
   targetText: ReactNode;
   stackedBarData: number;
   stackedBarGoal: number;
-  // leftPanelContent: ReactNode;
-  rightPanelContent: ReactNode;
+  leftPanelContent: ReactNode;
+  // rightPanelContent: ReactNode;
   strategies: string[]; // Define as an array of strings
 }
 
@@ -23,11 +22,10 @@ const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
   goalTitle,
   description,
   mapTitle,
-  mapSource,
   targetText,
   stackedBarData,
   stackedBarGoal,
-  rightPanelContent,
+  leftPanelContent,
   strategies,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -79,13 +77,10 @@ const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
             {/* Left Panel Content */}
             <div className='col-span-12 md:col-span-6 md:col-start-2'>
               <p className='uppercase underline font-medium my-4'>{mapTitle}</p>
-              <div className='h-[50vh]'>{rightPanelContent}</div>
-              <p className='my-4'>
-                <span className='underline uppercase'>Source</span>: {mapSource}
-              </p>
+              <div className='h-[50vh]'>{leftPanelContent}</div>
             </div>
             {/* Right Panel Content */}
-            <div className='col-span-12 md:col-span-3 md:col-start-9'>
+            <div className='mt-20 md:mt-0 col-span-12 md:col-span-3 md:col-start-9'>
               <p className='uppercase underline font-medium my-4'>2030 Target</p>
               <div className='my-4'>{targetText}</div>
               <StackedBar data={stackedBarData} goal={stackedBarGoal} isOpen={isOpen} />

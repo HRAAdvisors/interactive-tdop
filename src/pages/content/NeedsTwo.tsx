@@ -22,7 +22,6 @@ const NeedsTwo = () => {
                 color='#333333'
                 goalTitle='Increase the percentage of Texans with reliable broadband subscriptions available in their homes.'
                 mapTitle='Households by Subscription Share'
-                mapSource='FCC National Broadband Data '
                 description={
                   <div>
                     <p className='mb-2'>
@@ -46,7 +45,7 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={68}
                 stackedBarGoal={80}
-                rightPanelContent={
+                leftPanelContent={
                   <MapContainer
                     shouldDropdownShow={false}
                     chartId={ChartId.TXAdoption}
@@ -63,8 +62,7 @@ const NeedsTwo = () => {
                 taskNumber='2'
                 color='#002768'
                 goalTitle='Decrease the percentage of individuals who cite cost as a barrier to home internet service'
-                // mapTitle='Households by Cost as a Barrier to Subscription'
-                mapSource='Southwest Focus Group Session'
+                mapTitle='Households by Cost as a Barrier to Subscription'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -86,15 +84,20 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={59}
                 stackedBarGoal={50}
-                rightPanelContent={<MapContainer shouldDropdownShow={false} />}
-                strategies={['Promote internet adoption']}
+                leftPanelContent={
+                  <MapContainer
+                    shouldDropdownShow={false}
+                    chartId={ChartId.TXAdoption}
+                    dataPointerGenerator={DataPointGeneratorName.internetwithdeviceshare}
+                  />
+                }
+                strategies={['Fund local partners', 'Promote internet adoption']}
               />
               <CollapsibleCard
                 taskNumber='3'
                 color='#BE0B31'
                 goalTitle='Increase the percentage of Texans who are aware of and enrolled in the Affordable Connectivity Program (ACP) and/or other low-cost or subsidized internet service options.'
                 mapTitle='Eligible Households by Subscription in ACP'
-                mapSource='ACS 2021 5-Year Estimates'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -115,7 +118,13 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={38}
                 stackedBarGoal={60}
-                rightPanelContent={<MapContainer />}
+                leftPanelContent={
+                  <MapContainer
+                    shouldDropdownShow={false}
+                    chartId={ChartId.TXAdoption}
+                    dataPointerGenerator={DataPointGeneratorName.internetwithdeviceshare}
+                  />
+                }
                 strategies={['Promote internet adoption']}
               />
             </div>
@@ -158,7 +167,7 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={11}
                 stackedBarGoal={10}
-                rightPanelContent={<MapContainer />}
+                leftPanelContent={<MapContainer />}
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
@@ -184,7 +193,7 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={16}
                 stackedBarGoal={25}
-                rightPanelContent={<MapContainer />}
+                leftPanelContent={<MapContainer />}
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
@@ -231,7 +240,7 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={88}
                 stackedBarGoal={95}
-                rightPanelContent={<MapContainer />}
+                leftPanelContent={<MapContainer />}
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Maintain a living digital opportunity plan',
@@ -241,7 +250,6 @@ const NeedsTwo = () => {
                 taskNumber='2'
                 color='#002768'
                 goalTitle='Increase the availability of digital literacy programs and services.'
-                mapSource='Southwest Focus Group Session'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -258,7 +266,7 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={16}
                 stackedBarGoal={25}
-                rightPanelContent={<QuoteBlock quote={NeedsCards.KPI3_3.quote} />}
+                leftPanelContent={<QuoteBlock quote={NeedsCards.KPI3_3.quote} />}
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
@@ -268,7 +276,6 @@ const NeedsTwo = () => {
                 taskNumber='3'
                 color='#002768'
                 goalTitle='Increase the percentage of Texas workers who have the level of digital skills training jobs require.'
-                mapSource='Southwest Focus Group Session'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -285,7 +292,7 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={45}
                 stackedBarGoal={55}
-                rightPanelContent={<QuoteBlock quote={NeedsCards.KPI3_3.quote} />}
+                leftPanelContent={<QuoteBlock quote={NeedsCards.KPI3_3.quote} />}
                 strategies={['Partner with and fund statewide organizations']}
               />
             </div>
@@ -328,7 +335,7 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={86}
                 stackedBarGoal={99}
-                rightPanelContent={<MapContainer />}
+                leftPanelContent={<MapContainer />}
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
@@ -371,7 +378,7 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={82}
                 stackedBarGoal={90}
-                rightPanelContent={<MapContainer />}
+                leftPanelContent={<MapContainer />}
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
