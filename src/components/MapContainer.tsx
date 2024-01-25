@@ -7,6 +7,7 @@ import ChoroplethMap from './ui/ChoroplethMap';
 import { bbox } from '@turf/turf';
 import { ChartId, DataPointGeneratorName } from '@/types/ChartIds';
 import { useGetBoundaryDataBulkQuery, useGetChartDataBulkQuery } from '@/services/map';
+import { getColorStops } from '@/utils/getColorStop';
 
 interface MapContainerProps {
   chartId?: ChartId;
@@ -79,7 +80,11 @@ const MapContainer = ({
   return (
     <>
       {geoJsonFeatures && (
-        <ChoroplethMap geoJSONFeatureCollection={geoJsonFeatures} mapRef={mapRef}>
+        <ChoroplethMap
+          geoJSONFeatureCollection={geoJsonFeatures}
+          colorStops={getColorStops(geoJsonFeatures)}
+          mapRef={mapRef}
+        >
           {shouldDropdownShow && (
             <select
               value={selectedCounty}
