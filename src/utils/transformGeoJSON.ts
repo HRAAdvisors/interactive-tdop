@@ -53,8 +53,8 @@ export const getAggregateChartData = (choroplethData: ChartBulkResponse) => {
       .groupBy('geo_id')
       .mapValues((inf) =>
         _.chain(inf)
-          .groupBy('question_name')
-          .mapValues((infGroup) => _.first(infGroup))
+          .groupBy('response')
+          .mapValues((infGroup) => _.nth(infGroup, 3))
           .value(),
       )
       .value();
@@ -69,7 +69,7 @@ export const getAggregateChartData = (choroplethData: ChartBulkResponse) => {
       .mapValues((inf) =>
         _.chain(inf)
           .groupBy('question_name')
-          .mapValues((infGroup) => _.first(infGroup))
+          .mapValues((infGroup) => _.nth(infGroup, 2))
           .value(),
       )
       .value();
@@ -151,8 +151,8 @@ const dataPointGenerator = (
     dataPointGeneratorName === DataPointGeneratorName.digitalLiteracySkills &&
     ChartId.TXDigitalLiteracy === chartId
   ) {
-    return (
-      parseFloat(aggregatedChoroplethData[geoId]['dls1_1']['percent'])
+    return (100 - 
+      parseFloat(aggregatedChoroplethData[geoId]['Not comfortable at all']['percent'])
     ).toFixed(2);
   } else if (
     dataPointGeneratorName === DataPointGeneratorName.acpEligibleEnrolled &&
@@ -173,7 +173,8 @@ const dataPointGenerator = (
     ChartId.TXPublicResourceAccess === chartId
   ) {
     console.log(aggregatedChoroplethData);
-    return (
+
+    return (100 - 
       parseFloat(aggregatedChoroplethData[geoId]['hid7_1']['percent'])
     ).toFixed(2);
   } else {

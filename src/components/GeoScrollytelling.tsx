@@ -26,8 +26,8 @@ const contents = [
     dataPointName: DataPointGeneratorName.noInternetProportion,
     getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
       <div className='mt-2'>
-        <h3 className='text-xl font-bold uppercase my-5 font-montserrat'>Adoption Matters</h3>
-        <div className='mt-2 text-xl font-helvetica text-justify'>
+        <h3 className='text-xl font-bold uppercase my-5'>Adoption Matters</h3>
+        <div className='mt-2 text-md'>
           <p className='py-2'>
             31% of Texas households do not subscribe to high-speed internet at home.{' '}
           </p>
@@ -40,7 +40,7 @@ const contents = [
           <p className='mt-2 font-bold text-xs'>
             Percent of Households with High-Speed Internet at Home
           </p>
-          <p className='text-xs'>Source: ACS 5-Year Estimates, 2017-2021</p>
+          <p className='text-xs my-2'>Source: ACS 5-Year Estimates, 2017-2021</p>
         </div>
       </div>
     ),
@@ -60,8 +60,8 @@ const contents = [
     dataPointName: DataPointGeneratorName.hispeedShare,
     getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
       <div className='mt-2'>
-        <h3 className='text-xl font-bold uppercase my-5 font-montserrat'>Availability Matters</h3>
-        <div className='mt-2 text-xl font-helvetica text-justify'>
+        <h3 className='text-xl font-bold uppercase my-5'>Availability Matters</h3>
+        <div className='mt-2 text-md'>
           <p className='py-2'>
             Why do people not subscribe? In some cases, there’s no broadband service where they
             live. Separate from the TDOP, there is another program building new high-speed networks
@@ -76,7 +76,7 @@ const contents = [
           <p className='mt-2 font-bold text-xs'>
             Percent of Households with high-speed internet at home
           </p>
-          <p className='text-xs'>
+          <p className='text-xs my-2'>
             Source: Federal Communications Comission (FCC) National Broadband Map
           </p>
         </div>
@@ -88,35 +88,160 @@ const contents = [
     data: [
       {
         geoId: '48',
-        id: ChartId.TXCostBarrier,
+        id: ChartId.TXAdoption,
         regionSetup: {
           peers: 'none',
-          segments: '65428489b4440631aad90229',
+          segments: 'county',
         },
       },
     ],
-    dataPointName: DataPointGeneratorName.costAsBarrier,
+    dataPointName: DataPointGeneratorName.hispeedShare,
     getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
       <div className='mt-2'>
-        <h3 className='text-xl font-bold uppercase my-5 font-montserrat'>Subscription</h3>
-        <div className='mt-2 text-xl font-helvetica text-justify'>
+        <h3 className='text-xl font-bold uppercase my-5'>Money Matters</h3>
+        <div className='mt-2 text-md'>
           <p className='py-2'>
-            31% of Texas households do not subscribe to high-speed internet at home.
-          </p>
-          <p className='py-2'>
-            Statewide, region A, region, and region C have the lowest rates of high-speed internet
-            subscription at home.
+            Many people do not have high speed internet at home because it is too expensive. 
           </p>
           <div className='mt-2'></div>
           {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
           <p className='mt-2 font-bold text-xs'>
-            Percent of Households with high-speed internet at home
+            Percent of Individuals Paying Over $100/month for Internet
           </p>
-          <p className='text-xs'>Source: ACS 5-Year Estimates, 2017-2021</p>
+          <p className='text-xs my-2'>Source: 2023 Texas Digital Opportunity Survey</p>
         </div>
       </div>
     ),
   },
+  {
+    id: 4,
+    data: [
+      {
+        geoId: '48',
+        id: ChartId.TXAdoption,
+        regionSetup: {
+          peers: 'none',
+          segments: 'county',
+        },
+      },
+    ],
+    dataPointName: DataPointGeneratorName.hispeedShare,
+    getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
+      <div className='mt-2'>
+        <h3 className='text-xl font-bold uppercase my-5'>Speed and Reliability Matter</h3>
+        <div className='mt-2 text-md'>
+          <p className='py-2'>
+            People who do not have reliable high-speed internet may struggle to access online
+            resources, educational opportunities, and digital services like telehealth
+            appointments. 
+          </p>
+          <div className='mt-4'></div>
+          {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
+          <p className='mt-2 font-bold text-xs'>
+            Percent of Households Underserved by High-Speed Internet
+          </p>
+          <p className='text-xs my-2'>
+            Source: Federal Communications Comission (FCC) National Broadband Map
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 5,
+    data: [
+      {
+        geoId: '48',
+        id: ChartId.TXAdoption,
+        regionSetup: {
+          peers: 'none',
+          segments: 'county',
+        },
+      },
+    ],
+    dataPointName: DataPointGeneratorName.hispeedShare,
+    getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
+      <div className='mt-2'>
+        <h3 className='text-xl font-bold uppercase my-5'>Devices Matter</h3>
+        <div className='mt-2 text-md'>
+          <p className='py-2'>
+            People who do not have computers or internet-enabled devices at home are left out of
+            digital opportunity. 
+          </p>
+          <div className='mt-4'></div>
+          {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
+          <p className='mt-2 font-bold text-xs'>Percent of Households With Only Smartphones</p>
+          <p className='text-xs my-2'>Source: ACS 5-Year Estimates, 2017-2021</p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 6,
+    data: [
+      {
+        geoId: '48',
+        id: ChartId.TXAdoption,
+        regionSetup: {
+          peers: 'none',
+          segments: 'county',
+        },
+      },
+    ],
+    dataPointName: DataPointGeneratorName.hispeedShare,
+    getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
+      <div className='mt-2'>
+        <h3 className='text-xl font-bold uppercase my-5'>Devices Matter</h3>
+        <div className='mt-2 text-md'>
+          <p className='py-2'>
+            The Internet can be an intimidating and even a risky place unless people have the
+            resources and skills to navigate it safely. For true digital opportunity, users need to
+            have skills and tools to use the internet safely and easily.
+          </p>
+          <div className='mt-4'></div>
+          {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
+          <p className='mt-2 font-bold text-xs'>
+            Percent of Individuals Confident in Protecting Themselves from Online Threats
+          </p>
+          <p className='text-xs my-2'>Source: 2023 Texas Digital Opportunity Survey</p>
+        </div>
+      </div>
+    ),
+  },
+  // {
+  //   id: 3,
+  //   data: [
+  //     {
+  //       geoId: '48',
+  //       id: ChartId.TXCostBarrier,
+  //       regionSetup: {
+  //         peers: 'none',
+  //         segments: '65428489b4440631aad90229',
+  //       },
+  //     },
+  //   ],
+  //   dataPointName: DataPointGeneratorName.costAsBarrier,
+  //   getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
+  //     <div className='mt-2'>
+  //       <h3 className='text-xl font-bold uppercase my-5 font-montserrat'>Subscription</h3>
+  //       <div className='mt-2 text-xl font-helvetica text-justify'>
+  //         <p className='py-2'>
+  //           31% of Texas households do not subscribe to high-speed internet at home.
+  //         </p>
+  //         <p className='py-2'>
+  //           Statewide, region A, region, and region C have the lowest rates of high-speed internet
+  //           subscription at home.
+  //         </p>
+  //         <div className='mt-2'></div>
+  //         {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
+  //         <p className='mt-2 font-bold text-xs'>
+  //           Percent of Households with high-speed internet at home
+  //         </p>
+  //         <p className='text-xs'>Source: ACS 5-Year Estimates, 2017-2021</p>
+  //       </div>
+  //     </div>
+  //   ),
+  // },
 ];
 
 const GeoScrollytelling = () => {
@@ -170,7 +295,7 @@ const GeoScrollytelling = () => {
             if (data) setInput(data); // Set the input based on the received data
           }}
         >
-          <Step>
+          {/* <Step>
             <div className='w-screen h-screen text-white bg-black'>
               <p className='w-[60rem] p-40'>
                 The internet has transformed almost every aspect of our lives and society, but{' '}
@@ -198,7 +323,7 @@ const GeoScrollytelling = () => {
                 matters for you and your community. 
               </p>
             </div>
-          </Step>
+          </Step> */}
           {_.map(contents, (d, i) => (
             <Step data={d} key={i + 1}>
               <div className='h-screen w-full z-10 bg-transparent flex justify-center items-center'>

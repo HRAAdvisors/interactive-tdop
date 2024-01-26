@@ -109,7 +109,7 @@ const MapContainer = ({
               </select>
             )}
           </ChoroplethMap>
-          <div className='my-2 text-xs'>
+          <div className='my-4 text-xs'>
             {' '}
             <span className='uppercase underline'>Source</span>: {mapSource}
           </div>

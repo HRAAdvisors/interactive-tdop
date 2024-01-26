@@ -29,8 +29,7 @@ export interface ChoroplethMapProps {
 const getToolTip = (feature: any) => `<div class="text-white">
 <strong class="text-white uppercase">${feature.properties.NAME}</strong>
 <br>
-<span class="text-white font-bold">${feature.properties.dataPoint}%</span>
-of Households
+<span class="">${feature.properties.dataPoint}%</span>
 </div>
 `;
 

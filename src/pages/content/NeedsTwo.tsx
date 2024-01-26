@@ -20,7 +20,7 @@ const NeedsTwo = () => {
               <CollapsibleCard
                 taskNumber='1'
                 goalTitle='Increase the percentage of Texans with reliable broadband subscriptions available in their homes.'
-                mapTitle='Households by Subscription Share'
+                mapTitle='Households with High-speed Internet'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -50,6 +50,7 @@ const NeedsTwo = () => {
                     chartId={ChartId.TXSubscription}
                     segmentId={SegmentId.regions}
                     dataPointerGenerator={DataPointGeneratorName.broadbandShare}
+                    mapSource='ACS 5-Year Estimates, 2017-2021'
                   />
                 }
                 strategies={[
@@ -61,7 +62,7 @@ const NeedsTwo = () => {
               <CollapsibleCard
                 taskNumber='2'
                 goalTitle='Decrease the percentage of individuals who cite cost as a barrier to home internet service'
-                mapTitle='Households by Cost as a Barrier to Subscription'
+                mapTitle='Texans Reporting Cost as a Barrier to Subscription'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -89,6 +90,7 @@ const NeedsTwo = () => {
                     chartId={ChartId.TXCostBarrier}
                     segmentId={SegmentId.regions}
                     dataPointerGenerator={DataPointGeneratorName.costAsBarrier}
+                    mapSource='2023 Texas Digital Opportunity Survey'
                   />
                 }
                 strategies={['Fund local partners', 'Promote internet adoption']}
@@ -96,7 +98,7 @@ const NeedsTwo = () => {
               <CollapsibleCard
                 taskNumber='3'
                 goalTitle='Increase the percentage of Texans who are aware of and enrolled in the Affordable Connectivity Program (ACP) and/or other low-cost or subsidized internet service options.'
-                mapTitle='Eligible Households by Subscription in ACP'
+                mapTitle='Eligible Household Subscribed in the Affordable Connectivity Program (ACP)'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -123,6 +125,7 @@ const NeedsTwo = () => {
                     chartId={ChartId.TXACP}
                     segmentId={SegmentId.regions}
                     dataPointerGenerator={DataPointGeneratorName.acpEligibleEnrolled}
+                    mapSource='Universal Service Administrative Company'
                   />
                 }
                 strategies={['Promote internet adoption']}
@@ -142,6 +145,7 @@ const NeedsTwo = () => {
               <CollapsibleCard
                 taskNumber='1'
                 goalTitle='Increase the percentage of Texans who have home access to affordable internet-enabled devices other than a smartphone.'
+                mapTitle='Households with Smartphones Only'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -191,7 +195,16 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={16}
                 stackedBarGoal={25}
-                leftPanelContent={<QuoteBlock quote={NeedsCards.KPI3_3.quote} />}
+                leftPanelContent={
+                  <div>
+                    <QuoteBlock quote={NeedsCards.KPI3_2.quote} />
+                    <div className='my-4 text-xs'>
+                      {' '}
+                      <span className='uppercase underline'>Source</span>: Comment from a
+                      Participant at the Alpine Public Meeting
+                    </div>
+                  </div>
+                }
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
@@ -213,6 +226,7 @@ const NeedsTwo = () => {
               <CollapsibleCard
                 taskNumber='1'
                 goalTitle='Increase the percentage of Texans who have basic digital literacy skills.'
+                mapTitle='Texans Reporting Comfort with Basic Digital Literacy Skills'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -243,6 +257,7 @@ const NeedsTwo = () => {
                     chartId={ChartId.TXDigitalLiteracy}
                     segmentId={SegmentId.regions}
                     dataPointerGenerator={DataPointGeneratorName.digitalLiteracySkills}
+                    mapSource='2023 Texas Digital Opportunity Survey'
                   />
                 }
                 strategies={[
@@ -269,7 +284,16 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={16}
                 stackedBarGoal={25}
-                leftPanelContent={<QuoteBlock quote={NeedsCards.KPI3_3.quote} />}
+                leftPanelContent={
+                  <div>
+                    <QuoteBlock quote={NeedsCards.KPI3_2.quote} />
+                    <div className='my-4 text-xs'>
+                      {' '}
+                      <span className='uppercase underline'>Source</span>: Community Development
+                      Nonprofit in Potter County
+                    </div>
+                  </div>
+                }
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
@@ -294,7 +318,16 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={45}
                 stackedBarGoal={55}
-                leftPanelContent={<QuoteBlock quote={NeedsCards.KPI3_3.quote} />}
+                leftPanelContent={
+                  <div>
+                    <QuoteBlock quote={NeedsCards.KPI3_3.quote} />
+                    <div className='my-4 text-xs'>
+                      {' '}
+                      <span className='uppercase underline'>Source</span>: Comment from a
+                      Participant at the Borger Public Meeting
+                    </div>
+                  </div>
+                }
                 strategies={['Partner with and fund statewide organizations']}
               />
             </div>
@@ -312,6 +345,7 @@ const NeedsTwo = () => {
               <CollapsibleCard
                 taskNumber='1'
                 goalTitle='Increase the percentage of Texans who are familiar with cybersecurity and online privacy measures.'
+                mapTitle='Texans Reporting Awareness and Usage Cybersecurity Measures'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -342,6 +376,7 @@ const NeedsTwo = () => {
                     chartId={ChartId.TXCyberSecurity}
                     segmentId={SegmentId.regions}
                     dataPointerGenerator={DataPointGeneratorName.cybersecurityAwareness}
+                    mapSource='2023 Texas Digital Opportunity Survey'
                   />
                 }
                 strategies={[
@@ -364,6 +399,7 @@ const NeedsTwo = () => {
               <CollapsibleCard
                 taskNumber='1'
                 goalTitle='Increase the percentage of Texans who utilize and understand how to use the internet for public resources and services.  '
+                mapTitle='Texans Reporting Usage of the Internet to Access Healthcare'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -391,6 +427,7 @@ const NeedsTwo = () => {
                     chartId={ChartId.TXPublicResourceAccess}
                     segmentId={SegmentId.regions}
                     dataPointerGenerator={DataPointGeneratorName.publicResourceAccess}
+                    mapSource='2023 Texas Digital Opportunity Survey'
                   />
                 }
                 strategies={[
