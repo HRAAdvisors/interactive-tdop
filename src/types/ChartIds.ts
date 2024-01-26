@@ -1,9 +1,19 @@
-export  enum ChartId {
+export enum ChartId {
   TXAccess = "6582102b903ab0943c07dbf8",
   TXAdoption = "65a6952ca3f05308cc4f280c",
-  TxReliability = "65a696bfe0bd8303ad697348"
+  TxReliability = "65a696bfe0bd8303ad697348",
+  TXCostBarrier = "65b289e959e498194521b867",
+  TXSubscription = "65b2898459e498194521b445",
+  TXDigitalLiteracy = "65b28b888acf87538ccd1776",
+  TXACP = "65b3dc52d10754e6790d81de",
+  TXCyberSecurity ="65b28c278acf87538ccd19bf",
+  TXPublicResourceAccess = "65b28c7c59e498194521c4da"
 }
 
+export enum SegmentId {
+  counties = "county",
+  regions = "65428489b4440631aad90229"
+}
 
 export enum DataPointGeneratorName {
   noInternetProportion,
@@ -12,5 +22,11 @@ export enum DataPointGeneratorName {
   internetSmartphoneOnlyShare,
   internetwithdeviceshare,
   lowIncomeInternetwithdeviceshare,
-  bslUnserved
+  bslUnserved,
+  costAsBarrier,
+  broadbandShare,
+  digitalLiteracySkills,
+  acpEligibleEnrolled,
+  cybersecurityAwareness,
+  publicResourceAccess
 }

@@ -5,13 +5,14 @@ import _ from 'lodash';
 import { transformToGeoJSON } from '@/utils/transformGeoJSON';
 import ChoroplethMap from './ui/ChoroplethMap';
 import { bbox } from '@turf/turf';
-import { ChartId, DataPointGeneratorName } from '@/types/ChartIds';
+import { ChartId, DataPointGeneratorName, SegmentId } from '@/types/ChartIds';
 import { useGetBoundaryDataBulkQuery, useGetChartDataBulkQuery } from '@/services/map';
 import { getColorStops } from '@/utils/getColorStop';
 import Legend from './ui/Legend';
 
 interface MapContainerProps {
   chartId?: ChartId;
+  segmentId?: SegmentId;
   dataPointerGenerator?: DataPointGeneratorName;
   shouldDropdownShow?: boolean;
   mapSource?: string;
@@ -20,6 +21,7 @@ interface MapContainerProps {
 const MapContainer = ({
   chartId = ChartId.TXAccess,
   dataPointerGenerator = DataPointGeneratorName.noInternetProportion,
+  segmentId = SegmentId.counties,
   shouldDropdownShow = true,
   mapSource = 'Source',
 }: MapContainerProps) => {
@@ -31,7 +33,7 @@ const MapContainer = ({
       id: chartId,
       regionSetup: {
         peers: 'none',
-        segments: 'county',
+        segments: segmentId,
       },
     },
   ];
@@ -107,7 +109,7 @@ const MapContainer = ({
               </select>
             )}
           </ChoroplethMap>
-          <div className='my-2 text-xs'>
+          <div className='my-4 text-xs'>
             {' '}
             <span className='uppercase underline'>Source</span>: {mapSource}
           </div>

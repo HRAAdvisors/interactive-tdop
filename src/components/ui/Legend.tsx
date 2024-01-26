@@ -11,7 +11,7 @@ const Legend = ({ colorStops }: LegendProps) => {
       <div className='w-full text-[8px] leading-3 grid grid-cols-5'>
         {_.map(colorStops, (stop, index) => (
           <div className={`-ml-1 ${index == _.size(colorStops) - 1 && 'flex justify-arround'} `}>
-            <span>{Math.round(stop.step * 100)}% </span>
+            <span>{Math.round(stop.step)}% </span>
             {index == _.size(colorStops) - 1 && <div className='-mr-2 w-full text-right'>100%</div>}
           </div>
         ))}

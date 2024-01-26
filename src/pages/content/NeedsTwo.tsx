@@ -2,14 +2,14 @@ import CollapsibleCard from '@/components/CollapsibleCard';
 import MapContainer from '@/components/MapContainer';
 import QuoteBlock from '@/components/QuoteBlock';
 import NeedsCards from '@/static/NeedsCards';
-import { ChartId, DataPointGeneratorName } from '@/types/ChartIds';
+import { ChartId, DataPointGeneratorName, SegmentId } from '@/types/ChartIds';
 
 const NeedsTwo = () => {
   return (
     <div>
       <div className='w-screen h-full bg-[#FFFDF6] px-4'>
         <div className='grid md:grid-cols-12'>
-          {/* GOAL 1 */}
+          {/* --------- GOAL 1 ------------ */}
           <div className='flex flex-col md:col-start-4 md:col-span-6 justify-center items-center'>
             <div className='mx-auto mb-20'>
               <h1 className='md:text-4xl text-2xl uppercase my-5 font-montserrat'>Goal No. 1</h1>
@@ -20,7 +20,7 @@ const NeedsTwo = () => {
               <CollapsibleCard
                 taskNumber='1'
                 goalTitle='Increase the percentage of Texans with reliable broadband subscriptions available in their homes.'
-                mapTitle='Households by Subscription Share'
+                mapTitle='Households with High-speed Internet'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -47,8 +47,10 @@ const NeedsTwo = () => {
                 leftPanelContent={
                   <MapContainer
                     shouldDropdownShow={false}
-                    chartId={ChartId.TXAdoption}
-                    dataPointerGenerator={DataPointGeneratorName.internetwithdeviceshare}
+                    chartId={ChartId.TXSubscription}
+                    segmentId={SegmentId.regions}
+                    dataPointerGenerator={DataPointGeneratorName.broadbandShare}
+                    mapSource='ACS 5-Year Estimates, 2017-2021'
                   />
                 }
                 strategies={[
@@ -60,7 +62,7 @@ const NeedsTwo = () => {
               <CollapsibleCard
                 taskNumber='2'
                 goalTitle='Decrease the percentage of individuals who cite cost as a barrier to home internet service'
-                mapTitle='Households by Cost as a Barrier to Subscription'
+                mapTitle='Texans Reporting Cost as a Barrier to Subscription'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -85,8 +87,10 @@ const NeedsTwo = () => {
                 leftPanelContent={
                   <MapContainer
                     shouldDropdownShow={false}
-                    chartId={ChartId.TXAdoption}
-                    dataPointerGenerator={DataPointGeneratorName.internetwithdeviceshare}
+                    chartId={ChartId.TXCostBarrier}
+                    segmentId={SegmentId.regions}
+                    dataPointerGenerator={DataPointGeneratorName.costAsBarrier}
+                    mapSource='2023 Texas Digital Opportunity Survey'
                   />
                 }
                 strategies={['Fund local partners', 'Promote internet adoption']}
@@ -94,7 +98,7 @@ const NeedsTwo = () => {
               <CollapsibleCard
                 taskNumber='3'
                 goalTitle='Increase the percentage of Texans who are aware of and enrolled in the Affordable Connectivity Program (ACP) and/or other low-cost or subsidized internet service options.'
-                mapTitle='Eligible Households by Subscription in ACP'
+                mapTitle='Eligible Household Subscribed in the Affordable Connectivity Program (ACP)'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -118,8 +122,10 @@ const NeedsTwo = () => {
                 leftPanelContent={
                   <MapContainer
                     shouldDropdownShow={false}
-                    chartId={ChartId.TXAdoption}
-                    dataPointerGenerator={DataPointGeneratorName.internetwithdeviceshare}
+                    chartId={ChartId.TXACP}
+                    segmentId={SegmentId.regions}
+                    dataPointerGenerator={DataPointGeneratorName.acpEligibleEnrolled}
+                    mapSource='Universal Service Administrative Company'
                   />
                 }
                 strategies={['Promote internet adoption']}
@@ -127,7 +133,7 @@ const NeedsTwo = () => {
             </div>
           </div>
 
-          {/* GOAL 2 */}
+          {/* -------- GOAL 2 -------- */}
           <div className='flex flex-col md:col-start-4 md:col-span-6 justify-center items-center'>
             <div className='mx-auto mb-20'>
               <h1 className='md:text-4xl text-2xl uppercase my-5 font-montserrat'>Goal No. 2</h1>
@@ -139,6 +145,7 @@ const NeedsTwo = () => {
               <CollapsibleCard
                 taskNumber='1'
                 goalTitle='Increase the percentage of Texans who have home access to affordable internet-enabled devices other than a smartphone.'
+                mapTitle='Households with Smartphones Only'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -163,7 +170,7 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={11}
                 stackedBarGoal={10}
-                leftPanelContent={<MapContainer />}
+                leftPanelContent={<MapContainer shouldDropdownShow={false} />}
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
@@ -188,7 +195,16 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={16}
                 stackedBarGoal={25}
-                leftPanelContent={<MapContainer />}
+                leftPanelContent={
+                  <div>
+                    <QuoteBlock quote={NeedsCards.KPI3_2.quote} />
+                    <div className='my-4 text-xs'>
+                      {' '}
+                      <span className='uppercase underline'>Source</span>: Comment from a
+                      Participant at the Alpine Public Meeting
+                    </div>
+                  </div>
+                }
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
@@ -198,7 +214,7 @@ const NeedsTwo = () => {
             </div>
           </div>
 
-          {/* GOAL 3 */}
+          {/* --------- GOAL 3 ------------- */}
           <div className='flex flex-col md:col-start-4 md:col-span-6 justify-center items-center'>
             <div className='mx-auto mb-20'>
               <h1 className='md:text-4xl text-2xl uppercase my-5 font-montserrat'>Goal No. 3</h1>
@@ -210,6 +226,7 @@ const NeedsTwo = () => {
               <CollapsibleCard
                 taskNumber='1'
                 goalTitle='Increase the percentage of Texans who have basic digital literacy skills.'
+                mapTitle='Texans Reporting Comfort with Basic Digital Literacy Skills'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -234,7 +251,15 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={88}
                 stackedBarGoal={95}
-                leftPanelContent={<MapContainer />}
+                leftPanelContent={
+                  <MapContainer
+                    shouldDropdownShow={false}
+                    chartId={ChartId.TXDigitalLiteracy}
+                    segmentId={SegmentId.regions}
+                    dataPointerGenerator={DataPointGeneratorName.digitalLiteracySkills}
+                    mapSource='2023 Texas Digital Opportunity Survey'
+                  />
+                }
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Maintain a living digital opportunity plan',
@@ -259,7 +284,16 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={16}
                 stackedBarGoal={25}
-                leftPanelContent={<QuoteBlock quote={NeedsCards.KPI3_3.quote} />}
+                leftPanelContent={
+                  <div>
+                    <QuoteBlock quote={NeedsCards.KPI3_2.quote} />
+                    <div className='my-4 text-xs'>
+                      {' '}
+                      <span className='uppercase underline'>Source</span>: Community Development
+                      Nonprofit in Potter County
+                    </div>
+                  </div>
+                }
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
@@ -284,13 +318,22 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={45}
                 stackedBarGoal={55}
-                leftPanelContent={<QuoteBlock quote={NeedsCards.KPI3_3.quote} />}
+                leftPanelContent={
+                  <div>
+                    <QuoteBlock quote={NeedsCards.KPI3_3.quote} />
+                    <div className='my-4 text-xs'>
+                      {' '}
+                      <span className='uppercase underline'>Source</span>: Comment from a
+                      Participant at the Borger Public Meeting
+                    </div>
+                  </div>
+                }
                 strategies={['Partner with and fund statewide organizations']}
               />
             </div>
           </div>
 
-          {/* GOAL 4 */}
+          {/* -------- GOAL 4 -------- */}
           <div className='flex flex-col md:col-start-4 md:col-span-6 justify-center items-center'>
             <div className='mx-auto mb-20'>
               <h1 className='md:text-4xl text-2xl uppercase my-5 font-montserrat'>Goal No. 4</h1>
@@ -302,6 +345,7 @@ const NeedsTwo = () => {
               <CollapsibleCard
                 taskNumber='1'
                 goalTitle='Increase the percentage of Texans who are familiar with cybersecurity and online privacy measures.'
+                mapTitle='Texans Reporting Awareness and Usage Cybersecurity Measures'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -326,7 +370,15 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={86}
                 stackedBarGoal={99}
-                leftPanelContent={<MapContainer />}
+                leftPanelContent={
+                  <MapContainer
+                    shouldDropdownShow={false}
+                    chartId={ChartId.TXCyberSecurity}
+                    segmentId={SegmentId.regions}
+                    dataPointerGenerator={DataPointGeneratorName.cybersecurityAwareness}
+                    mapSource='2023 Texas Digital Opportunity Survey'
+                  />
+                }
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
@@ -335,7 +387,7 @@ const NeedsTwo = () => {
             </div>
           </div>
 
-          {/* GOAL 5 */}
+          {/* -------- GOAL 5 -------- */}
           <div className='flex flex-col md:col-start-4 md:col-span-6 justify-center items-center'>
             <div className='mx-auto mb-20'>
               <h1 className='md:text-4xl text-2xl uppercase my-5 font-montserrat'>Goal No. 5</h1>
@@ -347,6 +399,7 @@ const NeedsTwo = () => {
               <CollapsibleCard
                 taskNumber='1'
                 goalTitle='Increase the percentage of Texans who utilize and understand how to use the internet for public resources and services.  '
+                mapTitle='Texans Reporting Usage of the Internet to Access Healthcare'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -368,7 +421,15 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={82}
                 stackedBarGoal={90}
-                leftPanelContent={<MapContainer />}
+                leftPanelContent={
+                  <MapContainer
+                    shouldDropdownShow={false}
+                    chartId={ChartId.TXPublicResourceAccess}
+                    segmentId={SegmentId.regions}
+                    dataPointerGenerator={DataPointGeneratorName.publicResourceAccess}
+                    mapSource='2023 Texas Digital Opportunity Survey'
+                  />
+                }
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',

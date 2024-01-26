@@ -22,9 +22,15 @@ const NeedsCards = {
       kpi: 'KPI 1.2',
       text: 'Decrease the percentage of individuals that cite cost as a barrier to home internet service',
     },
+    KPI2_2: {
+      quote: "People want to connect but don’t know how they can get it. People need to feel confident and to have the education to begin their digital literacy journey."
+    },
+    KPI3_2: {
+      quote: "We work with over 36 different language groups. We do have access to translation services but lack funding to translate the resources available into the various languages we serve."
+    },
     KPI3_3: {
-      quote: "Texas has a unique opportunity to develop a skilled workforce in the digital space. Investments are needed in key pipelines to connect bright individuals to the resources they need to learn skills and technologies for today's economy."
-    }
+      quote: "There is a digital skills gap. People are proficient on tablets and phones but then they get in front of a desktop and they freeze."
+    },
   };
   
   export default NeedsCards;
