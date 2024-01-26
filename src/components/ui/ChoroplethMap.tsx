@@ -27,7 +27,7 @@ export interface ChoroplethMapProps {
 }
 
 const getToolTip = (feature: any) => `<div class="text-white">
-<strong class="text-white uppercase">${feature.properties.NAME} County</strong>
+<strong class="text-white uppercase">${feature.properties.NAME}</strong>
 <br>
 <span class="text-white font-bold">${feature.properties.dataPoint}%</span>
 of Households
@@ -50,7 +50,7 @@ const ChoroplethMap = ({
   tooltipContent = getToolTip,
   padding = 20,
   children,
-  mapContainerClassName = 'relative h-full w-full',
+  mapContainerClassName = 'relative h-full w-full shadow-sm',
   center = getCalculatedCenter(geoJSONFeatureCollection),
   zoom,
   onMove,

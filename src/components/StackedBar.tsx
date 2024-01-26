@@ -21,8 +21,7 @@ const StackedBar = ({ data, goal, isOpen }: { data: number; goal: number; isOpen
       .attr('y', height * 0.1)
       .attr('width', containerWidth)
       .attr('height', height * 0.8)
-      .attr('fill', '#BE0B31');
-
+      .attr('fill', '#FF6989');
     const animateBar = () => {
       const foregroundBar = svg
         .append('rect')
@@ -30,7 +29,7 @@ const StackedBar = ({ data, goal, isOpen }: { data: number; goal: number; isOpen
         .attr('y', height * 0.1)
         .attr('width', 0)
         .attr('height', height * 0.8)
-        .attr('fill', '#FF6989');
+        .attr('fill', '#BE0B31');
 
       foregroundBar
         .transition()

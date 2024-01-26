@@ -26,21 +26,21 @@ const contents = [
     dataPointName: DataPointGeneratorName.noInternetProportion,
     getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
       <div className='mt-2'>
-        <h3 className='text-xl font-bold uppercase my-5 font-montserrat'>Subscription</h3>
+        <h3 className='text-xl font-bold uppercase my-5 font-montserrat'>Adoption Matters</h3>
         <div className='mt-2 text-xl font-helvetica text-justify'>
           <p className='py-2'>
-            31% of Texas households do not subscribe to high-speed internet at home.
+            31% of Texas households do not subscribe to high-speed internet at home.{' '}
           </p>
-          <p className='py-2'>
+          {/* <p className='py-2'>
             Statewide, region A, region, and region C have the lowest rates of high-speed internet
             subscription at home.
-          </p>
+          </p> */}
           <div className='mt-2'></div>
           {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
           <p className='mt-2 font-bold text-xs'>
-            Percent of Households with high-speed access at home
+            Percent of Households with High-Speed Internet at Home
           </p>
-          <p className='text-xs'>Source: Federal Communications Commission (FCC)</p>
+          <p className='text-xs'>Source: ACS 5-Year Estimates, 2017-2021</p>
         </div>
       </div>
     ),
@@ -58,6 +58,44 @@ const contents = [
       },
     ],
     dataPointName: DataPointGeneratorName.hispeedShare,
+    getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
+      <div className='mt-2'>
+        <h3 className='text-xl font-bold uppercase my-5 font-montserrat'>Availability Matters</h3>
+        <div className='mt-2 text-xl font-helvetica text-justify'>
+          <p className='py-2'>
+            Why do people not subscribe? In some cases, there’s no broadband service where they
+            live. Separate from the TDOP, there is another program building new high-speed networks
+            across the state .{' '}
+          </p>
+          {/* <p className='py-2'>
+            Statewide, region A, region, and region C have the lowest rates of high-speed internet
+            subscription at home.
+          </p> */}
+          <div className='mt-2'></div>
+          {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
+          <p className='mt-2 font-bold text-xs'>
+            Percent of Households with high-speed internet at home
+          </p>
+          <p className='text-xs'>
+            Source: Federal Communications Comission (FCC) National Broadband Map
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 3,
+    data: [
+      {
+        geoId: '48',
+        id: ChartId.TXCostBarrier,
+        regionSetup: {
+          peers: 'none',
+          segments: '65428489b4440631aad90229',
+        },
+      },
+    ],
+    dataPointName: DataPointGeneratorName.costAsBarrier,
     getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
       <div className='mt-2'>
         <h3 className='text-xl font-bold uppercase my-5 font-montserrat'>Subscription</h3>
@@ -132,6 +170,35 @@ const GeoScrollytelling = () => {
             if (data) setInput(data); // Set the input based on the received data
           }}
         >
+          <Step>
+            <div className='w-screen h-screen text-white bg-black'>
+              <p className='w-[60rem] p-40'>
+                The internet has transformed almost every aspect of our lives and society, but{' '}
+                <strong>there is a growing divide</strong> between those who can fully access the
+                benefits of the digital world and those who cannot. 
+              </p>
+            </div>
+          </Step>
+          <Step>
+            <div className='w-screen h-screen text-white bg-black'>
+              <p className='w-[60rem] p-40'>
+                <strong>It is time to bridge this divide.</strong> The internet is not a luxury – it
+                is a necessity for education, work, health, safety and staying connected with
+                friends and family. High-speed internet, computing devices, and the skills to use
+                them should be accessible to everyone.
+              </p>
+            </div>
+          </Step>
+          <Step>
+            <div className='w-screen h-screen text-white bg-black'>
+              <p className='w-[60rem] p-40'>
+                <strong>Texas ranks X out of 50 for internet adoption.</strong>
+                <br></br> Scroll to explore which areas and communities are subscribed to fast
+                internet and have internet-enabled devices, and which do not – and why this all
+                matters for you and your community. 
+              </p>
+            </div>
+          </Step>
           {_.map(contents, (d, i) => (
             <Step data={d} key={i + 1}>
               <div className='h-screen w-full z-10 bg-transparent flex justify-center items-center'>

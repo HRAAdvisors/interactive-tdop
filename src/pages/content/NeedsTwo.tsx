@@ -2,14 +2,14 @@ import CollapsibleCard from '@/components/CollapsibleCard';
 import MapContainer from '@/components/MapContainer';
 import QuoteBlock from '@/components/QuoteBlock';
 import NeedsCards from '@/static/NeedsCards';
-import { ChartId, DataPointGeneratorName } from '@/types/ChartIds';
+import { ChartId, DataPointGeneratorName, SegmentId } from '@/types/ChartIds';
 
 const NeedsTwo = () => {
   return (
     <div>
       <div className='w-screen h-full bg-[#FFFDF6] px-4'>
         <div className='grid md:grid-cols-12'>
-          {/* GOAL 1 */}
+          {/* --------- GOAL 1 ------------ */}
           <div className='flex flex-col md:col-start-4 md:col-span-6 justify-center items-center'>
             <div className='mx-auto mb-20'>
               <h1 className='md:text-4xl text-2xl uppercase my-5 font-montserrat'>Goal No. 1</h1>
@@ -47,8 +47,9 @@ const NeedsTwo = () => {
                 leftPanelContent={
                   <MapContainer
                     shouldDropdownShow={false}
-                    chartId={ChartId.TXAdoption}
-                    dataPointerGenerator={DataPointGeneratorName.internetwithdeviceshare}
+                    chartId={ChartId.TXSubscription}
+                    segmentId={SegmentId.regions}
+                    dataPointerGenerator={DataPointGeneratorName.broadbandShare}
                   />
                 }
                 strategies={[
@@ -85,8 +86,9 @@ const NeedsTwo = () => {
                 leftPanelContent={
                   <MapContainer
                     shouldDropdownShow={false}
-                    chartId={ChartId.TXAdoption}
-                    dataPointerGenerator={DataPointGeneratorName.internetwithdeviceshare}
+                    chartId={ChartId.TXCostBarrier}
+                    segmentId={SegmentId.regions}
+                    dataPointerGenerator={DataPointGeneratorName.costAsBarrier}
                   />
                 }
                 strategies={['Fund local partners', 'Promote internet adoption']}
@@ -118,8 +120,9 @@ const NeedsTwo = () => {
                 leftPanelContent={
                   <MapContainer
                     shouldDropdownShow={false}
-                    chartId={ChartId.TXAdoption}
-                    dataPointerGenerator={DataPointGeneratorName.internetwithdeviceshare}
+                    chartId={ChartId.TXACP}
+                    segmentId={SegmentId.regions}
+                    dataPointerGenerator={DataPointGeneratorName.acpEligibleEnrolled}
                   />
                 }
                 strategies={['Promote internet adoption']}
@@ -127,7 +130,7 @@ const NeedsTwo = () => {
             </div>
           </div>
 
-          {/* GOAL 2 */}
+          {/* -------- GOAL 2 -------- */}
           <div className='flex flex-col md:col-start-4 md:col-span-6 justify-center items-center'>
             <div className='mx-auto mb-20'>
               <h1 className='md:text-4xl text-2xl uppercase my-5 font-montserrat'>Goal No. 2</h1>
@@ -163,7 +166,7 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={11}
                 stackedBarGoal={10}
-                leftPanelContent={<MapContainer />}
+                leftPanelContent={<MapContainer shouldDropdownShow={false} />}
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
@@ -188,7 +191,7 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={16}
                 stackedBarGoal={25}
-                leftPanelContent={<MapContainer />}
+                leftPanelContent={<QuoteBlock quote={NeedsCards.KPI3_3.quote} />}
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
@@ -198,7 +201,7 @@ const NeedsTwo = () => {
             </div>
           </div>
 
-          {/* GOAL 3 */}
+          {/* --------- GOAL 3 ------------- */}
           <div className='flex flex-col md:col-start-4 md:col-span-6 justify-center items-center'>
             <div className='mx-auto mb-20'>
               <h1 className='md:text-4xl text-2xl uppercase my-5 font-montserrat'>Goal No. 3</h1>
@@ -234,7 +237,14 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={88}
                 stackedBarGoal={95}
-                leftPanelContent={<MapContainer />}
+                leftPanelContent={
+                  <MapContainer
+                    shouldDropdownShow={false}
+                    chartId={ChartId.TXDigitalLiteracy}
+                    segmentId={SegmentId.regions}
+                    dataPointerGenerator={DataPointGeneratorName.digitalLiteracySkills}
+                  />
+                }
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Maintain a living digital opportunity plan',
@@ -290,7 +300,7 @@ const NeedsTwo = () => {
             </div>
           </div>
 
-          {/* GOAL 4 */}
+          {/* -------- GOAL 4 -------- */}
           <div className='flex flex-col md:col-start-4 md:col-span-6 justify-center items-center'>
             <div className='mx-auto mb-20'>
               <h1 className='md:text-4xl text-2xl uppercase my-5 font-montserrat'>Goal No. 4</h1>
@@ -326,7 +336,14 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={86}
                 stackedBarGoal={99}
-                leftPanelContent={<MapContainer />}
+                leftPanelContent={
+                  <MapContainer
+                    shouldDropdownShow={false}
+                    chartId={ChartId.TXCyberSecurity}
+                    segmentId={SegmentId.regions}
+                    dataPointerGenerator={DataPointGeneratorName.cybersecurityAwareness}
+                  />
+                }
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
@@ -335,7 +352,7 @@ const NeedsTwo = () => {
             </div>
           </div>
 
-          {/* GOAL 5 */}
+          {/* -------- GOAL 5 -------- */}
           <div className='flex flex-col md:col-start-4 md:col-span-6 justify-center items-center'>
             <div className='mx-auto mb-20'>
               <h1 className='md:text-4xl text-2xl uppercase my-5 font-montserrat'>Goal No. 5</h1>
@@ -368,7 +385,14 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={82}
                 stackedBarGoal={90}
-                leftPanelContent={<MapContainer />}
+                leftPanelContent={
+                  <MapContainer
+                    shouldDropdownShow={false}
+                    chartId={ChartId.TXPublicResourceAccess}
+                    segmentId={SegmentId.regions}
+                    dataPointerGenerator={DataPointGeneratorName.publicResourceAccess}
+                  />
+                }
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
