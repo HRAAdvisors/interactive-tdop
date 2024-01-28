@@ -1,5 +1,5 @@
 import { ChartId, DataPointGeneratorName } from '@/types/ChartIds';
-import { ChartBulkResponse, GeoDataCollection } from '@/types/MapData';
+import { ChartBulkResponse, GeoBoundaryResponse } from '@/types/MapData';
 import _ from 'lodash';
 
 export const getAggregateChartData = (choroplethData: ChartBulkResponse) => {
@@ -183,12 +183,12 @@ const dataPointGenerator = (
 };
 
 export const transformToGeoJSON = (
-  geoDataCollection: GeoDataCollection,
+  geoDataCollection: GeoBoundaryResponse,
   chartBulkResponse: ChartBulkResponse,
   dataPointGeneratorName: DataPointGeneratorName,
 ) => {
   const aggregateChartData = getAggregateChartData(chartBulkResponse);
-  const features = _.map(geoDataCollection, (boundaryItem) => ({
+  const features = _.map(geoDataCollection.boundaries, (boundaryItem) => ({
     type: 'Feature',
     geometry: boundaryItem.feature.geometry,
     properties: {

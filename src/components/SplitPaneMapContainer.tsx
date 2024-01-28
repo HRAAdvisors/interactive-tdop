@@ -1,11 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
-import { transformToGeoJSON } from '@/utils/transformGeoJSON';
-import { useGetBoundaryDataBulkQuery, useGetChartDataBulkQuery } from '@/services/map';
 import { DataPointGeneratorName } from '@/types/ChartIds';
 import { Map } from 'mapbox-gl';
 import { getColorStops } from '@/utils/getColorStop';
 import SplitPaneMap from './ui/SplitPaneMap';
 import Legend from './ui/Legend';
+import { useGetGeoJSON } from '@/utils/customHooks';
+import { useRef } from 'react';
 
 const params = [
   {
@@ -22,36 +21,14 @@ const SplitPaneMapContainer = () => {
   const leftMap = useRef<Map>();
   const rightMap = useRef<Map>();
 
-  const [geoJsonFeaturesLeft, setGeoJsonFeaturesLeft] = useState<
-    GeoJSON.FeatureCollection<GeoJSON.Geometry> | undefined
-  >();
-
-  const [geoJsonFeaturesRight, setGeoJsonFeaturesRight] = useState<
-    GeoJSON.FeatureCollection<GeoJSON.Geometry> | undefined
-  >();
-
-  const { data: boundaries } = useGetBoundaryDataBulkQuery(params);
-  const { data: choroplethData } = useGetChartDataBulkQuery(params);
-
-  useEffect(() => {
-    if (boundaries && choroplethData) {
-      setGeoJsonFeaturesLeft(
-        transformToGeoJSON(
-          boundaries,
-          choroplethData,
-          DataPointGeneratorName.internetwithdeviceshare,
-        ),
-      );
-
-      setGeoJsonFeaturesRight(
-        transformToGeoJSON(
-          boundaries,
-          choroplethData,
-          DataPointGeneratorName.lowIncomeInternetwithdeviceshare,
-        ),
-      );
-    }
-  }, [boundaries, choroplethData]);
+  const { geoJsonFeatures: geoJsonFeaturesLeft } = useGetGeoJSON(
+    params,
+    DataPointGeneratorName.internetwithdeviceshare,
+  );
+  const { geoJsonFeatures: geoJsonFeaturesRight } = useGetGeoJSON(
+    params,
+    DataPointGeneratorName.lowIncomeInternetwithdeviceshare,
+  );
 
   return (
     <div className='w-full h-screen p-2 flex bg-basic flex-col lg:flex-row'>
