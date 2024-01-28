@@ -6,8 +6,12 @@ export enum ChartId {
   TXSubscription = "65b2898459e498194521b445",
   TXDigitalLiteracy = "65b28b888acf87538ccd1776",
   TXACP = "65b3dc52d10754e6790d81de",
-  TXCyberSecurity ="65b28c278acf87538ccd19bf",
-  TXPublicResourceAccess = "65b28c7c59e498194521c4da"
+  TXCybersecurityAwareness ="65b28c278acf87538ccd19bf",
+  TXPublicResourceAccess = "65b28c7c59e498194521c4da",
+  TXMoneyMatters ="65b28cd059e498194521cba6",
+  TXBSL = "65b28d8859e498194521cea5",
+  TXCost100 = "65b6dc22db9f7faac7f2e702",
+  TXCybersecurityConfidence = "65b6dd79db9f7faac7f2e9f8"
 }
 
 export enum SegmentId {
@@ -18,15 +22,19 @@ export enum SegmentId {
 export enum DataPointGeneratorName {
   noInternetProportion,
   hispeedShare,
+  lowIncomeHispeedShare,
   lowIncomeInternetSmartphoneOnlyShare,
   internetSmartphoneOnlyShare,
   internetwithdeviceshare,
   lowIncomeInternetwithdeviceshare,
   bslUnserved,
+  bslUnderserved,
   costAsBarrier,
   broadbandShare,
   digitalLiteracySkills,
   acpEligibleEnrolled,
   cybersecurityAwareness,
-  publicResourceAccess
+  publicResourceAccess,
+  costOver100,
+  cybersecurityConfidence
 }

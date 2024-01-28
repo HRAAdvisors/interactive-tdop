@@ -373,7 +373,7 @@ const NeedsTwo = () => {
                 leftPanelContent={
                   <MapContainer
                     shouldDropdownShow={false}
-                    chartId={ChartId.TXCyberSecurity}
+                    chartId={ChartId.TXCybersecurityAwareness}
                     segmentId={SegmentId.regions}
                     dataPointerGenerator={DataPointGeneratorName.cybersecurityAwareness}
                     mapSource='2023 Texas Digital Opportunity Survey'
