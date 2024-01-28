@@ -1,7 +1,7 @@
 // IntroPage.js
 import { Element as ScrollElement } from 'react-scroll';
-import IntroTwo from './content/IntroTwo';
-import IntroOne from './content/IntroOne';
+import IntroOne from './IntroOne';
+import IntroTwo from './IntroTwo';
 
 const IntroPage = ({ handlePageChange: _ }: { handlePageChange?: Function }) => {
   // const header = (
