@@ -28,8 +28,7 @@ const contents = [
         <h3 className='text-xl font-bold uppercase my-5'>Adoption Matters</h3>
         <div className='mt-2 text-md'>
           <p className='py-2'>
-            <strong>31% of Texas households</strong> do not subscribe to high-speed internet at
-            home.{' '}
+            31% of Texas households do not subscribe to high-speed internet at home.{' '}
           </p>
           <div className='mt-2'></div>
           {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
