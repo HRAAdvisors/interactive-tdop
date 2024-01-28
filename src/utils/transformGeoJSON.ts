@@ -172,8 +172,6 @@ const dataPointGenerator = (
     dataPointGeneratorName === DataPointGeneratorName.publicResourceAccess &&
     ChartId.TXPublicResourceAccess === chartId
   ) {
-    console.log(aggregatedChoroplethData);
-
     return (100 - 
       parseFloat(aggregatedChoroplethData[geoId]['hid7_1']['percent'])
     ).toFixed(2);

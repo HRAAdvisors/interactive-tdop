@@ -1,12 +1,10 @@
 /* tslint:disable */
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Map } from 'mapbox-gl';
 import _ from 'lodash';
-import { transformToGeoJSON } from '@/utils/transformGeoJSON';
 import ChoroplethMap from './ui/ChoroplethMap';
 import { bbox } from '@turf/turf';
 import { ChartId, DataPointGeneratorName, SegmentId } from '@/types/ChartIds';
-import { useGetBoundaryDataBulkQuery, useGetChartDataBulkQuery } from '@/services/map';
 import { getColorStops } from '@/utils/getColorStop';
 import Legend from './ui/Legend';
 import { useGetGeoJSON } from '@/utils/customHooks';
