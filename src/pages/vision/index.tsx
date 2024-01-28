@@ -1,12 +1,10 @@
 // App.js
-import {
-  Element as ScrollElement,
-} from 'react-scroll';
+import { Element as ScrollElement } from 'react-scroll';
 import '@mantine/core/styles.css';
-import VisionOne from './content/VisionOne';
-import VisionTwo from './content/VisionTwo';
-import ScrollableTitle from '../components/ScrollableTitle';
-import VisionCards from '../static/VisionCards';
+import VisionOne from './VisionOne';
+import VisionTwo from './VisionTwo';
+import ScrollableTitle from '@/components/ScrollableTitle';
+import VisionCards from '@/static/VisionCards';
 
 const VisionPage = () => {
   const header = (

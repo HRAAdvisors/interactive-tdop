@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Element as ScrollElement } from 'react-scroll';
 import '@mantine/core/styles.css';
-import ConclusionOne from './content/ConclusionOne';
+import ConclusionOne from './ConclusionOne';
 
 const ConclusionPage = ({ handlePageChange }: { handlePageChange?: Function }) => {
   const [localSections] = useState(['section1', 'section2', 'section3']);

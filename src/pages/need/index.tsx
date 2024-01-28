@@ -1,11 +1,11 @@
 // App.js
 import { Element as ScrollElement } from 'react-scroll';
 import '@mantine/core/styles.css';
-import NeedsOne from './content/NeedsOne';
-import NeedsCards from '../static/NeedsCards.ts';
-import ScrollableTitle from '../components/ScrollableTitle';
+import NeedsCards from '../../static/NeedsCards.ts';
+import ScrollableTitle from '../../components/ScrollableTitle.tsx';
+import NeedsOne from './NeedsOne.tsx';
+import NeedsTwo from './NeedsTwo.tsx';
 // import GoalsSection from '../components/GoalsSection';
-import NeedsTwo from './content/NeedsTwo';
 
 const NeedsAndAssetsPage = () => {
   const Header = () => (

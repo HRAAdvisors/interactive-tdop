@@ -1,5 +1,5 @@
+import CardTerms from '@/components/CardTerms';
 import VisionCards from '@/static/VisionCards';
-import CardTerms from '../../components/CardTerms';
 import 'react-dropdown/style.css';
 
 const VisionTwo = () => {

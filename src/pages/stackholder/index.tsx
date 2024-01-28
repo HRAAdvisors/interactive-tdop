@@ -1,12 +1,10 @@
 // App.js
-import {
-  Element as ScrollElement,
-} from 'react-scroll';
+import { Element as ScrollElement } from 'react-scroll';
 import '@mantine/core/styles.css';
-import StakeholderTwo from './content/StakeholderTwo';
-import ScrollableTitle from '../components/ScrollableTitle';
-import StakeholderCards from '../static/StakeholderCards';
-import StakeholderOne from './content/StakeholderOne';
+import StakeholderTwo from './StakeholderTwo';
+import StakeholderOne from './StakeholderOne';
+import ScrollableTitle from '@/components/ScrollableTitle';
+import StakeholderCards from '@/static/StakeholderCards';
 
 const StakeholderEngagementPage = () => {
   const header = (
