@@ -1,11 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
-import { transformToGeoJSON } from '@/utils/transformGeoJSON';
-import { useGetBoundaryDataBulkQuery, useGetChartDataBulkQuery } from '@/services/map';
 import { DataPointGeneratorName } from '@/types/ChartIds';
 import { Map } from 'mapbox-gl';
 import { getColorStops } from '@/utils/getColorStop';
 import SplitPaneMap from './ui/SplitPaneMap';
 import Legend from './ui/Legend';
+import { useGetGeoJSON } from '@/utils/customHooks';
+import { useRef } from 'react';
 
 const params = [
   {
@@ -22,41 +21,19 @@ const SplitPaneMapContainer = () => {
   const leftMap = useRef<Map>();
   const rightMap = useRef<Map>();
 
-  const [geoJsonFeaturesLeft, setGeoJsonFeaturesLeft] = useState<
-    GeoJSON.FeatureCollection<GeoJSON.Geometry> | undefined
-  >();
-
-  const [geoJsonFeaturesRight, setGeoJsonFeaturesRight] = useState<
-    GeoJSON.FeatureCollection<GeoJSON.Geometry> | undefined
-  >();
-
-  const { data: boundaries } = useGetBoundaryDataBulkQuery(params);
-  const { data: choroplethData } = useGetChartDataBulkQuery(params);
-
-  useEffect(() => {
-    if (boundaries && choroplethData) {
-      setGeoJsonFeaturesLeft(
-        transformToGeoJSON(
-          boundaries,
-          choroplethData,
-          DataPointGeneratorName.internetwithdeviceshare,
-        ),
-      );
-
-      setGeoJsonFeaturesRight(
-        transformToGeoJSON(
-          boundaries,
-          choroplethData,
-          DataPointGeneratorName.lowIncomeInternetwithdeviceshare,
-        ),
-      );
-    }
-  }, [boundaries, choroplethData]);
+  const { geoJsonFeatures: geoJsonFeaturesLeft } = useGetGeoJSON(
+    params,
+    DataPointGeneratorName.internetwithdeviceshare,
+  );
+  const { geoJsonFeatures: geoJsonFeaturesRight } = useGetGeoJSON(
+    params,
+    DataPointGeneratorName.lowIncomeInternetwithdeviceshare,
+  );
 
   return (
     <div className='w-full h-screen p-2 flex bg-basic flex-col lg:flex-row'>
       <div className='lg:w-1/2 w-full flex items-center justify-center'>
-        <div className='max-w-md px-12 py-8 bg-white z-30 rounded-lg shadow-md w-full  min-h-[400px]'>
+        <div className='lg:max-w-md px-12 py-8 bg-white z-30 rounded-lg shadow-md w-full  min-h-[400px]'>
           <div className='mt-2'>
             <h3 className='text-xl font-bold uppercase my-5 font-montserrat'>Subscription</h3>
             <div className='mt-2 text-xl font-helvetica text-justify'>
@@ -87,7 +64,7 @@ const SplitPaneMapContainer = () => {
           </div>
         </div>
       </div>
-      <div className='w-1/2 flex items-center justify-center'>
+      <div className='lg:w-1/2 w-full flex items-center justify-center p-2 drop-shadow'>
         <SplitPaneMap
           leftMapProps={{
             colorStops: geoJsonFeaturesLeft && getColorStops(geoJsonFeaturesLeft, 'blue'),

@@ -1,12 +1,12 @@
 // import HeroLayout from './HeroLayout';
-import IntroPage from '../pages/IntroPage';
-import VisionPage from '../pages/VisionPage';
-import NeedsAndAssetsPage from '../pages/NeedsAndAssetsPage';
+import IntroPage from '../pages/intro';
+import VisionPage from '../pages/vision';
+import NeedsAndAssetsPage from '../pages/need';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
-import StakeholderEngagementPage from '../pages/StakeholderEngagementPage';
-import StrategiesPage from '@/pages/StrategiesPage';
-import ConclusionPage from '@/pages/ConclusionPage';
+import StakeholderEngagementPage from '../pages/stackholder';
+import StrategiesPage from '@/pages/strategies';
+import ConclusionPage from '@/pages/conculation';
 
 export default function Router() {
   return (

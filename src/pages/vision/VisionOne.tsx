@@ -1,5 +1,5 @@
 import QuoteBlock from '@/components/QuoteBlock';
-import TexasStripes from '../../components/TexasStripes';
+import TexasStripes from '@/components/TexasStripes';
 import 'react-dropdown/style.css';
 
 const VisionOne = () => {

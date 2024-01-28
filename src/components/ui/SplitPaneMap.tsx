@@ -61,10 +61,6 @@ const SplitPaneMap = ({
             <ChoroplethMap
               center={center}
               zoom={zoom}
-              onLoad={(map) => {
-                map.scrollZoom.disable();
-                map.dragPan.disable();
-              }}
               onMove={() => {
                 if (leftMapProps?.mapRef?.current) {
                   setCenter([
@@ -106,10 +102,6 @@ const SplitPaneMap = ({
             <ChoroplethMap
               center={center}
               zoom={zoom}
-              onLoad={(map) => {
-                map.scrollZoom.disable();
-                map.dragPan.disable();
-              }}
               onMove={() => {
                 if (righMapProps?.mapRef?.current) {
                   setCenter([
