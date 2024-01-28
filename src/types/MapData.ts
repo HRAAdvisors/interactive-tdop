@@ -13,7 +13,6 @@ interface Properties1 {
   AWATER: number;
 }
 
-
 interface GeoData {
   _id: string;
   geoId: number;
@@ -22,17 +21,35 @@ interface GeoData {
   year: number;
 }
 
-export interface GeoDataCollection {
-  [key: string]: GeoData;
+interface RegionSetup {
+    main: {
+      geoId: number
+    }
+    segments: {
+      geographyType: string;
+    };
+}
+
+export interface GeoBoundaryResponse{
+  regions: RegionSetup,
+  boundaries: {  [key: string]: GeoData;  }
 }
 
 export interface ChoroplethChartData {
- geo_id: string; 
- households: number;
- internet_access_type: "total_households" | "broadband" |  "no_internet" | "fiber_or_dsl_only" | "dialup_only" | "satellite_only"  | "cellular_only";
- year: string;
+  geo_id: string;
+  households: number;
+  internet_access_type:
+    | 'total_households'
+    | 'broadband'
+    | 'no_internet'
+    | 'fiber_or_dsl_only'
+    | 'dialup_only'
+    | 'satellite_only'
+    | 'cellular_only';
+  year: string;
 }
 export interface ChartBulkResponse {
   id: string;
-  data: ChoroplethChartData[]
+  regions: RegionSetup;
+  data: ChoroplethChartData[];
 }

@@ -1,14 +1,13 @@
 /* tslint:disable */
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Map } from 'mapbox-gl';
 import _ from 'lodash';
-import { transformToGeoJSON } from '@/utils/transformGeoJSON';
 import ChoroplethMap from './ui/ChoroplethMap';
 import { bbox } from '@turf/turf';
 import { ChartId, DataPointGeneratorName, SegmentId } from '@/types/ChartIds';
-import { useGetBoundaryDataBulkQuery, useGetChartDataBulkQuery } from '@/services/map';
 import { getColorStops } from '@/utils/getColorStop';
 import Legend from './ui/Legend';
+import { useGetGeoJSON } from '@/utils/customHooks';
 
 interface MapContainerProps {
   chartId?: ChartId;
@@ -39,23 +38,14 @@ const MapContainer = ({
   ];
 
   const [selectedCounty, setSelectedCounty] = useState('');
-  const [geoJsonFeatures, setGeoJsonFeatures] =
-    useState<GeoJSON.FeatureCollection<GeoJSON.Geometry> | null>(null);
+  const { geoJsonFeatures, boundaryData } = useGetGeoJSON(params, dataPointerGenerator);
 
-  const { data: boundaries } = useGetBoundaryDataBulkQuery(params);
-  const { data: choroplethData } = useGetChartDataBulkQuery(params);
-
-  useEffect(() => {
-    if (boundaries && choroplethData) {
-      setGeoJsonFeatures(transformToGeoJSON(boundaries, choroplethData, dataPointerGenerator));
-    }
-  }, [boundaries, choroplethData]);
   const colorStops = geoJsonFeatures ? getColorStops(geoJsonFeatures) : null;
 
   // console.log(boundaryData);
 
-  const counties = boundaries
-    ? _.map(boundaries, (item) => ({
+  const counties = boundaryData?.boundaries
+    ? _.map(boundaryData.boundaries, (item) => ({
         name: item.feature.properties.NAME,
         data: item.feature,
       }))

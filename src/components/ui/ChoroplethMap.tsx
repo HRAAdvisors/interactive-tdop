@@ -24,6 +24,7 @@ export interface ChoroplethMapProps {
   onMove?: () => void;
   onLoad?: (map: Map) => void;
   syncCenterAndZoom?: boolean;
+  shouldSetMaxBound?: boolean;
 }
 
 const getToolTip = (feature: any) => `<div class="text-white">
@@ -55,6 +56,7 @@ const ChoroplethMap = ({
   onMove,
   onLoad,
   syncCenterAndZoom = false,
+  shouldSetMaxBound = true,
 }: ChoroplethMapProps) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const localGeoJSON = useRef(geoJSONFeatureCollection);
@@ -75,6 +77,11 @@ const ChoroplethMap = ({
           padding,
         },
       );
+
+      if (shouldSetMaxBound) {
+        const getBoundsFromViewport = mapRef.current?.getBounds();
+        mapRef.current?.setMaxBounds(getBoundsFromViewport);
+      }
     }
   };
 
@@ -198,7 +205,7 @@ const ChoroplethMap = ({
       return;
     addSourceAndLayer();
     localGeoJSON.current = geoJSONFeatureCollection;
-  }, [geoJSONFeatureCollection, colorStops]);
+  }, [geoJSONFeatureCollection, colorStops, shouldSetMaxBound]);
 
   return (
     <div className={mapContainerClassName}>
