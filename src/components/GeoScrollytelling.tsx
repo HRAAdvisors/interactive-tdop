@@ -15,14 +15,14 @@ const contents = [
     data: [
       {
         geoId: '48',
-        id: ChartId.TXAccess,
+        id: ChartId.TXSubscription,
         regionSetup: {
           peers: 'none',
-          segments: 'county',
+          segments: SegmentId.regions,
         },
       },
     ],
-    dataPointName: DataPointGeneratorName.noInternetProportion,
+    dataPointName: DataPointGeneratorName.broadbandShare,
     getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
       <div className='mt-2'>
         <h3 className='text-xl font-bold uppercase my-5'>Adoption Matters</h3>
@@ -30,10 +30,6 @@ const contents = [
           <p className='py-2'>
             31% of Texas households do not subscribe to high-speed internet at home.{' '}
           </p>
-          {/* <p className='py-2'>
-            Statewide, region A, region, and region C have the lowest rates of high-speed internet
-            subscription at home.
-          </p> */}
           <div className='mt-2'></div>
           {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
           <p className='mt-2 font-bold text-xs'>
@@ -49,14 +45,14 @@ const contents = [
     data: [
       {
         geoId: '48',
-        id: ChartId.TXAdoption,
+        id: ChartId.TXBSL,
         regionSetup: {
           peers: 'none',
-          segments: 'county',
+          segments: SegmentId.regions,
         },
       },
     ],
-    dataPointName: DataPointGeneratorName.hispeedShare,
+    dataPointName: DataPointGeneratorName.bslUnserved,
     getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
       <div className='mt-2'>
         <h3 className='text-xl font-bold uppercase my-5'>Availability Matters</h3>
@@ -66,14 +62,10 @@ const contents = [
             live. Separate from the TDOP, there is another program building new high-speed networks
             across the state .{' '}
           </p>
-          {/* <p className='py-2'>
-            Statewide, region A, region, and region C have the lowest rates of high-speed internet
-            subscription at home.
-          </p> */}
           <div className='mt-2'></div>
           {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
           <p className='mt-2 font-bold text-xs'>
-            Percent of Households with high-speed internet at home
+            Percent of Locations Served by High-speed Internet
           </p>
           <p className='text-xs my-2'>
             Source: Federal Communications Comission (FCC) National Broadband Map
@@ -87,14 +79,14 @@ const contents = [
     data: [
       {
         geoId: '48',
-        id: ChartId.TXAdoption,
+        id: ChartId.TXCost100,
         regionSetup: {
           peers: 'none',
-          segments: 'county',
+          segments: SegmentId.regions,
         },
       },
     ],
-    dataPointName: DataPointGeneratorName.hispeedShare,
+    dataPointName: DataPointGeneratorName.costOver100,
     getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
       <div className='mt-2'>
         <h3 className='text-xl font-bold uppercase my-5'>Money Matters</h3>
@@ -117,14 +109,14 @@ const contents = [
     data: [
       {
         geoId: '48',
-        id: ChartId.TXAdoption,
+        id: ChartId.TXBSL,
         regionSetup: {
           peers: 'none',
-          segments: 'county',
+          segments: SegmentId.regions,
         },
       },
     ],
-    dataPointName: DataPointGeneratorName.hispeedShare,
+    dataPointName: DataPointGeneratorName.bslUnderserved,
     getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
       <div className='mt-2'>
         <h3 className='text-xl font-bold uppercase my-5'>Speed and Reliability Matter</h3>
@@ -180,17 +172,17 @@ const contents = [
     data: [
       {
         geoId: '48',
-        id: ChartId.TXAdoption,
+        id: ChartId.TXCybersecurityConfidence,
         regionSetup: {
           peers: 'none',
-          segments: 'county',
+          segments: SegmentId.regions,
         },
       },
     ],
-    dataPointName: DataPointGeneratorName.hispeedShare,
+    dataPointName: DataPointGeneratorName.cybersecurityConfidence,
     getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
       <div className='mt-2'>
-        <h3 className='text-xl font-bold uppercase my-5'>Devices Matter</h3>
+        <h3 className='text-xl font-bold uppercase my-5'>Cybersecurity Matters</h3>
         <div className='mt-2 text-md'>
           <p className='py-2'>
             The Internet can be an intimidating and even a risky place unless people have the
@@ -203,40 +195,6 @@ const contents = [
             Percent of Individuals Confident in Protecting Themselves from Online Threats
           </p>
           <p className='text-xs my-2'>Source: 2023 Texas Digital Opportunity Survey</p>
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: 7,
-    data: [
-      {
-        geoId: '48',
-        id: ChartId.TXCostBarrier,
-        regionSetup: {
-          peers: 'none',
-          segments: SegmentId.regions,
-        },
-      },
-    ],
-    dataPointName: DataPointGeneratorName.costAsBarrier,
-    getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
-      <div className='mt-2'>
-        <h3 className='text-xl font-bold uppercase my-5 font-montserrat'>Subscription</h3>
-        <div className='mt-2 text-xl font-helvetica text-justify'>
-          <p className='py-2'>
-            31% of Texas households do not subscribe to high-speed internet at home.
-          </p>
-          <p className='py-2'>
-            Statewide, region A, region, and region C have the lowest rates of high-speed internet
-            subscription at home.
-          </p>
-          <div className='mt-2'></div>
-          {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
-          <p className='mt-2 font-bold text-xs'>
-            Percent of Households with high-speed internet at home
-          </p>
-          <p className='text-xs'>Source: ACS 5-Year Estimates, 2017-2021</p>
         </div>
       </div>
     ),
@@ -315,7 +273,7 @@ const GeoScrollytelling = () => {
           {_.map(contents, (d, i) => (
             <Step data={d} key={i + 1}>
               <div className='h-screen w-full z-10 bg-transparent flex justify-center items-center'>
-                <div className='max-w-sm px-12 py-8 bg-white z-30 rounded-lg shadow-md w-full  min-h-[400px]'>
+                <div className='max-w-sm px-12 py-8 bg-white/95 z-30 rounded-lg shadow-md w-full  min-h-[400px]'>
                   {d.getContent(geoJsonFeatures)}
                 </div>
               </div>

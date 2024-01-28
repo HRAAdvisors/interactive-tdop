@@ -63,7 +63,7 @@ export const getAggregateChartData = (choroplethData: ChartBulkResponse) => {
       .groupBy('geo_id')
       .mapValues((inf) => _.first(inf))
       .value();
-  }  else if (choroplethData.id === ChartId.TXCyberSecurity) {
+  }  else if (choroplethData.id === ChartId.TXCybersecurityAwareness) {
     return _.chain(choroplethData.data)
       .groupBy('geo_id')
       .mapValues((inf) =>
@@ -83,6 +83,31 @@ export const getAggregateChartData = (choroplethData: ChartBulkResponse) => {
           .value(),
       )
       .value();
+  } else if (choroplethData.id === ChartId.TXBSL) {
+    return _.chain(choroplethData.data)
+    .groupBy('geo_id')
+    .mapValues((inf) => _.first(inf))
+    .value();
+  } else if (choroplethData.id === ChartId.TXCost100) {
+    return _.chain(choroplethData.data)
+    .groupBy('geo_id')
+    .mapValues((inf) =>
+      _.chain(inf)
+        .groupBy('bucket')
+        .mapValues((infGroup) => _.first(infGroup))
+        .value(),
+    )
+    .value();
+  } else if (choroplethData.id === ChartId.TXCybersecurityConfidence) {
+    return _.chain(choroplethData.data)
+    .groupBy('geo_id')
+    .mapValues((inf) =>
+      _.chain(inf)
+        .groupBy('response')
+        .mapValues((infGroup) => _.first(infGroup))
+        .value(),
+    )
+    .value();
   }
 };
 
@@ -105,6 +130,11 @@ const dataPointGenerator = (
     ChartId.TXAdoption === chartId
   ) {
     return (parseFloat(aggregatedChoroplethData[geoId]['ALL']['hispeed_share'])).toFixed(2);
+  } else if (
+    dataPointGeneratorName === DataPointGeneratorName.lowIncomeHispeedShare &&
+    ChartId.TXAdoption === chartId
+  ) {
+    return (parseFloat(aggregatedChoroplethData[geoId]['LOW_INCOME']['hispeed_share'])).toFixed(2);
   } else if (
     dataPointGeneratorName === DataPointGeneratorName.lowIncomeInternetwithdeviceshare &&
     ChartId.TXAdoption === chartId
@@ -163,7 +193,7 @@ const dataPointGenerator = (
     ).toFixed(2);
   } else if (
     dataPointGeneratorName === DataPointGeneratorName.cybersecurityAwareness &&
-    ChartId.TXCyberSecurity === chartId
+    ChartId.TXCybersecurityAwareness === chartId
   ) {
     return (
       parseFloat(aggregatedChoroplethData[geoId]['hid11']['percent'])
@@ -175,7 +205,35 @@ const dataPointGenerator = (
     return (100 - 
       parseFloat(aggregatedChoroplethData[geoId]['hid7_1']['percent'])
     ).toFixed(2);
-  } else {
+  } else if (
+    dataPointGeneratorName === DataPointGeneratorName.bslUnserved &&
+    ChartId.TXBSL === chartId
+  ) {    
+    return (
+      parseFloat(aggregatedChoroplethData[geoId]['bsl_unserved'])
+    ).toFixed(2);
+  } else if (
+    dataPointGeneratorName === DataPointGeneratorName.bslUnderserved &&
+    ChartId.TXBSL === chartId
+  ) {    
+    return (
+      parseFloat(aggregatedChoroplethData[geoId]['bsl_underserved'])
+    ).toFixed(2);
+  } else if (
+    dataPointGeneratorName === DataPointGeneratorName.costOver100 &&
+    ChartId.TXCost100 === chartId
+  ) {    
+    return (
+      parseFloat(aggregatedChoroplethData[geoId]['$100-$10000']['percent_of_total'])
+    ).toFixed(2);
+  } else if (
+    dataPointGeneratorName === DataPointGeneratorName.cybersecurityConfidence &&
+    ChartId.TXCybersecurityConfidence === chartId
+  ) {    
+    return (
+      parseFloat(aggregatedChoroplethData[geoId]['Yes']['percent'])
+    ).toFixed(2);
+  }  else {
     console.error('chartId and Datapoint Mismatch');
   }
 };
