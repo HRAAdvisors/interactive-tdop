@@ -24,7 +24,7 @@ const StrategiesCards = {
       description: 'Broadband adoption, digital literacy, device access and many other aspects of digital opportunity need local solutions. Leaders should be from the communities they serve:. Trust, safety, and confidence are very important to this process. The BDO will use some of its Capacity Building Grant money for a new grant program. Similar to the BOOT program for broadband, the new grant program  will fund local projects that address digital opportunity, especially in areas that need it most.',
   },
   Living_Plan :{
-      img: 'img/LivingPlan.jpeg',
+      img: 'img/LivingPlan.jpg',
       altText: 'Maintain a living Digital Opportunity Plan.',
       title: 'Maintain a living Digital Opportunity Plan.',
       description: 'The BDO sees this plan as a guide that will change over time as the Office continues to learn from residents about their digital opportunity experiences. This ongoing community input will help the BDO make continued improvements to the plan. As the plan is implemented, the BDO will measure progress towards its goals and improve programs that create digital opportunity.',

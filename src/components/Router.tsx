@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
 import StakeholderEngagementPage from '../pages/stakeholder';
 import StrategiesPage from '@/pages/strategies';
-import ConclusionPage from '@/pages/conculation';
+import ConclusionPage from '@/pages/conclusion';
 
 export default function Router() {
   return (

@@ -8,7 +8,7 @@ import IntroPage from './intro';
 import HeroLayout from '@/components/HeroLayout';
 import StakeholderEngagementPage from './stakeholder';
 import StrategiesPage from './strategies';
-import ConclusionPage from './conculation';
+import ConclusionPage from './conclusion';
 import Sidebar from '@/components/Sidebar';
 import Navbar from '@/components/Navbar';
 import { ScrollableTitleProvider } from '@/components/ScrollableTitleContext';
