@@ -306,11 +306,7 @@ const GeoScrollytelling = () => {
                 Plan, click below:
                 <div className='py-8 justify-between'>
                   {' '}
-                  <ButtonDark
-                    className='mr-2'
-                    text='Geographic Intro'
-                    link='/geoIntro'
-                  ></ButtonDark>
+                  <ButtonDark className='mr-2' text='Interactive TDOP' link='/'></ButtonDark>
                   <ButtonLight text='Data Dashboards' link='/'></ButtonLight>
                 </div>
               </p>
