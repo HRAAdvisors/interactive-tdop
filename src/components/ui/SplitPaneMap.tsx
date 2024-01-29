@@ -53,7 +53,7 @@ const SplitPaneMap = ({
       ref={containerRef}
     >
       <div
-        className='w-full z-10 h-full bg-green-200 overflow-hidden'
+        className='w-full relative z-10 h-full bg-green-200 overflow-hidden'
         style={{ width: `${paneWidths[0]}%` }}
       >
         <div className='h-full' style={{ width: containerRef.current?.clientWidth }}>
@@ -61,6 +61,7 @@ const SplitPaneMap = ({
             <ChoroplethMap
               center={center}
               zoom={zoom}
+              toolTipClass='z-50 fixedToolTip'
               onMove={() => {
                 if (leftMapProps?.mapRef?.current) {
                   setCenter([
@@ -111,6 +112,7 @@ const SplitPaneMap = ({
                   setZoom(parseFloat(righMapProps.mapRef.current.getZoom().toFixed(2)));
                 }
               }}
+              toolTipClass='z-50'
               geoJSONFeatureCollection={righMapProps.geoJSONFeatureCollection}
               syncCenterAndZoom={true}
               {...righMapProps}

@@ -2,7 +2,7 @@ import * as turf from '@turf/turf';
 import _ from 'lodash';
 import mapboxgl from 'mapbox-gl';
 import { Map, PaddingOptions } from 'mapbox-gl';
-import { MutableRefObject, ReactNode, useEffect, useRef, useState } from 'react';
+import { MutableRefObject, ReactNode, useEffect, useRef } from 'react';
 
 const getCalculatedCenter = (geoJSONFeatureCollection: any) => {
   const coOrdinate = turf.center(geoJSONFeatureCollection);
@@ -18,13 +18,15 @@ export interface ChoroplethMapProps {
   center?: mapboxgl.LngLatLike;
   children?: ReactNode;
   mapBoxExpression?: any[];
-  padding?: number | PaddingOptions;
+  padding?: PaddingOptions;
   mapContainerClassName?: string;
   zoom?: number;
   onMove?: () => void;
   onLoad?: (map: Map) => void;
+  toolTipClass?: string;
   syncCenterAndZoom?: boolean;
   shouldSetMaxBound?: boolean;
+  fitBoundFeature?: GeoJSON.Feature<GeoJSON.Geometry>;
 }
 
 const getToolTip = (feature: any) => `<div class="text-white">
@@ -48,7 +50,7 @@ const ChoroplethMap = ({
   ],
   mapBoxExpression = ['to-number', ['get', 'dataPoint']],
   tooltipContent = getToolTip,
-  padding = 20,
+  padding = { top: 20, left: 20, right: 20, bottom: 20 },
   children,
   mapContainerClassName = 'relative h-full w-full shadow-sm',
   center = getCalculatedCenter(geoJSONFeatureCollection),
@@ -57,31 +59,37 @@ const ChoroplethMap = ({
   onLoad,
   syncCenterAndZoom = false,
   shouldSetMaxBound = true,
+  fitBoundFeature,
+  toolTipClass = 'z-50',
 }: ChoroplethMapProps) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const localGeoJSON = useRef(geoJSONFeatureCollection);
-
-  const [fitBounds, setFitBound] = useState<number[]>([]);
+  const currentFitBound = useRef<number[]>();
+  const currentFitBoundFeature = useRef<GeoJSON.Feature<GeoJSON.Geometry> | undefined>(
+    fitBoundFeature,
+  );
 
   const fitBound = () => {
-    const newBounds = turf.bbox(geoJSONFeatureCollection);
-    if (!_.isEqual(newBounds, fitBounds)) {
-      setFitBound(newBounds);
+    const newBounds = turf.bbox(fitBoundFeature ? fitBoundFeature : geoJSONFeatureCollection);
+
+    if (!_.isEqual(currentFitBound.current, newBounds))
       mapRef.current?.fitBounds(
         [
           [newBounds[0], newBounds[1]],
           [newBounds[2], newBounds[3]],
         ],
         {
-          animate: false,
           padding,
+          animate: false,
         },
       );
 
-      if (shouldSetMaxBound) {
-        const getBoundsFromViewport = mapRef.current?.getBounds();
-        mapRef.current?.setMaxBounds(getBoundsFromViewport);
-      }
+    currentFitBound.current = newBounds;
+    currentFitBoundFeature.current = fitBoundFeature;
+
+    if (shouldSetMaxBound) {
+      const getBoundsFromViewport = mapRef.current?.getBounds();
+      mapRef.current?.setMaxBounds(getBoundsFromViewport);
     }
   };
 
@@ -112,7 +120,6 @@ const ChoroplethMap = ({
       mapRef.current.removeLayer(layerId);
       mapRef.current.removeSource(sourceId);
     }
-    fitBound();
     mapRef.current.addSource(sourceId, {
       type: 'geojson',
       data: geoJSONFeatureCollection,
@@ -131,11 +138,13 @@ const ChoroplethMap = ({
             ..._.flatMap(colorStops, (stop) => [stop.step, stop.color]),
           ],
           'fill-opacity': 1, // Initialize with zero opacity
+          'fill-opacity-transition': { duration: 1000 }, // 500 milliseconds = 1/2 seconds
           'fill-outline-color': 'white',
         },
       },
       'settlement-subdivision-label',
     );
+    fitBound();
   };
 
   const onLoadHandler = () => {
@@ -157,7 +166,9 @@ const ChoroplethMap = ({
       mapRef.current.on('mousemove', layerId, (e) => {
         const feature = _.first(e.features);
         if (feature) {
-          tooltip.addClassName('z-50');
+          if (toolTipClass) {
+            tooltip.addClassName(toolTipClass);
+          }
           tooltip
             .setLngLat(e.lngLat)
             .setHTML(tooltipContent(feature))
@@ -201,17 +212,19 @@ const ChoroplethMap = ({
     if (
       !mapRef.current ||
       !mapContainerRef.current ||
-      _.isEqual(localGeoJSON.current, geoJSONFeatureCollection)
+      (_.isEqual(localGeoJSON.current, geoJSONFeatureCollection) &&
+        _.isEqual(currentFitBoundFeature.current, fitBoundFeature))
     )
       return;
+
     addSourceAndLayer();
     localGeoJSON.current = geoJSONFeatureCollection;
-  }, [geoJSONFeatureCollection, colorStops, shouldSetMaxBound]);
+  }, [geoJSONFeatureCollection, colorStops, shouldSetMaxBound, fitBoundFeature]);
 
   return (
     <div className={mapContainerClassName}>
       {children}
-      <div ref={mapContainerRef} className={`h-full w-full ${mapContainerClassName}`} />
+      <div ref={mapContainerRef} className={`h-full w-full`} />
     </div>
   );
 };
