@@ -1,6 +1,6 @@
 const ConclusionCards = {
   Header: {
-    img: 'Intro.png',
+    img: 'img/Intro.png',
     altText: 'Conclusion',
     title: 'Conclusion',
     description: '',

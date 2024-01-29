@@ -4,7 +4,7 @@ import VisionPage from '../pages/vision';
 import NeedsAndAssetsPage from '../pages/need';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
-import StakeholderEngagementPage from '../pages/stackholder';
+import StakeholderEngagementPage from '../pages/stakeholder';
 import StrategiesPage from '@/pages/strategies';
 import ConclusionPage from '@/pages/conculation';
 

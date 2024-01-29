@@ -232,7 +232,7 @@ const NeedsTwo = () => {
                     <p className='mb-2'>
                       Today,{' '}
                       <strong>
-                        88% of Texans are comfortable with a basic digital literacy skills such as
+                        88% of Texans are comfortable with basic digital literacy skills such as
                         connecting a computer or smartphone to a Wi-Fi network.
                       </strong>
                     </p>{' '}

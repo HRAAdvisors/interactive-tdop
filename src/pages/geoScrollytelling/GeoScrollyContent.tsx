@@ -40,10 +40,9 @@ const contents: GeoScrollContent[] = [
     containerClassNames: 'text-white text-lg bg-[#111]',
     getContent: () => (
       <p className='lg:w-[60vw] md:p-60 w-90vw p-5'>
-        <strong>It is time to bridge this divide.</strong> The internet is not a luxury – it is a
-        necessity for education, work, health, safety and staying connected with friends and family.
-        High-speed internet, computing devices, and the skills to use them should be accessible to
-        everyone.
+        <strong>It is time to bridge this divide.</strong> The internet is a necessity for
+        education, work, health, safety and staying connected with friends and family. High-speed
+        internet, computing devices, and the skills to use them should be accessible to everyone.
       </p>
     ),
   },
@@ -84,7 +83,7 @@ const contents: GeoScrollContent[] = [
           <div className='mt-2'></div>
           {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
           <p className='mt-2 font-bold text-xs'>
-            Percent of Households with High-Speed Internet at Home
+            Percent of Households with High-speed Internet at Home
           </p>
           <p className='text-xs my-2'>Source: ACS 5-Year Estimates, 2017-2021</p>
         </div>
@@ -111,9 +110,9 @@ const contents: GeoScrollContent[] = [
         <h3 className='text-xl font-bold uppercase my-5'>Availability Matters</h3>
         <div className='mt-2 text-md'>
           <p className='py-2'>
-            Why do people not subscribe? In some cases, there’s no broadband service where they
-            live. Separate from the TDOP, there is another program building new high-speed networks
-            across the state .{' '}
+            Why do people not subscribe? In some cases, there’s no internet service where they live.
+            Separate from the TDOP, there is another program building new high-speed networks across
+            the state .{' '}
           </p>
           <div className='mt-2'></div>
           {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
@@ -147,7 +146,8 @@ const contents: GeoScrollContent[] = [
         <h3 className='text-xl font-bold uppercase my-5'>Money Matters</h3>
         <div className='mt-2 text-md'>
           <p className='py-2'>
-            Many people do not have high speed internet at home because it is too expensive. 
+            Many households pay over $100/month for high-speed internet service, a price may be out
+            of reach for households without home internet.
           </p>
           <div className='mt-2'></div>
           {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}

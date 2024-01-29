@@ -11,8 +11,9 @@ const NeedsOne = () => {
             <p className='py-12'>
               The Texas Digital Opportunity Plan explores the current state of digital opportunity
               across Texas. The data shows that different places and communities have different
-              needs in terms of access to internet, devices and digital skills. So, the plan calls
-              for approaches designed to meet the particular needs of each community.
+              unique needs in terms of access to the internet, devices, and digital skills. So,
+              Therefore, the plan calls for approaches designed to meet the particular needs of each
+              community.
               <br />
               <br />
               The BDO made five goals to tackle these challenges. The goals are based on data that

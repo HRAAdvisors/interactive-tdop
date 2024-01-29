@@ -4,8 +4,6 @@ import CardTerms from '@/components/CardTerms';
 import StrategiesCards from '@/static/StrategiesCards';
 
 const StrategiesTwo = () => {
-  // const [opened, { toggle }] = useDisclosure(false);
-
   return (
     <div className='w-full h-full bg-[#FFFDF6] px-4'>
       <div className='grid md:grid-cols-12'>
