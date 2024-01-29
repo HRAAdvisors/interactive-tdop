@@ -185,7 +185,8 @@ const ChoroplethMap = ({
 
     const obj = {
       container: mapContainerRef.current as HTMLElement,
-      style: 'mapbox://styles/mapbox/light-v11',
+      // style: 'mapbox://styles/mapbox/light-v11',
+      style: 'mapbox://styles/mapbox/dark-v11',
       center, // Coordinates for Austin, Texas
     };
     if (zoom) {

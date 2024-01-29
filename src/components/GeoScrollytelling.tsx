@@ -8,6 +8,8 @@ import { getColorStops } from '@/utils/getColorStop';
 import Legend from './ui/Legend';
 import SplitPaneMapContainer from './SplitPaneMapContainer';
 import { useGetGeoJSON } from '@/utils/customHooks';
+import ButtonLight from './ui/ButtonLight';
+import ButtonDark from './ui/ButtonDark';
 
 const contents = [
   {
@@ -209,7 +211,7 @@ const GeoScrollytelling = () => {
   const { geoJsonFeatures } = useGetGeoJSON(input.data, input.dataPointName);
 
   return (
-    <div className='w-full relative' style={{ height: `${(_.size(contents) + 1) * 100}vh` }}>
+    <div className='w-full relative' style={{ height: `${(_.size(contents) + 4) * 100}vh` }}>
       {geoJsonFeatures && (
         <div
           className='h-screen w-full sticky inset-0 float-left'
@@ -241,9 +243,9 @@ const GeoScrollytelling = () => {
             if (data) setInput(data); // Set the input based on the received data
           }}
         >
-          {/* <Step>
-            <div className='w-screen h-screen text-white bg-black'>
-              <p className='w-[60rem] p-40'>
+          <Step>
+            <div className='w-screen h-screen text-white text-lg bg-[#111]'>
+              <p className='lg:w-[60vw] md:p-60 w-90vw p-5'>
                 The internet has transformed almost every aspect of our lives and society, but{' '}
                 <strong>there is a growing divide</strong> between those who can fully access the
                 benefits of the digital world and those who cannot. 
@@ -251,8 +253,8 @@ const GeoScrollytelling = () => {
             </div>
           </Step>
           <Step>
-            <div className='w-screen h-screen text-white bg-black'>
-              <p className='w-[60rem] p-40'>
+            <div className='w-screen h-screen text-white text-lg bg-[#111]'>
+              <p className='lg:w-[60vw] md:p-60 w-90vw p-5'>
                 <strong>It is time to bridge this divide.</strong> The internet is not a luxury – it
                 is a necessity for education, work, health, safety and staying connected with
                 friends and family. High-speed internet, computing devices, and the skills to use
@@ -261,15 +263,15 @@ const GeoScrollytelling = () => {
             </div>
           </Step>
           <Step>
-            <div className='w-screen h-screen text-white bg-black'>
-              <p className='w-[60rem] p-40'>
+            <div className='w-screen h-screen text-white text-lg bg-[#111]'>
+              <p className='lg:w-[60vw] md:p-60 w-90vw p-5'>
                 <strong>Texas ranks X out of 50 for internet adoption.</strong>
                 <br></br> Scroll to explore which areas and communities are subscribed to fast
                 internet and have internet-enabled devices, and which do not – and why this all
                 matters for you and your community. 
               </p>
             </div>
-          </Step> */}
+          </Step>
           {_.map(contents, (d, i) => (
             <Step data={d} key={i + 1}>
               <div className='h-screen w-full z-10 bg-transparent flex justify-center items-center'>
@@ -282,6 +284,36 @@ const GeoScrollytelling = () => {
           <Step>
             <div className='w-screen'>
               <SplitPaneMapContainer />
+            </div>
+          </Step>
+          <Step>
+            <div className='w-screen h-screen text-white text-lg bg-[#111]'>
+              <p className='lg:w-[60vw] md:p-60 w-90vw p-5'>
+                <strong>What does all this mean?</strong>
+                <br />
+                High-speed internet service is a necessity in the 21st century. The internet must be
+                accessible, affordable, navigable and safe so all Texans can use it to find
+                opportunity and meet their everyday needs.
+              </p>
+            </div>
+          </Step>
+          <Step>
+            <div className='w-screen h-screen text-white text-lg bg-[#111]'>
+              <p className='lg:w-[60vw] md:p-60 w-90vw p-5'>
+                <strong>Texas has a plan.</strong>
+                <br />
+                 To learn more about the issues, the data, and the current Texas Digital Opportunity
+                Plan, click below:
+                <div className='py-8 justify-between'>
+                  {' '}
+                  <ButtonDark
+                    className='mr-2'
+                    text='Geographic Intro'
+                    link='/geoIntro'
+                  ></ButtonDark>
+                  <ButtonLight text='Data Dashboards' link='/'></ButtonLight>
+                </div>
+              </p>
             </div>
           </Step>
         </Scrollama>
