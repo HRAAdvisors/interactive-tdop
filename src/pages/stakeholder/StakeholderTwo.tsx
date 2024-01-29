@@ -3,8 +3,6 @@ import StakeholderCards from '../../static/StakeholderCards';
 import CardTerms from '@/components/CardTerms';
 
 const StakeholderTwo = () => {
-  // const [opened, { toggle }] = useDisclosure(false);
-
   return (
     <div className='w-full h-full bg-[#FFFDF6] px-4'>
       <div className='grid md:grid-cols-12'>

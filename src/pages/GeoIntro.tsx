@@ -17,7 +17,7 @@ const GeoIntro = () => {
       <HeroLayout
         leftButtonLink='/'
         leftButtonText='Interactive TDOP'
-        rightButtonLink='/'
+        rightButtonLink='/dataDashboards'
         rightButtonText='Data Dashboards'
       />
       <GeoScrollytelling />

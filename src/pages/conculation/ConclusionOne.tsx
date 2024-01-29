@@ -5,11 +5,11 @@ import ButtonLight from '@/components/ui/ButtonLight';
 import ScrollingSections from '@/components/ScrollingSections';
 
 const backgroundImagePaths = [
-  'Capitol.svg',
-  'LivingPlan.jpeg',
-  'Promotion.jpg',
-  'Needs.jpg',
-  'Capitol.jpg',
+  'img/Capitol.svg',
+  'img/LivingPlan.jpg',
+  'img/Promotion.jpg',
+  'img/Needs.jpg',
+  'img/Capitol.jpg',
 ];
 
 const steps = [

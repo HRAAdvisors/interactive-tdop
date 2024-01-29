@@ -11,8 +11,8 @@ const IntroTwo = () => {
       <div className='grid md:grid-cols-12'>
         <div className='flex flex-col col-start-4 col-span-6 justify-center pt-20 pb-20 mx-[2rem]'>
           <p className=''>
-            The Digital Opportunity Plan contains some technical language to refer to proven methods
-            to expand digital opportunity.
+            The Texas Digital Opportunity Plan contains some technical language to refer to proven
+            methods to expand digital opportunity.
             <br />
             <br />
             <strong>Click on the pictures</strong> to learn about important words and ideas in

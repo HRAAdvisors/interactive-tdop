@@ -6,37 +6,15 @@ import NeedsAndAssetsPage from './need';
 import VisionPage from './vision';
 import IntroPage from './intro';
 import HeroLayout from '@/components/HeroLayout';
-import StakeholderEngagementPage from './stackholder';
+import StakeholderEngagementPage from './stakeholder';
 import StrategiesPage from './strategies';
 import ConclusionPage from './conculation';
 import Sidebar from '@/components/Sidebar';
 import Navbar from '@/components/Navbar';
 import { ScrollableTitleProvider } from '@/components/ScrollableTitleContext';
 
-// const FadeInSection = ({ children }: { children: ReactNode }) => {
-//   const [ref, inView] = useInView({
-//     triggerOnce: true,
-//     threshold: 0.01, // Adjust as needed
-//   });
-
-//   const props = {
-//     style: {
-//       opacity: inView ? 1 : 0,
-//       transition: 'opacity 0.5s',
-//     },
-//   };
-
-//   return (
-//     <div ref={ref} {...props}>
-//       {children}
-//     </div>
-//   );
-// };
-
 const Home = () => {
   const [currentPage, setCurrentPage] = useState({});
-  // const [_currentSection, setCurrentSection] = useState(0);
-  // const [_latestSection, setLatestSection] = useState(0);
   const [showNav, setShowNav] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   let lastScrollY = window.scrollY; // Initialize lastScrollY outside of the useEffect
@@ -88,7 +66,7 @@ const Home = () => {
         <HeroLayout
           leftButtonLink='/geoIntro'
           leftButtonText='Geographic Intro'
-          rightButtonLink='/'
+          rightButtonLink='/dataDashboards'
           rightButtonText='Data Dashboards'
         />
       </Element>
