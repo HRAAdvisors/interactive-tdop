@@ -64,7 +64,7 @@ const GeoScrollytelling = () => {
             d.mapData ? (
               <Step data={d} key={i + 1}>
                 <div className='h-screen w-full z-10 bg-transparent flex justify-center items-center'>
-                  <div className='max-w-sm px-12 py-8 bg-white/95 z-30 rounded-lg shadow-md w-full  min-h-[400px]'>
+                  <div className='relative max-w-sm px-12 py-8 bg-white/95 z-10 rounded-lg shadow-md w-full  min-h-[400px]'>
                     {d.getContent(geoJsonFeatures)}
                   </div>
                 </div>

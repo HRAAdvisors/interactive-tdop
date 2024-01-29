@@ -35,13 +35,13 @@ const Navbar = ({ show }: { show: boolean }) => {
     top: 0,
     left: 0,
     right: 0,
-    zIndex: 10, // Ensure it's above other content
+    zIndex: 50, // Ensure it's above other content
     // ...other styles
   };
 
   return (
     <div style={navbarStyle}>
-      <div className='z-60 flex sticky items-center top-0 h-16 shadow-md text-[#111] bg-[#FFFDF6] w-screen'>
+      <div className='flex sticky items-center top-0 h-16 shadow-md text-[#111] bg-[#FFFDF6] w-screen'>
         <div className='hidden md:flex ml-10 top-8 w-contain'>
           <a href='https://comptroller.texas.gov/programs/broadband/'>
             <Logo />
