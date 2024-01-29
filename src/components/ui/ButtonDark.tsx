@@ -1,7 +1,7 @@
 import { Button } from '@mantine/core';
 import { Link } from 'react-router-dom';
 
-function ButtonLight({ text, link }: { text: string; link: string; className?: string }) {
+function ButtonDark({ text, link }: { text: string; link: string; className?: string }) {
   return (
     <Link to={link}>
       <div
@@ -34,4 +34,4 @@ function ButtonLight({ text, link }: { text: string; link: string; className?: s
   );
 }
 
-export default ButtonLight;
+export default ButtonDark;
