@@ -14,7 +14,7 @@ const navbarLinks: NavLink[] = [
     text: 'Interactive TDOP',
   },
   {
-    link: '/dashboard',
+    link: '/dataDashboards',
     text: 'Data Dashboard',
   },
 ];
