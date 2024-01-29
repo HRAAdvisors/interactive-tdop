@@ -67,7 +67,7 @@ const contents: GeoScrollContent[] = [
           id: ChartId.TXSubscription,
           regionSetup: {
             peers: 'none',
-            segments: SegmentId.regions,
+            segments: SegmentId.counties,
           },
         },
       ],
@@ -234,42 +234,42 @@ const contents: GeoScrollContent[] = [
       </div>
     ),
   },
+  // {
+  //   id: 7,
+  //   mapData: {
+  //     args: [
+  //       {
+  //         geoId: '48',
+  //         id: ChartId.TXAdoption,
+  //         regionSetup: {
+  //           peers: 'none',
+  //           segments: 'county',
+  //         },
+  //       },
+  //     ],
+  //     dataPointName: DataPointGeneratorName.hispeedShare,
+  //     getFitBoundaryFeature: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => {
+  //       return _.find(geoJSONData?.features, (feature) => feature?.properties?.GEOID === '48001');
+  //     },
+  //   },
+  //   getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
+  //     <div className='mt-2'>
+  //       <h3 className='text-xl font-bold uppercase my-5'>Devices Matter</h3>
+  //       <div className='mt-2 text-md'>
+  //         <p className='py-2'>
+  //           People who do not have computers or internet-enabled devices at home are left out of
+  //           digital opportunity.
+  //         </p>
+  //         <div className='mt-4'></div>
+  //         {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
+  //         <p className='mt-2 font-bold text-xs'>Percent of Households With Only Smartphones</p>
+  //         <p className='text-xs my-2'>Source: ACS 5-Year Estimates, 2017-2021</p>
+  //       </div>
+  //     </div>
+  //   ),
+  // },
   {
     id: 7,
-    mapData: {
-      args: [
-        {
-          geoId: '48',
-          id: ChartId.TXAdoption,
-          regionSetup: {
-            peers: 'none',
-            segments: 'county',
-          },
-        },
-      ],
-      dataPointName: DataPointGeneratorName.hispeedShare,
-      getFitBoundaryFeature: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => {
-        return _.find(geoJSONData?.features, (feature) => feature?.properties?.GEOID === '48001');
-      },
-    },
-    getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
-      <div className='mt-2'>
-        <h3 className='text-xl font-bold uppercase my-5'>Devices Matter</h3>
-        <div className='mt-2 text-md'>
-          <p className='py-2'>
-            People who do not have computers or internet-enabled devices at home are left out of
-            digital opportunity. 
-          </p>
-          <div className='mt-4'></div>
-          {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
-          <p className='mt-2 font-bold text-xs'>Percent of Households With Only Smartphones</p>
-          <p className='text-xs my-2'>Source: ACS 5-Year Estimates, 2017-2021</p>
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: 8,
     mapData: {
       args: [
         {
@@ -303,7 +303,7 @@ const contents: GeoScrollContent[] = [
     ),
   },
   {
-    id: 9,
+    id: 8,
     containerClassNames: 'text-white text-lg bg-[#111]',
     getContent: () => (
       <p className='lg:w-[60vw] md:p-60 w-90vw p-5 text-white text-lg bg-[#111]'>
@@ -316,7 +316,7 @@ const contents: GeoScrollContent[] = [
     ),
   },
   {
-    id: 10,
+    id: 9,
     containerClassNames: 'text-white text-lg bg-[#111]',
     getContent: () => (
       <p className='lg:w-[60vw] md:p-60 w-90vw p-5'>

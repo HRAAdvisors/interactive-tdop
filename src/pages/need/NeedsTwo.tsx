@@ -48,7 +48,7 @@ const NeedsTwo = () => {
                   <MapContainer
                     shouldDropdownShow={false}
                     chartId={ChartId.TXSubscription}
-                    segmentId={SegmentId.regions}
+                    segmentId={SegmentId.counties}
                     dataPointerGenerator={DataPointGeneratorName.broadbandShare}
                     mapSource='ACS 5-Year Estimates, 2017-2021'
                   />

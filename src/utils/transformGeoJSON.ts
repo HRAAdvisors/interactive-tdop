@@ -108,6 +108,16 @@ export const getAggregateChartData = (choroplethData: ChartBulkResponse) => {
         .value(),
     )
     .value();
+  } else if (choroplethData.id === ChartId.TXAdoptionTract) {
+    return _.chain(choroplethData.data)
+    .groupBy('geo_id')
+    .mapValues((inf) =>
+      _.chain(inf)
+        .groupBy('category')
+        .mapValues((infGroup) => _.first(infGroup))
+        .value(),
+    )
+    .value();
   }
 };
 
@@ -233,7 +243,15 @@ const dataPointGenerator = (
     return (
       parseFloat(aggregatedChoroplethData[geoId]['Yes']['percent'])
     ).toFixed(2);
-  }  else {
+  } else if (
+    dataPointGeneratorName === DataPointGeneratorName.hispeedShareTract &&
+    ChartId.TXAdoptionTract === chartId
+  ) {    
+    console.log(aggregatedChoroplethData);
+    return (
+      parseFloat(aggregatedChoroplethData[geoId]['broadband']['households'])
+    ).toFixed(2);
+  } else {
     console.error('chartId and Datapoint Mismatch');
   }
 };
