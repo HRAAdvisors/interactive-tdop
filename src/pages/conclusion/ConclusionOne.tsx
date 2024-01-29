@@ -39,7 +39,7 @@ const steps = [
       </strong>
       , your feedback at our{' '}
       <strong>
-        <a className='underline' href='mailto:broadband@cpa.texas.gov'>
+        <a className='underline' href='mailto:digital.opportunity@cpa.texas.gov'>
           email address
         </a>
       </strong>

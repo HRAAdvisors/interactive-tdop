@@ -1,5 +1,5 @@
 // import { useDisclosure } from '@mantine/hooks';
-import StakeholderCards from '../../static/StakeholderCards';
+import StakeholderCards from '../../static/StakeholderCards.tsx';
 import CardTerms from '@/components/CardTerms';
 
 const StakeholderTwo = () => {
@@ -28,7 +28,6 @@ const StakeholderTwo = () => {
             altText={StakeholderCards.Outcome_Areas.altText}
             title={StakeholderCards.Outcome_Areas.title}
             description={StakeholderCards.Outcome_Areas.description}
-            link={StakeholderCards.Outcome_Areas.link}
           />
         </div>
         <div className='flex flex-col items-center mb-[5vh] md:col-start-4 md:col-span-3 '>

@@ -4,7 +4,7 @@ import '@mantine/core/styles.css';
 import VisionOne from './VisionOne';
 import VisionTwo from './VisionTwo';
 import ScrollableTitle from '@/components/ScrollableTitle';
-import VisionCards from '@/static/VisionCards';
+import VisionCards from '@/static/VisionCards.tsx';
 
 const VisionPage = () => {
   const header = (

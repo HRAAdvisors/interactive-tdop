@@ -1,7 +1,7 @@
 // import { useDisclosure } from '@mantine/hooks';
 
 import CardTerms from '@/components/CardTerms';
-import IntroCards from '@/static/IntroCards';
+import IntroCards from '@/static/IntroCards.tsx';
 
 const IntroTwo = () => {
   // const [opened, { toggle }] = useDisclosure(false);

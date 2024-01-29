@@ -6,7 +6,7 @@ import '@mantine/core/styles.css';
 import StrategiesTwo from './StrategiesTwo';
 import StrategiesOne from './StrategiesOne';
 import ScrollableTitle from '@/components/ScrollableTitle';
-import StrategiesCards from '@/static/StrategiesCards';
+import StrategiesCards from '@/static/StrategiesCards.tsx';
 
 const StrategiesPage = ({ handlePageChange }: { handlePageChange?: Function }) => {
   const [localSections] = useState(['section1', 'section2']);

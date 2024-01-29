@@ -4,20 +4,7 @@ import IntroOne from './IntroOne';
 import IntroTwo from './IntroTwo';
 
 const IntroPage = ({ handlePageChange: _ }: { handlePageChange?: Function }) => {
-  // const header = (
-  //   <ScrollableTitle
-  //     img={IntroCards.Header.img}
-  //     altText={IntroCards.Header.altText}
-  //     title={IntroCards.Header.title}
-  //   />
-  // );
   const sections = [<IntroOne />, <IntroTwo />];
-  // const [activeSection, setActiveSection] = useState(0);
-
-  // const handleSectionClick = (index) => {
-  //   setActiveSection(index);
-  //   scroll.scrollTo(`section${index + 1}`, { smooth: true, duration: 500 });
-  // };
 
   return (
     <>

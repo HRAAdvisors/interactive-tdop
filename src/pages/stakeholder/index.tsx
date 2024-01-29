@@ -4,7 +4,7 @@ import '@mantine/core/styles.css';
 import StakeholderTwo from './StakeholderTwo';
 import StakeholderOne from './StakeholderOne';
 import ScrollableTitle from '@/components/ScrollableTitle';
-import StakeholderCards from '@/static/StakeholderCards';
+import StakeholderCards from '@/static/StakeholderCards.tsx';
 
 const StakeholderEngagementPage = () => {
   const header = (

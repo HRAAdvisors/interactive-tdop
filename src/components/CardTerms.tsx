@@ -30,22 +30,16 @@ const flipCardStyles: any = {
     overflowY: 'auto', // Enable scrolling
   },
 };
-interface Link {
-  url: string;
-  text: string;
-}
 
 const CardTerms = ({
   img,
   title,
   description,
-  link,
 }: {
   img: string;
   title: string;
-  description: string;
+  description: string | JSX.Element;
   altText: string;
-  link?: Link;
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -76,11 +70,6 @@ const CardTerms = ({
           <div className='p-8 h-full items-center justify-center'>
             <p className='text-md font-semibold my-4'>{title}</p> {/* Updated this line */}
             <p className='text-sm mb-4'>{description}</p>
-            {link && (
-              <a href={link.url} className='text-blue-600 text-sm md:hover:underline'>
-                {link.text}
-              </a>
-            )}
             <br></br>
           </div>
         </div>

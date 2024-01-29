@@ -1,5 +1,5 @@
 import CardTerms from '@/components/CardTerms';
-import VisionCards from '@/static/VisionCards';
+import VisionCards from '@/static/VisionCards.tsx';
 import 'react-dropdown/style.css';
 
 const VisionTwo = () => {
@@ -46,7 +46,6 @@ const VisionTwo = () => {
             altText={VisionCards.Health.altText}
             title={VisionCards.Health.title}
             description={VisionCards.Health.description}
-            link={VisionCards.Health.link}
           />
         </div>
         <div className='flex flex-col items-center mb-[5vh] md:col-start-4 md:col-span-3 lg:col-start-6 lg:col-span-2'>

@@ -1,7 +1,7 @@
 // import { useDisclosure } from '@mantine/hooks';
 
 import CardTerms from '@/components/CardTerms';
-import StrategiesCards from '@/static/StrategiesCards';
+import StrategiesCards from '@/static/StrategiesCards.tsx';
 
 const StrategiesTwo = () => {
   return (

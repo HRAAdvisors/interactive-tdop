@@ -1,7 +1,7 @@
 import CollapsibleCard from '@/components/CollapsibleCard';
 import MapContainer from '@/components/MapContainer';
 import QuoteBlock from '@/components/QuoteBlock';
-import NeedsCards from '@/static/NeedsCards';
+import NeedsCards from '@/static/NeedsCards.tsx';
 import { ChartId, DataPointGeneratorName, SegmentId } from '@/types/ChartIds';
 
 const NeedsTwo = () => {
