@@ -11,12 +11,14 @@ export enum ChartId {
   TXMoneyMatters ="65b28cd059e498194521cba6",
   TXBSL = "65b28d8859e498194521cea5",
   TXCost100 = "65b6dc22db9f7faac7f2e702",
-  TXCybersecurityConfidence = "65b6dd79db9f7faac7f2e9f8"
+  TXCybersecurityConfidence = "65b6dd79db9f7faac7f2e9f8",
+  TXAdoptionTract = "65b817a5db9f7faac7f8ca2e"
 }
 
 export enum SegmentId {
   counties = "county",
-  regions = "65428489b4440631aad90229"
+  regions = "65428489b4440631aad90229",
+  tract = "tract"
 }
 
 export enum DataPointGeneratorName {
@@ -36,5 +38,7 @@ export enum DataPointGeneratorName {
   cybersecurityAwareness,
   publicResourceAccess,
   costOver100,
-  cybersecurityConfidence
+  cybersecurityConfidence,
+  lowIncomeHispeedShareTract,
+  hispeedShareTract
 }
