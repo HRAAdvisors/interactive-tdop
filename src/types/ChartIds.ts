@@ -12,7 +12,8 @@ export enum ChartId {
   TXBSL = "65b28d8859e498194521cea5",
   TXCost100 = "65b6dc22db9f7faac7f2e702",
   TXCybersecurityConfidence = "65b6dd79db9f7faac7f2e9f8",
-  TXAdoptionTract = "65b817a5db9f7faac7f8ca2e"
+  TXAdoptionTract = "65b817a5db9f7faac7f8ca2e",
+  TXPopulationTract = "65b92bd55c4b67c0f3b8aed7"
 }
 
 export enum SegmentId {
@@ -39,6 +40,6 @@ export enum DataPointGeneratorName {
   publicResourceAccess,
   costOver100,
   cybersecurityConfidence,
-  lowIncomeHispeedShareTract,
-  hispeedShareTract
+  lowincomeShare,
+  noHispeedShareTract
 }

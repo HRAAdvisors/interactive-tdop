@@ -3,7 +3,7 @@ import SidebarItems from '../static/SidebarItems';
 import { Link } from 'react-scroll';
 import { ScrollableTitleContext } from './ScrollableTitleContext';
 
-function Sidebar({}: { currentPage: any }) {
+function Sidebar({}: { currentPage?: any }) {
   const { refs } = useContext(ScrollableTitleContext) as { refs: any[] };
   const [isOverlapping, setIsOverlapping] = useState(false);
   const [_activeIndex, setActiveIndex] = useState(0);

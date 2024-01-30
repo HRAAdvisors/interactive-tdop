@@ -142,7 +142,6 @@ const ChoroplethMap = ({
             ..._.flatMap(colorStops, (stop) => [stop.step, stop.color]),
           ],
           'fill-opacity': 1, // Initialize with zero opacity
-          'fill-opacity-transition': { duration: 1000 }, // 500 milliseconds = 1/2 seconds
           'fill-outline-color': 'white',
         },
       },
@@ -200,7 +199,8 @@ const ChoroplethMap = ({
     const obj = {
       container: mapContainerRef.current as HTMLElement,
       // style: 'mapbox://styles/mapbox/light-v11',
-      style: 'mapbox://styles/mapbox/dark-v11',
+      style: 'mapbox://styles/eddiejoeantonio/cls0lfnea01kp01p27llib7ce',
+      // style: 'mapbox://styles/mapbox/dark-v11',
       center, // Coordinates for Austin, Texas
     };
     if (zoom) {

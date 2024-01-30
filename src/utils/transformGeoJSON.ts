@@ -244,21 +244,18 @@ const dataPointGenerator = (
       parseFloat(aggregatedChoroplethData[geoId]['Yes']['percent'])
     ).toFixed(2);
   } else if (
-    dataPointGeneratorName === DataPointGeneratorName.hispeedShareTract &&
+    dataPointGeneratorName === DataPointGeneratorName.noHispeedShareTract &&
     ChartId.TXAdoptionTract === chartId
   ) {
-    const noInternetHouseHolds = aggregatedChoroplethData?.[geoId]?.['no_internet']?.['households'];    
-    const broadbandHouseHolds = aggregatedChoroplethData?.[geoId]?.['broadband']?.['households'];
- if( noInternetHouseHolds && broadbandHouseHolds) {
-  return (
-    parseFloat(broadbandHouseHolds)
-    /(parseFloat(noInternetHouseHolds) 
-    +parseFloat(broadbandHouseHolds))
-  ).toFixed(2);
- } else {
-   return null;
- }
-    
+    const noInternetHouseHolds = aggregatedChoroplethData?.[geoId]?.['no_internet']?.['share'];    
+    const broadbandHouseHolds = aggregatedChoroplethData?.[geoId]?.['broadband']?.['share'];
+    if( noInternetHouseHolds && broadbandHouseHolds) {  
+      return (
+       100 - parseFloat(broadbandHouseHolds)
+      ).toFixed(2);
+      } else {
+          return null;
+      }
   } else {
     console.error('chartId and Datapoint Mismatch');
   }

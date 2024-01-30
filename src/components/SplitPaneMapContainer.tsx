@@ -1,4 +1,4 @@
-import { DataPointGeneratorName } from '@/types/ChartIds';
+import { ChartId, DataPointGeneratorName, SegmentId } from '@/types/ChartIds';
 import { Map } from 'mapbox-gl';
 import { getColorStops } from '@/utils/getColorStop';
 import SplitPaneMap from './ui/SplitPaneMap';
@@ -6,13 +6,24 @@ import Legend from './ui/Legend';
 import { useGetGeoJSON } from '@/utils/customHooks';
 import { useRef } from 'react';
 
-const params = [
+const leftParams = [
   {
     geoId: '48',
-    id: '65a6952ca3f05308cc4f280c',
+    id: ChartId.TXAdoptionTract,
     regionSetup: {
       peers: 'none',
-      segments: 'county',
+      segments: SegmentId.tract,
+    },
+  },
+];
+
+const rightParams = [
+  {
+    geoId: '48',
+    id: ChartId.TXAdoptionTract,
+    regionSetup: {
+      peers: 'none',
+      segments: SegmentId.tract,
     },
   },
 ];
@@ -22,12 +33,12 @@ const SplitPaneMapContainer = () => {
   const rightMap = useRef<Map>();
 
   const { geoJsonFeatures: geoJsonFeaturesLeft } = useGetGeoJSON(
-    params,
-    DataPointGeneratorName.lowIncomeHispeedShare,
+    leftParams,
+    DataPointGeneratorName.noHispeedShareTract,
   );
   const { geoJsonFeatures: geoJsonFeaturesRight } = useGetGeoJSON(
-    params,
-    DataPointGeneratorName.hispeedShare,
+    rightParams,
+    DataPointGeneratorName.noHispeedShareTract,
   );
 
   return (
@@ -45,9 +56,7 @@ const SplitPaneMapContainer = () => {
                   {geoJsonFeaturesLeft && (
                     <Legend colorStops={getColorStops(geoJsonFeaturesLeft)} />
                   )}
-                  <p className='mt-4 font-bold text-xs'>
-                    Percent of Low-Income Households with High-speed Internet Access{' '}
-                  </p>
+                  <p className='mt-4 font-bold text-xs'>Percent of Low-Income Households </p>
                 </div>
                 <div className='w-1/2 pl-4'>
                   {geoJsonFeaturesRight && (
