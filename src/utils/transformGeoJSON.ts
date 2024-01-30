@@ -246,11 +246,19 @@ const dataPointGenerator = (
   } else if (
     dataPointGeneratorName === DataPointGeneratorName.hispeedShareTract &&
     ChartId.TXAdoptionTract === chartId
-  ) {    
-    console.log(aggregatedChoroplethData);
-    return (
-      parseFloat(aggregatedChoroplethData[geoId]['broadband']['households'])
-    ).toFixed(2);
+  ) {
+    const noInternetHouseHolds = aggregatedChoroplethData?.[geoId]?.['no_internet']?.['households'];    
+    const broadbandHouseHolds = aggregatedChoroplethData?.[geoId]?.['broadband']?.['households'];
+ if( noInternetHouseHolds && broadbandHouseHolds) {
+  return (
+    parseFloat(broadbandHouseHolds)
+    /(parseFloat(noInternetHouseHolds) 
+    +parseFloat(broadbandHouseHolds))
+  ).toFixed(2);
+ } else {
+   return null;
+ }
+    
   } else {
     console.error('chartId and Datapoint Mismatch');
   }
@@ -262,7 +270,8 @@ export const transformToGeoJSON = (
   dataPointGeneratorName: DataPointGeneratorName,
 ) => {
   const aggregateChartData = getAggregateChartData(chartBulkResponse);
-  const features = _.map(geoDataCollection.boundaries, (boundaryItem) => ({
+  const features = _.chain(geoDataCollection.boundaries)
+  .map( (boundaryItem) => ({
     type: 'Feature',
     geometry: boundaryItem.feature.geometry,
     properties: {
@@ -275,7 +284,7 @@ export const transformToGeoJSON = (
         dataPointGeneratorName,
       ),
     },
-  }));
+  })).filter(feature => !_.isEmpty(feature.properties.dataPoint)).value();
 
   return {
     type: 'FeatureCollection',
