@@ -1,7 +1,7 @@
 // App.js
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import '@mantine/core/styles.css';
-import HeroLayout from '@/components/HeroLayout';
+// import HeroLayout from '@/components/HeroLayout';
 // import { animateScroll as scroll } from 'react-scroll';
 // import Navbar from '@/components/Navbar';
 import NavbarPlain from '@/components/NavbarPlain';
