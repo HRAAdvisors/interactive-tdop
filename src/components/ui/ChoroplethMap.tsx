@@ -24,9 +24,11 @@ export interface ChoroplethMapProps {
   onMove?: () => void;
   onLoad?: (map: Map) => void;
   toolTipClass?: string;
+  mapClassName?: string;
   syncCenterAndZoom?: boolean;
   shouldSetMaxBound?: boolean;
   fitBoundFeature?: GeoJSON.Feature<GeoJSON.Geometry>;
+  anchor?: mapboxgl.Anchor;
 }
 
 const getToolTip = (feature: any) => `<div class="text-white">
@@ -53,6 +55,7 @@ const ChoroplethMap = ({
   padding = { top: 20, left: 20, right: 20, bottom: 20 },
   children,
   mapContainerClassName = 'relative h-full w-full shadow-sm',
+  mapClassName = '',
   center = getCalculatedCenter(geoJSONFeatureCollection),
   zoom,
   onMove,
@@ -61,6 +64,7 @@ const ChoroplethMap = ({
   shouldSetMaxBound = true,
   fitBoundFeature,
   toolTipClass = 'z-50',
+  anchor,
 }: ChoroplethMapProps) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const localGeoJSON = useRef(geoJSONFeatureCollection);
@@ -157,6 +161,8 @@ const ChoroplethMap = ({
       const tooltip = new mapboxgl.Popup({
         closeButton: false,
         closeOnClick: false,
+        className: toolTipClass,
+        anchor,
       });
 
       if (onMove) {
@@ -166,9 +172,6 @@ const ChoroplethMap = ({
       mapRef.current.on('mousemove', layerId, (e) => {
         const feature = _.first(e.features);
         if (feature) {
-          if (toolTipClass) {
-            tooltip.addClassName(toolTipClass);
-          }
           tooltip
             .setLngLat(e.lngLat)
             .setHTML(tooltipContent(feature))
@@ -224,7 +227,7 @@ const ChoroplethMap = ({
   return (
     <div className={mapContainerClassName}>
       {children}
-      <div ref={mapContainerRef} className={`h-full w-full`} />
+      <div ref={mapContainerRef} className={`h-full w-full ${mapClassName}`} />
     </div>
   );
 };

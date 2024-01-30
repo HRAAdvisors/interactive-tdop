@@ -4,18 +4,10 @@ import ChoroplethMap, { ChoroplethMapProps } from './ChoroplethMap';
 interface SplitPaneMapProps {
   leftMapProps: Partial<ChoroplethMapProps>;
   righMapProps: Partial<ChoroplethMapProps>;
-  width: string | number;
-  height: string | number;
   containerClassName?: string;
 }
 
-const SplitPaneMap = ({
-  leftMapProps,
-  righMapProps,
-  width,
-  height,
-  containerClassName,
-}: SplitPaneMapProps) => {
+const SplitPaneMap = ({ leftMapProps, righMapProps, containerClassName }: SplitPaneMapProps) => {
   const [paneWidths, setPaneWidths] = useState([50, 50]); // Initial widths
   const dividerRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -47,11 +39,7 @@ const SplitPaneMap = ({
   };
 
   return (
-    <div
-      className={`relative flex justify-around ${containerClassName}`}
-      style={{ width, height }}
-      ref={containerRef}
-    >
+    <div className={`relative flex justify-around ${containerClassName}`} ref={containerRef}>
       <div
         className='w-full relative z-10 h-full bg-green-200 overflow-hidden'
         style={{ width: `${paneWidths[0]}%` }}
@@ -61,7 +49,8 @@ const SplitPaneMap = ({
             <ChoroplethMap
               center={center}
               zoom={zoom}
-              toolTipClass='z-50 fixedToolTip'
+              toolTipClass='z-50 absolute'
+              anchor='right'
               onMove={() => {
                 if (leftMapProps?.mapRef?.current) {
                   setCenter([

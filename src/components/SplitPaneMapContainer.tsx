@@ -32,7 +32,7 @@ const SplitPaneMapContainer = () => {
 
   return (
     <div className='w-full h-screen p-2 flex bg-basic flex-col lg:flex-row'>
-      <div className='lg:w-1/2 w-full flex items-center justify-center'>
+      <div className='lg:w-1/2 w-full h-full flex items-center justify-center'>
         <div className='lg:max-w-md px-12 py-8 bg-white z-30 rounded-lg shadow-md w-full  min-h-[400px]'>
           <div className='mt-2'>
             <h3 className='text-xl font-bold uppercase my-5'>Money Matters</h3>
@@ -63,7 +63,7 @@ const SplitPaneMapContainer = () => {
           </div>
         </div>
       </div>
-      <div className='lg:w-1/2 w-full flex items-center justify-center p-2 drop-shadow'>
+      <div className='lg:w-1/2 w-full h-full flex items-center justify-center p-2 drop-shadow'>
         <SplitPaneMap
           leftMapProps={{
             colorStops: geoJsonFeaturesLeft && getColorStops(geoJsonFeaturesLeft, 'blue'),
@@ -75,9 +75,7 @@ const SplitPaneMapContainer = () => {
             geoJSONFeatureCollection: geoJsonFeaturesRight,
             mapRef: rightMap,
           }}
-          containerClassName='max-w-[600px]'
-          width='100%'
-          height='80vh'
+          containerClassName='max-w-[600px] lg:h-4/5 h-full w-full'
         />
       </div>
     </div>
