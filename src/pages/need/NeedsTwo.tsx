@@ -197,7 +197,7 @@ const NeedsTwo = () => {
                 stackedBarGoal={25}
                 leftPanelContent={
                   <div>
-                    <QuoteBlock quote={NeedsCards.KPI3_2.quote} />
+                    <QuoteBlock quote={NeedsCards.KPI2_2.quote} />
                     <div className='my-4 text-xs'>
                       {' '}
                       <span className='uppercase underline'>Source</span>: Comment from a

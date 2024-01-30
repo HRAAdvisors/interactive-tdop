@@ -3,11 +3,11 @@
 import '@mantine/core/styles.css';
 // import HeroLayout from '@/components/HeroLayout';
 // import { animateScroll as scroll } from 'react-scroll';
+// import GeoScrollytelling from '@/pages/geoScrollytelling/GeoScrollytelling';
 // import Navbar from '@/components/Navbar';
 import NavbarPlain from '@/components/NavbarPlain';
-import Sidebar from '@/components/Sidebar';
 
-const DataDashboards = () => {
+const AboutPage = () => {
   // const [showNav, setShowNav] = useState(false);
   // let lastScrollY = window.scrollY; // Initialize lastScrollY outside of the useEffect
   // useEffect(() => {
@@ -32,20 +32,9 @@ const DataDashboards = () => {
 
   return (
     <>
-      {/* <Navbar show={showNav} /> */}
       <NavbarPlain />
-      <Sidebar />
-      {/* <HeroLayout
-        leftButtonLink='/'
-        leftButtonText='Interactive TDOP'
-        rightButtonLink='/geoIntro'
-        rightButtonText='Geographic Intro'
-      /> */}
-      <div>
-        <p className='p-80 text-4xl'>Under Development</p>
-      </div>
     </>
   );
 };
 
-export default DataDashboards;
+export default AboutPage;

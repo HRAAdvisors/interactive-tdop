@@ -45,8 +45,7 @@ const Home = () => {
 
       // Set showNav to true only if scrolled more than 8vh and less than 16vh
       const scrolledMoreThan8vh = scrollY > 8 * window.innerHeight;
-      const scrolledLessThan16vh = scrollY < 25 * window.innerHeight;
-      setShowSidebar(scrolledMoreThan8vh && scrolledLessThan16vh);
+      setShowSidebar(scrolledMoreThan8vh);
     };
 
     // Add the event listener when the component mounts
