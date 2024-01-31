@@ -279,14 +279,18 @@ const dataPointGenerator = (
       parseFloat(aggregatedChoroplethData[geoId]['sonlyhspd']['percent'])
     ).toFixed(2);
   } else if (
-    dataPointGeneratorName === DataPointGeneratorName.lowincomeShare &&
-    ChartId.TXLowIncomePopulationTract === chartId
-  ) {  
-    console.log(aggregatedChoroplethData);
-    
-    return (
-      parseFloat(aggregatedChoroplethData[geoId]['share'])
-    ).toFixed(1);
+    dataPointGeneratorName === DataPointGeneratorName.noHispeedShareTract &&
+    ChartId.TXAdoptionTract === chartId
+  ) {
+    const noInternetHouseHolds = aggregatedChoroplethData?.[geoId]?.['no_internet']?.['share'];    
+    const broadbandHouseHolds = aggregatedChoroplethData?.[geoId]?.['broadband']?.['share'];
+    if( noInternetHouseHolds && broadbandHouseHolds) {  
+      return (
+       100 - parseFloat(broadbandHouseHolds)
+      ).toFixed(2);
+      } else {
+          return null;
+      }
   } else {
     console.error('chartId and Datapoint Mismatch');
   }

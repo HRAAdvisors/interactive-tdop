@@ -13,7 +13,7 @@ export enum ChartId {
   TXCost100 = "65b6dc22db9f7faac7f2e702",
   TXCybersecurityConfidence = "65b6dd79db9f7faac7f2e9f8",
   TXAdoptionTract = "65b817a5db9f7faac7f8ca2e",
-  TXLowIncomePopulationTract = "65ba7ee26b98f1a31d4d9352",
+  TXLowIncomePopulationTract = "65ba9c9e6b98f1a31d4f4a89",
   TXDevices = "65b28a7459e498194521bb72"
 }
 

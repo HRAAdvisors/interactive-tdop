@@ -12,7 +12,7 @@ const leftParams = [
     id: ChartId.TXLowIncomePopulationTract,
     regionSetup: {
       peers: 'none',
-      segments: SegmentId.counties,
+      segments: SegmentId.tract,
     },
   },
 ];
