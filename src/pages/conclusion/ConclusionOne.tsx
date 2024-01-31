@@ -6,7 +6,7 @@ import ScrollingSections from '@/components/ScrollingSections';
 
 const backgroundImagePaths = [
   'img/Capitol.svg',
-  'img/LivingPlan.jpg',
+  'img/LivingPlan.webp',
   'img/Promotion.jpg',
   'img/Needs.jpg',
   'img/Capitol.jpg',

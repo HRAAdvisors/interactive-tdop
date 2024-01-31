@@ -9,10 +9,10 @@ import { useRef } from 'react';
 const leftParams = [
   {
     geoId: '48',
-    id: ChartId.TXAdoptionTract,
+    id: ChartId.TXLowIncomePopulationTract,
     regionSetup: {
       peers: 'none',
-      segments: SegmentId.tract,
+      segments: SegmentId.counties,
     },
   },
 ];
@@ -34,7 +34,7 @@ const SplitPaneMapContainer = () => {
 
   const { geoJsonFeatures: geoJsonFeaturesLeft } = useGetGeoJSON(
     leftParams,
-    DataPointGeneratorName.noHispeedShareTract,
+    DataPointGeneratorName.lowincomeShare,
   );
   const { geoJsonFeatures: geoJsonFeaturesRight } = useGetGeoJSON(
     rightParams,
@@ -63,7 +63,7 @@ const SplitPaneMapContainer = () => {
                     <Legend colorStops={getColorStops(geoJsonFeaturesRight, 'red')} />
                   )}
                   <p className='mt-4 font-bold text-xs'>
-                    Percent of all Households with no internet access{' '}
+                    Percent of all Households with High-Speed internet access{' '}
                   </p>
                 </div>
               </div>

@@ -2,10 +2,10 @@ import ScrollingSections from '@/components/ScrollingSections';
 
 const backgroundImagePaths = [
   'img/Capitol.svg',
-  'img/LivingPlan.jpg',
-  'img/2.jpg',
+  'img/LivingPlan.webp',
+  'img/2.webp',
   'img/Statewide.jpg',
-  'img/Vision.jpg',
+  'img/Vision.webp',
 ];
 
 const steps = [

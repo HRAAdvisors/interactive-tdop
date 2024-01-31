@@ -170,7 +170,15 @@ const NeedsTwo = () => {
                 }
                 stackedBarData={11}
                 stackedBarGoal={10}
-                leftPanelContent={<MapContainer shouldDropdownShow={false} />}
+                leftPanelContent={
+                  <MapContainer
+                    shouldDropdownShow={false}
+                    chartId={ChartId.TXDevices}
+                    segmentId={SegmentId.counties}
+                    dataPointerGenerator={DataPointGeneratorName.smartphoneOnly}
+                    mapSource='ACS 5-Year Estimates, 2017-2021'
+                  />
+                }
                 strategies={[
                   'Partner with and fund statewide organizations',
                   'Fund local partners',
