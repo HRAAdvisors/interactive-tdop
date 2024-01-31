@@ -63,7 +63,7 @@ const SplitPaneMapContainer = () => {
                     <Legend colorStops={getColorStops(geoJsonFeaturesRight, 'red')} />
                   )}
                   <p className='mt-4 font-bold text-xs'>
-                    Percent of all Households with High-Speed internet access{' '}
+                    Percent of all Households without High-Speed internet{' '}
                   </p>
                 </div>
               </div>
