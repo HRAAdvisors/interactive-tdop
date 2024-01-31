@@ -6,7 +6,7 @@ import ScrollingSections from '@/components/ScrollingSections';
 
 const backgroundImagePaths = [
   'img/Capitol.svg',
-  'img/LivingPlan.jpg',
+  'img/LivingPlan.webp',
   'img/Promotion.jpg',
   'img/Needs.jpg',
   'img/Capitol.jpg',
@@ -25,8 +25,7 @@ const steps = [
   </div>,
   <div>
     <p>
-      However, the Texas Digital Opportunity Plan is intended to be{' '}
-      <strong>a living document.</strong>
+      The plan is a <strong>a living document.</strong>
     </p>
   </div>,
   <div>
@@ -48,7 +47,7 @@ const steps = [
     </p>
   </div>,
   <div>
-    <p> Click below to dive deeper into the state of digital opportunity in Texas.</p>
+    <p> Click to dive deeper into the state of digital opportunity in Texas.</p>
     <div className='my-8 md:mx-8'>
       <ButtonDark text='Geographic Intro' link='/geoIntro'></ButtonDark>
       <ButtonLight text='Data Dashboards' link='/'></ButtonLight>

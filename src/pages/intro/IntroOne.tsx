@@ -2,10 +2,10 @@ import ScrollingSections from '@/components/ScrollingSections';
 
 const backgroundImagePaths = [
   'img/Capitol.svg',
-  'img/LivingPlan.jpg',
-  'img/2.jpg',
+  'img/LivingPlan.webp',
+  'img/2.webp',
   'img/Statewide.jpg',
-  'img/Vision.jpg',
+  'img/Vision.webp',
 ];
 
 const steps = [
@@ -38,10 +38,10 @@ const steps = [
       Texas in which every Texan has access to:
     </p>
     <ul className='list-disc my-4 mx-4'>
-      <li>high-quality, affordable high-speed (broadband) internet service;</li>
+      <li>high-quality, affordable high-speed internet service;</li>
       <li>high-quality, affordable internet-enabled devices;</li>
-      <li>digital skills training;</li>
-      <li>and cybersecurity protection.</li>
+      <li>digital skills training; and</li>
+      <li>cybersecurity protection.</li>
     </ul>
   </div>,
   <div>

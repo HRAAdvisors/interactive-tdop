@@ -118,6 +118,21 @@ export const getAggregateChartData = (choroplethData: ChartBulkResponse) => {
         .value(),
     )
     .value();
+  } else if (choroplethData.id === ChartId.TXDevices) {
+    return _.chain(choroplethData.data)
+    .groupBy('geo_id')
+    .mapValues((inf) =>
+      _.chain(inf)
+        .groupBy('type')
+        .mapValues((infGroup) => _.first(infGroup))
+        .value(),
+    )
+    .value();
+  } else if (choroplethData.id === ChartId.TXLowIncomePopulationTract) {
+    return _.chain(choroplethData.data)
+    .groupBy('geo_id')
+    .mapValues((inf) => _.first(inf))
+    .value();
   }
 };
 
@@ -252,6 +267,24 @@ const dataPointGenerator = (
     if( noInternetHouseHolds && broadbandHouseHolds) {  
       return (
        100 - parseFloat(broadbandHouseHolds)
+      ).toFixed(2);
+      } else {
+          return null;
+      }
+  } else if (
+    dataPointGeneratorName === DataPointGeneratorName.smartphoneOnly &&
+    ChartId.TXDevices === chartId
+  ) {  
+    return (
+      parseFloat(aggregatedChoroplethData[geoId]['sonlyhspd']['percent'])
+    ).toFixed(2);
+  } else if (
+    dataPointGeneratorName === DataPointGeneratorName.lowincomeShare &&
+    ChartId.TXLowIncomePopulationTract === chartId
+  ) {
+    const lowIncome = aggregatedChoroplethData?.[geoId]?.['share'];    
+    if( lowIncome) {  
+      return (parseFloat(lowIncome)
       ).toFixed(2);
       } else {
           return null;

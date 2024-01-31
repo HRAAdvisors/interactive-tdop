@@ -31,7 +31,7 @@ const contents: GeoScrollContent[] = [
       <p className='lg:w-[60vw] md:p-60 w-90vw p-5'>
         The internet has transformed almost every aspect of our lives and society, but{' '}
         <strong>there is a growing divide</strong> between those who can fully access the benefits
-        of the digital world and those who cannot. 
+        of the digital world and those who cannot.
       </p>
     ),
   },
@@ -54,7 +54,7 @@ const contents: GeoScrollContent[] = [
         <strong>Texas ranks X out of 50 for internet adoption.</strong>
         <br></br> Scroll to explore which areas and communities are subscribed to fast internet and
         have internet-enabled devices, and which do not – and why this all matters for you and your
-        community. 
+        community.
       </p>
     ),
   },
@@ -209,14 +209,14 @@ const contents: GeoScrollContent[] = [
       args: [
         {
           geoId: '48',
-          id: ChartId.TXAdoption,
+          id: ChartId.TXDevices,
           regionSetup: {
             peers: 'none',
             segments: 'county',
           },
         },
       ],
-      dataPointName: DataPointGeneratorName.hispeedShare,
+      dataPointName: DataPointGeneratorName.smartphoneOnly,
     },
     getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
       <div className='mt-2'>
