@@ -10,7 +10,7 @@ const StakeholderCards = {
     altText: 'Covered Populations',
     title: 'Covered Populations',
     description:
-      'The plan is designed to reach Texans who historically have less digital opportunity – it refers to these groups as “covered populations.” Covered populations include immigrants, low-income households, veterans, and other groups.',
+      'The plan is designed to reach Texans who historically have less digital opportunity – it refers to these groups as “covered populations.” Covered populations include individuals living with disabilities, low-income households, veterans, and other groups.',
   },
   Outcome_Areas: {
     img: 'img/Outcome Area Task Forces.jpg',
@@ -33,7 +33,7 @@ const StakeholderCards = {
     img: 'img/Regions of Texas.jpeg',
     altText: 'Regions of the State of Texas',
     title: 'Regions of the State of Texas',
-    description: `As Texans, we are proud of our diversity. The BDO consulted residents and community leaders from all 12 of Texas’ Economic Regions in the process of developing this plan. Click on your region in maps, charts, or through the “Dive Deeper” button to get a better sense of the digital opportunity issues in your community.`,
+    description: `As Texans, we are proud of our diversity. The BDO consulted residents and community leaders from all 12 of Texas’ Economic Regions in the process of developing this plan. Click on your region in maps, charts, or through the “Dive Deeper” button to get a better sense of the digital opportunity issues in your community. `,
   },
   Tribal_Engagements: {
     img: 'img/Tribal Engagements.jpg',

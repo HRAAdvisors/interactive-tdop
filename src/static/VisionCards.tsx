@@ -17,14 +17,14 @@ const VisionCards = {
     altText: 'Education',
     title: 'Education',
     description:
-      'Texans will have access to a higher quality education no matter where they live, with the opportunity for educational advancement in any stage of life, through online learning opportunities. ',
+      'Texans will have access to a higher quality education no matter where they live, with the opportunity for educational advancement in any stage of life, through online learning opportunities.',
   },
   Accessibility: {
     img: 'img/Accessibility.jpg',
     altText: 'Accessibility of Essential Services',
     title: 'Accessibility of Essential Services',
     description:
-      'Texans will have greater access to the resources and tools they need, ensuring effective use of public resources and safer and more resilient communities – especially during extreme weather events. ',
+      'Texans will have greater access to the resources and tools they need (i.e. accessing and submitting tax documents, using telehealth services, or searching for jobs), ensuring effective use of public resources and safer and more resilient communities – especially during extreme weather events.',
   },
   Civic_Engagement: {
     img: 'img/Civic Engagement.jpg',
@@ -38,7 +38,7 @@ const VisionCards = {
     altText: 'Economic and Workforce Development',
     title: 'Economic and Workforce Development',
     description:
-      'The Texas economy will grow stronger and more resilient through a more skilled workforce from farms to factories, offices to community anchor institutions, with talent staying and growing in communities to support further economic development.',
+      'The Texas economy will grow stronger and more resilient through a more skilled workforce from farms to factories, offices to community anchor institutions, with talent staying and growing in communities to support economic development.',
   },
   Health: {
     img: 'img/Health.jpg',
@@ -46,15 +46,16 @@ const VisionCards = {
     title: 'Health',
     description: (
       <>
-        Recognizing that broadband adoption is a{' '}
+        Widespread broadband adoption will result in improved personal and community health across
+        Texas. The FCC highlights “increasing evidence demonstrating a strong relationship between
+        broadband access, Internet adoption, and health outcomes” in{' '}
         <a
           href='https://www.fcc.gov/health/SDOH'
           className=' text-blue-600 text-sm hover:underline'
         >
-          super determinant
-        </a>{' '}
-        of health, widespread broadband adoption will result in improved personal and community
-        health across Texas.
+          recent reports
+        </a>
+        .{' '}
       </>
     ),
   },

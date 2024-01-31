@@ -11,7 +11,7 @@ const StakeholderOne = () => {
             To develop the Digital Opportunity Plan, the BDO worked with local groups and engaged
             residents across the state, reflecting Texas’ diversity. Thousands of Texans – including
             individuals from all walks of life and the diverse organizations that serve them –
-            shared their experiences and informed this plan. 
+            shared their experiences and informed this plan.
           </p>
         </div>
       </div>
