@@ -52,11 +52,11 @@ const steps = [
 const IntroOne = () => {
   return (
     <div>
-      <ScrollingSections
+      {/* <ScrollingSections
         steps={steps}
         id='unique-id-1'
         backgroundImagePaths={backgroundImagePaths}
-      />
+      /> */}
     </div>
   );
 };
