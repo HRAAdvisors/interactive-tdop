@@ -1,7 +1,6 @@
 // App.js
 import { useState, useEffect } from 'react';
 import { Element as ScrollElement } from 'react-scroll';
-import '@mantine/core/styles.css';
 import ConclusionOne from './ConclusionOne';
 
 const ConclusionPage = ({ handlePageChange }: { handlePageChange?: Function }) => {

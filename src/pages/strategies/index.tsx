@@ -1,8 +1,6 @@
 // App.js
 import { useState, useEffect } from 'react';
 import { Element as ScrollElement } from 'react-scroll';
-import '@mantine/core/styles.css';
-
 import StrategiesTwo from './StrategiesTwo';
 import StrategiesOne from './StrategiesOne';
 import ScrollableTitle from '@/components/ScrollableTitle';
