@@ -1,6 +1,5 @@
 // App.js
 import { Element as ScrollElement } from 'react-scroll';
-import '@mantine/core/styles.css';
 import StakeholderTwo from './StakeholderTwo';
 import StakeholderOne from './StakeholderOne';
 import ScrollableTitle from '@/components/ScrollableTitle';
