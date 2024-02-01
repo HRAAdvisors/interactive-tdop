@@ -36,13 +36,13 @@ const ScrollingSection = ({ contents, containerClassNames, id }: ScrollingSectio
               setTimeout(() => {
                 setActiveContent(data); // Set the input based on the received data
                 setBackgroundClass('opecity-100');
-              }, 100);
+              }, 200);
             }
           }}
         >
           {_.map(contents, (contentData, i) => (
             <Step data={contentData} key={i + 1}>
-              <div className={`w-full h-screen ${containerClassNames} items-center`}>
+              <div className={`w-full h-screen ${containerClassNames} flex items-center `}>
                 <div className='text-white bg-black p-[1rem] md:p-[2rem] md:max-w-[40%] lg:max-w-[35%] max-w-[95%] md:m-[5rem] m-[1rem]'>
                   {contentData.content}
                 </div>
