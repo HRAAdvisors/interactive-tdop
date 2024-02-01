@@ -10,10 +10,9 @@ const NeedsOne = () => {
             <TexasStripes />
             <p className='py-12'>
               The Texas Digital Opportunity Plan explores the current state of digital opportunity
-              across Texas. The data shows that different places and communities have different
-              unique needs in terms of access to the internet, devices, and digital skills. So,
-              Therefore, the plan calls for approaches designed to meet the particular needs of each
-              community.
+              across Texas. The data shows that different places and communities have unique needs
+              in terms of access to the internet, devices, and digital skills. Therefore, the plan
+              calls for approaches designed to meet the particular needs of each community.
               <br />
               <br />
               The BDO made five goals to tackle these challenges. The goals are based on data that
@@ -23,8 +22,8 @@ const NeedsOne = () => {
             <p className='py-4'>
               Each goal focuses on a problem Texans have with digital opportunity. The BDO uses
               something called a "key performance indicator" or "KPI" to show how digital
-              opportunity will get better over time. A KPI is a task that the BDO will do to meet
-              the goals of the plan.
+              opportunity will get better over time. A KPI is a <strong>task</strong> that the BDO
+              will do to meet the goals of the plan.
             </p>
             <p className='py-4'>
               For example, one of the BDO’s goals is to :
@@ -36,8 +35,7 @@ const NeedsOne = () => {
               </strong>
               <br />
               <br />
-              To ensure achievement of this goal, the BDO is committing to the key performance
-              indicator of:
+              To make sure Texas reaches this goal, the BDO is focusing on this important task:
               <br />
               <br />
               <i>

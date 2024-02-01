@@ -16,11 +16,10 @@ const VisionOne = () => {
               challenges and describes the strategies and actions the BDO will take to realize its
               vision and goals.
             </p>
-            <p className='py-4'>Texas’ vision for digital opportunity is to:</p>
+            <p className='py-4'>Texas’ vision for digital opportunity:</p>
             <QuoteBlock
-              quote='Improve quality of life and promote economic growth by enabling fast, reliable, and
-                affordable broadband connectivity for all residents and businesses, and by promoting
-                universal broadband adoption and access to digital skills development.'
+              quote='Improve quality of life and promote economic growth by enabling fast, reliable and affordable broadband connectivity for all residents and businesses of Texas, promoting universal broadband adoption and providing access to digital skills development.
+              '
             />
           </div>
         </div>

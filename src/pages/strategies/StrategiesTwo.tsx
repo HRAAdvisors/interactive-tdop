@@ -55,7 +55,7 @@ const StrategiesTwo = () => {
             <strong>
               in collaboration with State agencies, local partners, community members, and others
               from the Texas digital opportunity ecosystem.
-            </strong>{' '}
+            </strong>
           </p>
         </div>
       </div>

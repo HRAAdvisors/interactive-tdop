@@ -16,7 +16,7 @@ const IntroTwo = () => {
             <br />
             <br />
             <strong>Click on the pictures</strong> to learn about important words and ideas in
-            Digital Opportunity Plan, or scroll down to keep reading.
+            Digital Opportunity Plan or scroll down to keep reading.
           </p>
         </div>
       </div>
