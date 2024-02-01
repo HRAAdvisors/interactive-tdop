@@ -15,7 +15,7 @@ interface ScrollingSectionProps {
 }
 
 const ScrollingSection = ({ contents, containerClassNames, id }: ScrollingSectionProps) => {
-  const [backgroundClass, setBackgroundClass] = useState<string>('opacity-100');
+  // const [backgroundClass] = useState<string>('opacity-100');
   const [activeContent, setActiveContent] = useState<ScrollingSectionContent>(_.first(contents)!);
   return (
     <div id={id} className='w-full relative' style={{ height: `${_.size(contents) * 100}vh` }}>
@@ -23,7 +23,7 @@ const ScrollingSection = ({ contents, containerClassNames, id }: ScrollingSectio
         style={{
           backgroundImage: `url("${activeContent.img}")`,
         }}
-        className={`h-screen bg-cover bg-center bg-fixed w-full sticky inset-0 float-left transition-opacity duration-200	ease-out ${backgroundClass}`}
+        className={`h-screen bg-cover bg-center bg-fixed w-full sticky inset-0 float-left transition-opacity duration-200	ease-out`}
       >
         {/* <img src={activeContent.img} className='object-cover w-full h-full' /> */}
       </div>
@@ -32,11 +32,7 @@ const ScrollingSection = ({ contents, containerClassNames, id }: ScrollingSectio
           offset={0.5}
           onStepEnter={({ data }: { data: ScrollingSectionContent }) => {
             if (!_.isEqual(data, activeContent)) {
-              setBackgroundClass('opacity-0');
-              setTimeout(() => {
-                setActiveContent(data); // Set the input based on the received data
-                setBackgroundClass('opecity-100');
-              }, 200);
+              setActiveContent(data); // Set the input based on the received data
             }
           }}
         >
