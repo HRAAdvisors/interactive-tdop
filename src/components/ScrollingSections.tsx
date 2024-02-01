@@ -19,6 +19,9 @@ const ScrollingSection = ({ contents, containerClassNames, id }: ScrollingSectio
   const [activeContent, setActiveContent] = useState<ScrollingSectionContent>(_.first(contents)!);
   return (
     <div id={id} className='w-full relative' style={{ height: `${_.size(contents) * 100}vh` }}>
+      {contents.map((c) => (
+        <link rel='preload' as='image' href={c.img} />
+      ))}
       <div
         style={{
           backgroundImage: `url("${activeContent.img}")`,
