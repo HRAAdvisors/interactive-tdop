@@ -12,7 +12,7 @@ const SplitPaneMap = ({ leftMapProps, righMapProps, containerClassName }: SplitP
   const dividerRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [center, setCenter] = useState<[number, number]>([-98.491142, 29.424349]);
-  const [zoom, setZoom] = useState<number>(9);
+  const [zoom, setZoom] = useState<number>(10);
 
   const handleDragStart: MouseEventHandler = (e) => {
     e.preventDefault();

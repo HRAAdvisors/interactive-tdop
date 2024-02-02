@@ -7,7 +7,7 @@ export function getColorStops(
   // Step 1: Sort the data
   const sortedData = _.map(geoJson.features, (feature) =>
     _.isString(feature.properties?.dataPoint) ? parseFloat(feature.properties?.dataPoint) : feature.properties?.dataPoint,
-  ).sort((a, b) => a - b);
+  ).sort((a, b) => a - b);  
 
   // Step 2: Calculate positions
   const positionQ1 = 0.2 * (sortedData.length + 1);
@@ -23,7 +23,8 @@ export function getColorStops(
   const q4 = sortedData[Math.floor(positionQ4) - 1];
 
   // Step 4: Calculate the max
-  const maxStep = Math.max(...sortedData);
+  const numericData = sortedData.filter(n => !isNaN(n));
+  const maxStep = Math.max(...numericData);  
 
   if (color === 'red') {
     return [
