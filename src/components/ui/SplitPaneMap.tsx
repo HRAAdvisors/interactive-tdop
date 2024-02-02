@@ -11,8 +11,8 @@ const SplitPaneMap = ({ leftMapProps, righMapProps, containerClassName }: SplitP
   const [paneWidths, setPaneWidths] = useState([50, 50]); // Initial widths
   const dividerRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [center, setCenter] = useState<[number, number]>();
-  const [zoom, setZoom] = useState<number>();
+  const [center, setCenter] = useState<[number, number]>([-98.491142, 29.424349]);
+  const [zoom, setZoom] = useState<number>(9);
 
   const handleDragStart: MouseEventHandler = (e) => {
     e.preventDefault();
@@ -62,6 +62,8 @@ const SplitPaneMap = ({ leftMapProps, righMapProps, containerClassName }: SplitP
               }}
               syncCenterAndZoom={true}
               geoJSONFeatureCollection={leftMapProps.geoJSONFeatureCollection}
+              shouldTooltipShow={false}
+              shouldFitBounds={false}
               {...leftMapProps}
             />
           )}
@@ -104,6 +106,8 @@ const SplitPaneMap = ({ leftMapProps, righMapProps, containerClassName }: SplitP
               toolTipClass='z-50'
               geoJSONFeatureCollection={righMapProps.geoJSONFeatureCollection}
               syncCenterAndZoom={true}
+              shouldTooltipShow={false}
+              shouldFitBounds={false}
               {...righMapProps}
             />
           )}

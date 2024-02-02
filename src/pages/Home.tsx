@@ -63,10 +63,11 @@ const Home = () => {
       <Navbar show={showNav} />
       <Element name='hero'>
         <HeroLayout
-          leftButtonLink='/geoIntro'
+          leftButtonLink='/'
           leftButtonText='Geographic Intro'
           rightButtonLink='/dataDashboards'
           rightButtonText='Data Dashboards'
+          imageHero='img/HeroTwo.jpg'
         />
       </Element>
       <Element name='intro'>

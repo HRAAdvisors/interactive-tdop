@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom';
 
 const navbarLinks: NavLink[] = [
   {
-    link: '/geoIntro',
+    link: '/',
     text: 'Geographic Introduction',
   },
   {
-    link: '/',
+    link: '/interactivetdop',
     text: 'Interactive TDOP',
   },
   {

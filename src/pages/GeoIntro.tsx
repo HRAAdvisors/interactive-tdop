@@ -33,10 +33,11 @@ const GeoIntro = () => {
     <>
       <Navbar show={showNav} />
       <HeroLayout
-        leftButtonLink='/'
+        leftButtonLink='/interactivetdop'
         leftButtonText='Interactive TDOP'
         rightButtonLink='/dataDashboards'
         rightButtonText='Data Dashboards'
+        imageHero='img/1.jpg'
       />
       <GeoScrollytelling />
     </>

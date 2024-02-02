@@ -18,6 +18,7 @@ const NeedsTwo = () => {
               </p>
               <hr className='my-5' />
               <CollapsibleCard
+                defaultOpen={true}
                 taskNumber='1'
                 goalTitle='Increase the percentage of Texans with reliable high-speed internet subscriptions, including Texans belonging to all covered population groups (except those currently incarcerated).'
                 mapTitle='Households with High-speed Internet'
