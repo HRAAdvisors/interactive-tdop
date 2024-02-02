@@ -327,8 +327,8 @@ const contents: GeoScrollContent[] = [
          To learn more about the issues, the data, and the current Texas Digital Opportunity Plan,
         click below:
         <div className='py-8 justify-between'>
-          <ButtonDark className='mr-2' text='Interactive TDOP' link='/'></ButtonDark>
-          <ButtonLight text='Data Dashboards' link='/'></ButtonLight>
+          <ButtonDark className='mr-2' text='Interactive TDOP' link='/interactivetdop'></ButtonDark>
+          <ButtonLight text='Data Dashboards' link='/dataDashboards'></ButtonLight>
         </div>
       </p>
     ),

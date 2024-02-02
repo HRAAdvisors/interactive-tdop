@@ -18,6 +18,9 @@ const Home = () => {
   const [showNav, setShowNav] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   let lastScrollY = window.scrollY; // Initialize lastScrollY outside of the useEffect
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handlePageChange = (pageName: number, sections: any[]) => {
     setCurrentPage({ name: pageName, sections });

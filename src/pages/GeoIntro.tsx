@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import '@mantine/core/styles.css';
 import HeroLayout from '@/components/HeroLayout';
-import { animateScroll as scroll } from 'react-scroll';
 import GeoScrollytelling from '@/pages/geoScrollytelling/GeoScrollytelling';
 import Navbar from '@/components/Navbar';
 
@@ -10,7 +9,7 @@ const GeoIntro = () => {
   const [showNav, setShowNav] = useState(false);
   let lastScrollY = window.scrollY; // Initialize lastScrollY outside of the useEffect
   useEffect(() => {
-    scroll.scrollTo(0, {});
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
