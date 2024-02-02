@@ -29,6 +29,7 @@ export interface ChoroplethMapProps {
   syncCenterAndZoom?: boolean;
   shouldSetMaxBound?: boolean;
   fitBoundFeature?: GeoJSON.Feature<GeoJSON.Geometry>;
+  shouldFitBounds?: boolean; // New prop to control fitBounds behavior
   anchor?: mapboxgl.Anchor;
 }
 
@@ -65,6 +66,7 @@ const ChoroplethMap = ({
   syncCenterAndZoom = false,
   shouldSetMaxBound = true,
   fitBoundFeature,
+  shouldFitBounds = true,
   toolTipClass = 'z-50',
   anchor,
 }: ChoroplethMapProps) => {
@@ -144,12 +146,14 @@ const ChoroplethMap = ({
             ..._.flatMap(colorStops, (stop) => [stop.step, stop.color]),
           ],
           'fill-opacity': 1, // Initialize with zero opacity
-          'fill-outline-color': 'white',
+          'fill-outline-color': '#cccccc',
         },
       },
       'settlement-subdivision-label',
     );
-    fitBound();
+    if (shouldFitBounds) {
+      fitBound();
+    }
   };
 
   const onLoadHandler = () => {
