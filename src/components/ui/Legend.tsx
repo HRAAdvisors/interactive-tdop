@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import React from 'react';
 
 interface LegendProps {
   colorStops: { step: number; color: string }[];
