@@ -13,6 +13,7 @@ interface CollapsibleCardProps {
   leftPanelContent: ReactNode;
   // rightPanelContent: ReactNode;
   strategies: string[]; // Define as an array of strings
+  defaultOpen?: boolean; // New prop to control the initial open state
 }
 
 const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
@@ -25,8 +26,9 @@ const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
   stackedBarGoal,
   leftPanelContent,
   strategies,
+  defaultOpen = false, // Default value is false, so cards are closed by default
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(defaultOpen);
   const [height, setHeight] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
 
