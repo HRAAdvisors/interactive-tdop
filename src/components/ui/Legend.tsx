@@ -1,26 +1,29 @@
 import _ from 'lodash';
+import React from 'react';
 
 interface LegendProps {
   colorStops: { step: number; color: string }[];
 }
 
 const Legend = ({ colorStops }: LegendProps) => {
-  // console.log(colorStops);
+  const maxStepValue = _.maxBy(colorStops, 'step')?.step || 0; // Ensure you have the max step value for the label
+
   return (
     <div className='w-full'>
-      <div className='w-full text-[8px] leading-3 grid grid-cols-5'>
-        {_.map(colorStops, (stop, index) => (
-          <div
-            key={index}
-            className={`-ml-1 ${index == _.size(colorStops) - 1 && 'flex justify-arround'} `}
-          >
-            <span>{Math.round(stop.step)}% </span>
-            {index == _.size(colorStops) - 1 && <div className='-mr-2 w-full text-right'>100%</div>}
-          </div>
+      {/* Labels row */}
+      <div className='w-full text-[8px] leading-3 flex justify-between'>
+        {/* We use _.initial to omit the last element because we will add it outside the grid */}
+        {_.map(_.initial(colorStops), (stop, index) => (
+          <span key={index}>{Math.round(stop.step)}%</span>
         ))}
+        {/* Explicitly add the last label for the maximum value */}
+        <span>{Math.round(maxStepValue)}%</span>
       </div>
+
+      {/* Color boxes row */}
       <div className='w-full grid border grid-cols-5'>
-        {_.map(colorStops, (stop, index) => (
+        {/* We do not map the last colorStop to a rectangle, so use _.initial here as well */}
+        {_.map(_.initial(colorStops), (stop, index) => (
           <div key={index} style={{ backgroundColor: stop.color }} className='h-5' />
         ))}
       </div>
