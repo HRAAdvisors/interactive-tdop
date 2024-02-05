@@ -12,7 +12,7 @@ const TheRoutes = () => {
       <Routes>
         <Route path='/' element={<GeoIntro />} />
         <Route path='/interactivetdop' element={<HomePage />} />
-        <Route path='/dataDashboards' element={<DataDashboards />} />
+        <Route path='/data-dashboards/:pageId?' element={<DataDashboards />} />
         <Route path='/about' element={<AboutPage />} />
       </Routes>
     </Router>

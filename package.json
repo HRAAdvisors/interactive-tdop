@@ -14,6 +14,12 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@ap.cx/react-scrollama-wrapper": "^3.3.0",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@hraadvisors/broadband-charts": "^0.0.26",
+    "@hraadvisors/report-builder-types": "^3.0.26",
+    "@hraadvisors/standard-charts": "^1.0.15",
     "@loadable/component": "^5.16.3",
     "@mantine/core": "^7.2.2",
     "@mantine/hooks": "^7.2.2",
@@ -43,9 +49,11 @@
     "react-scrollama": "^2.3.3",
     "recharts": "^2.10.3",
     "scrollama": "^3.2.0",
+    "styled-components": "^6.1.8",
     "yup": "^1.2.0"
   },
   "devDependencies": {
+    "@hraadvisors/report-api-types": "^3.0.36",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@types/d3": "^7.4.3",

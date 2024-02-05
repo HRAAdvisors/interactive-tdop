@@ -14,7 +14,7 @@ const navbarLinks: NavLink[] = [
     text: 'Interactive TDOP',
   },
   {
-    link: '/dataDashboards',
+    link: '/data-dashboards',
     text: 'Data Dashboard',
   },
 ];
@@ -29,7 +29,7 @@ const NavbarPlain = () => {
   };
 
   return (
-    <div className='z-40 flex absolute items-center top-0 h-16 '>
+    <div className='z-40 flex fixed items-center top-0 h-16 '>
       <div className='hidden md:flex ml-10 top-8 w-contain'>
         <a href='https://comptroller.texas.gov/programs/broadband/'>
           <Logo />
