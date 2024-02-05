@@ -8,8 +8,8 @@ const TheRoutes = () => {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/geoIntro' element={<GeoIntro />} />
+        <Route path='/' element={<GeoIntro />} />
+        <Route path='/interactivetdop' element={<HomePage />} />
         <Route path='/dataDashboards' element={<DataDashboards />} />
         <Route path='/about' element={<AboutPage />} />
       </Routes>

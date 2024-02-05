@@ -4,7 +4,7 @@
 // import { animateScroll as scroll } from 'react-scroll';
 // import Navbar from '@/components/Navbar';
 import NavbarPlain from '@/components/NavbarPlain';
-import Sidebar from '@/components/Sidebar';
+// import Sidebar from '@/components/Sidebar';
 
 const DataDashboards = () => {
   // const [showNav, setShowNav] = useState(false);
@@ -33,16 +33,16 @@ const DataDashboards = () => {
     <>
       {/* <Navbar show={showNav} /> */}
       <NavbarPlain />
-      <Sidebar />
+      {/* <Sidebar /> */}
       {/* <HeroLayout
         leftButtonLink='/'
         leftButtonText='Interactive TDOP'
         rightButtonLink='/geoIntro'
         rightButtonText='Geographic Intro'
       /> */}
-      <div>
+      {/* <div>
         <p className='p-80 text-4xl'>Under Development</p>
-      </div>
+      </div> */}
     </>
   );
 };

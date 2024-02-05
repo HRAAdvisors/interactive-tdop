@@ -2,18 +2,19 @@ import ScrollArrow from './ScrollArrow';
 import ButtonLight from './ui/ButtonLight';
 import ButtonDark from './ui/ButtonDark';
 import { Link } from 'react-scroll';
-import one from '../assets/1.jpg';
 
 const HeroLayout = ({
   leftButtonLink,
   leftButtonText,
   rightButtonLink,
   rightButtonText,
+  imageHero,
 }: {
   leftButtonLink: string;
   leftButtonText: string;
   rightButtonLink: string;
   rightButtonText: string;
+  imageHero: string;
 }) => {
   return (
     <div className='z-20 w-full h-full bg-[#FFFDF6] md:overflow-x-hidden'>
@@ -45,7 +46,7 @@ const HeroLayout = ({
           </div>
         </div>
         <div className='flex flex-col md:col-start-8 md:col-span-5 object-cover'>
-          <img src={one} className='h-screen object-cover' />
+          <img src={imageHero} className='h-screen object-cover' />
           {/* <CarouselHero className='object-contain' /> */}
         </div>
       </div>

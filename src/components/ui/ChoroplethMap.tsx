@@ -15,6 +15,7 @@ export interface ChoroplethMapProps {
   sourceId?: string;
   colorStops?: { step: number; color: string }[];
   tooltipContent?: (feature: any) => string;
+  shouldTooltipShow?: boolean;
   center?: mapboxgl.LngLatLike;
   children?: ReactNode;
   mapBoxExpression?: any[];
@@ -28,6 +29,7 @@ export interface ChoroplethMapProps {
   syncCenterAndZoom?: boolean;
   shouldSetMaxBound?: boolean;
   fitBoundFeature?: GeoJSON.Feature<GeoJSON.Geometry>;
+  shouldFitBounds?: boolean; // New prop to control fitBounds behavior
   anchor?: mapboxgl.Anchor;
 }
 
@@ -52,6 +54,7 @@ const ChoroplethMap = ({
   ],
   mapBoxExpression = ['to-number', ['get', 'dataPoint']],
   tooltipContent = getToolTip,
+  shouldTooltipShow = true,
   padding = { top: 20, left: 20, right: 20, bottom: 20 },
   children,
   mapContainerClassName = 'relative h-full w-full shadow-sm',
@@ -63,6 +66,7 @@ const ChoroplethMap = ({
   syncCenterAndZoom = false,
   shouldSetMaxBound = true,
   fitBoundFeature,
+  shouldFitBounds = true,
   toolTipClass = 'z-50',
   anchor,
 }: ChoroplethMapProps) => {
@@ -142,12 +146,14 @@ const ChoroplethMap = ({
             ..._.flatMap(colorStops, (stop) => [stop.step, stop.color]),
           ],
           'fill-opacity': 1, // Initialize with zero opacity
-          'fill-outline-color': 'white',
+          'fill-outline-color': '#cccccc',
         },
       },
       'settlement-subdivision-label',
     );
-    fitBound();
+    if (shouldFitBounds) {
+      fitBound();
+    }
   };
 
   const onLoadHandler = () => {
@@ -157,39 +163,36 @@ const ChoroplethMap = ({
         onLoad(mapRef.current);
       }
 
-      const tooltip = new mapboxgl.Popup({
-        closeButton: false,
-        closeOnClick: false,
-        className: toolTipClass,
-        anchor,
-      });
+      let tooltip: mapboxgl.Popup | null = null;
+      if (shouldTooltipShow) {
+        tooltip = new mapboxgl.Popup({
+          closeButton: false,
+          closeOnClick: false,
+          className: toolTipClass,
+          anchor,
+        });
+      }
 
       if (onMove) {
         mapRef.current.on('move', onMove);
       }
 
-      mapRef.current.on('mousemove', layerId, (e) => {
-        const feature = _.first(e.features);
-        if (feature) {
-          tooltip
-            .setLngLat(e.lngLat)
-            .setHTML(tooltipContent(feature))
-            .addTo(mapRef.current as Map);
+      if (shouldTooltipShow) {
+        mapRef.current.on('mousemove', layerId, (e) => {
+          const feature = _.first(e.features);
+          if (feature && tooltip) {
+            tooltip
+              .setLngLat(e.lngLat)
+              .setHTML(tooltipContent(feature))
+              .addTo(mapRef.current as Map);
+          }
+        });
 
-          // Highlight the hovered feature
-          // mapRef.current?.setPaintProperty(layerId, 'fill-opacity', [
-          //   'case',
-          //   ['==', ['get', 'dataPoint'], feature?.properties?.dataPoint],
-          //   0.8,
-          //   0.6,
-          // ]);
-        }
-      });
-
-      mapRef.current.on('mouseleave', layerId, () => {
-        tooltip.remove();
-        // mapRef.current?.setPaintProperty(layerId, 'fill-opacity', 0.6);
-      });
+        mapRef.current.on('mouseleave', layerId, () => {
+          tooltip?.remove();
+          // mapRef.current?.setPaintProperty(layerId, 'fill-opacity', 0.6);
+        });
+      }
     }
   };
 
