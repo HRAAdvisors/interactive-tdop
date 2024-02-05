@@ -228,7 +228,9 @@ const contents: GeoScrollContent[] = [
           </p>
           <div className='mt-4'></div>
           {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
-          <p className='mt-2 font-bold text-xs'>Percent of Households With Only Smartphones</p>
+          <p className='mt-2 font-bold text-xs'>
+            Percent of Households With Internet Subscriptions and Only Smartphones
+          </p>
           <p className='text-xs my-2'>Source: ACS 5-Year Estimates, 2017-2021</p>
         </div>
       </div>
@@ -325,8 +327,8 @@ const contents: GeoScrollContent[] = [
          To learn more about the issues, the data, and the current Texas Digital Opportunity Plan,
         click below:
         <div className='py-8 justify-between'>
-          <ButtonDark className='mr-2' text='Interactive TDOP' link='/'></ButtonDark>
-          <ButtonLight text='Data Dashboards' link='/'></ButtonLight>
+          <ButtonDark className='mr-2' text='Interactive TDOP' link='/interactivetdop'></ButtonDark>
+          <ButtonLight text='Data Dashboards' link='/dataDashboards'></ButtonLight>
         </div>
       </p>
     ),

@@ -1,7 +1,6 @@
 // App.js
 import { useEffect, useState } from 'react';
 import HeroLayout from '@/components/HeroLayout';
-import { animateScroll as scroll } from 'react-scroll';
 import GeoScrollytelling from '@/pages/geoScrollytelling/GeoScrollytelling';
 import Navbar from '@/components/Navbar';
 
@@ -9,7 +8,7 @@ const GeoIntro = () => {
   const [showNav, setShowNav] = useState(false);
   let lastScrollY = window.scrollY; // Initialize lastScrollY outside of the useEffect
   useEffect(() => {
-    scroll.scrollTo(0, {});
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
@@ -32,10 +31,11 @@ const GeoIntro = () => {
     <>
       <Navbar show={showNav} />
       <HeroLayout
-        leftButtonLink='/'
+        leftButtonLink='/interactivetdop'
         leftButtonText='Interactive TDOP'
         rightButtonLink='/dataDashboards'
         rightButtonText='Data Dashboards'
+        imageHero='img/1.jpg'
       />
       <GeoScrollytelling />
     </>
