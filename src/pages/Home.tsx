@@ -1,17 +1,18 @@
 // App.js
-import { lazy, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Element } from 'react-scroll';
 import HeroLayout from '@/components/HeroLayout';
 import Sidebar from '@/components/Sidebar';
 import Navbar from '@/components/Navbar';
 import { ScrollableTitleProvider } from '@/components/ScrollableTitleContext';
+import loadable from '@loadable/component';
 
-const IntroPage = lazy(() => import('./intro'));
-const VisionPage = lazy(() => import('./vision'));
-const NeedsAndAssetsPage = lazy(() => import('./need'));
-const StrategiesPage = lazy(() => import('./strategies'));
-const ConclusionPage = lazy(() => import('./conclusion'));
-const StakeholderEngagementPage = lazy(() => import('./stakeholder'));
+const IntroPage = loadable(() => import('./intro'));
+const VisionPage = loadable(() => import('./vision'));
+const NeedsAndAssetsPage = loadable(() => import('./need'));
+const StrategiesPage = loadable(() => import('./strategies'));
+const ConclusionPage = loadable(() => import('./conclusion'));
+const StakeholderEngagementPage = loadable(() => import('./stakeholder'));
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState({});

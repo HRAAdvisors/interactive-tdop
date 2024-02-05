@@ -1,10 +1,10 @@
-import { lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import loadable from '@loadable/component';
 
-const GeoIntro = lazy(() => import('@/pages/GeoIntro'));
-const HomePage = lazy(() => import('@/pages/Home'));
-const DataDashboards = lazy(() => import('@/pages/DataDashboards'));
-const AboutPage = lazy(() => import('@/pages/About'));
+const GeoIntro = loadable(() => import('@/pages/GeoIntro'));
+const HomePage = loadable(() => import('@/pages/Home'));
+const DataDashboards = loadable(() => import('@/pages/DataDashboards'));
+const AboutPage = loadable(() => import('@/pages/About'));
 
 const TheRoutes = () => {
   return (
