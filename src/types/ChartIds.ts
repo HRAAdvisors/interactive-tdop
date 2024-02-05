@@ -14,7 +14,8 @@ export enum ChartId {
   TXCybersecurityConfidence = "65b6dd79db9f7faac7f2e9f8",
   TXAdoptionTract = "65b817a5db9f7faac7f8ca2e",
   TXLowIncomePopulationTract = "65ba9c9e6b98f1a31d4f4a89",
-  TXDevices = "65b28a7459e498194521bb72"
+  TXDevices = "65b28a7459e498194521bb72",
+  TXACPAwareness = "65c14d6fe3659684dd48aeb9"
 }
 
 export enum SegmentId {
@@ -43,5 +44,6 @@ export enum DataPointGeneratorName {
   cybersecurityConfidence,
   lowincomeShare,
   noHispeedShareTract,
-  smartphoneOnly
+  smartphoneOnly,
+  acpAwareness
 }

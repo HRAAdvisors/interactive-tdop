@@ -32,7 +32,7 @@ const GeoIntro = () => {
       <Navbar show={showNav} />
       <HeroLayout
         leftButtonLink='/interactivetdop'
-        leftButtonText='Interactive TDOP'
+        leftButtonText='Texas Digital Opportunity Plan'
         rightButtonLink='/dataDashboards'
         rightButtonText='Data Dashboards'
         imageHero='img/1.jpg'

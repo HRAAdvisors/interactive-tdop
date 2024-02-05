@@ -133,6 +133,16 @@ export const getAggregateChartData = (choroplethData: ChartBulkResponse) => {
     .groupBy('geo_id')
     .mapValues((inf) => _.first(inf))
     .value();
+  } else if (choroplethData.id === ChartId.TXACPAwareness) {
+    return _.chain(choroplethData.data)
+    .groupBy('geo_id')
+    .mapValues((inf) =>
+      _.chain(inf)
+        .groupBy('response')
+        .mapValues((infGroup) => _.first(infGroup))
+        .value(),
+    )
+    .value();
   }
 };
 
@@ -287,6 +297,15 @@ const dataPointGenerator = (
       } else {
           return null;
       }
+  } else if (
+    dataPointGeneratorName === DataPointGeneratorName.acpAwareness &&
+    ChartId.TXACPAwareness === chartId
+  ) {
+    console.log(aggregatedChoroplethData);
+      
+    return (
+      parseFloat(aggregatedChoroplethData[geoId]['Yes']['percent'])
+    ).toFixed(0);
   } else {
     console.error('chartId and Datapoint Mismatch');
   }
