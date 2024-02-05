@@ -1,8 +1,10 @@
-import AboutPage from '@/pages/About';
-import DataDashboards from '@/pages/DataDashboards';
-import GeoIntro from '@/pages/GeoIntro';
-import HomePage from '@/pages/Home';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import loadable from '@loadable/component';
+
+const GeoIntro = loadable(() => import('@/pages/GeoIntro'));
+const HomePage = loadable(() => import('@/pages/Home'));
+const DataDashboards = loadable(() => import('@/pages/DataDashboards'));
+const AboutPage = loadable(() => import('@/pages/About'));
 
 const TheRoutes = () => {
   return (

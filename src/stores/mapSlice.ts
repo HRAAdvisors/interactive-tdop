@@ -1,6 +1,4 @@
-import baseApi from '@/app/baseApi';
-import { ChartBulkResponse } from '@/types/MapData';
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import {  createSlice } from '@reduxjs/toolkit';
 
 interface MapSliceState {
   aggregateChartData?: {};
@@ -9,18 +7,18 @@ interface MapSliceState {
 const initialState: MapSliceState = {};
 
 const mapsSlice = createSlice({
-  extraReducers: (builder) => {
-    builder
+  extraReducers: (_builder) => {
+    // builder
       // .addMatcher(authApi.endpoints.login.matchPending, (_state, action) => {
       //   console.log('pending', action)
       // })
-      .addMatcher(
-        (baseApi.endpoints as any).getChartDataBulk.matchFulfilled,
-        (_state: MapSliceState, _action: PayloadAction<ChartBulkResponse>) => {
+      // .addMatcher(
+      //   (baseApi.endpoints as any).getChartDataBulk.matchFulfilled,
+      //   (_state: MapSliceState, _action: PayloadAction<ChartBulkResponse>) => {
 
-          // state.aggregateChartData = getAggregateChartData(action.payload.data);
-        },
-      );
+      //     state.aggregateChartData = getAggregateChartData(action.payload.data);
+      //   },
+      // );
     // .addMatcher(authApi.endpoints.login.matchRejected, (state, action) => {
     //   // console.log('rejected', action)
     // })

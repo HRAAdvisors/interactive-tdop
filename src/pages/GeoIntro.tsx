@@ -1,6 +1,5 @@
 // App.js
 import { useEffect, useState } from 'react';
-import '@mantine/core/styles.css';
 import HeroLayout from '@/components/HeroLayout';
 import GeoScrollytelling from '@/pages/geoScrollytelling/GeoScrollytelling';
 import Navbar from '@/components/Navbar';

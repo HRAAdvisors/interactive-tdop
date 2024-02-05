@@ -1,17 +1,18 @@
 // App.js
 import { useEffect, useState } from 'react';
-import '@mantine/core/styles.css';
 import { Element } from 'react-scroll';
-import NeedsAndAssetsPage from './need';
-import VisionPage from './vision';
-import IntroPage from './intro';
 import HeroLayout from '@/components/HeroLayout';
-import StakeholderEngagementPage from './stakeholder';
-import StrategiesPage from './strategies';
-import ConclusionPage from './conclusion';
 import Sidebar from '@/components/Sidebar';
 import Navbar from '@/components/Navbar';
 import { ScrollableTitleProvider } from '@/components/ScrollableTitleContext';
+import loadable from '@loadable/component';
+
+const IntroPage = loadable(() => import('./intro'));
+const VisionPage = loadable(() => import('./vision'));
+const NeedsAndAssetsPage = loadable(() => import('./need'));
+const StrategiesPage = loadable(() => import('./strategies'));
+const ConclusionPage = loadable(() => import('./conclusion'));
+const StakeholderEngagementPage = loadable(() => import('./stakeholder'));
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState({});

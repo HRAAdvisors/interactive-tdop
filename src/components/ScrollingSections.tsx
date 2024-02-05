@@ -1,94 +1,62 @@
-import React, { useState, useEffect } from 'react';
+import _ from 'lodash';
+import { ReactNode, useState } from 'react';
+
 import { Scrollama, Step } from 'react-scrollama';
-import ScrollingCard from './ScrollingCard';
 
-interface ScrollingSectionsProps {
+interface ScrollingSectionContent {
+  img: string;
+  content: ReactNode;
+}
+
+interface ScrollingSectionProps {
   id: string;
-  steps: React.ReactNode[];
-  backgroundImagePaths: string[];
+  contents: ScrollingSectionContent[];
+  containerClassNames?: string;
 }
 
-interface BackgroundStyle {
-  backgroundImage: string;
-  opacity: number;
-  transition: string;
-  position: 'fixed';
-  width: string;
-  height: string;
-  top: number;
-  left: number;
-  backgroundSize: string;
-  backgroundPosition: string;
-  zIndex: number;
-}
-
-const ScrollingSections = ({ id, steps, backgroundImagePaths }: ScrollingSectionsProps) => {
-  const [activeStepIndex, setActiveStepIndex] = useState(0);
-  const [backgroundStyles, setBackgroundStyles] = useState<BackgroundStyle[]>([]);
-
-  useEffect(() => {
-    // Initialize background styles with opacity 0
-    const initialBackgroundStyles = backgroundImagePaths.map(
-      (path) =>
-        ({
-          backgroundImage: `url(${path})`,
-          opacity: 0,
-          transition: 'opacity 0.375s ease-in-out',
-          position: 'fixed',
-          width: '100%',
-          height: '100vh',
-          top: 0,
-          left: 0,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center center',
-          zIndex: -1,
-        }) as BackgroundStyle,
-    );
-
-    setBackgroundStyles(initialBackgroundStyles);
-  }, [backgroundImagePaths]);
-
-  const onStepEnter = ({ data }: { data: number }) => {
-    const updatedStyles = backgroundStyles.map((style, index) => ({
-      ...style,
-      opacity: index === data ? 1 : 0,
-    }));
-    setActiveStepIndex(data);
-    setBackgroundStyles(updatedStyles);
-  };
-
-  const onStepExit = ({ data, direction }: { data: number; direction: 'up' | 'down' }) => {
-    // If we're scrolling up and exiting the current active step, fade out the current step's background
-    if (direction === 'up' && data === activeStepIndex) {
-      const updatedStyles = backgroundStyles.map((style, index) => ({
-        ...style,
-        opacity: index === data - 1 ? 1 : 0,
-      }));
-      setActiveStepIndex(data - 1);
-      setBackgroundStyles(updatedStyles);
-    }
-  };
-
-  const renderBackgrounds = () => {
-    return backgroundStyles.map((style, index) => <div key={index} style={style} />);
-  };
-
+const ScrollingSection = ({ contents, containerClassNames, id }: ScrollingSectionProps) => {
+  const [backgroundClass, setBackgroundClass] = useState<string>('opacity-100');
+  const [activeContent, setActiveContent] = useState<ScrollingSectionContent>(_.first(contents)!);
   return (
-    <div id={id} style={{ position: 'relative', overflow: 'hidden' }}>
-      {renderBackgrounds()}
-      <Scrollama onStepEnter={onStepEnter} onStepExit={onStepExit}>
-        {steps.map((stepContent, index) => (
-          <Step data={index} key={index}>
-            <div style={{ minHeight: '150vh', display: 'flex', alignItems: 'center', zIndex: -1 }}>
-              <div className='text-white p-[1rem] md:p-[2rem] md:max-w-[40%] lg:max-w-[35%] max-w-[95%] md:m-[5rem] m-[1rem]'>
-                <ScrollingCard>{stepContent}</ScrollingCard>
+    <div id={id} className='w-full relative' style={{ height: `${_.size(contents) * 100}vh` }}>
+      {contents.map((c) => (
+        <link rel='preload' as='image' href={c.img} />
+      ))}
+      <div
+        style={{
+          backgroundImage: `url("${activeContent.img}")`,
+          willChange: 'opacity',
+        }}
+        className={`h-screen bg-cover bg-center bg-fixed w-full sticky inset-0 float-left transition-opacity duration-200	ease-in-out ${backgroundClass}`}
+      >
+        {/* <img src={activeContent.img} className='object-cover w-full h-full' /> */}
+      </div>
+      <div className='absolute w-full top-0 bottom-0'>
+        <Scrollama
+          offset={0.5}
+          onStepEnter={({ data }: { data: ScrollingSectionContent }) => {
+            if (!_.isEqual(data, activeContent)) {
+              setBackgroundClass('opacity-0');
+              setTimeout(() => {
+                setActiveContent(data); // Set the input based on the received data
+                setBackgroundClass('opecity-100');
+              }, 200);
+            }
+          }}
+        >
+          {_.map(contents, (contentData, i) => (
+            <Step data={contentData} key={i + 1}>
+              <div className={`w-full h-screen ${containerClassNames} flex items-center pl-24`}>
+                <div className='text-white bg-black p-[1rem] md:p-[2rem] md:max-w-[40%] lg:max-w-[35%] max-w-[95%] md:m-[5rem] m-[1rem]'>
+                  {contentData.content}
+                </div>
               </div>
-            </div>
-          </Step>
-        ))}
-      </Scrollama>
+            </Step>
+          ))}
+        </Scrollama>
+      </div>
     </div>
   );
 };
 
-export default ScrollingSections;
+export default ScrollingSection;
