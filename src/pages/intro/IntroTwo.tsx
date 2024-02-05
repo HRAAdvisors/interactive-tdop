@@ -7,11 +7,14 @@ const IntroTwo = () => {
       <div className='grid md:grid-cols-12'>
         <div className='flex flex-col col-start-4 col-span-6 justify-center pt-20 pb-20 mx-[2rem]'>
           <p className=''>
-            The Texas Digital Opportunity Plan contains some technical language to refer to proven
-            methods to expand digital opportunity.
+            <a className='underline' href='https://comptroller.texas.gov/programs/broadband/'>
+              The Texas Digital Opportunity Plan
+            </a>{' '}
+            contains some technical language to refer to proven methods to expand digital
+            opportunity.
             <br />
             <br />
-            <strong>Click on the pictures</strong> to learn about important words and ideas in
+            <strong>Click on the pictures</strong> to learn about important words and ideas in the
             Digital Opportunity Plan or scroll down to keep reading.
           </p>
         </div>

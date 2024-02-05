@@ -11,8 +11,8 @@ const NeedsOne = () => {
             <p className='py-12'>
               The Texas Digital Opportunity Plan explores the current state of digital opportunity
               across Texas. The data shows that different places and communities have unique needs
-              in terms of access to the internet, devices, and digital skills. Therefore, the plan
-              calls for approaches designed to meet the particular needs of each community.
+              in terms of access to internet, devices and digital skills. Therefore, the plan calls
+              for approaches designed to meet the particular needs of each community.
               <br />
               <br />
               The BDO made five goals to tackle these challenges. The goals are based on data that
@@ -30,8 +30,8 @@ const NeedsOne = () => {
               <br />
               <br />
               <strong>
-                Expand access to reliable, affordable broadband internet service at home for all
-                Texans 
+                Expand adoption of reliable, affordable broadband internet service at home for all
+                Texans, including individuals belonging to covered populations.
               </strong>
               <br />
               <br />
@@ -39,8 +39,8 @@ const NeedsOne = () => {
               <br />
               <br />
               <i>
-                Decreasing the percentage of Texans without reliable broadband available in their
-                homes from 32% to 20% by 2035.
+                Increase the percentage of Texans with reliable broadband available in their homes
+                from 68% to 80% by 2030.
               </i>
               <br />
               <br />

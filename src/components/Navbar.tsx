@@ -7,15 +7,15 @@ import { Link } from 'react-router-dom';
 const navbarLinks: NavLink[] = [
   {
     link: '/',
-    text: 'Geographic Introduction',
+    text: 'The Big Picture',
   },
   {
     link: '/interactivetdop',
-    text: 'Interactive TDOP',
+    text: 'Texas Digital Opportunity Plan',
   },
   {
     link: '/dataDashboards',
-    text: 'Data Dashboard',
+    text: 'Data Dashboards',
   },
 ];
 

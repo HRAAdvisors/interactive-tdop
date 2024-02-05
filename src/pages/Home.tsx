@@ -68,7 +68,7 @@ const Home = () => {
       <Element name='hero'>
         <HeroLayout
           leftButtonLink='/'
-          leftButtonText='Geographic Intro'
+          leftButtonText='The Big Picture'
           rightButtonLink='/dataDashboards'
           rightButtonText='Data Dashboards'
           imageHero='img/HeroTwo.jpg'

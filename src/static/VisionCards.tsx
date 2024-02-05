@@ -55,7 +55,7 @@ const VisionCards = {
         >
           recent reports
         </a>
-        .{' '}
+        .
       </>
     ),
   },

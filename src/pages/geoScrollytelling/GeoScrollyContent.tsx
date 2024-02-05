@@ -112,7 +112,7 @@ const contents: GeoScrollContent[] = [
           <p className='py-2'>
             Why do people not subscribe? In some cases, there’s no internet service where they live.
             Separate from the TDOP, there is another program building new high-speed networks across
-            the state .{' '}
+            the state.{' '}
           </p>
           <div className='mt-2'></div>
           {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
@@ -188,8 +188,7 @@ const contents: GeoScrollContent[] = [
         <div className='mt-2 text-md'>
           <p className='py-2'>
             People who do not have reliable high-speed internet may struggle to access online
-            resources, educational opportunities, and digital services like telehealth
-            appointments. 
+            resources, educational opportunities, and digital services like telehealth appointments.
           </p>
           <div className='mt-4'></div>
           {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
@@ -291,7 +290,7 @@ const contents: GeoScrollContent[] = [
         <div className='mt-2 text-md'>
           <p className='py-2'>
             The Internet can be an intimidating and even a risky place unless people have the
-            resources and skills to navigate it safely. For true digital opportunity, users need to
+            resources and skills to navigate it safely. For true digital opportunity, users need to
             have skills and tools to use the internet safely and easily.
           </p>
           <div className='mt-4'></div>
