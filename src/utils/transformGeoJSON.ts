@@ -206,7 +206,6 @@ const dataPointGenerator = (
     dataPointGeneratorName === DataPointGeneratorName.digitalLiteracySkills &&
     ChartId.TXDigitalLiteracy === chartId
   ) {
-    console.log(aggregatedChoroplethData);
     return (100 - parseFloat(aggregatedChoroplethData?.[geoId]?.['Not comfortable at all']?.['percent']) - parseFloat(aggregatedChoroplethData?.[geoId]?.["I don't understand what the task is about"]?.['percent'])).toFixed(1);
   } else if (
     dataPointGeneratorName === DataPointGeneratorName.acpEligibleEnrolled &&
@@ -254,7 +253,6 @@ const dataPointGenerator = (
     dataPointGeneratorName === DataPointGeneratorName.cybersecurityConfidence &&
     ChartId.TXCybersecurityConfidence === chartId
   ) {    
-    console.log(aggregatedChoroplethData);
     return (
       parseFloat(aggregatedChoroplethData?.[geoId]?.['Yes']?.['percent'])
     ).toFixed(0);
