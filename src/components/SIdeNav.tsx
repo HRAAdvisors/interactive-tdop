@@ -1,9 +1,32 @@
 import { useGetSkeletonQuery, usePrefetchDataDashboard } from '@/services/dataDashboard';
 import _ from 'lodash';
-import { Fragment } from 'react';
+import { Fragment, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
+import { SkeletonSection } from '@hraadvisors/report-api-types';
+
+const ScrollLinkWrapper = ({ section }: { section: SkeletonSection }) => {
+  const refScrollLink = useRef<HTMLLIElement>(null);
+  return (
+    <li ref={refScrollLink} key={section.id} className='pl-3 break-normal	 cursor-pointer text-xs'>
+      <ScrollLink
+        to={`section${section.id}`}
+        spy={true}
+        smooth={true}
+        offset={100}
+        duration={500}
+        className='inline'
+        activeClass='font-bold'
+        onSetActive={() => {
+          refScrollLink.current?.scrollIntoView(false);
+        }}
+      >
+        {section.title}
+      </ScrollLink>
+    </li>
+  );
+};
 
 const SideNav = () => {
   const { data } = useGetSkeletonQuery();
@@ -41,7 +64,7 @@ const SideNav = () => {
                     <span className='ms-3'>{l.first.title}</span>
                   </Link>
                   {_.isEqual(pageId, l.first.pageId) && (
-                    <ul className='space-y-3 py-2 px-4 w-full drop-shadow-sm'>
+                    <ul className='space-y-3 py-2 px-4 max-h-72 overflow-y-auto w-full drop-shadow'>
                       {_.chain(l.chapters)
                         .map((chapter, j) => (
                           <Fragment key={j}>
@@ -53,20 +76,8 @@ const SideNav = () => {
                                 {chapter.title}
                               </li>
                             )}
-                            {_.map(chapter.sections, (section) => (
-                              <li key={section.id} className='pl-3  cursor-pointer text-xs'>
-                                <ScrollLink
-                                  to={`section${section.id}`}
-                                  spy={true}
-                                  smooth={true}
-                                  offset={0}
-                                  duration={500}
-                                  className=' text-gray-900 hover:bg-gray-100'
-                                  activeClass='font-bold'
-                                >
-                                  {section.title}
-                                </ScrollLink>
-                              </li>
+                            {_.map(chapter.sections, (section, i) => (
+                              <ScrollLinkWrapper key={i} section={section} />
                             ))}
                           </Fragment>
                         ))
