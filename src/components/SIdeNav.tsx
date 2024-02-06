@@ -1,4 +1,4 @@
-import { useGetSkeletonQuery } from '@/services/dataDashboard';
+import { useGetSkeletonQuery, usePrefetchDataDashboard } from '@/services/dataDashboard';
 import _ from 'lodash';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
@@ -7,7 +7,7 @@ import { Link as ScrollLink } from 'react-scroll';
 
 const SideNav = () => {
   const { data } = useGetSkeletonQuery();
-
+  const prefetchReport = usePrefetchDataDashboard('getReport');
   const { pageId = 'home' } = useParams();
 
   const links = _.chain(data?.chapters)
@@ -20,8 +20,7 @@ const SideNav = () => {
 
   return (
     <aside
-      id='default-sidebar'
-      className='fixed top-16 left-0 z-40 w-72 h-screen transition-transform -translate-x-full sm:translate-x-0'
+      className='fixed top-16 left-0 bg-white z-40 w-72 bottom-0 transition-transform -translate-x-full sm:translate-x-0'
       aria-label='Sidebar'
     >
       <div className='h-full py-4 overflow-y-auto border-r border-gray-100'>
@@ -31,8 +30,13 @@ const SideNav = () => {
               <li className='w-full' key={i}>
                 <div className='w-full'>
                   <Link
-                    className={`w-full block px-2 py-2  ${_.isEqual(pageId, l.first?.pageId) ? 'font-bold bg-amber-900 text-orange-50' : 'text-gray-600 hover:bg-gray-100'}`}
+                    className={`w-full block px-2 py-2 text-gray-600  ${_.isEqual(pageId, l.first?.pageId) ? 'font-semibold bg-gray-100' : 'hover:bg-gray-100'}`}
                     to={`/data-dashboards/${l.first.pageId}`}
+                    onMouseEnter={() => {
+                      prefetchReport({
+                        pick: _.map(l.chapters, (chapter) => chapter.id).join(','),
+                      });
+                    }}
                   >
                     <span className='ms-3'>{l.first.title}</span>
                   </Link>
@@ -44,7 +48,7 @@ const SideNav = () => {
                             {_.size(l.chapters) > 1 && (
                               <li
                                 key={chapter.id}
-                                className='px-2 text-gray-900 cursor-pointer hover:bg-gray-100'
+                                className='px-2 text-gray-700 cursor-pointer hover:bg-gray-100'
                               >
                                 {chapter.title}
                               </li>
