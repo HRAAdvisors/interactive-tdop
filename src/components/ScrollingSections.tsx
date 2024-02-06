@@ -46,7 +46,7 @@ const ScrollingSection = ({ contents, containerClassNames, id }: ScrollingSectio
         >
           {_.map(contents, (contentData, i) => (
             <Step data={contentData} key={i + 1}>
-              <div className={`w-full h-screen ${containerClassNames} flex items-center pl-24`}>
+              <div className={`w-full h-screen ${containerClassNames} flex items-center md:pl-24`}>
                 <div className='text-white bg-black p-[1rem] md:p-[2rem] md:max-w-[40%] lg:max-w-[35%] max-w-[95%] md:m-[5rem] m-[1rem]'>
                   {contentData.content}
                 </div>

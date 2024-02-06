@@ -1,8 +1,13 @@
 import { useState } from 'react';
-import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import Logo from './Logo';
-import { NavDropDown, NavLink, NavLinkList } from './NavDropdown';
 import { Link } from 'react-router-dom';
+import Logo from './Logo';
+import { AiOutlineClose } from 'react-icons/ai';
+import { AiOutlineMenu } from 'react-icons/ai';
+
+export interface NavLink {
+  link: string;
+  text: string;
+}
 
 const navbarLinks: NavLink[] = [
   {
@@ -19,24 +24,60 @@ const navbarLinks: NavLink[] = [
   },
 ];
 
-const Navbar = ({ show }: { show: boolean }) => {
+export const NavDropDown = ({ navLinks }: { navLinks: NavLink[] }) => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const handleDropdown = () => setDropdownOpen(!dropdownOpen);
+
+  return (
+    <>
+      <button onClick={handleDropdown} className='uppercase text-xs tracking-widest font-light'>
+        Navigate
+      </button>
+      {dropdownOpen && (
+        <div
+          className='bg-[#666] border-b-2 border-[#666]'
+          style={{ position: 'absolute', zIndex: 100, top: '4rem' }}
+        >
+          {navLinks.map((navLink, index) => (
+            <Link
+              to={navLink.link}
+              key={index}
+              className='block uppercase text-xs py-10 px-10 md:hover:bg-[#333] text-white md:hover:font-bold transition duration-300'
+            >
+              {navLink.text}
+            </Link>
+          ))}
+        </div>
+      )}
+    </>
+  );
+};
+
+export const NavLinkList = ({ navLinks }: { navLinks: NavLink[] }) => {
+  return (
+    <ul className='uppercase p-4'>
+      {navLinks.map((navLink, index) => (
+        <li className='p-4 text-white border-b' key={index}>
+          <Link to={navLink.link}>{navLink.text}</Link>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+export const Navbar = ({ show }: { show: boolean }) => {
   const [nav, setNav] = useState(false);
-  const handleNav = () => {
-    setNav(!nav);
-  };
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const handleNav = () => setNav(!nav);
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   const navbarStyle: React.CSSProperties = {
-    transform: show ? 'translateY(0)' : 'translateY(-100%)', // Hide navbar if not showing or nav is open
+    transform: show ? 'translateY(0)' : 'translateY(-100%)',
     transition: 'transform 0.3s ease-in-out',
     position: 'fixed',
     top: 0,
     left: 0,
     right: 0,
-    zIndex: 50, // Ensure it's above other content
-    // ...other styles
+    zIndex: 50,
   };
 
   return (
@@ -56,11 +97,13 @@ const Navbar = ({ show }: { show: boolean }) => {
           </h1>
         </Link>
         <ul className='hidden md:flex items-center'>
-          <li className='p-8 uppercase tracking-widest text-xs'>
+          <li className='p-8 uppercase tracking-widest text-xs md:hover:text-[#ececec] transition-colors duration-300'>
             <NavDropDown navLinks={navbarLinks} />
           </li>
           <Link to='/about'>
-            <li className='p-8 uppercase tracking-widest text-xs'>About</li>
+            <li className='p-8 uppercase tracking-widest text-xs md:hover:text-[#ececec] transition-colors duration-300'>
+              About
+            </li>
           </Link>
         </ul>
         <div onClick={handleNav} className='md:hidden sm:mx-[20vw]'>
