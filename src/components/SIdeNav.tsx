@@ -1,15 +1,6 @@
 import { useGetSkeletonQuery, usePrefetchDataDashboard } from '@/services/dataDashboard';
 import _ from 'lodash';
-import {
-  Fragment,
-  MouseEventHandler,
-  RefObject,
-  WheelEventHandler,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { Fragment, RefObject, useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
@@ -24,8 +15,10 @@ function useOnScreen(ref: RefObject<HTMLElement>) {
   );
 
   useEffect(() => {
-    observer.observe(ref.current);
-    return () => observer.disconnect();
+    if (ref.current) {
+      observer.observe(ref.current);
+      return () => observer.disconnect();
+    }
   }, []);
 
   return isIntersecting;
@@ -35,7 +28,7 @@ const ScrollLinkWrapper = ({ section }: { section: SkeletonSection }) => {
   const refScrollLink = useRef<HTMLLIElement>(null);
   const [isDirectionUp, setIsDirectionUp] = useState(true);
 
-  const checkScrollDirectionIsUp: WheelEventHandler = (event) => {
+  const checkScrollDirectionIsUp = (event: WheelEvent) => {
     return setIsDirectionUp(event.deltaY < 0);
   };
 
@@ -43,8 +36,11 @@ const ScrollLinkWrapper = ({ section }: { section: SkeletonSection }) => {
     const dashboardMain = window.document.getElementById('dashboardMain');
     if (dashboardMain) {
       dashboardMain.addEventListener('wheel', checkScrollDirectionIsUp);
+      return () => {
+        dashboardMain.removeEventListener('wheel', checkScrollDirectionIsUp);
+      };
     }
-  });
+  }, []);
 
   const isVisible = useOnScreen(refScrollLink);
 
