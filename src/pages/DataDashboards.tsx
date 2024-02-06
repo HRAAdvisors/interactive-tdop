@@ -21,7 +21,7 @@ const DataDashboards = () => {
     <div className='flex flex-col'>
       <Navbar show={true} />
       <SideNav />
-      <main className='sm:pl-72 pt-16 min-h-screen'>
+      <main className='sm:pl-72 pt-16 min-h-screen' id='dashboardMain'>
         {reportData && <ReportChapters isLoading={isLoading} reportOutput={reportData} />}
       </main>
     </div>

@@ -1,25 +1,71 @@
 import { useGetSkeletonQuery, usePrefetchDataDashboard } from '@/services/dataDashboard';
 import _ from 'lodash';
-import { Fragment, useRef } from 'react';
+import {
+  Fragment,
+  MouseEventHandler,
+  RefObject,
+  WheelEventHandler,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import { SkeletonSection } from '@hraadvisors/report-api-types';
 
+function useOnScreen(ref: RefObject<HTMLElement>) {
+  const [isIntersecting, setIntersecting] = useState(false);
+
+  const observer = useMemo(
+    () => new IntersectionObserver(([entry]) => setIntersecting(entry.isIntersecting)),
+    [ref],
+  );
+
+  useEffect(() => {
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return isIntersecting;
+}
+
 const ScrollLinkWrapper = ({ section }: { section: SkeletonSection }) => {
   const refScrollLink = useRef<HTMLLIElement>(null);
+  const [isDirectionUp, setIsDirectionUp] = useState(true);
+
+  const checkScrollDirectionIsUp: WheelEventHandler = (event) => {
+    return setIsDirectionUp(event.deltaY < 0);
+  };
+
+  useEffect(() => {
+    const dashboardMain = window.document.getElementById('dashboardMain');
+    if (dashboardMain) {
+      dashboardMain.addEventListener('wheel', checkScrollDirectionIsUp);
+    }
+  });
+
+  const isVisible = useOnScreen(refScrollLink);
+
   return (
     <li ref={refScrollLink} key={section.id} className='pl-3 break-normal	 cursor-pointer text-xs'>
       <ScrollLink
         to={`section${section.id}`}
         spy={true}
         smooth={true}
-        offset={100}
+        offset={30}
         duration={500}
         className='inline'
         activeClass='font-bold'
         onSetActive={() => {
-          refScrollLink.current?.scrollIntoView(false);
+          if (!isVisible) {
+            if (isDirectionUp) {
+              refScrollLink.current?.scrollIntoView();
+            } else {
+              refScrollLink.current?.scrollIntoView(false);
+            }
+          }
         }}
       >
         {section.title}

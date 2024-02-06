@@ -26,30 +26,34 @@ const ReportSections = ({
   const { boundaries } = reportOutput;
 
   return (
-    <ScrollElement name={`section${section.id}`} className='py-4'>
+    <ScrollElement name={`section${section.id}`} className='py-10'>
       <h3 className='text-2xl text-amber-800 font-semibold pb-6'>{section.title}</h3>
       <article
         className='prose max-w-none py-2'
         dangerouslySetInnerHTML={{ __html: section.summary.text }}
       />
-      <div className='flex flex-wrap w-full justify-center p-2'>
-        {_.map(filteredCharts, (chart) => (
-          <div className='py-4 px-6'>
-            <ChartComponent
-              key={chart.id}
-              chart={chart}
-              target={'web'}
-              boundaries={boundaries || {}}
-              isDraft={reportOutput.report.isDraft}
-              isPreview={false}
-              geography={reportOutput.report.geography}
-              controls={{
-                parentFilter: filterState[0],
-                visibleCategories: visibilityToggleState[0],
-              }}
-              tokens={tokens}
-              noWrapper={false}
-            />
+      <div className='flex flex-wrap flex-col w-full justify-center p-2'>
+        {_.map(_.chunk(filteredCharts, 2), (chartChunk) => (
+          <div className='py-4 flex flex-wrap gap-8 w-full'>
+            {_.map(chartChunk, (chart) => (
+              <div className='lg:flex-1 w-full'>
+                <ChartComponent
+                  key={chart.id}
+                  chart={chart}
+                  target={'web'}
+                  boundaries={boundaries || {}}
+                  isDraft={reportOutput.report.isDraft}
+                  isPreview={false}
+                  geography={reportOutput.report.geography}
+                  controls={{
+                    parentFilter: filterState[0],
+                    visibleCategories: visibilityToggleState[0],
+                  }}
+                  tokens={tokens}
+                  noWrapper={false}
+                />
+              </div>
+            ))}
           </div>
         ))}
       </div>
