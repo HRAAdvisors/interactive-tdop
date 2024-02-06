@@ -27,12 +27,12 @@ const ReportSections = ({
 
   return (
     <ScrollElement name={`section${section.id}`} className='py-4'>
-      <h3 className='text-2xl text-amber-900 font-semibold pb-6'>{section.title}</h3>
+      <h3 className='text-2xl text-amber-800 font-semibold pb-6'>{section.title}</h3>
       <article
         className='prose max-w-none py-2'
         dangerouslySetInnerHTML={{ __html: section.summary.text }}
       />
-      <div className='flex flex-wrap justify-center p-2'>
+      <div className='flex flex-wrap w-full justify-center p-2'>
         {_.map(filteredCharts, (chart) => (
           <div className='py-4 px-6'>
             <ChartComponent
