@@ -92,7 +92,6 @@ body {
   display: inline-block;
   box-shadow: 0.3rem 0.3rem 0 #dc2626;
   margin: 0;
-  transition: box-shadow 0.3s;
 }
 
 .button-dark__btn {
@@ -106,7 +105,6 @@ body {
   display: inline-block;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s, transform 0.1s;
 }
 
 .button-dark__btn:hover, .button-dark__btn:active {
@@ -127,7 +125,6 @@ body {
   display: inline-block;
   box-shadow: 0.3rem 0.3rem 0 #dc2626;
   margin: 0;
-  transition: box-shadow 0.3s;
 }
 
 .button-light__btn {
@@ -141,7 +138,6 @@ body {
   display: inline-block;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s, transform 0.1s;
 }
 
 .button-light__btn:hover, .button-light__btn:active {
