@@ -33,7 +33,7 @@ const GeoIntro = () => {
       <HeroLayout
         leftButtonLink='/interactivetdop'
         leftButtonText='Texas Digital Opportunity Plan'
-        rightButtonLink='/dataDashboards'
+        rightButtonLink='/data-dashboards'
         rightButtonText='Data Dashboards'
         imageHero='img/1.jpg'
       />

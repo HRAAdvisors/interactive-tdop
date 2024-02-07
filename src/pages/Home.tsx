@@ -69,7 +69,7 @@ const Home = () => {
         <HeroLayout
           leftButtonLink='/'
           leftButtonText='The Big Picture'
-          rightButtonLink='/dataDashboards'
+          rightButtonLink='/data-dashboards'
           rightButtonText='Data Dashboards'
           imageHero='img/HeroTwo.jpg'
         />

@@ -14,7 +14,7 @@ const navbarLinks: NavLink[] = [
     text: 'Texas Digital Opportunity Plan',
   },
   {
-    link: '/dataDashboards',
+    link: '/data-dashboards',
     text: 'Data Dashboards',
   },
 ];

@@ -1,49 +1,30 @@
-// App.js
-// import { useEffect, useState } from 'react';
-// import HeroLayout from '@/components/HeroLayout';
-// import { animateScroll as scroll } from 'react-scroll';
-// import Navbar from '@/components/Navbar';
-import NavbarPlain from '@/components/NavbarPlain';
-// import Sidebar from '@/components/Sidebar';
+import ReportChapters from './dataDashboard/ReportChapters';
+import SideNav from '@/components/SIdeNav';
+import Navbar from '@/components/Navbar';
+import { useGetReportQuery, useGetSkeletonQuery } from '@/services/dataDashboard';
+import { useParams } from 'react-router-dom';
+import _ from 'lodash';
 
 const DataDashboards = () => {
-  // const [showNav, setShowNav] = useState(false);
-  // let lastScrollY = window.scrollY; // Initialize lastScrollY outside of the useEffect
-  // useEffect(() => {
-  //   scroll.scrollTo(0, {});
-  // }, []);
+  const { pageId = 'home' } = useParams();
+  const { data: skeletonData, isLoading: isLoadingSkeleton } = useGetSkeletonQuery();
+  const activeChapters = _.filter(skeletonData?.chapters, { pageId: pageId });
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const currentScrollY = window.scrollY;
-  //     const isScrollingUp = currentScrollY < lastScrollY;
+  const { data: reportData, isLoading: isLoadingReport } = useGetReportQuery(
+    { pick: _.map(activeChapters, (c) => c.id).join(',') },
+    { skip: !_.size(activeChapters) },
+  );
 
-  //     setShowNav(isScrollingUp);
-  //     lastScrollY = currentScrollY; // Update lastScrollY for the next scroll event
-  //   };
-
-  //   window.addEventListener('scroll', handleScroll);
-
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, []);
+  const isLoading = isLoadingReport || isLoadingSkeleton;
 
   return (
-    <>
-      {/* <Navbar show={showNav} /> */}
-      <NavbarPlain />
-      {/* <Sidebar /> */}
-      {/* <HeroLayout
-        leftButtonLink='/'
-        leftButtonText='Interactive TDOP'
-        rightButtonLink='/geoIntro'
-        rightButtonText='Geographic Intro'
-      /> */}
-      {/* <div>
-        <p className='p-80 text-4xl'>Under Development</p>
-      </div> */}
-    </>
+    <div className='flex flex-col'>
+      <Navbar show={true} />
+      <SideNav />
+      <main className='sm:pl-72 pt-16 min-h-screen' id='dashboardMain'>
+        { <ReportChapters isLoading={isLoading} reportOutput={reportData} />}
+      </main>
+    </div>
   );
 };
 
