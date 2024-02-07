@@ -300,9 +300,7 @@ const dataPointGenerator = (
   } else if (
     dataPointGeneratorName === DataPointGeneratorName.acpAwareness &&
     ChartId.TXACPAwareness === chartId
-  ) {
-    console.log(aggregatedChoroplethData);
-      
+  ) {      
     return (
       parseFloat(aggregatedChoroplethData[geoId]['Yes']['percent'])
     ).toFixed(0);

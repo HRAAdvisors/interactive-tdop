@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
-import { AiOutlineClose } from 'react-icons/ai';
-import { AiOutlineMenu } from 'react-icons/ai';
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 
 export interface NavLink {
   link: string;
@@ -12,46 +11,50 @@ export interface NavLink {
 const navbarLinks: NavLink[] = [
   {
     link: '/',
-    text: 'The Big Picture',
+    text: 'Home',
   },
   {
     link: '/interactivetdop',
-    text: 'Texas Digital Opportunity Plan',
+    text: 'The Plan',
   },
   {
     link: '/dataDashboards',
-    text: 'Data Dashboards',
+    text: 'The Resources',
+  },
+  {
+    link: '/about',
+    text: 'About',
   },
 ];
 
-export const NavDropDown = ({ navLinks }: { navLinks: NavLink[] }) => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const handleDropdown = () => setDropdownOpen(!dropdownOpen);
+// export const NavDropDown = ({ navLinks }: { navLinks: NavLink[] }) => {
+//   const [dropdownOpen, setDropdownOpen] = useState(false);
+//   const handleDropdown = () => setDropdownOpen(!dropdownOpen);
 
-  return (
-    <>
-      <button onClick={handleDropdown} className='uppercase text-xs tracking-widest font-light'>
-        Navigate
-      </button>
-      {dropdownOpen && (
-        <div
-          className='bg-[#666] border-b-2 border-[#666]'
-          style={{ position: 'absolute', zIndex: 100, top: '4rem' }}
-        >
-          {navLinks.map((navLink, index) => (
-            <Link
-              to={navLink.link}
-              key={index}
-              className='block uppercase text-xs py-10 px-10 md:hover:bg-[#333] text-white md:hover:font-bold transition duration-300'
-            >
-              {navLink.text}
-            </Link>
-          ))}
-        </div>
-      )}
-    </>
-  );
-};
+//   return (
+//     <>
+//       <button onClick={handleDropdown} className='uppercase text-xs tracking-widest font-light'>
+//         Menu
+//       </button>
+//       {dropdownOpen && (
+//         <div
+//           className='bg-[#666] border-b-2 border-[#666]'
+//           style={{ position: 'absolute', zIndex: 100, top: '4rem' }}
+//         >
+//           {navLinks.map((navLink, index) => (
+//             <Link
+//               to={navLink.link}
+//               key={index}
+//               className='block uppercase text-xs py-10 px-10 md:hover:bg-[#333] text-white md:hover:font-bold transition duration-300'
+//             >
+//               {navLink.text}
+//             </Link>
+//           ))}
+//         </div>
+//       )}
+//     </>
+//   );
+// };
 
 export const NavLinkList = ({ navLinks }: { navLinks: NavLink[] }) => {
   return (
@@ -65,7 +68,7 @@ export const NavLinkList = ({ navLinks }: { navLinks: NavLink[] }) => {
   );
 };
 
-export const Navbar = ({ show }: { show: boolean }) => {
+export const Navbar = ({ show, navLinks }: { show: boolean; navLinks: NavLink[] }) => {
   const [nav, setNav] = useState(false);
   const handleNav = () => setNav(!nav);
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -88,24 +91,28 @@ export const Navbar = ({ show }: { show: boolean }) => {
             <Logo />
           </a>
         </div>
-        <Link to='/'>
-          <h1
-            onClick={scrollToTop}
-            className='w-full text-xs whitespace-nowrap uppercase font-bold text-[#111] tracking-widest  pl-[3vw] sm:pl-[10vw] md:pl-[20vw] pr-[12vw] md:pr-[20vw] sm:px-[10vw]'
-          >
-            Texas Digital Opportunity Plan
-          </h1>
-        </Link>
-        <ul className='hidden md:flex items-center'>
-          <li className='p-8 uppercase tracking-widest text-xs md:hover:text-[#ececec] transition-colors duration-300'>
-            <NavDropDown navLinks={navbarLinks} />
-          </li>
-          <Link to='/about'>
-            <li className='p-8 uppercase tracking-widest text-xs md:hover:text-[#ececec] transition-colors duration-300'>
-              About
-            </li>
+        <div className=''>
+          <Link to='/'>
+            <h1
+              onClick={scrollToTop}
+              className='text-xs whitespace-nowrap uppercase font-bold text-[#111] tracking-widest pl-[3vw] sm:pl-[10vw] md:pl-[7.5vw] pr-[12vw] md:pr-[15vw] lg:pr-[30vw] sm:px-[10vw]'
+            >
+              Texas Digital Opportunity Hub
+            </h1>
           </Link>
-        </ul>
+        </div>
+        <div>
+          <ul className='hidden md:flex items-center'>
+            {navbarLinks.map((navLink, index) => (
+              <li
+                key={index}
+                className='p-8 uppercase tracking-widest text-xs md:hover:text-[#ececec] transition-colors duration-300'
+              >
+                <Link to={navLink.link}>{navLink.text}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
         <div onClick={handleNav} className='md:hidden sm:mx-[20vw]'>
           {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
         </div>
@@ -117,9 +124,7 @@ export const Navbar = ({ show }: { show: boolean }) => {
           }
         >
           <div className='h-screen bg-[#666]'>
-            <h1 className='w-full text-sm uppercase font-bold p-10 text-[#fff] bg-[#111]'>
-              Texas Digital Opportunity Plan
-            </h1>
+            <h1 className='w-full text-sm uppercase font-bold p-10 text-[#fff] bg-[#111]'>Menu</h1>
             <NavLinkList navLinks={navbarLinks} />
           </div>
         </div>
