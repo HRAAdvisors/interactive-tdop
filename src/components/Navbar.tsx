@@ -68,7 +68,7 @@ export const NavLinkList = ({ navLinks }: { navLinks: NavLink[] }) => {
   );
 };
 
-export const Navbar = ({ show, navLinks }: { show: boolean; navLinks: NavLink[] }) => {
+export const Navbar = ({ show }: { show: boolean }) => {
   const [nav, setNav] = useState(false);
   const handleNav = () => setNav(!nav);
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
