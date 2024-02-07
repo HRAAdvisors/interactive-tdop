@@ -14,15 +14,12 @@ const navbarLinks: NavLink[] = [
     text: 'The Plan',
   },
   {
-    link: '/dataDashboards',
+    link: '/data-dashboards',
     text: 'The Resources',
   },
   {
     link: '/about',
     text: 'About',
-  },
-    link: '/data-dashboards',
-    text: 'Data Dashboards',
   },
 ];
 

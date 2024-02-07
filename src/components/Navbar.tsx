@@ -18,46 +18,14 @@ const navbarLinks: NavLink[] = [
     text: 'The Plan',
   },
   {
-    link: '/dataDashboards',
+    link: '/data-dashboards',
     text: 'The Resources',
   },
   {
     link: '/about',
     text: 'About',
   },
-    link: '/data-dashboards',
-    text: 'Data Dashboards',
-  },
 ];
-
-// export const NavDropDown = ({ navLinks }: { navLinks: NavLink[] }) => {
-//   const [dropdownOpen, setDropdownOpen] = useState(false);
-//   const handleDropdown = () => setDropdownOpen(!dropdownOpen);
-
-//   return (
-//     <>
-//       <button onClick={handleDropdown} className='uppercase text-xs tracking-widest font-light'>
-//         Menu
-//       </button>
-//       {dropdownOpen && (
-//         <div
-//           className='bg-[#666] border-b-2 border-[#666]'
-//           style={{ position: 'absolute', zIndex: 100, top: '4rem' }}
-//         >
-//           {navLinks.map((navLink, index) => (
-//             <Link
-//               to={navLink.link}
-//               key={index}
-//               className='block uppercase text-xs py-10 px-10 md:hover:bg-[#333] text-white md:hover:font-bold transition duration-300'
-//             >
-//               {navLink.text}
-//             </Link>
-//           ))}
-//         </div>
-//       )}
-//     </>
-//   );
-// };
 
 export const NavLinkList = ({ navLinks }: { navLinks: NavLink[] }) => {
   return (
@@ -89,7 +57,7 @@ export const Navbar = ({ show }: { show: boolean }) => {
   return (
     <div style={navbarStyle}>
       <div className='flex sticky items-center top-0 h-16 shadow-md text-[#111] bg-[#FFFDF6] w-screen'>
-        <div className='hidden md:flex ml-10 top-8 w-contain'>
+        <div className='hidden lg:flex ml-10 top-8 w-contain'>
           <a href='https://comptroller.texas.gov/programs/broadband/'>
             <Logo />
           </a>
@@ -98,14 +66,14 @@ export const Navbar = ({ show }: { show: boolean }) => {
           <Link to='/'>
             <h1
               onClick={scrollToTop}
-              className='text-xs whitespace-nowrap uppercase font-bold text-[#111] tracking-widest pl-[3vw] sm:pl-[10vw] md:pl-[7.5vw] pr-[12vw] md:pr-[15vw] lg:pr-[30vw] sm:px-[10vw]'
+              className='text-xs whitespace-nowrap uppercase font-bold text-[#111] tracking-widest pl-[3vw] sm:pl-[10vw] md:pl-[7.5vw] pr-[12vw] md:pr-[15vw] lg:pr-[30vw] 2xl:pr-[40vw] sm:px-[10vw]'
             >
               Texas Digital Opportunity Hub
             </h1>
           </Link>
         </div>
         <div>
-          <ul className='hidden md:flex items-center'>
+          <ul className='hidden lg:flex items-center'>
             {navbarLinks.map((navLink, index) => (
               <li
                 key={index}
@@ -116,7 +84,7 @@ export const Navbar = ({ show }: { show: boolean }) => {
             ))}
           </ul>
         </div>
-        <div onClick={handleNav} className='md:hidden sm:mx-[20vw]'>
+        <div onClick={handleNav} className='md:hidden sm:mx-[20vw] md:mx-[5vw]'>
           {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
         </div>
         <div
