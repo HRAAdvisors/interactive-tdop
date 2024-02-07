@@ -25,6 +25,9 @@ const navbarLinks: NavLink[] = [
     link: '/about',
     text: 'About',
   },
+    link: '/data-dashboards',
+    text: 'Data Dashboards',
+  },
 ];
 
 // export const NavDropDown = ({ navLinks }: { navLinks: NavLink[] }) => {

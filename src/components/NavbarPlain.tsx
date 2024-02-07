@@ -7,14 +7,21 @@ import { Link } from 'react-router-dom';
 const navbarLinks: NavLink[] = [
   {
     link: '/',
-    text: 'The Big Picture',
+    text: 'Home',
   },
   {
     link: '/interactivetdop',
-    text: 'Texas Digital Opportunity Plan',
+    text: 'The Plan',
   },
   {
     link: '/dataDashboards',
+    text: 'The Resources',
+  },
+  {
+    link: '/about',
+    text: 'About',
+  },
+    link: '/data-dashboards',
     text: 'Data Dashboards',
   },
 ];
@@ -29,7 +36,7 @@ const NavbarPlain = () => {
   };
 
   return (
-    <div className='z-40 flex absolute items-center top-0 h-16 '>
+    <div className='z-40 flex fixed items-center top-0 h-16 '>
       <div className='hidden md:flex ml-10 top-8 w-contain'>
         <a href='https://comptroller.texas.gov/programs/broadband/'>
           <Logo />
