@@ -7,10 +7,10 @@ import _ from 'lodash';
 
 const DataDashboards = () => {
   const { pageId = 'home' } = useParams();
-  const { data: skeletonData, isFetching: isLoadingSkeleton } = useGetSkeletonQuery();
+  const { data: skeletonData, isLoading: isLoadingSkeleton } = useGetSkeletonQuery();
   const activeChapters = _.filter(skeletonData?.chapters, { pageId: pageId });
 
-  const { data: reportData, isFetching: isLoadingReport } = useGetReportQuery(
+  const { data: reportData, isLoading: isLoadingReport } = useGetReportQuery(
     { pick: _.map(activeChapters, (c) => c.id).join(',') },
     { skip: !_.size(activeChapters) },
   );
@@ -22,7 +22,7 @@ const DataDashboards = () => {
       <Navbar show={true} />
       <SideNav />
       <main className='sm:pl-72 pt-16 min-h-screen' id='dashboardMain'>
-        {reportData && <ReportChapters isLoading={isLoading} reportOutput={reportData} />}
+        { <ReportChapters isLoading={isLoading} reportOutput={reportData} />}
       </main>
     </div>
   );

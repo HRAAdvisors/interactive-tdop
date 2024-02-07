@@ -8,15 +8,14 @@ const ReportChapters = ({
   isLoading,
 }: {
   isLoading: boolean;
-  reportOutput: ReportOutput<StandardChart>;
+  reportOutput?: ReportOutput<StandardChart>;
 }) => {
-  if (isLoading) {
-    <div>loading</div>;
-  }
+
 
   return (
-    <div className='flex  flex-col w-full py-4 px-8'>
-      {_.map(reportOutput?.report.chapters, (chapter, i) => (
+    <div className='flex  flex-col w-full h-full py-4 px-8'>
+      {isLoading && <div className='flex justify-center items-center min-h-screen h-full w-full'><div className='loader'/></div>}
+      {!isLoading && _.map(reportOutput?.report.chapters, (chapter, i) => (
         <div className='py-4' key={i}>
           {_.map(
             chapter.sections,
