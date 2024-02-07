@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import loadable from '@loadable/component';
+import AssetInventory from '@/pages/AssetInventory';
 
 const GeoIntro = loadable(() => import('@/pages/GeoIntro'));
 const HomePage = loadable(() => import('@/pages/Home'));
@@ -13,6 +14,7 @@ const TheRoutes = () => {
         <Route path='/' element={<GeoIntro />} />
         <Route path='/interactivetdop' element={<HomePage />} />
         <Route path='/data-dashboards/:pageId?' element={<DataDashboards />} />
+        <Route path='/assetinventory' element={<AssetInventory />} />
         <Route path='/about' element={<AboutPage />} />
       </Routes>
     </Router>

@@ -19,6 +19,10 @@ const navbarLinks: NavLink[] = [
   },
   {
     link: '/data-dashboards',
+    text: 'The Data',
+  },
+  {
+    link: '/assetinventory',
     text: 'The Resources',
   },
   {
@@ -54,19 +58,34 @@ export const Navbar = ({ show }: { show: boolean }) => {
     zIndex: 50,
   };
 
+  // Use visibility and opacity for transition
+  const overlayStyle: React.CSSProperties = {
+    transition: 'opacity 1s ease-in-out, visibility 1s ease-in-out',
+    position: 'fixed',
+    height: '100vh',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(255, 253, 246, 0.5)',
+    zIndex: 0, // Below the navbar but above page content
+    opacity: nav ? 1 : 0,
+    visibility: nav ? 'visible' : 'hidden',
+  };
+
+  const closeNav = () => setNav(false);
+
   return (
     <div style={navbarStyle}>
       <div className='flex sticky items-center top-0 h-16 shadow-md text-[#111] bg-[#FFFDF6] w-screen'>
         <div className='hidden lg:flex ml-10 top-8 w-contain'>
-          <a href='https://comptroller.texas.gov/programs/broadband/'>
-            <Logo />
-          </a>
+          <Logo />
         </div>
         <div className=''>
           <Link to='/'>
             <h1
               onClick={scrollToTop}
-              className='text-xs whitespace-nowrap uppercase font-bold text-[#111] tracking-widest pl-[3vw] sm:pl-[10vw] md:pl-[7.5vw] pr-[12vw] md:pr-[15vw] lg:pr-[30vw] 2xl:pr-[40vw] sm:px-[10vw]'
+              className='text-xs whitespace-nowrap uppercase font-bold text-[#111] tracking-widest pl-[3vw] sm:pl-[10vw] md:pl-[7.5vw] pr-[12vw] md:pr-[30vw] lg:pr-[30vw] 2xl:pr-[35vw] sm:px-[10vw]'
             >
               Texas Digital Opportunity Hub
             </h1>
@@ -77,14 +96,15 @@ export const Navbar = ({ show }: { show: boolean }) => {
             {navbarLinks.map((navLink, index) => (
               <li
                 key={index}
-                className='p-8 uppercase tracking-widest text-xs md:hover:text-[#ececec] transition-colors duration-300'
+                className='md:p-2 lg:p-5 2xl:p-8 uppercase tracking-widest text-xs md:hover:text-[#ececec] transition-colors duration-300'
               >
                 <Link to={navLink.link}>{navLink.text}</Link>
               </li>
             ))}
           </ul>
         </div>
-        <div onClick={handleNav} className='md:hidden sm:mx-[20vw] md:mx-[5vw]'>
+        {nav && <div style={overlayStyle} onClick={closeNav}></div>}
+        <div onClick={handleNav} className='z-20 lg:hidden sm:mx-[20vw] md:mx-[5vw]'>
           {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
         </div>
         <div
@@ -95,7 +115,9 @@ export const Navbar = ({ show }: { show: boolean }) => {
           }
         >
           <div className='h-screen bg-[#666]'>
-            <h1 className='w-full text-sm uppercase font-bold p-10 text-[#fff] bg-[#111]'>Menu</h1>
+            <h1 className='w-full text-sm shadow-lg uppercase font-bold p-10 text-[#111] bg-[#FFFDF6]'>
+              Texas Digital Opportunity Hub
+            </h1>
             <NavLinkList navLinks={navbarLinks} />
           </div>
         </div>
