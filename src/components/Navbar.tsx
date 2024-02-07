@@ -58,23 +58,6 @@ export const Navbar = ({ show }: { show: boolean }) => {
     zIndex: 50,
   };
 
-  // Use visibility and opacity for transition
-  const overlayStyle: React.CSSProperties = {
-    transition: 'opacity 1s ease-in-out, visibility 1s ease-in-out',
-    position: 'fixed',
-    height: '100vh',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(255, 253, 246, 0.5)',
-    zIndex: 0, // Below the navbar but above page content
-    opacity: nav ? 1 : 0,
-    visibility: nav ? 'visible' : 'hidden',
-  };
-
-  const closeNav = () => setNav(false);
-
   return (
     <div style={navbarStyle}>
       <div className='flex sticky items-center top-0 h-16 shadow-md text-[#111] bg-[#FFFDF6] w-screen'>
@@ -103,7 +86,6 @@ export const Navbar = ({ show }: { show: boolean }) => {
             ))}
           </ul>
         </div>
-        {nav && <div style={overlayStyle} onClick={closeNav}></div>}
         <div onClick={handleNav} className='z-20 lg:hidden sm:mx-[20vw] md:mx-[5vw]'>
           {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
         </div>
