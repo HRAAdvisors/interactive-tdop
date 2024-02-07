@@ -558,26 +558,19 @@
   resolved "https://registry.npmjs.org/@floating-ui/utils/-/utils-0.1.6.tgz"
   integrity sha512-OfX7E2oUDYxtBvsuS4e/jSn4Q9Qb6DzgeYtsAdkPZ47znpoNsMgZw0+tVijiv3uGNR6dgNlty6r9rzIzHjtd/A==
 
-"@hraadvisors/broadband-charts@^0.0.26":
+"@hraadvisors/broadband-charts@0.0.26":
   version "0.0.26"
   resolved "https://npm.pkg.github.com/download/@hraadvisors/broadband-charts/0.0.26/c06f311567e6fe451cc2916b90bee32f865585ad#c06f311567e6fe451cc2916b90bee32f865585ad"
   integrity sha512-lBRlIn+gSk+4h51l/tCtCjgocyz4ApocSJnU18KEG/TY1t/NH//oVobIOFhSyQalLRbn8mDFIXJlkfpDwwoE7g==
 
-"@hraadvisors/report-api-types@^3.0.36":
+"@hraadvisors/report-api-types@3.0.36":
   version "3.0.36"
   resolved "https://npm.pkg.github.com/download/@hraadvisors/report-api-types/3.0.36/7a04df12387270153f52aaa1607446eb095c7c34#7a04df12387270153f52aaa1607446eb095c7c34"
   integrity sha512-cE42yGj+MWNb9gIajxgFlE9QPJ8hNGp9QOiUvtsMtWvPUzdjELEoyce1C8A74nrfxq2LPm+CWkr5XLAeC4XmzA==
   dependencies:
     "@types/geojson" "^7946.0.13"
 
-"@hraadvisors/report-builder-types@^3.0.26":
-  version "3.0.26"
-  resolved "https://npm.pkg.github.com/download/@hraadvisors/report-builder-types/3.0.26/44f4ba1cd6738c50f44f89063fbfe999a0ff3ef7#44f4ba1cd6738c50f44f89063fbfe999a0ff3ef7"
-  integrity sha512-hSi+7q/dLdnB8QqwoJI7XViAmq0WVpHO8fwA/FQGMjiIkfHc7uiJKVVEAZTa4b99piOd0RvQ10KFDLYHEvR/ow==
-  dependencies:
-    "@hraadvisors/report-api-types" "^3.0.36"
-
-"@hraadvisors/standard-charts@^1.0.15":
+"@hraadvisors/standard-charts@1.0.15":
   version "1.0.15"
   resolved "https://npm.pkg.github.com/download/@hraadvisors/standard-charts/1.0.15/427b3cc2f4a8067a1017461b5aa25a5e9996684d#427b3cc2f4a8067a1017461b5aa25a5e9996684d"
   integrity sha512-hwvdfCpfImnXt3HyFxI+4CIce38JHfqUfMXvnhkLaUOoezCAjm4YLcJZWGeMzx/GaXYl4sdBBH9ALere17VfuA==
