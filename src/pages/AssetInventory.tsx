@@ -6,7 +6,7 @@
 // import Navbar from '@/components/Navbar';
 import Navbar from '@/components/Navbar';
 
-const AboutPage = () => {
+const AssetInventory = () => {
   // const [showNav, setShowNav] = useState(false);
   // let lastScrollY = window.scrollY; // Initialize lastScrollY outside of the useEffect
   // useEffect(() => {
@@ -36,4 +36,4 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default AssetInventory;

@@ -22,7 +22,7 @@ const DataDashboards = () => {
       <Navbar show={true} />
       <SideNav />
       <main className='sm:pl-72 pt-16 min-h-screen' id='dashboardMain'>
-        { <ReportChapters isLoading={isLoading} reportOutput={reportData} />}
+        {<ReportChapters isLoading={isLoading} reportOutput={reportData} />}
       </main>
     </div>
   );
