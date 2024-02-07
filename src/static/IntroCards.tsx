@@ -10,7 +10,7 @@ const IntroCards = {
     altText: 'Broadband',
     title: 'Broadband',
     description:
-      'Broadband is always-on, high-speed internet service. The FCC’s benchmark for high-speed internet is at least 25 megabits per second (Mbps) for downloads and 3 Mbps for uploads, but new definitions of “broadband” from the FCC go further: 100 Mbps download and 20 Mbps upload speeds For the purposes of this plan and its metrics on internet adoption, we are using the Census Bureau’s American Community Survey definition of high-speed internet as service provided via fiberoptic, cable, and DSL systems.',
+      'Broadband is always-on, high-speed internet service. The Federal Communication Commission (FCC) – the agency that oversees many policies and regulations that have to do with the internet – defines high-speed internet as service delivering at least 25 megabits per second (Mbps) for downloads and 3 Mbps for uploads. Proposed new definitions of “broadband service” from the FCC go further: 100 Mbps download and 20 Mbps upload. For the purposes of this plan and its metrics on internet adoption, we are using the Census Bureau’s American Community Survey definition of high-speed internet as service provided via fiberoptic, cable, and DSL systems. ',
   },
   Affordable_Access: {
     img: 'img/Affordability.jpg',
@@ -24,21 +24,21 @@ const IntroCards = {
     altText: 'Internet Adoption',
     title: 'Internet Adoption',
     description:
-      'Internet adoption refers to full access to and use of the internet for everyday life needs and goals. Levels of adoption in a community are often measured by looking at the number of households subscribing to high-speed internet service, as well as survey data describing what people use internet service for in their everyday lives.',
+      'Internet adoption refers to full access to and use of the internet for everyday life needs and goals. Levels of adoption in a community are often measured by looking at the number of households with subscriptions to high-speed internet service at home, as well as survey data describing what people use the internet for in their everyday lives.',
   },
   Digital_Literacy: {
     img: 'img/DigitalLiteracy.jpg',
     altText: 'Digital Literacy and Skills',
     title: 'Digital Literacy and Skills',
     description:
-      '“Digital literacy” or “digital skills” refer to the knowledge required to use technology. Digital skills help people find and understand information, create content, and talk to others online. Digital skills can also help people find new jobs and career pathways.',
+      '“Digital literacy” or “digital skills” refer to the knowledge required to use the latest technology. Digital skills help people find and understand information, create content, and talk to others online. Digital skills can also help people find new jobs and career pathways.',
   },
   Devices: {
     img: 'img/Devices.jpg',
     altText: 'Access to Devices and Technical Support',
     title: 'Access to Devices and Technical Support',
     description:
-      'Access to devices and technical support means having access to computers, tablets, and other technologies that connect to the internet and getting help with tech problems from tools or people.',
+      'Access to devices and technical support means having access to computers, tablets and other technologies that connect to the internet and getting help with those devices from tools or people.',
   },
   Cybersecurity: {
     img: 'img/Cybersecurity.jpg',

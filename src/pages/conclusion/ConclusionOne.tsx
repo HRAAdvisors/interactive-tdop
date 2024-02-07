@@ -59,20 +59,8 @@ const contents = [
       <div>
         <p> Click to dive deeper into the state of digital opportunity in Texas.</p>
         <div className='my-8 md:mx-8'>
-          <ButtonDark text='Geographic Intro' link='/geoIntro'></ButtonDark>
-          <ButtonLight text='Data Dashboards' link='/'></ButtonLight>
-        </div>
-      </div>
-    ),
-  },
-  {
-    img: 'img/Capitol.jpg',
-    content: (
-      <div>
-        <p> Click to dive deeper into the state of digital opportunity in Texas.</p>
-        <div className='my-8 md:mx-8'>
-          <ButtonDark text='Geographic Intro' link='/geoIntro'></ButtonDark>
-          <ButtonLight text='Data Dashboards' link='/'></ButtonLight>
+          <ButtonDark text='The Big Picture' link='/'></ButtonDark>
+          <ButtonLight text='Data Dashboards' link='/dataDashboards'></ButtonLight>
         </div>
       </div>
     ),

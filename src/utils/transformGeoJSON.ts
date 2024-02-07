@@ -133,6 +133,16 @@ export const getAggregateChartData = (choroplethData: ChartBulkResponse) => {
     .groupBy('geo_id')
     .mapValues((inf) => _.first(inf))
     .value();
+  } else if (choroplethData.id === ChartId.TXACPAwareness) {
+    return _.chain(choroplethData.data)
+    .groupBy('geo_id')
+    .mapValues((inf) =>
+      _.chain(inf)
+        .groupBy('response')
+        .mapValues((infGroup) => _.first(infGroup))
+        .value(),
+    )
+    .value();
   }
 };
 
@@ -206,7 +216,6 @@ const dataPointGenerator = (
     dataPointGeneratorName === DataPointGeneratorName.digitalLiteracySkills &&
     ChartId.TXDigitalLiteracy === chartId
   ) {
-    console.log(aggregatedChoroplethData);
     return (100 - parseFloat(aggregatedChoroplethData?.[geoId]?.['Not comfortable at all']?.['percent']) - parseFloat(aggregatedChoroplethData?.[geoId]?.["I don't understand what the task is about"]?.['percent'])).toFixed(1);
   } else if (
     dataPointGeneratorName === DataPointGeneratorName.acpEligibleEnrolled &&
@@ -254,7 +263,6 @@ const dataPointGenerator = (
     dataPointGeneratorName === DataPointGeneratorName.cybersecurityConfidence &&
     ChartId.TXCybersecurityConfidence === chartId
   ) {    
-    console.log(aggregatedChoroplethData);
     return (
       parseFloat(aggregatedChoroplethData?.[geoId]?.['Yes']?.['percent'])
     ).toFixed(0);
@@ -289,6 +297,15 @@ const dataPointGenerator = (
       } else {
           return null;
       }
+  } else if (
+    dataPointGeneratorName === DataPointGeneratorName.acpAwareness &&
+    ChartId.TXACPAwareness === chartId
+  ) {
+    console.log(aggregatedChoroplethData);
+      
+    return (
+      parseFloat(aggregatedChoroplethData[geoId]['Yes']['percent'])
+    ).toFixed(0);
   } else {
     console.error('chartId and Datapoint Mismatch');
   }

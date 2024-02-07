@@ -17,7 +17,7 @@ const StrategiesCards = {
     altText: 'Promote Internet Adoption',
     title: 'Promote Internet Adoption',
     description:
-      'The BDO recognizes that building the physical infrastructure to connect Texans to high-speed internet is only one component of expanding broadband adoption – others include device distribution and skills training.  Therefore, the BDO will promote activities to support Texans in signing up for and using the internet as it is made available across the state – advancing multiple statewide priorities and benefitting Texans and internet service providers through an expanded customer base. The BDO will invest in additional programs that provide the tools and resources people need to engage in civic, educational, health and other online activities',
+      'The BDO recognizes that building the physical infrastructure to connect Texans to high-speed internet is only one component of expanding broadband adoption – others include device distribution and skills training.  Therefore, the BDO will promote activities to support Texans in signing up for and using the internet as it is made available across the state – advancing multiple statewide priorities and benefitting Texans and internet service providers through an expanded customer base. The BDO will invest in additional programs that provide the tools and resources people need to engage in civic, educational, health and other online activities.',
   },
   Local: {
     img: 'img/Local.png',
@@ -27,7 +27,8 @@ const StrategiesCards = {
       <>
         Broadband adoption, digital literacy, device access and many other aspects of digital
         opportunity need local solutions. Trust, safety, and confidence are very important to this
-        process, therefore leaders will be from the communities they serve.
+        process, therefore leaders and local partner organizations will be from the communities they
+        serve.
       </>
     ),
   },

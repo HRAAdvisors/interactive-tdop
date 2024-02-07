@@ -16,8 +16,9 @@ const scrollingContents = [
     content: (
       <div>
         <p>
-          Yet <strong>not all Texas residents experience the same digital opportunity.</strong> Some
-          Texans thrive in the digital world, while others struggle just to find an internet
+          Yet{' '}
+          <strong>not all Texas residents experience the same kind of digital opportunity.</strong>{' '}
+          Some Texans thrive in the digital world, while others struggle just to find an internet
           connection.
         </p>
       </div>
@@ -45,8 +46,8 @@ const scrollingContents = [
       <div>
         <p>
           <strong>Based on what the BDO heard from you,</strong> they wrote the Texas Digital
-          Opportunity Plan or TDOP, which shares a vision for a new state of digital opportunity in
-          Texas in which every Texan has access to:
+          Opportunity Plan or TDOP, which shares a vision for digital opportunity in Texas in which
+          every Texan has access to:
         </p>
         <ul className='list-disc my-4 mx-4'>
           <li>high-quality, affordable high-speed internet service;</li>

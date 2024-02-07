@@ -14,7 +14,8 @@ const NeedsTwo = () => {
             <div className='mx-auto mb-20'>
               <h1 className='md:text-4xl text-2xl uppercase my-5 font-montserrat'>Goal No. 1</h1>
               <p>
-                All Texans have access to reliable, affordable broadband internet service at home.
+                Expand adoption of reliable, affordable broadband internet service at home for all
+                Texans, including individuals belonging to covered populations.
               </p>
               <hr className='my-5' />
               <CollapsibleCard
@@ -79,8 +80,8 @@ const NeedsTwo = () => {
                 }
                 targetText={
                   <p>
-                    <strong>50% of Texans</strong> cite cost as a barrier to home internet service
-                    by 2030.
+                    <strong>Fewer than 50% of Texans</strong> cite cost as a barrier to home
+                    internet service by 2030.
                   </p>
                 }
                 stackedBarData={59}
@@ -98,35 +99,36 @@ const NeedsTwo = () => {
               />
               <CollapsibleCard
                 taskNumber='3'
-                goalTitle='Increase the percentage of Texans who are aware of and enrolled in the Affordable Connectivity Program (ACP) and/or other low-cost or subsidized internet service options.'
-                mapTitle='Eligible Household Subscribed in the Affordable Connectivity Program (ACP)'
+                goalTitle='Increase the percentage of Texans who are aware of the Affordable Connectivity Program (ACP) and/or other low-cost or subsidized internet service options.'
+                mapTitle='Texans Reporting Awareness of the Affordable Connectivity Program (ACP)'
                 description={
                   <div>
                     <p className='mb-2'>
-                      Today, 38% of eligible households are enrolled in the ACP statewide.
+                      Today, <strong>40% of survey respondents</strong> have heard of the ACP.
                     </p>
                     <p>
-                      Eligible respondents from certain regions of Texas are enrolled in subsidized
+                      Eligible respondents from certain regions of Texas are aware of subsidized
                       internet service options at higher rates than others. At right, the map
-                      visualizes survey responses for each of the twelve regions of the state.
+                      visualizes data from the Digital Opportunity Survey for each of the twelve
+                      regions of the state.
                     </p>
                   </div>
                 }
                 targetText={
                   <p>
-                    <strong>60% of households</strong> eligible for subsidized internet service are
-                    enrolled by 2030.
+                    <strong>50% of households</strong> are aware of discounted services like ACP by
+                    2030.
                   </p>
                 }
-                stackedBarData={38}
-                stackedBarGoal={60}
+                stackedBarData={40}
+                stackedBarGoal={50}
                 leftPanelContent={
                   <MapContainer
                     shouldDropdownShow={false}
-                    chartId={ChartId.TXACP}
+                    chartId={ChartId.TXACPAwareness}
                     segmentId={SegmentId.regions}
-                    dataPointerGenerator={DataPointGeneratorName.acpEligibleEnrolled}
-                    mapSource='Universal Service Administrative Company'
+                    dataPointerGenerator={DataPointGeneratorName.acpAwareness}
+                    mapSource='2023 Texas Digital Opportunity Survey'
                   />
                 }
                 strategies={['Promote internet adoption']}
@@ -152,25 +154,24 @@ const NeedsTwo = () => {
                     <p className='mb-2'>
                       Today,{' '}
                       <strong>
-                        11% of Texas households have a smartphone only and no other computing
-                        device. 
+                        89% of Texas households have a computing device other than a smartphone.
                       </strong>
                     </p>{' '}
                     <p>
-                      Certain regions of Texas have higher rates of subscription, while others are
-                      lower. At right, the map visualizes subscription rates for each of the twelve
+                      Some regions of Texas have higher rates of smartphone-only connectivity.
+                      Below, the map visualizes rates of computer ownership for each of the twelve
                       regions of the state.
                     </p>
                   </div>
                 }
                 targetText={
                   <p>
-                    <strong>10% of Texans</strong> have a smartphone only and no other computing
+                    <strong>90% of Texans</strong> have a smartphone only and no other computing
                     device by 2030.
                   </p>
                 }
-                stackedBarData={11}
-                stackedBarGoal={10}
+                stackedBarData={89}
+                stackedBarGoal={90}
                 leftPanelContent={
                   <MapContainer
                     shouldDropdownShow={false}
@@ -191,19 +192,19 @@ const NeedsTwo = () => {
                 description={
                   <div>
                     <p className='mb-2'>
-                      Today, <strong>16% of services and programs</strong> offered by organizations
-                      surveyed statewide offer digital skills and technical support.
+                      <strong>39% of organizations surveyed</strong> offer digital skills and
+                      technical support.
                     </p>{' '}
                   </div>
                 }
                 targetText={
                   <p>
-                    <strong>25% of services and programs</strong> statewide offer digital skills and
-                    technical support by 2030.
+                    <strong>50% of organizations</strong> offer digital skills and technical support
+                    by 2030.
                   </p>
                 }
-                stackedBarData={16}
-                stackedBarGoal={25}
+                stackedBarData={39}
+                stackedBarGoal={50}
                 leftPanelContent={
                   <div>
                     <QuoteBlock quote={NeedsCards.KPI2_2.quote} />
@@ -241,14 +242,14 @@ const NeedsTwo = () => {
                     <p className='mb-2'>
                       Today,{' '}
                       <strong>
-                        88% of Texans are comfortable with basic digital literacy skills such as
-                        connecting a computer or smartphone to a Wi-Fi network.
-                      </strong>
-                    </p>{' '}
+                        88% of Texans are comfortable with basic digital literacy skills
+                      </strong>{' '}
+                      such as connecting a computer or smartphone to a Wi-Fi network.
+                    </p>
                     <p>
                       Certain regions of Texas have higher rates of digital literacy, while others
-                      are lower. At right, the map visualizes survey responses for each of the
-                      twelve regions of the state.
+                      are lower. Below, the map visualizes survey responses for each of the twelve
+                      regions of the state.
                     </p>
                   </div>
                 }
@@ -280,19 +281,19 @@ const NeedsTwo = () => {
                 description={
                   <div>
                     <p className='mb-2'>
-                      Today, <strong>16% of services and programs</strong> offered by organizations
-                      surveyed statewide offer digital skills and technical support.
+                      Today, <strong>39% of organizations surveyed</strong> offer digital skills and
+                      technical support.
                     </p>
                   </div>
                 }
                 targetText={
                   <p>
-                    <strong>25% of services and programs</strong> statewide offer digital skills and
-                    technical support by 2030.
+                    <strong>50% of organizations</strong> offer digital literacy skills and support
+                    by 2030.
                   </p>
                 }
-                stackedBarData={16}
-                stackedBarGoal={25}
+                stackedBarData={39}
+                stackedBarGoal={50}
                 leftPanelContent={
                   <div>
                     <QuoteBlock quote={NeedsCards.KPI3_2.quote} />
@@ -353,32 +354,29 @@ const NeedsTwo = () => {
               <hr className='my-5' />
               <CollapsibleCard
                 taskNumber='1'
-                goalTitle='Increase the percentage of Texans who are familiar with cybersecurity and online privacy measures.'
+                goalTitle='Increase the percentage of Texans who have cybersecurity and online privacy measures set up on their devices.'
                 mapTitle='Texans Reporting Awareness and Usage Cybersecurity Measures'
                 description={
                   <div>
                     <p className='mb-2'>
-                      Today,{' '}
-                      <strong>
-                        86% of Texans are familiar with cybersecurity measures and have set them up
-                        on their devices.
-                      </strong>
-                    </p>{' '}
+                      Today, <strong>86% of Texans</strong> have cybersecurity measures set up on
+                      their devices.
+                    </p>
                     <p>
                       Certain regions of Texas have higher rates of cybersecurity awareness, while
-                      others are lower. At right, the map visualizes survey responses for each of
-                      the twelve regions of the state.
+                      others are lower. Below, the map visualizes survey responses for each of the
+                      twelve regions of the state.
                     </p>
                   </div>
                 }
                 targetText={
                   <p>
-                    <strong>99% of Texans</strong> are familiar with cybersecurity measures and have
-                    set them up on their devices by 2030.
+                    <strong>At least 90% of Texans</strong> have cybersecurity measures set up on
+                    their devices by 2030.
                   </p>
                 }
                 stackedBarData={86}
-                stackedBarGoal={99}
+                stackedBarGoal={90}
                 leftPanelContent={
                   <MapContainer
                     shouldDropdownShow={false}
@@ -407,29 +405,29 @@ const NeedsTwo = () => {
               <hr className='my-5' />
               <CollapsibleCard
                 taskNumber='1'
-                goalTitle='Increase the percentage of Texans who utilize and understand how to use the internet for public resources and services.  '
+                goalTitle='Increase the percentage of Texans who utilize and understand how to use the internet for public resources and services (using accessing healthcare as a baseline).'
                 mapTitle='Texans Reporting Usage of the Internet to Access Healthcare'
                 description={
                   <div>
                     <p className='mb-2'>
                       Today,{' '}
-                      <strong>82% of Texans utilize the internet to access healthcare.</strong>
+                      <strong>89% of Texans utilize the internet to access healthcare.</strong>
                     </p>{' '}
                     <p>
                       Certain regions of Texas have higher rates of accessing healthcare online,
-                      while others are lower. At right, the map visualizes survey responses for each
-                      of the twelve regions of the state.
+                      while others are lower. Below, the map visualizes survey responses for each of
+                      the twelve regions of the state.
                     </p>
                   </div>
                 }
                 targetText={
                   <p>
-                    <strong>90% of Texans</strong> utilize the internet to access healthcare by
+                    <strong>95% of Texans</strong> utilize the internet to access healthcare by
                     2030.
                   </p>
                 }
-                stackedBarData={82}
-                stackedBarGoal={90}
+                stackedBarData={89}
+                stackedBarGoal={95}
                 leftPanelContent={
                   <MapContainer
                     shouldDropdownShow={false}

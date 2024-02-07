@@ -24,13 +24,13 @@ const HeroLayout = ({
             Texas Broadband Development Office
           </p>
           <h1 className='md:text-6xl sm:text-2xl text-2xl font-semibold py-6 uppercase tracking-widest'>
-            The Texas Digital Opportunity Plan
+            Texas Digital Opportunity Hub
           </h1>
           <p className=''>
-            Explore this site to learn about the issues surrounding internet service and use across
-            the state. Download data needed for grant applications. Support digital opportunity in
-            Texas.
-            {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nihil, qui quisquam reprehenderit, maxime dicta officiis saepe provident, aperiam incidunt id quis dolor delectus deserunt accusamus exercitationem ipsum. */}
+            Welcome to the Texas Digital Opportunity Hub. Find and download data to understand
+            opportunities and challenges for digital inclusion in your community, find funding and
+            support for community efforts, and search for digital opportunity resources. Join us
+            here to build digital opportunity in Texas.
           </p>
           <div className='flex justify-between py-8 w-full'>
             <ButtonDark link={leftButtonLink} text={leftButtonText}></ButtonDark>
