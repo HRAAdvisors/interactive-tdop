@@ -7,15 +7,19 @@ import { Link } from 'react-router-dom';
 const navbarLinks: NavLink[] = [
   {
     link: '/',
-    text: 'Geographic Introduction',
+    text: 'Home',
   },
   {
     link: '/interactivetdop',
-    text: 'Interactive TDOP',
+    text: 'The Plan',
   },
   {
     link: '/data-dashboards',
-    text: 'Data Dashboard',
+    text: 'The Resources',
+  },
+  {
+    link: '/about',
+    text: 'About',
   },
 ];
 

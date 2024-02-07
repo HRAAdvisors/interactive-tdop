@@ -1,7 +1,6 @@
 import ScrollArrow from './ScrollArrow';
 import ButtonLight from './ui/ButtonLight';
 import ButtonDark from './ui/ButtonDark';
-import { Link } from 'react-scroll';
 
 const HeroLayout = ({
   leftButtonLink,
@@ -16,6 +15,12 @@ const HeroLayout = ({
   rightButtonText: string;
   imageHero: string;
 }) => {
+  const scrollToContent = () => {
+    window.scrollBy({
+      top: window.innerHeight, // 100vh equivalent
+      behavior: 'smooth',
+    });
+  };
   return (
     <div className='z-20 w-full h-full bg-[#FFFDF6] md:overflow-x-hidden'>
       <div className='block md:grid md:grid-cols-12'>
@@ -38,10 +43,12 @@ const HeroLayout = ({
           </div>
           <div className='mx-auto justify-center content-center text-center'>
             <p>Scroll to explore the Texas Digital Opportunity Plan</p>
-            <div className='flex justify-center py-8'>
-              <Link to='intro' smooth={true} duration={800}>
-                <ScrollArrow />
-              </Link>
+            <div
+              onClick={scrollToContent}
+              className='md:hover:scale-110 flex justify-center py-8'
+              style={{ cursor: 'pointer' }}
+            >
+              <ScrollArrow />
             </div>
           </div>
         </div>
