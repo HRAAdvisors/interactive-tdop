@@ -96,7 +96,7 @@ export const Navbar = ({ shouldShowAllTime = false }: { shouldShowAllTime?: bool
             <div className='hidden lg:flex w-contain pr-20'>
               <Logo />
             </div>
-            <Link to='/' className='flex items-center px-4'>
+            <Link to='/' className='flex items-center'>
               <h1
                 onClick={scrollToTop}
                 className='text-xs text-left w-full whitespace-nowrap uppercase font-bold text-[#111] tracking-widest '
@@ -110,7 +110,7 @@ export const Navbar = ({ shouldShowAllTime = false }: { shouldShowAllTime?: bool
               {navbarLinks.map((navLink, index) => (
                 <li
                   key={index}
-                  className='md:p-2 lg:p-5 2xl:p-8 uppercase tracking-widest text-xs md:hover:text-[#ececec] transition-colors duration-300'
+                  className='md:p-2 lg:p-5 2xl:p-8 uppercase tracking-widest text-xs md:hover:text-[#CC3B57] transition-colors duration-300'
                 >
                   <Link className='block' to={navLink.link}>
                     {navLink.text}

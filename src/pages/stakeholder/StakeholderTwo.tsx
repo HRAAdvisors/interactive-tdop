@@ -12,8 +12,8 @@ const StakeholderTwo = () => {
           </p>
         </div>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-2'>
-        <div className='flex flex-col items-center mb-[5vh] md:col-start-4 md:col-span-3 '>
+      <div className='grid grid-cols-2 md:grid-cols-12 lg:grid-cols-12 gap-2 mx-2'>
+        <div className='flex flex-col items-center mb-[5vh] md:col-start-4 md:col-span-3'>
           <CardTerms
             img={StakeholderCards.Covered_Populations.img}
             altText={StakeholderCards.Covered_Populations.altText}
@@ -21,7 +21,7 @@ const StakeholderTwo = () => {
             description={StakeholderCards.Covered_Populations.description}
           />
         </div>
-        <div className='flex flex-col items-center mb-[5vh] md:col-start-7 md:col-span-3 '>
+        <div className='flex flex-col items-center mb-[5vh] md:col-start-7 md:col-span-3'>
           <CardTerms
             img={StakeholderCards.Outcome_Areas.img}
             altText={StakeholderCards.Outcome_Areas.altText}
@@ -29,7 +29,7 @@ const StakeholderTwo = () => {
             description={StakeholderCards.Outcome_Areas.description}
           />
         </div>
-        <div className='flex flex-col items-center mb-[5vh] md:col-start-4 md:col-span-3 '>
+        <div className='flex flex-col items-center mb-[5vh] md:col-start-4 md:col-span-3'>
           <CardTerms
             img={StakeholderCards.Regions_Texas.img}
             altText={StakeholderCards.Regions_Texas.altText}
@@ -37,7 +37,7 @@ const StakeholderTwo = () => {
             description={StakeholderCards.Regions_Texas.description}
           />
         </div>
-        <div className='flex flex-col items-center mb-[5vh] md:col-start-7 md:col-span-3 '>
+        <div className='flex flex-col items-center mb-[5vh] md:col-start-7 md:col-span-3'>
           <CardTerms
             img={StakeholderCards.Tribal_Engagements.img}
             altText={StakeholderCards.Tribal_Engagements.altText}
