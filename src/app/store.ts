@@ -1,6 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import baseApi from './baseApi';
-import mapReducer from '@/stores/mapSlice';
+import uiSlice from '@/stores/uiSlice';
 
 export const store = configureStore({
   // eslint-disable-next-line no-undef
@@ -9,7 +9,7 @@ export const store = configureStore({
     getDefaultMiddleware({ serializableCheck: false }).concat(baseApi.middleware),
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
-     map: mapReducer,
+     ui: uiSlice.reducer,
   },
 });
 

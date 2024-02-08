@@ -6,6 +6,7 @@ import Sidebar from '@/components/Sidebar';
 import Navbar from '@/components/Navbar';
 import { ScrollableTitleProvider } from '@/components/ScrollableTitleContext';
 import loadable from '@loadable/component';
+import SideNav from '@/components/SIdeNav';
 
 const IntroPage = loadable(() => import('./intro'));
 const VisionPage = loadable(() => import('./vision'));
@@ -16,9 +17,7 @@ const StakeholderEngagementPage = loadable(() => import('./stakeholder'));
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState({});
-  const [showNav, setShowNav] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
-  let lastScrollY = window.scrollY; // Initialize lastScrollY outside of the useEffect
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -26,22 +25,6 @@ const Home = () => {
   const handlePageChange = (pageName: number, sections: any[]) => {
     setCurrentPage({ name: pageName, sections });
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const isScrollingUp = currentScrollY < lastScrollY;
-
-      setShowNav(isScrollingUp);
-      lastScrollY = currentScrollY; // Update lastScrollY for the next scroll event
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,7 +47,8 @@ const Home = () => {
   return (
     <ScrollableTitleProvider>
       {showSidebar && <Sidebar currentPage={currentPage} />}
-      <Navbar show={showNav} />
+      <SideNav />
+      <Navbar />
       <Element name='hero'>
         <HeroLayout
           leftButtonLink='/'

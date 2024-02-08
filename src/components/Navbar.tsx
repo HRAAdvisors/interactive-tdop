@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import { setShowSideNav } from '@/stores/uiSlice';
 
 export interface NavLink {
   link: string;
   text: string;
 }
 
-const navbarLinks: NavLink[] = [
+export const navbarLinks: NavLink[] = [
   {
     link: '/',
     text: 'Home',
@@ -43,13 +45,37 @@ export const NavLinkList = ({ navLinks }: { navLinks: NavLink[] }) => {
   );
 };
 
-export const Navbar = ({ show }: { show: boolean }) => {
-  const [nav, setNav] = useState(false);
-  const handleNav = () => setNav(!nav);
+export const Navbar = ({ shouldShowAllTime = false }: { shouldShowAllTime?: boolean }) => {
+  const showSideNav = useAppSelector((store) => store.ui.showSideNav);
+  const dispatch = useAppDispatch();
+
+  const handleNav = () => dispatch(setShowSideNav(!showSideNav));
+
+  const lastSrcollY = useRef(window.scrollY);
+
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
+  const [showNav, setShowNav] = useState(shouldShowAllTime);
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+    const isScrollingUp = currentScrollY < lastSrcollY.current;
+
+    setShowNav(isScrollingUp);
+    lastSrcollY.current = currentScrollY; // Update lastScrollY for the next scroll event
+  };
+
+  useEffect(() => {
+    if (!shouldShowAllTime && !showSideNav) {
+      window.addEventListener('scroll', handleScroll);
+    }
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [shouldShowAllTime, showSideNav]);
+
   const navbarStyle: React.CSSProperties = {
-    transform: show ? 'translateY(0)' : 'translateY(-100%)',
+    transform: showNav ? 'translateY(0)' : 'translateY(-100%)',
     transition: 'transform 0.3s ease-in-out',
     position: 'fixed',
     top: 0,
@@ -60,47 +86,37 @@ export const Navbar = ({ show }: { show: boolean }) => {
 
   return (
     <div style={navbarStyle}>
-      <div className='flex sticky items-center top-0 h-16 shadow-md text-[#111] bg-[#FFFDF6] w-screen'>
-        <div className='hidden lg:flex ml-10 top-8 w-contain'>
-          <Logo />
-        </div>
-        <div className=''>
-          <Link to='/'>
-            <h1
-              onClick={scrollToTop}
-              className='text-xs whitespace-nowrap uppercase font-bold text-[#111] tracking-widest pl-[3vw] sm:pl-[10vw] md:pl-[7.5vw] pr-[12vw] md:pr-[30vw] lg:pr-[30vw] 2xl:pr-[35vw] sm:px-[10vw]'
-            >
-              Texas Digital Opportunity Hub
-            </h1>
-          </Link>
-        </div>
-        <div>
-          <ul className='hidden lg:flex items-center'>
-            {navbarLinks.map((navLink, index) => (
-              <li
-                key={index}
-                className='md:p-2 lg:p-5 2xl:p-8 uppercase tracking-widest text-xs md:hover:text-[#ececec] transition-colors duration-300'
+      <div className='flex px-4 justify-between sticky items-center top-0 h-16 shadow-md text-[#111] bg-[#FFFDF6] inset-x-0'>
+        <div className='w-full flex items-center justify-between'>
+          <div className='flex'>
+            <div className='hidden lg:flex w-contain'>
+              <Logo />
+            </div>
+            <Link to='/' className='flex items-center px-4'>
+              <h1
+                onClick={scrollToTop}
+                className='text-xs text-left w-full whitespace-nowrap uppercase font-bold text-[#111] tracking-widest '
               >
-                <Link to={navLink.link}>{navLink.text}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div onClick={handleNav} className='z-20 lg:hidden sm:mx-[20vw] md:mx-[5vw]'>
-          {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
-        </div>
-        <div
-          className={
-            nav
-              ? 'fixed left-0 top-0 w-[63%] h-screen ease-in-out duration-500 shadow-2xl'
-              : 'fixed left-[-100%] top-[0%] ease-in-out duration-500 shadow-2xl'
-          }
-        >
-          <div className='h-screen bg-[#666]'>
-            <h1 className='w-full text-sm shadow-lg uppercase font-bold p-10 text-[#111] bg-[#FFFDF6]'>
-              Texas Digital Opportunity Hub
-            </h1>
-            <NavLinkList navLinks={navbarLinks} />
+                Texas Digital Opportunity Hub
+              </h1>
+            </Link>
+          </div>
+          <div className='h-full'>
+            <ul className='hidden lg:flex items-center'>
+              {navbarLinks.map((navLink, index) => (
+                <li
+                  key={index}
+                  className='md:p-2 lg:p-5 2xl:p-8 uppercase tracking-widest text-xs md:hover:text-[#ececec] transition-colors duration-300'
+                >
+                  <Link className='block' to={navLink.link}>
+                    {navLink.text}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <div onClick={handleNav} className='z-20 lg:hidden cursor-pointer'>
+              {showSideNav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
+            </div>
           </div>
         </div>
       </div>
