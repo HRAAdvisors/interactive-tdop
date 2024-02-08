@@ -92,7 +92,7 @@ const DataDashboardNav = ({
               <span className='ms-3'>{l.first.title}</span>
             </Link>
             {_.isEqual(pageId, l.first.pageId) && (
-              <ul className='space-y-3 py-2 px-4 max-h-72 overflow-y-auto w-full drop-shadow lg:hidden'>
+              <ul className='space-y-3 py-2 px-4 max-h-72 overflow-y-auto w-full drop-shadow'>
                 {_.map(l.chapters, (chapter, j) => (
                   <Fragment key={j}>
                     {_.size(l.chapters) > 1 && (
