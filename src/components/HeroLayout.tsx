@@ -28,7 +28,7 @@ const HeroLayout = ({
           <div className='py-4 md:py-8'>
             <div
               onClick={scrollToContent}
-              className='md:hover:scale-150 transition-all duration-200 flex justify-center md:py-8 py-4'
+              className='flex justify-center md:py-8 py-4'
               style={{ cursor: 'pointer' }}
             >
               <ScrollArrowSolid />
