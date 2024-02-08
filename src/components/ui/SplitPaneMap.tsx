@@ -63,6 +63,7 @@ const SplitPaneMap = ({ leftMapProps, righMapProps, containerClassName }: SplitP
               syncCenterAndZoom={true}
               geoJSONFeatureCollection={leftMapProps.geoJSONFeatureCollection}
               shouldTooltipShow={true}
+              showFeatureNameInTooltip={false}
               shouldFitBounds={false}
               {...leftMapProps}
             />
@@ -107,6 +108,7 @@ const SplitPaneMap = ({ leftMapProps, righMapProps, containerClassName }: SplitP
               geoJSONFeatureCollection={righMapProps.geoJSONFeatureCollection}
               syncCenterAndZoom={true}
               shouldTooltipShow={true}
+              showFeatureNameInTooltip={false}
               shouldFitBounds={false}
               {...righMapProps}
             />

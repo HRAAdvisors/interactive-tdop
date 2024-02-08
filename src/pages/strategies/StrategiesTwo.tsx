@@ -12,7 +12,7 @@ const StrategiesTwo = () => {
           </p>
         </div>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-2'>
+      <div className='grid grid-cols-2 md:grid-cols-12 lg:grid-cols-12 gap-2 mx-2'>
         <div className='flex flex-col items-center mb-[5vh] md:col-start-4 md:col-span-3'>
           <CardTerms
             img={StrategiesCards.Statewide.img}
