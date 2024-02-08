@@ -1,10 +1,14 @@
+import { MantineProvider } from '@mantine/core';
+import '@mantine/core/styles.css';
 import './App.css';
 import AppRoutes from './app/route';
 
 function App() {
   return (
     <div className='App w-full min-h-screen'>
-      <AppRoutes />
+      <MantineProvider>
+        <AppRoutes />
+      </MantineProvider>
     </div>
   );
 }
