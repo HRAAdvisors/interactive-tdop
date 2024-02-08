@@ -10,7 +10,13 @@ import { setShowSideNav } from '@/stores/uiSlice';
 import { navbarLinks } from './Navbar';
 import { useOnScreen } from '@/utils/customHooks';
 
-const ScrollLinkWrapper = ({ section }: { section: SkeletonSection }) => {
+const ScrollLinkWrapper = ({
+  section,
+  isSubNav = false,
+}: {
+  section: SkeletonSection;
+  isSubNav?: boolean;
+}) => {
   const refScrollLink = useRef<HTMLLIElement>(null);
   const [isDirectionUp, setIsDirectionUp] = useState(true);
 
@@ -31,7 +37,11 @@ const ScrollLinkWrapper = ({ section }: { section: SkeletonSection }) => {
   const isVisible = useOnScreen(refScrollLink);
 
   return (
-    <li ref={refScrollLink} key={section.id} className='pl-3 break-normal	 cursor-pointer text-xs'>
+    <li
+      ref={refScrollLink}
+      key={section.id}
+      className={`${isSubNav ? 'pl-6' : 'pl-3'} break-normal	 cursor-pointer text-xs`}
+    >
       <ScrollLink
         to={`section${section.id}`}
         spy={true}
@@ -104,7 +114,7 @@ const DataDashboardNav = ({
                       </li>
                     )}
                     {_.map(chapter.sections, (section, i) => (
-                      <ScrollLinkWrapper key={i} section={section} />
+                      <ScrollLinkWrapper isSubNav={isSubNav} key={i} section={section} />
                     ))}
                   </Fragment>
                 ))}
@@ -139,7 +149,7 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
   return (
     <aside
       ref={sideNavRef}
-      className={`fixed inset-y-0 left-0 pt-16 bg-white z-40 w-[80vw] lg:w-72  transition-transform ${showSideNav ? 'translate-x-0' : `-translate-x-full ${showOnLarge && 'lg:translate-x-0'}`} `}
+      className={`fixed inset-y-0 left-0 pt-16 bg-white z-40 w-[70vw] lg:w-72  transition-transform ${showSideNav ? 'translate-x-0' : `-translate-x-full ${showOnLarge && 'lg:translate-x-0'}`} `}
       aria-label='Sidebar'
     >
       <div className='h-full py-4 overflow-y-auto border-r border-gray-100'>
