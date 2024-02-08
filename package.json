@@ -52,7 +52,6 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
-    "@dotenvx/dotenvx": "^0.15.0",
     "@hraadvisors/report-api-types": "3.0.36",
     "@tailwindcss/typography": "^0.5.10",
     "@testing-library/jest-dom": "^5.16.5",
