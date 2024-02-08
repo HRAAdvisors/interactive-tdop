@@ -16,7 +16,7 @@ const HeroLayout = ({
   return (
     <div className='z-20 w-full h-full bg-[#FFFDF6] md:overflow-x-hidden'>
       <div className='block md:grid md:grid-cols-12'>
-        <div className='flex flex-col justify-center content-center pt-[10vh] md:pt-15 p-4 lg:pt-20 md:col-span-5 md:col-start-2'>
+        <div className='flex flex-col justify-center content-center pt-[15vh] md:pt-15 p-4 lg:pt-20 md:col-span-5 md:col-start-2'>
           <p className='text-[#111] text-xs uppercase tracking-widest'>
             Texas Broadband Development Office
           </p>
@@ -25,7 +25,7 @@ const HeroLayout = ({
           </h1>
           <hr className='h-1 my-6'></hr>
           <p className='text-md'>{landingText}</p>
-          <div className='py-4 md:py-8'>
+          <div className='py-2 md:py-8'>
             <div
               onClick={scrollToContent}
               className='flex justify-center md:py-8 py-4'
