@@ -1,18 +1,10 @@
-import ScrollArrow from './ScrollArrow';
-import ButtonLight from './ui/ButtonLight';
-import ButtonDark from './ui/ButtonDark';
+import ScrollArrowSolid from './ScrollArrowSolid';
 
 const HeroLayout = ({
-  leftButtonLink,
-  leftButtonText,
-  rightButtonLink,
-  rightButtonText,
+  landingText,
   imageHero,
 }: {
-  leftButtonLink: string;
-  leftButtonText: string;
-  rightButtonLink: string;
-  rightButtonText: string;
+  landingText: string | JSX.Element;
   imageHero: string;
 }) => {
   const scrollToContent = () => {
@@ -24,37 +16,27 @@ const HeroLayout = ({
   return (
     <div className='z-20 w-full h-full bg-[#FFFDF6] md:overflow-x-hidden'>
       <div className='block md:grid md:grid-cols-12'>
-        <div className='flex flex-col justify-center content-center p-4 md:p-0 md:col-span-5 md:col-start-2'>
+        <div className='flex flex-col justify-center content-center pt-[10vh] md:pt-15 p-4 lg:pt-20 md:col-span-5 md:col-start-2'>
           <p className='text-[#111] text-xs uppercase tracking-widest'>
             Texas Broadband Development Office
           </p>
-          <h1 className='md:text-6xl sm:text-2xl text-2xl font-semibold py-6 uppercase tracking-widest'>
+          <h1 className='md:text-6xl sm:text-2xl text-2xl font-semibold pt-6 uppercase tracking-widest'>
             Texas Digital Opportunity Hub
           </h1>
-          <p className=''>
-            Welcome to the Texas Digital Opportunity Hub. Find and download data to understand
-            opportunities and challenges for digital inclusion in your community, find funding and
-            support for community efforts, and search for digital opportunity resources. Join us
-            here to build digital opportunity in Texas.
-          </p>
-          <div className='flex justify-between py-8 w-full'>
-            <ButtonDark link={leftButtonLink} text={leftButtonText}></ButtonDark>
-            <ButtonLight link={rightButtonLink} text={rightButtonText}></ButtonLight>
-          </div>
-          <div className='mx-auto justify-center content-center text-center'>
-            <p>Scroll to explore the Texas Digital Opportunity Plan</p>
+          <hr className='h-1 my-6'></hr>
+          <p className='text-md'>{landingText}</p>
+          <div className='py-4 md:py-8'>
             <div
               onClick={scrollToContent}
-              className='md:hover:scale-110 flex justify-center py-8'
+              className='md:hover:scale-150 transition-all duration-200 flex justify-center md:py-8 py-4'
               style={{ cursor: 'pointer' }}
             >
-              <ScrollArrow />
+              <ScrollArrowSolid />
             </div>
           </div>
         </div>
         <div className='flex flex-col md:col-start-8 md:col-span-5 object-cover'>
-          <img src={imageHero} className='h-screen object-cover' />
-          {/* <CarouselHero className='object-contain' /> */}
+          <img src={imageHero} className='h-[50vh] md:h-screen object-cover' />
         </div>
       </div>
     </div>

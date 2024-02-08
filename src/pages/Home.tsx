@@ -51,10 +51,20 @@ const Home = () => {
       <Navbar />
       <Element name='hero'>
         <HeroLayout
-          leftButtonLink='/'
-          leftButtonText='The Big Picture'
-          rightButtonLink='/data-dashboards'
-          rightButtonText='Data Dashboards'
+          landingText={
+            <>
+              <p>
+                <strong>
+                  Welcome! This site provides an interactive platform to explore Texas' Digital
+                  Opportunity Plan.
+                </strong>{' '}
+                <br></br>
+                <br></br>
+                Scroll to read Texas' plan, navigate to an overview of the digital divide, explore
+                the Resource Finder, or dive deeper into data for your community.
+              </p>
+            </>
+          }
           imageHero='img/HeroTwo.jpg'
         />
       </Element>

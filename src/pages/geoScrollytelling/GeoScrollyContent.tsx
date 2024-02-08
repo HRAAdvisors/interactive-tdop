@@ -25,7 +25,7 @@ export interface GeoScrollContent {
 
 const contents: GeoScrollContent[] = [
   {
-    id: -3,
+    id: -4,
     containerClassNames: 'text-white text-lg bg-[#111]',
     getContent: () => (
       <p className='lg:w-[60vw] md:p-60 w-90vw p-5'>
@@ -36,7 +36,7 @@ const contents: GeoScrollContent[] = [
     ),
   },
   {
-    id: -2,
+    id: -3,
     containerClassNames: 'text-white text-lg bg-[#111]',
     getContent: () => (
       <p className='lg:w-[60vw] md:p-60 w-90vw p-5'>
@@ -47,14 +47,24 @@ const contents: GeoScrollContent[] = [
     ),
   },
   {
+    id: -2,
+    containerClassNames: 'text-white text-lg bg-[#111]',
+    getContent: () => (
+      <p className='lg:w-[60vw] md:p-60 w-90vw p-5'>
+        Texas ranks <strong>X out of 50</strong> for internet adoption.
+      </p>
+    ),
+  },
+  {
     id: -1,
     containerClassNames: 'text-white text-lg bg-[#111]',
     getContent: () => (
       <p className='lg:w-[60vw] md:p-60 w-90vw p-5'>
-        <strong>Texas ranks X out of 50 for internet adoption.</strong>
-        <br></br> Scroll to explore which areas and communities are subscribed to fast internet and
-        have internet-enabled devices, and which do not – and why this all matters for you and your
-        community.
+         Scroll to explore the digital divide and digital opportunity in Texas -
+        <strong> and why this all matters for you and your community.</strong>
+        <br></br> At the bottom or using site navigation buttons, you can also access Texas' plan to
+        expand digital opportunity, dive deeper into the data, or explore the Digital Opportunity
+        Resource finder.
       </p>
     ),
   },
