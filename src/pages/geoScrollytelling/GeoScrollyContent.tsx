@@ -62,9 +62,8 @@ const contents: GeoScrollContent[] = [
       <p className='lg:w-[60vw] md:p-60 w-90vw p-5'>
          Scroll to explore the digital divide and digital opportunity in Texas -
         <strong> and why this all matters for you and your community.</strong>
-        <br></br> At the bottom or using site navigation buttons, you can also access Texas' plan to
-        expand digital opportunity, dive deeper into the data, or explore the Digital Opportunity
-        Resource finder.
+        <br></br> At the bottom, you can also access Texas' plan to expand digital opportunity, dive
+        deeper into the data, or explore the Digital Opportunity Resource finder.
       </p>
     ),
   },
@@ -88,7 +87,11 @@ const contents: GeoScrollContent[] = [
         <h3 className='text-xl font-bold uppercase my-5'>Adoption Matters</h3>
         <div className='mt-2 text-md'>
           <p className='py-2'>
-            31% of Texas households do not subscribe to high-speed internet at home.{' '}
+            Internet adoption refers to full access to and use of the internet for everyday life
+            needs and goals.
+          </p>
+          <p className='py-2'>
+            31% of Texas households do not subscribe to high-speed internet at home.
           </p>
           <div className='mt-2'></div>
           {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
