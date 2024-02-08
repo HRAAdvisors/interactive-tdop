@@ -5,6 +5,7 @@
 // import GeoScrollytelling from '@/pages/geoScrollytelling/GeoScrollytelling';
 // import Navbar from '@/components/Navbar';
 import Navbar from '@/components/Navbar';
+import SideNav from '@/components/SIdeNav';
 
 const AssetInventory = () => {
   // const [showNav, setShowNav] = useState(false);
@@ -31,7 +32,8 @@ const AssetInventory = () => {
 
   return (
     <>
-      <Navbar show={true} />
+      <Navbar shouldShowAllTime={true} />
+      <SideNav />
     </>
   );
 };

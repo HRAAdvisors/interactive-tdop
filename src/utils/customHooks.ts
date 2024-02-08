@@ -1,5 +1,5 @@
 import { GeoData, useGetBoundaryDataBulkQuery, useGetChartDataBulkQuery } from '@/services/map';
-import { useEffect, useState } from 'react';
+import { RefObject, useEffect, useMemo, useState } from 'react';
 import { transformToGeoJSON } from './transformGeoJSON';
 import { DataPointGeneratorName } from '@/types/ChartIds';
 
@@ -37,3 +37,22 @@ export const useGetGeoJSON = (args: GeoData[], dataPointName: DataPointGenerator
 
   return { geoJsonFeatures, choroplethData, boundaryData, isLoading, isSuccess };
 };
+
+
+export function useOnScreen(ref: RefObject<HTMLElement>) {
+  const [isIntersecting, setIntersecting] = useState(false);
+
+  const observer = useMemo(
+    () => new IntersectionObserver(([entry]) => setIntersecting(entry.isIntersecting)),
+    [ref],
+  );
+
+  useEffect(() => {
+    if (ref.current) {
+      observer.observe(ref.current);
+      return () => observer.disconnect();
+    }
+  }, []);
+
+  return isIntersecting;
+}

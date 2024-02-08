@@ -31,7 +31,7 @@ const AboutPage = () => {
 
   return (
     <>
-      <Navbar show={true} />
+      <Navbar shouldShowAllTime={true} />
     </>
   );
 };

@@ -20,8 +20,6 @@
     "@hraadvisors/broadband-charts": "0.0.26",
     "@hraadvisors/standard-charts": "1.0.15",
     "@loadable/component": "^5.16.3",
-    "@mantine/core": "^7.2.2",
-    "@mantine/hooks": "^7.2.2",
     "@reduxjs/toolkit": "^1.9.5",
     "@turf/turf": "^6.5.0",
     "@types/loadable__component": "^5.13.8",

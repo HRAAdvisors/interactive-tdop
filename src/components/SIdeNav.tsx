@@ -1,28 +1,14 @@
 import { useGetSkeletonQuery, usePrefetchDataDashboard } from '@/services/dataDashboard';
 import _ from 'lodash';
-import { Fragment, RefObject, useEffect, useMemo, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Fragment, useEffect, useRef, useState } from 'react';
+import { Link, matchPath, useLocation } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import { SkeletonSection } from '@hraadvisors/report-api-types';
-
-function useOnScreen(ref: RefObject<HTMLElement>) {
-  const [isIntersecting, setIntersecting] = useState(false);
-
-  const observer = useMemo(
-    () => new IntersectionObserver(([entry]) => setIntersecting(entry.isIntersecting)),
-    [ref],
-  );
-
-  useEffect(() => {
-    if (ref.current) {
-      observer.observe(ref.current);
-      return () => observer.disconnect();
-    }
-  }, []);
-
-  return isIntersecting;
-}
+import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import { setShowSideNav } from '@/stores/uiSlice';
+import { navbarLinks } from './Navbar';
+import { useOnScreen } from '@/utils/customHooks';
 
 const ScrollLinkWrapper = ({ section }: { section: SkeletonSection }) => {
   const refScrollLink = useRef<HTMLLIElement>(null);
@@ -70,10 +56,16 @@ const ScrollLinkWrapper = ({ section }: { section: SkeletonSection }) => {
   );
 };
 
-const SideNav = () => {
+const DataDashboardNav = ({
+  className,
+  isSubNav = false,
+}: {
+  className?: string;
+  isSubNav?: boolean;
+}) => {
   const { data } = useGetSkeletonQuery();
   const prefetchReport = usePrefetchDataDashboard('getReport');
-  const { pageId = 'home' } = useParams();
+  const { pageId } = useParams();
 
   const links = _.chain(data?.chapters)
     .groupBy('pageId')
@@ -84,53 +76,94 @@ const SideNav = () => {
     .value();
 
   return (
+    <ul className={className}>
+      {_.map(links, (l, i) => (
+        <li className='w-full' key={i}>
+          <div className='w-full'>
+            <Link
+              className={`w-full ${isSubNav && 'pl-4'} block text-md px-2 py-2 text-gray-600  ${_.isEqual(pageId, l.first?.pageId) ? 'font-semibold bg-gray-100' : 'hover:bg-gray-100'}`}
+              to={`/data-dashboards/${l.first.pageId}`}
+              onMouseEnter={() => {
+                prefetchReport({
+                  pick: _.map(l.chapters, (chapter) => chapter.id).join(','),
+                });
+              }}
+            >
+              <span className='ms-3'>{l.first.title}</span>
+            </Link>
+            {_.isEqual(pageId, l.first.pageId) && (
+              <ul className='space-y-3 py-2 px-4 max-h-72 overflow-y-auto w-full drop-shadow lg:hidden'>
+                {_.map(l.chapters, (chapter, j) => (
+                  <Fragment key={j}>
+                    {_.size(l.chapters) > 1 && (
+                      <li
+                        key={chapter.id}
+                        className='px-2 text-gray-700 cursor-pointer hover:bg-gray-100'
+                      >
+                        {chapter.title}
+                      </li>
+                    )}
+                    {_.map(chapter.sections, (section, i) => (
+                      <ScrollLinkWrapper key={i} section={section} />
+                    ))}
+                  </Fragment>
+                ))}
+              </ul>
+            )}
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
+  const location = useLocation();
+  const showSideNav = useAppSelector((store) => store.ui.showSideNav);
+  const sideNavRef = useRef<HTMLElement>(null);
+  const dispatch = useAppDispatch();
+
+  const handleClickOutside: EventListener = (event) => {
+    if (sideNavRef.current && !sideNavRef.current?.contains(event.target as any)) {
+      dispatch(setShowSideNav(false));
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [sideNavRef]);
+
+  return (
     <aside
-      className='fixed top-16 left-0 bg-white z-40 w-72 bottom-0 transition-transform -translate-x-full sm:translate-x-0'
+      ref={sideNavRef}
+      className={`fixed inset-y-0 left-0 pt-16 bg-white z-40 w-[80vw] lg:w-72  transition-transform ${showSideNav ? 'translate-x-0' : `-translate-x-full ${showOnLarge && 'lg:translate-x-0'}`} `}
       aria-label='Sidebar'
     >
       <div className='h-full py-4 overflow-y-auto border-r border-gray-100'>
-        <ul className=''>
-          {_.chain(links)
-            .map((l, i) => (
-              <li className='w-full' key={i}>
-                <div className='w-full'>
-                  <Link
-                    className={`w-full block px-2 py-2 text-gray-600  ${_.isEqual(pageId, l.first?.pageId) ? 'font-semibold bg-gray-100' : 'hover:bg-gray-100'}`}
-                    to={`/data-dashboards/${l.first.pageId}`}
-                    onMouseEnter={() => {
-                      prefetchReport({
-                        pick: _.map(l.chapters, (chapter) => chapter.id).join(','),
-                      });
-                    }}
-                  >
-                    <span className='ms-3'>{l.first.title}</span>
-                  </Link>
-                  {_.isEqual(pageId, l.first.pageId) && (
-                    <ul className='space-y-3 py-2 px-4 max-h-72 overflow-y-auto w-full drop-shadow'>
-                      {_.chain(l.chapters)
-                        .map((chapter, j) => (
-                          <Fragment key={j}>
-                            {_.size(l.chapters) > 1 && (
-                              <li
-                                key={chapter.id}
-                                className='px-2 text-gray-700 cursor-pointer hover:bg-gray-100'
-                              >
-                                {chapter.title}
-                              </li>
-                            )}
-                            {_.map(chapter.sections, (section, i) => (
-                              <ScrollLinkWrapper key={i} section={section} />
-                            ))}
-                          </Fragment>
-                        ))
-                        .value()}
-                    </ul>
-                  )}
-                </div>
-              </li>
-            ))
-            .value()}
+        <ul className='lg:hidden'>
+          {_.map(navbarLinks, (l, i) => (
+            <li className='w-full' key={i}>
+              <div className='w-full'>
+                <Link
+                  onClick={() => dispatch(setShowSideNav(false))}
+                  className={`w-full text-lg block px-2 py-2 text-gray-600  ${matchPath(`${l.link}`, location.pathname) ? 'font-semibold bg-gray-100' : 'hover:bg-gray-100'}`}
+                  to={`${l.link}`}
+                >
+                  <span className='ms-3'>{l.text}</span>
+                </Link>
+                {_.isEqual(l.link, '/data-dashboards') && (
+                  <DataDashboardNav isSubNav={true} className='w-full' />
+                )}
+              </div>
+            </li>
+          ))}
         </ul>
+        {showOnLarge && matchPath('/data-dashboards/*', location.pathname) && (
+          <DataDashboardNav className='w-full hidden lg:block' />
+        )}
       </div>
     </aside>
   );
