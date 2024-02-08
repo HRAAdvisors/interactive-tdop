@@ -51,27 +51,31 @@ export const Navbar = ({ shouldShowAllTime = false }: { shouldShowAllTime?: bool
 
   const handleNav = () => dispatch(setShowSideNav(!showSideNav));
 
-  const lastSrcollY = useRef(window.scrollY);
+  const lastScrollY = useRef(window.scrollY);
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  const [showNav, setShowNav] = useState(shouldShowAllTime);
+  // Initialize showNav to true so that Navbar is visible initially
+  const [showNav, setShowNav] = useState(true);
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
-    const isScrollingUp = currentScrollY < lastSrcollY.current;
+    // Determine if we're scrolling up
+    const isScrollingUp = currentScrollY < lastScrollY.current;
 
-    setShowNav(isScrollingUp);
-    lastSrcollY.current = currentScrollY; // Update lastScrollY for the next scroll event
+    // Only toggle visibility if not shouldShowAllTime
+    if (!shouldShowAllTime) {
+      setShowNav(isScrollingUp || currentScrollY <= 0); // Reappear when scrolling up or at the top of the page
+    }
+
+    lastScrollY.current = currentScrollY; // Update lastScrollY for the next scroll event
   };
 
   useEffect(() => {
     if (!shouldShowAllTime && !showSideNav) {
       window.addEventListener('scroll', handleScroll);
     }
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [shouldShowAllTime, showSideNav]);
 
   const navbarStyle: React.CSSProperties = {
@@ -89,7 +93,7 @@ export const Navbar = ({ shouldShowAllTime = false }: { shouldShowAllTime?: bool
       <div className='flex px-4 justify-between sticky items-center top-0 h-16 shadow-md text-[#111] bg-[#FFFDF6] inset-x-0'>
         <div className='w-full flex items-center justify-between'>
           <div className='flex'>
-            <div className='hidden lg:flex w-contain'>
+            <div className='hidden lg:flex w-contain pr-20'>
               <Logo />
             </div>
             <Link to='/' className='flex items-center px-4'>
