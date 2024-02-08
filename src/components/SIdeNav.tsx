@@ -164,9 +164,10 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
                 >
                   <span className='ms-3'>{l.text}</span>
                 </Link>
-                {_.isEqual(l.link, '/data-dashboards') && (
-                  <DataDashboardNav isSubNav={true} className='w-full' />
-                )}
+                {_.isEqual(l.link, '/data-dashboards') &&
+                  matchPath('/data-dashboards/*', location.pathname) && (
+                    <DataDashboardNav isSubNav={true} className='w-full' />
+                  )}
               </div>
             </li>
           ))}
