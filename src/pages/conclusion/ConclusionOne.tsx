@@ -60,7 +60,7 @@ const contents = [
         <p> Click to dive deeper into the state of digital opportunity in Texas.</p>
         <div className='my-8 md:mx-8'>
           <ButtonDark text='The Big Picture' link='/'></ButtonDark>
-          <ButtonLight text='Data Dashboards' link='/dataDashboards'></ButtonLight>
+          <ButtonLight text='Data Dashboards' link='/data-dashboards'></ButtonLight>
         </div>
       </div>
     ),

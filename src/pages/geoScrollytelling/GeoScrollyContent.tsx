@@ -344,7 +344,7 @@ const contents: GeoScrollContent[] = [
             text='Texas Digital Opportunity Plan'
             link='/interactivetdop'
           ></ButtonDark>
-          <ButtonLight text='Data Dashboards' link='/dataDashboards'></ButtonLight>
+          <ButtonLight text='Data Dashboards' link='/data-dashboards'></ButtonLight>
         </div>
       </p>
     ),

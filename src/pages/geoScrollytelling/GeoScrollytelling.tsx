@@ -36,7 +36,7 @@ const GeoScrollytelling = () => {
         <div className='h-screen w-full sticky inset-0 float-left'>
           <ChoroplethMap
             padding={{
-              left: window.innerWidth * 0.5,
+              left: Math.round(window.innerWidth * 0.5),
               right: 0,
               top: 50,
               bottom: 50,
