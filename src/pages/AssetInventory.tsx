@@ -44,7 +44,14 @@ const AssetInventory = () => {
               Texas Digital Opportunity Hub
             </h1>
             <hr className='h-1 my-6'></hr>
-            <p className='text-md my-2'>Coming soon!</p>
+            <p className='text-md my-2'>
+              <strong>Coming soon!</strong> In the meantime, check out the other resources available
+              here on the Texas Digital Opportunity Hub, or navigate to the State of Texas Broadband
+              Development Office (BDO)'s{' '}
+              <a href='https://comptroller.texas.gov/programs/broadband/' className='underline'>
+                website.
+              </a>
+            </p>
           </div>
           <div className='flex flex-col md:col-start-8 md:col-span-5 object-cover'>
             <img src='img/ComingSoon.jpg' className='h-[50vh] md:h-screen object-cover' />
