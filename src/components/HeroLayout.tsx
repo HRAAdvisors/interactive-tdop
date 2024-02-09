@@ -1,3 +1,4 @@
+import { useRef } from 'react'; // Make sure to import React (if you're using React 17 or earlier)
 import ScrollArrowSolid from './ScrollArrowSolid';
 
 const HeroLayout = ({
@@ -7,14 +8,22 @@ const HeroLayout = ({
   landingText: string | JSX.Element;
   imageHero: string;
 }) => {
+  // Specify the type of elements the ref will refer to - HTMLDivElement in this case
+  const heroLayoutRef = useRef<HTMLDivElement | null>(null);
+
   const scrollToContent = () => {
-    window.scrollBy({
-      top: window.innerHeight, // 100vh equivalent
-      behavior: 'smooth',
-    });
+    if (heroLayoutRef.current) {
+      const height = heroLayoutRef.current.getBoundingClientRect().height; // TypeScript now knows this is a HTMLDivElement
+      window.scrollBy({
+        top: height, // Scroll by the component's height
+        behavior: 'smooth',
+      });
+    }
   };
+
   return (
-    <div className='z-20 w-full h-full bg-[#FFFDF6] md:overflow-x-hidden'>
+    <div ref={heroLayoutRef} className='z-20 w-full h-full bg-[#FFFDF6] md:overflow-x-hidden'>
+      {/* Attach the ref here */}
       <div className='block md:grid md:grid-cols-12'>
         <div className='flex flex-col justify-center content-center pt-24 md:pt-20 p-4 lg:pt-20 md:col-span-5 md:col-start-2'>
           <p className='text-[#111] text-xs uppercase tracking-widest'>
