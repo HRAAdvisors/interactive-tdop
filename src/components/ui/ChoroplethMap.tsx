@@ -87,17 +87,18 @@ const ChoroplethMap = ({
   const fitBound = () => {
     const newBounds = turf.bbox(fitBoundFeature ? fitBoundFeature : geoJSONFeatureCollection);
 
-    if (!_.isEqual(currentFitBound.current, newBounds))
+    if (!_.isEqual(currentFitBound.current, newBounds)) {
       mapRef.current?.fitBounds(
         [
           [newBounds[0], newBounds[1]],
           [newBounds[2], newBounds[3]],
         ],
         {
-          padding,
+          padding: padding,
           animate: false,
         },
       );
+    }
 
     currentFitBound.current = newBounds;
     currentFitBoundFeature.current = fitBoundFeature;
