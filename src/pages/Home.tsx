@@ -31,7 +31,7 @@ const Home = () => {
       const scrollY = window.scrollY; // Get the number of pixels scrolled vertically
 
       // Set showNav to true only if scrolled more than 8vh and less than 16vh
-      const scrolledMoreThan8vh = scrollY > 5.5 * window.innerHeight;
+      const scrolledMoreThan8vh = scrollY > 5 * window.innerHeight;
       setShowSidebar(scrolledMoreThan8vh);
     };
 

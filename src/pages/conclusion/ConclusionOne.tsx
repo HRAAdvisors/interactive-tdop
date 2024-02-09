@@ -71,7 +71,7 @@ const ConclusionOne = () => {
   return (
     <div>
       <ScrollingSection contents={contents} id='unique-id-2' />
-      <div className='bg-[#111] w-screen h-full px-4'>
+      <div className='bg-[#FFFDF6] w-screen h-full px-4'>
         <div className='grid md:grid-cols-12'>
           <div className='flex flex-col md:col-start-4 md:col-span-12'>
             <p className='py-12'>
