@@ -110,7 +110,7 @@ export const Navbar = ({ shouldShowAllTime = false }: { shouldShowAllTime?: bool
               {navbarLinks.map((navLink, index) => (
                 <li
                   key={index}
-                  className='md:p-2 lg:p-5 2xl:p-8 uppercase tracking-widest text-xs md:hover:text-[#CC3B57] transition-colors duration-300'
+                  className='md:p-2 lg:p-5 2xl:p-8 uppercase tracking-widest text-xs md:hover:text-[#ececec] transition-colors duration-300'
                 >
                   <Link className='block' to={navLink.link}>
                     {navLink.text}
