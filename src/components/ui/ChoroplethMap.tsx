@@ -106,6 +106,7 @@ const ChoroplethMap = ({
       const getBoundsFromViewport = mapRef.current?.getBounds();
       mapRef.current?.setMaxBounds(getBoundsFromViewport);
     }
+    console.log(padding);
   };
 
   useEffect(() => {

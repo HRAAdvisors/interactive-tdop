@@ -93,7 +93,7 @@ export const Navbar = ({ shouldShowAllTime = false }: { shouldShowAllTime?: bool
       <div className='flex px-4 justify-between sticky items-center top-0 h-16 shadow-md text-[#111] bg-[#FFFDF6] inset-x-0'>
         <div className='w-full flex items-center justify-between'>
           <div className='flex'>
-            <div className='hidden lg:flex w-contain pr-20'>
+            <div className='hidden lg:flex w-contain pr-20 2xl:pr-32'>
               <Logo />
             </div>
             <Link to='/' className='flex items-center'>
