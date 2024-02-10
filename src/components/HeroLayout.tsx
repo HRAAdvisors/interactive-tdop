@@ -29,7 +29,7 @@ const HeroLayout = ({
           <p className='text-[#111] text-xs uppercase tracking-widest'>
             Texas Broadband Development Office
           </p>
-          <h1 className='md:text-6xl sm:text-2xl text-2xl font-semibold pt-6 uppercase tracking-widest'>
+          <h1 className='md:text-6xl sm:text-2xl text-2xl font-semibold pt-6 uppercase tracking-widest z-10'>
             Texas Digital Opportunity Hub
           </h1>
           <hr className='h-1 my-6'></hr>

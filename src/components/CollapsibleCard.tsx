@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, ReactNode } from 'react';
-import PlusIcon from './PlusIcon';
 import StackedBar from './StackedBar';
+import Chevron from './Chevron';
 
 interface CollapsibleCardProps {
   taskNumber: string;
@@ -50,14 +50,17 @@ const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
         <div className='flex md:grid md:col-start-0 px-8 text-lg font-bold'>
           <p>{taskNumber}</p>
         </div>
-        <div className='flex items-center md:col-span-8 md:col-start-2 text-lg font-bold'>
+        <div className='flex items-center md:col-span-8 md:pl-8 lg:pl-0 md:col-start-2 text-lg font-bold'>
           <p>{goalTitle}</p>
         </div>
         <div
-          className='w-4 h-4 md:col-span-1 mx-10 transition-transform transform-origin duration-300'
-          style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}
+          className='w-4 h-4 md:col-span-1 mx-10 transition-transform duration-300'
+          style={{
+            transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+            transformOrigin: 'center',
+          }}
         >
-          <PlusIcon />
+          <Chevron />
         </div>
       </div>
 
