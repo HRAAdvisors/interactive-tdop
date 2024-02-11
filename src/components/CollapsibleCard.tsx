@@ -50,7 +50,7 @@ const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
         <div className='flex md:grid md:col-start-0 px-8 text-lg font-bold'>
           <p>{taskNumber}</p>
         </div>
-        <div className='flex items-center md:col-span-8 md:pl-8 lg:pl-0 md:col-start-2 text-lg font-bold'>
+        <div className='flex items-center md:col-span-8 pl-0 md:pl-8 lg:pl-2 md:col-start-2 text-lg font-bold'>
           <p>{goalTitle}</p>
         </div>
         <div
