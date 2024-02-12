@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { setShowSideNav } from '@/stores/uiSlice';
 import { navbarLinks } from './Navbar';
 import { useOnScreen } from '@/utils/customHooks';
+import { AiOutlineDown, AiOutlineRight } from 'react-icons/ai';
 
 const ScrollLinkWrapper = ({
   section,
@@ -40,7 +41,7 @@ const ScrollLinkWrapper = ({
     <li
       ref={refScrollLink}
       key={section.id}
-      className={`${isSubNav ? 'pl-6' : 'pl-3'} break-normal	 cursor-pointer text-xs`}
+      className={`pl-10 break-normal	 cursor-pointer text-xs`}
     >
       <ScrollLink
         to={`section${section.id}`}
@@ -48,7 +49,7 @@ const ScrollLinkWrapper = ({
         smooth={true}
         offset={30}
         duration={500}
-        className='inline'
+        className='inline text-gray-800'
         activeClass='font-bold'
         onSetActive={() => {
           if (!isVisible) {
@@ -91,7 +92,7 @@ const DataDashboardNav = ({
         <li className='w-full' key={i}>
           <div className='w-full'>
             <Link
-              className={`w-full ${isSubNav && 'pl-4'} block text-md px-2 py-2 text-gray-600  ${_.isEqual(pageId, l.first?.pageId) ? 'font-semibold bg-gray-100' : 'hover:bg-gray-100'}`}
+              className={`w-full ${isSubNav ? 'pl-6 pr-2' : ' px-4'} flex md:text-md text-sm items-center py-2  ${_.isEqual(pageId, l.first?.pageId) ? 'font-semibold bg-gray-100 text-blue-900' : 'hover:bg-gray-100 text-gray-600 '}`}
               to={`/data-dashboards/${l.first.pageId}`}
               onMouseEnter={() => {
                 prefetchReport({
@@ -99,6 +100,7 @@ const DataDashboardNav = ({
                 });
               }}
             >
+              {_.isEqual(pageId, l.first?.pageId) ? <AiOutlineDown /> : <AiOutlineRight />}
               <span className='ms-3'>{l.first.title}</span>
             </Link>
             {_.isEqual(pageId, l.first.pageId) && (
@@ -149,7 +151,7 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
   return (
     <aside
       ref={sideNavRef}
-      className={`fixed inset-y-0 left-0 pt-16 bg-white z-40 w-[70vw] lg:w-72  transition-transform ${showSideNav ? 'translate-x-0' : `-translate-x-full ${showOnLarge && 'lg:translate-x-0'}`} `}
+      className={`fixed inset-y-0 left-0 pt-16 bg-gray-50 z-40 w-[80vw] lg:w-80  transition-transform ${showSideNav ? 'translate-x-0' : `-translate-x-full ${showOnLarge && 'lg:translate-x-0'}`} `}
       aria-label='Sidebar'
     >
       <div className='h-full py-4 overflow-y-auto border-r border-gray-100'>
@@ -158,11 +160,23 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
             <li className='w-full' key={i}>
               <div className='w-full'>
                 <Link
-                  onClick={() => dispatch(setShowSideNav(false))}
-                  className={`w-full text-lg block px-2 py-2 text-gray-600  ${matchPath(`${l.link}`, location.pathname) ? 'font-semibold bg-gray-100' : 'hover:bg-gray-100'}`}
+                  // onClick={() => dispatch(setShowSideNav(false))}
+                  className={`w-full flex flex-row items-center text-md md:text-lg px-3 py-2  ${matchPath(`${l.link}/*`, location.pathname) ? 'font-semibold bg-gray-100 text-blue-900' : 'hover:bg-gray-100 text-gray-700'}`}
                   to={`${l.link}`}
                 >
-                  <span className='ms-3'>{l.text}</span>
+                  {l.hasChildren ? (
+                    <span className='w-4 text-center'>
+                      {matchPath(`${l.link}/*`, location.pathname) ? (
+                        <AiOutlineDown />
+                      ) : (
+                        <AiOutlineRight />
+                      )}
+                    </span>
+                  ) : (
+                    <div className='w-4'>&nbsp;&nbsp;</div>
+                  )}
+
+                  <span className='ml-4'>{l.text}</span>
                 </Link>
                 {_.isEqual(l.link, '/data-dashboards') &&
                   matchPath('/data-dashboards/*', location.pathname) && (
