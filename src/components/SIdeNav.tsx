@@ -10,6 +10,7 @@ import { setShowSideNav } from '@/stores/uiSlice';
 import { navbarLinks } from './Navbar';
 import { useOnScreen } from '@/utils/customHooks';
 import { AiOutlineDown, AiOutlineRight } from 'react-icons/ai';
+import classNames from '@/utils/helper';
 
 const ScrollLinkWrapper = ({ section }: { section: SkeletonSection; isSubNav?: boolean }) => {
   const refScrollLink = useRef<HTMLLIElement>(null);
@@ -86,7 +87,13 @@ const DataDashboardNav = ({
         <li className='w-full' key={i}>
           <div className='w-full'>
             <Link
-              className={`w-full ${isSubNav ? 'pl-6 pr-2' : ' px-4'} flex md:text-md text-sm items-center py-2  ${_.isEqual(pageId, l.first?.pageId) ? 'font-semibold bg-gray-100 text-blue-900' : 'hover:bg-gray-100 text-gray-600 '}`}
+              className={classNames(
+                _.isEqual(pageId, l.first?.pageId)
+                  ? 'font-semibold bg-gray-100 text-blue-900'
+                  : 'hover:bg-gray-100 text-gray-600 ',
+                isSubNav ? 'pl-6 pr-2 text-sm' : ' px-4 text-md',
+                'w-full  flex  items-center py-2',
+              )}
               to={`/data-dashboards/${l.first.pageId}`}
               onMouseEnter={() => {
                 prefetchReport({
@@ -104,7 +111,7 @@ const DataDashboardNav = ({
                     {_.size(l.chapters) > 1 && (
                       <li
                         key={chapter.id}
-                        className='px-2 text-gray-700 cursor-pointer hover:bg-gray-100'
+                        className='px-2  text-gray-700 text-sm cursor-pointer hover:bg-gray-100'
                       >
                         {chapter.title}
                       </li>
