@@ -36,7 +36,7 @@ const ReportSections = ({
         {_.map(_.chunk(filteredCharts, 2), (chartChunk) => (
           <div className='py-4 flex flex-wrap gap-8 w-full'>
             {_.map(chartChunk, (chart) => (
-              <div className='lg:flex-1 w-full'>
+              <div className='lg:flex-1 z-10 w-full text-black'>
                 <ChartComponent
                   key={chart.id}
                   chart={chart}

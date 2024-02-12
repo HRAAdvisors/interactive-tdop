@@ -64,7 +64,7 @@ const ChoroplethMap = ({
   showFeatureNameInTooltip = true, // You can add this prop to ChoroplethMapProps interface
   padding = { top: 20, left: 20, right: 20, bottom: 20 },
   children,
-  mapContainerClassName = 'relative h-full w-full shadow-sm',
+  mapContainerClassName = 'relative h-full w-full shadow-sm tdopMap',
   mapClassName = '',
   center = getCalculatedCenter(geoJSONFeatureCollection),
   zoom,

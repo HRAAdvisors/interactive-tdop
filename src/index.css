@@ -58,7 +58,7 @@ body {
   border-color: transparent #fff transparent transparent;
 }
 
-.mapboxgl-popup-content {
+.tdopMap .mapboxgl-popup-content {
   background-color: #111 !important;
   border-radius: 0px !important;
   color:white;

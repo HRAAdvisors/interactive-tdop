@@ -8,6 +8,7 @@ import { setShowSideNav } from '@/stores/uiSlice';
 export interface NavLink {
   link: string;
   text: string;
+  hasChildren?: boolean;
 }
 
 export const navbarLinks: NavLink[] = [
@@ -22,6 +23,7 @@ export const navbarLinks: NavLink[] = [
   {
     link: '/data-dashboards',
     text: 'The Data',
+    hasChildren: true,
   },
   {
     link: '/assetinventory',
