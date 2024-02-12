@@ -18,7 +18,11 @@ const ScrollingSection = ({ contents, containerClassNames, id }: ScrollingSectio
   const [backgroundClass, setBackgroundClass] = useState<string>('opacity-100');
   const [activeContent, setActiveContent] = useState<ScrollingSectionContent>(_.first(contents)!);
   return (
-    <div id={id} className='w-full relative z-20' style={{ height: `${_.size(contents) * 100}vh` }}>
+    <div
+      id={id}
+      className='w-screen relative z-20'
+      style={{ height: `${_.size(contents) * 100}vh` }}
+    >
       {contents.map((c) => (
         <link rel='preload' as='image' href={c.img} />
       ))}
@@ -27,11 +31,11 @@ const ScrollingSection = ({ contents, containerClassNames, id }: ScrollingSectio
           backgroundImage: `url("${activeContent.img}")`,
           willChange: 'opacity',
         }}
-        className={`h-screen bg-cover bg-center bg-fixed w-full sticky inset-0 float-left transition-opacity duration-500	ease-in-out ${backgroundClass}`}
+        className={`h-screen bg-cover bg-center bg-fixed w-screen sticky inset-0 float-left transition-opacity duration-500	ease-in-out ${backgroundClass}`}
       >
         {/* <img src={activeContent.img} className='object-cover w-full h-full' /> */}
       </div>
-      <div className='absolute w-full top-0 bottom-0'>
+      <div className='absolute w-screen top-0 bottom-0'>
         <Scrollama
           offset={0.5}
           onStepEnter={({ data }: { data: ScrollingSectionContent }) => {
@@ -46,7 +50,9 @@ const ScrollingSection = ({ contents, containerClassNames, id }: ScrollingSectio
         >
           {_.map(contents, (contentData, i) => (
             <Step data={contentData} key={i + 1}>
-              <div className={`w-full h-screen ${containerClassNames} flex items-center md:pl-24`}>
+              <div
+                className={`w-screen h-screen ${containerClassNames} flex items-center md:pl-24`}
+              >
                 <div className='text-white bg-black p-[1rem] md:p-[2rem] md:max-w-[40%] lg:max-w-[35%] max-w-[95%] md:m-[5rem] m-[1rem]'>
                   {contentData.content}
                 </div>

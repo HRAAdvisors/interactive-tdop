@@ -14,8 +14,9 @@ export interface ChoroplethMapProps {
   layerId?: string;
   sourceId?: string;
   colorStops?: { step: number; color: string }[];
-  tooltipContent?: (feature: any) => string;
+  tooltipContent?: (feature: any, showFeatureName: boolean) => string;
   shouldTooltipShow?: boolean;
+  showFeatureNameInTooltip?: boolean;
   center?: mapboxgl.LngLatLike;
   children?: ReactNode;
   mapBoxExpression?: any[];
@@ -33,12 +34,17 @@ export interface ChoroplethMapProps {
   anchor?: mapboxgl.Anchor;
 }
 
-const getToolTip = (feature: any) => `<div class="text-white">
-<strong class="text-white uppercase">${feature.properties.NAME}</strong>
-<br>
+// Updated getToolTip function to accept an additional parameter
+const getToolTip = (feature: any, showFeatureName: boolean = true) => {
+  const featureNameHtml = showFeatureName
+    ? `<strong class="text-white uppercase">${feature.properties.NAME}</strong><br>`
+    : '';
+  return `<div class="text-white">
+${featureNameHtml}
 <span class="">${feature.properties.dataPoint}%</span>
 </div>
 `;
+};
 
 const ChoroplethMap = ({
   geoJSONFeatureCollection,
@@ -55,6 +61,7 @@ const ChoroplethMap = ({
   mapBoxExpression = ['to-number', ['get', 'dataPoint']],
   tooltipContent = getToolTip,
   shouldTooltipShow = true,
+  showFeatureNameInTooltip = true, // You can add this prop to ChoroplethMapProps interface
   padding = { top: 20, left: 20, right: 20, bottom: 20 },
   children,
   mapContainerClassName = 'relative h-full w-full shadow-sm',
@@ -80,17 +87,18 @@ const ChoroplethMap = ({
   const fitBound = () => {
     const newBounds = turf.bbox(fitBoundFeature ? fitBoundFeature : geoJSONFeatureCollection);
 
-    if (!_.isEqual(currentFitBound.current, newBounds))
+    if (!_.isEqual(currentFitBound.current, newBounds)) {
       mapRef.current?.fitBounds(
         [
           [newBounds[0], newBounds[1]],
           [newBounds[2], newBounds[3]],
         ],
         {
-          padding,
+          padding: padding,
           animate: false,
         },
       );
+    }
 
     currentFitBound.current = newBounds;
     currentFitBoundFeature.current = fitBoundFeature;
@@ -99,6 +107,7 @@ const ChoroplethMap = ({
       const getBoundsFromViewport = mapRef.current?.getBounds();
       mapRef.current?.setMaxBounds(getBoundsFromViewport);
     }
+    // console.log(padding);
   };
 
   useEffect(() => {
@@ -181,9 +190,10 @@ const ChoroplethMap = ({
         mapRef.current.on('mousemove', layerId, (e) => {
           const feature = _.first(e.features);
           if (feature && tooltip) {
+            // Pass the `showFeatureNameInTooltip` prop to the `tooltipContent` function
             tooltip
               .setLngLat(e.lngLat)
-              .setHTML(tooltipContent(feature))
+              .setHTML(tooltipContent(feature, showFeatureNameInTooltip))
               .addTo(mapRef.current as Map);
           }
         });

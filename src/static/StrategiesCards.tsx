@@ -1,6 +1,6 @@
 const StrategiesCards = {
   Header: {
-    img: 'img/Strategies.jpg',
+    img: 'img/Strategies.webp',
     altText: 'Implementation Strategies',
     title: 'Implementation Strategies',
     description: '',
@@ -33,7 +33,7 @@ const StrategiesCards = {
     ),
   },
   Living_Plan: {
-    img: 'img/LivingPlan.jpg',
+    img: 'img/LivingPlan.webp',
     altText: 'Maintain a living Digital Opportunity Plan.',
     title: 'Maintain a living Digital Opportunity Plan.',
     description:

@@ -60,7 +60,7 @@ const contents = [
         <p> Click to dive deeper into the state of digital opportunity in Texas.</p>
         <div className='my-8 md:mx-8'>
           <ButtonDark text='The Big Picture' link='/'></ButtonDark>
-          <ButtonLight text='Data Dashboards' link='/dataDashboards'></ButtonLight>
+          <ButtonLight text='Data Dashboards' link='/data-dashboards'></ButtonLight>
         </div>
       </div>
     ),
@@ -71,7 +71,7 @@ const ConclusionOne = () => {
   return (
     <div>
       <ScrollingSection contents={contents} id='unique-id-2' />
-      <div className='bg-[#FFFDF6] w-full h-full px-4'>
+      <div className='bg-[#FFFDF6] w-screen h-full px-4'>
         <div className='grid md:grid-cols-12'>
           <div className='flex flex-col md:col-start-4 md:col-span-12'>
             <p className='py-12'>

@@ -1,4 +1,5 @@
 import ScrollingSections from '@/components/ScrollingSections';
+// import ScrollingSectionNew from '@/components/ScrollingSectionsNew';
 
 const scrollingContents = [
   {
@@ -71,6 +72,7 @@ const scrollingContents = [
 const IntroOne = () => {
   return (
     <div>
+      {/* <ScrollingSectionNew id='unique-id-1' contents={scrollingContents} /> */}
       <ScrollingSections id='unique-id-1' contents={scrollingContents} />
     </div>
   );

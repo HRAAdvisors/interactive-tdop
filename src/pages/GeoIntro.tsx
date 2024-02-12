@@ -29,7 +29,7 @@ const GeoIntro = () => {
             </p>
           </>
         }
-        imageHero='img/Cover.jpeg'
+        imageHero='img/Cover.webp'
       />
       <GeoScrollytelling />
     </>

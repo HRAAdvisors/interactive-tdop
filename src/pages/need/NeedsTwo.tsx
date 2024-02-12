@@ -20,7 +20,7 @@ const NeedsTwo = () => {
               <hr className='my-5' />
               <CollapsibleCard
                 defaultOpen={true}
-                taskNumber='1'
+                taskNumber='1.1'
                 goalTitle='Increase the percentage of Texans with reliable high-speed internet subscriptions, including Texans belonging to all covered population groups (except those currently incarcerated).'
                 mapTitle='Households with High-speed Internet'
                 description={
@@ -62,7 +62,7 @@ const NeedsTwo = () => {
                 ]}
               />
               <CollapsibleCard
-                taskNumber='2'
+                taskNumber='1.2'
                 goalTitle='Decrease the percentage of individuals who cite cost as a barrier to home internet service'
                 mapTitle='Texans Reporting Cost as a Barrier to Subscription'
                 description={
@@ -98,7 +98,7 @@ const NeedsTwo = () => {
                 strategies={['Fund local partners', 'Promote internet adoption']}
               />
               <CollapsibleCard
-                taskNumber='3'
+                taskNumber='1.3'
                 goalTitle='Increase the percentage of Texans who are aware of the Affordable Connectivity Program (ACP) and/or other low-cost or subsidized internet service options.'
                 mapTitle='Texans Reporting Awareness of the Affordable Connectivity Program (ACP)'
                 description={
@@ -146,7 +146,7 @@ const NeedsTwo = () => {
               </p>
               <hr className='my-5' />
               <CollapsibleCard
-                taskNumber='1'
+                taskNumber='2.1'
                 goalTitle='Increase the percentage of Texans who have home access to affordable internet-enabled devices other than a smartphone.'
                 mapTitle='Households with Smartphones Only'
                 description={
@@ -187,7 +187,7 @@ const NeedsTwo = () => {
                 ]}
               />
               <CollapsibleCard
-                taskNumber='2'
+                taskNumber='2.2'
                 goalTitle='Increase access to technical support for more Texans with internet-enabled devices.'
                 description={
                   <div>
@@ -234,7 +234,7 @@ const NeedsTwo = () => {
               </p>
               <hr className='my-5' />
               <CollapsibleCard
-                taskNumber='1'
+                taskNumber='3.1'
                 goalTitle='Increase the percentage of Texans who have basic digital literacy skills.'
                 mapTitle='Texans Reporting Comfort with Basic Digital Literacy Skills'
                 description={
@@ -276,7 +276,7 @@ const NeedsTwo = () => {
                 ]}
               />
               <CollapsibleCard
-                taskNumber='2'
+                taskNumber='3.2'
                 goalTitle='Increase the availability of digital literacy programs and services.'
                 description={
                   <div>
@@ -310,7 +310,7 @@ const NeedsTwo = () => {
                 ]}
               />
               <CollapsibleCard
-                taskNumber='3'
+                taskNumber='3.3'
                 goalTitle='Increase the percentage of Texas workers who have the level of digital skills training jobs require.'
                 description={
                   <div>
@@ -353,7 +353,7 @@ const NeedsTwo = () => {
               </p>
               <hr className='my-5' />
               <CollapsibleCard
-                taskNumber='1'
+                taskNumber='4.1'
                 goalTitle='Increase the percentage of Texans who have cybersecurity and online privacy measures set up on their devices.'
                 mapTitle='Texans Reporting Awareness and Usage Cybersecurity Measures'
                 description={
@@ -404,7 +404,7 @@ const NeedsTwo = () => {
               </p>
               <hr className='my-5' />
               <CollapsibleCard
-                taskNumber='1'
+                taskNumber='5.1'
                 goalTitle='Increase the percentage of Texans who utilize and understand how to use the internet for public resources and services (using accessing healthcare as a baseline).'
                 mapTitle='Texans Reporting Usage of the Internet to Access Healthcare'
                 description={
