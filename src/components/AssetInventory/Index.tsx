@@ -1,25 +1,24 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { uiData, countyFilter } from "./uidata";
-import AssetRow from "./AssetRow";
-import FiltersMobile from "./FiltersMobile";
-import FiltersDesktop from "./FiltersDesktop";
-import ActiveFilters from "./ActiveFilters";
-import Search from "./Search";
-import Intro from "./Intro";
-import AssetRowSkelton from "./AssetRowSkeleton";
+import { useEffect, useState } from 'react';
+import { uiData, countyFilter } from './uidata';
+import AssetRow from './AssetRow';
+import FiltersMobile from './FiltersMobile';
+import FiltersDesktop from './FiltersDesktop';
+import ActiveFilters from './ActiveFilters';
+import Search from './Search';
+import Intro from './Intro';
+import AssetRowSkelton from './AssetRowSkeleton';
 
 export default function AssetInventory() {
   const [assets, setAssets] = useState<any[]>([]);
   const [allAssets, setAllAssets] = useState<any[]>([]);
   const [activeFilters, setActiveFilters] = useState<any[]>([]);
   const [activeCounties, setActiveCounties] = useState<any[]>([]);
-  const [filters, setFilters] = useState(uiData);
+  const [filters] = useState(uiData);
   let filteredCount = 1;
   const [loading, setLoading] = useState(true);
-  const [showAssets, setShowAssets] = useState([]);
 
   useEffect(() => {
-    fetch("https://us-central1-airtable-texas.cloudfunctions.net/airtable_data")
+    fetch('https://us-central1-airtable-texas.cloudfunctions.net/airtable_data')
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -30,10 +29,10 @@ export default function AssetInventory() {
           .filter((asset: any) => {
             if (
               asset.fields.Asset &&
-              asset.fields["County (from Org County)"] &&
-              asset.fields["Asset Broadband Focus Area"] &&
-              asset.fields["Asset Covered Population"] &&
-              asset.fields["Organization Sub-Type"]
+              asset.fields['County (from Org County)'] &&
+              asset.fields['Asset Broadband Focus Area'] &&
+              asset.fields['Asset Covered Population'] &&
+              asset.fields['Organization Sub-Type']
             ) {
               return asset;
             }
@@ -60,12 +59,12 @@ export default function AssetInventory() {
     allAssets.forEach((asset: any) => {
       if (activeCounties.length > 0 && activeFilters.length > 0) {
         activeCounties.forEach((activeCounty) => {
-          if (asset.fields["County (from Org County)"].includes(activeCounty.label)) {
+          if (asset.fields['County (from Org County)'].includes(activeCounty.label)) {
             activeFilters.forEach((af: any) => {
               if (
-                asset.fields["Asset Broadband Focus Area"].includes(af.label) ||
-                asset.fields["Asset Covered Population"].includes(af.label) ||
-                asset.fields["Organization Sub-Type"].includes(af.label)
+                asset.fields['Asset Broadband Focus Area'].includes(af.label) ||
+                asset.fields['Asset Covered Population'].includes(af.label) ||
+                asset.fields['Organization Sub-Type'].includes(af.label)
               ) {
                 show.push(asset);
               }
@@ -76,7 +75,7 @@ export default function AssetInventory() {
       } else if (activeCounties.length > 0 || activeFilters.length > 0) {
         if (activeCounties.length > 0) {
           activeCounties.forEach((activeCounty) => {
-            if (asset.fields["County (from Org County)"].includes(activeCounty.label)) {
+            if (asset.fields['County (from Org County)'].includes(activeCounty.label)) {
               console.log(asset);
               show.push(asset);
             }
@@ -85,9 +84,9 @@ export default function AssetInventory() {
         if (activeFilters.length > 0) {
           activeFilters.forEach((af: any) => {
             if (
-              asset.fields["Asset Broadband Focus Area"].includes(af.label) ||
-              asset.fields["Asset Covered Population"].includes(af.label) ||
-              asset.fields["Organization Sub-Type"].includes(af.label)
+              asset.fields['Asset Broadband Focus Area'].includes(af.label) ||
+              asset.fields['Asset Covered Population'].includes(af.label) ||
+              asset.fields['Organization Sub-Type'].includes(af.label)
             ) {
               show.push(asset);
             }
@@ -99,13 +98,13 @@ export default function AssetInventory() {
   }, [activeCounties, activeFilters]);
 
   return (
-    <main className="w-full">
-      <div className="bg-white">
+    <main className='w-full'>
+      <div className='bg-white'>
         <Intro />
         <Search allAssets={allAssets} setAssets={setAssets} />
 
-        <section aria-labelledby="filter-heading">
-          <h2 id="filter-heading" className="sr-only">
+        <section aria-labelledby='filter-heading'>
+          <h2 id='filter-heading' className='sr-only'>
             Filters
           </h2>
           {!loading ? (
@@ -143,7 +142,7 @@ export default function AssetInventory() {
         </section>
       </div>
 
-      <div className="h-full min-h-screen max-w-full p-5">
+      <div className='h-full min-h-screen max-w-full p-5'>
         {loading ? (
           <ul>
             {Array(15)
@@ -153,9 +152,9 @@ export default function AssetInventory() {
               ))}
           </ul>
         ) : assets.length === 0 && filteredCount > 0 ? (
-          <p className="p-4">No matches.</p>
+          <p className='p-4'>No matches.</p>
         ) : (
-          <ul className="">
+          <ul className=''>
             {assets.map((asset) => (
               <AssetRow key={Math.random()} asset={asset} filters={filters} />
             ))}

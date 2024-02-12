@@ -13,7 +13,7 @@ const AssetInventoryPage = () => {
     <>
       <Navbar shouldShowAllTime={true} />
       <SideNav />
-      <div className='w-full py-4 mx-auto'>
+      <div className='w-full max-w-screen-xl py-8 mx-auto'>
         <AssetInventory />
       </div>
     </>
