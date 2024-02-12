@@ -72,6 +72,7 @@ const DataDashboardNav = ({
   const { data } = useGetSkeletonQuery();
   const prefetchReport = usePrefetchDataDashboard('getReport');
   const { pageId } = useParams();
+  const dispatch = useAppDispatch();
 
   const links = _.chain(data?.chapters)
     .groupBy('pageId')
@@ -95,6 +96,7 @@ const DataDashboardNav = ({
                 'w-full  flex  items-center py-2',
               )}
               to={`/data-dashboards/${l.first.pageId}`}
+              onClick={() => dispatch(setShowSideNav(false))}
               onMouseEnter={() => {
                 prefetchReport({
                   pick: _.map(l.chapters, (chapter) => chapter.id).join(','),
