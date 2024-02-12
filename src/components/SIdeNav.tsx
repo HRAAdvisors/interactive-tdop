@@ -11,13 +11,7 @@ import { navbarLinks } from './Navbar';
 import { useOnScreen } from '@/utils/customHooks';
 import { AiOutlineDown, AiOutlineRight } from 'react-icons/ai';
 
-const ScrollLinkWrapper = ({
-  section,
-  isSubNav = false,
-}: {
-  section: SkeletonSection;
-  isSubNav?: boolean;
-}) => {
+const ScrollLinkWrapper = ({ section }: { section: SkeletonSection; isSubNav?: boolean }) => {
   const refScrollLink = useRef<HTMLLIElement>(null);
   const [isDirectionUp, setIsDirectionUp] = useState(true);
 
