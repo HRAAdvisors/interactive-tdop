@@ -7,13 +7,13 @@ import { StandardChart } from '@/types/StandardChart';
 export const DataDashboardApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getSkeleton: builder.query<ReportSkeleton, { state?: number, reportId?: string } | void>({
-      query: ({ reportId ='65a13a06cd2d36c499c18605',  state = 48 } = {}) => ({
+      query: ({ reportId ='65ca21e530f4721b57e203d8',  state = 48 } = {}) => ({
         method: 'GET',
         url: `reports/${reportId}/output/${ state }/skeleton`,
       }),
     }),
     getReport: builder.query<ReportOutput<StandardChart>, { state?: number, reportId?: string , pick: string  } >({
-      query: ({ reportId ='65a13a06cd2d36c499c18605',  state = 48, pick }) => ({
+      query: ({ reportId ='65ca21e530f4721b57e203d8',  state = 48, pick }) => ({
         method: 'GET',
         url: `reports/${reportId}/output/${ state }`,
         params: { pick }
