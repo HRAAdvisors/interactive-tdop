@@ -32,6 +32,7 @@ export interface ChoroplethMapProps {
   fitBoundFeature?: GeoJSON.Feature<GeoJSON.Geometry>;
   shouldFitBounds?: boolean; // New prop to control fitBounds behavior
   anchor?: mapboxgl.Anchor;
+  pullRight?: boolean;
 }
 
 // Updated getToolTip function to accept an additional parameter
@@ -62,7 +63,7 @@ const ChoroplethMap = ({
   tooltipContent = getToolTip,
   shouldTooltipShow = true,
   showFeatureNameInTooltip = true, // You can add this prop to ChoroplethMapProps interface
-  padding = { top: 20, left: 20, right: 20, bottom: 20 },
+  pullRight = false,
   children,
   mapContainerClassName = 'relative h-full w-full shadow-sm tdopMap',
   mapClassName = '',
@@ -94,10 +95,24 @@ const ChoroplethMap = ({
           [newBounds[2], newBounds[3]],
         ],
         {
-          padding: padding,
+          padding: pullRight ? 0 : 20,
           animate: false,
         },
       );
+    }
+
+    if (!_.isEqual(currentFitBound.current, newBounds) && pullRight) {
+      const calCulatedCenter = getCalculatedCenter(
+        fitBoundFeature ? fitBoundFeature : geoJSONFeatureCollection,
+      );
+
+      const position = mapRef.current?.project(calCulatedCenter!);
+      if (position) {
+        position.x = position!.x * 0.5;
+        const newCord = mapRef.current?.unproject(position);
+        mapRef.current?.setCenter(newCord!);
+        mapRef.current?.setZoom(mapRef.current.getZoom() * 0.98);
+      }
     }
 
     currentFitBound.current = newBounds;

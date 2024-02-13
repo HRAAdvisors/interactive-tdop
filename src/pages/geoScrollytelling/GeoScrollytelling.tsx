@@ -28,11 +28,13 @@ const GeoScrollytelling = () => {
       setIsMobile(true);
     } else {
       setIsMobile(false);
+      mapRef.current?.resize();
     }
   };
 
   // create an event listener
   useEffect(() => {
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -52,12 +54,7 @@ const GeoScrollytelling = () => {
       {geoJsonFeatures && (
         <div className='h-screen w-full sticky inset-0 float-left'>
           <ChoroplethMap
-            padding={{
-              left: isMobile ? 0 : Math.round(window.innerWidth * 0.5),
-              right: 0,
-              top: 50,
-              bottom: 50,
-            }}
+            pullRight={!isMobile}
             fitBoundFeature={
               input.getFitBoundaryFeature && input.getFitBoundaryFeature(geoJsonFeatures)
             }

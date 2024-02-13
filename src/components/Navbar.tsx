@@ -50,6 +50,7 @@ export const NavLinkList = ({ navLinks }: { navLinks: NavLink[] }) => {
 export const Navbar = ({ shouldShowAllTime = false }: { shouldShowAllTime?: boolean }) => {
   const showSideNav = useAppSelector((store) => store.ui.showSideNav);
   const dispatch = useAppDispatch();
+  const navRef = useRef<HTMLDivElement>(null);
 
   const handleNav = () => dispatch(setShowSideNav(!showSideNav));
 
@@ -80,6 +81,19 @@ export const Navbar = ({ shouldShowAllTime = false }: { shouldShowAllTime?: bool
     return () => window.removeEventListener('scroll', handleScroll);
   }, [shouldShowAllTime, showSideNav]);
 
+  const handleClickOutside: EventListener = (event) => {
+    if (navRef.current && !navRef.current?.contains(event.target as any) && !shouldShowAllTime) {
+      setShowNav(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [navRef]);
+
   const navbarStyle: React.CSSProperties = {
     transform: showNav ? 'translateY(0)' : 'translateY(-100%)',
     transition: 'transform 0.3s ease-in-out',
@@ -91,7 +105,7 @@ export const Navbar = ({ shouldShowAllTime = false }: { shouldShowAllTime?: bool
   };
 
   return (
-    <div style={navbarStyle}>
+    <div style={navbarStyle} ref={navRef}>
       <div className='flex px-4 justify-between sticky items-center top-0 h-16 shadow-md text-[#111] bg-[#FFFDF6] inset-x-0'>
         <div className='w-full flex items-center justify-between'>
           <div className='flex'>
