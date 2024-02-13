@@ -20,6 +20,25 @@ const GeoScrollytelling = () => {
   const [fetchBoundary] = useLazyGetBoundaryDataBulkQuery();
   const [fetchChart] = useLazyGetChartDataBulkQuery();
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  //choose the screen size
+  const handleResize = () => {
+    if (window.innerWidth < 720) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+      mapRef.current?.resize();
+    }
+  };
+
+  // create an event listener
+  useEffect(() => {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   useEffect(() => {
     _.chain(contents)
       .filter((content, i) => i !== 0 && !!content.mapData)
@@ -35,7 +54,7 @@ const GeoScrollytelling = () => {
       {geoJsonFeatures && (
         <div className='h-screen w-full sticky inset-0 float-left'>
           <ChoroplethMap
-            pullRight={true}
+            pullRight={!isMobile}
             fitBoundFeature={
               input.getFitBoundaryFeature && input.getFitBoundaryFeature(geoJsonFeatures)
             }
