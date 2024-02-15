@@ -13,7 +13,7 @@ export default function FiltersDesktop({
   setActiveCounties,
 }: any) {
   return (
-    <div className='hidden md:block border-b border-gray-200 bg-white pb-4 '>
+    <div className='hidden md:block border-b border-gray-200  pb-4 '>
       <div className='mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8'>
         <Select
           isMulti
@@ -21,7 +21,7 @@ export default function FiltersDesktop({
           onChange={(options) => {
             setActiveCounties(options);
           }}
-          className='flex-grow'
+          className='flex-grow bg-transparent'
           placeholder='Filter by County'
         />
         <Popover.Group className='flex v'>

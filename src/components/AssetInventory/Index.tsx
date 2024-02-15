@@ -76,7 +76,6 @@ export default function AssetInventory() {
         if (activeCounties.length > 0) {
           activeCounties.forEach((activeCounty) => {
             if (asset.fields['County (from Org County)'].includes(activeCounty.label)) {
-              console.log(asset);
               show.push(asset);
             }
           });
@@ -99,7 +98,7 @@ export default function AssetInventory() {
 
   return (
     <main className='w-full'>
-      <div className='bg-white'>
+      <div className='w-full'>
         <Intro />
         <Search allAssets={allAssets} setAssets={setAssets} />
 

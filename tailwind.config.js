@@ -2,6 +2,7 @@
 export default {
   content: [
     "./index.html",
+    './node_modules/@hraadvisors/broadband-charts/**/*.{vue,js,ts,jsx,tsx}',
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -39,5 +40,6 @@ export default {
   plugins: [    
     require('@tailwindcss/typography'),
 ],
+important: '#root'
 }
 

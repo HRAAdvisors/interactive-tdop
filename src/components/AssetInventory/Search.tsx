@@ -27,7 +27,7 @@ export default function Search({ allAssets, setAssets }: any) {
           />
           <input
             id='search-field'
-            className='block w-full border-1 border-gray-300 rounded pl-8 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0'
+            className='block w-full border-1 border-gray-300 bg-transparent rounded pl-8 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0'
             placeholder='Search...'
             type='search'
             name='search'
