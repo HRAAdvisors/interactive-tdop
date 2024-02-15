@@ -101,7 +101,7 @@ const MapContainer = ({
           </ChoroplethMap>
           <div className='my-4 text-xs'>
             {' '}
-            <span className='uppercase underline'>Source</span>: {mapSource}
+            <span className='uppercase font-semibold'>Source</span>: {mapSource}
           </div>
           <div className='pb-8'>{colorStops && <Legend colorStops={colorStops} />}</div>
         </>
