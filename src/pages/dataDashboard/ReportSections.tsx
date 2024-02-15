@@ -1,7 +1,9 @@
 import _ from 'lodash';
-import { Chart as ChartComponent } from '@hraadvisors/standard-charts';
+import { Chart as StandardChartComponent } from '@hraadvisors/standard-charts';
+import { Chart as BroadbandChartComponent } from '@hraadvisors/broadband-charts';
 import { ReportSection, ReportOutput } from '@hraadvisors/report-api-types';
-import { StandardChart } from '@/types/StandardChart';
+import type { StandardChart } from '@/types/StandardChart';
+
 import { useState } from 'react';
 import { Element as ScrollElement } from 'react-scroll';
 
@@ -25,6 +27,8 @@ const ReportSections = ({
 
   const { boundaries } = reportOutput;
 
+  console.log(filteredCharts);
+
   return (
     <ScrollElement name={`section${section.id}`} className='pt-28'>
       <h3 className='text-2xl font-semibold pb-6'>{section.title}</h3>
@@ -35,23 +39,43 @@ const ReportSections = ({
       <div className='flex flex-wrap flex-col w-full justify-center p-2'>
         {_.map(_.chunk(filteredCharts, 2), (chartChunk) => (
           <div className='py-4 flex flex-wrap gap-8 w-full'>
-            {_.map(chartChunk, (chart) => (
-              <div className='lg:flex-1 z-10 w-full text-black'>
-                <ChartComponent
-                  key={chart.id}
-                  chart={chart}
-                  target={'web'}
-                  boundaries={boundaries || {}}
-                  isDraft={reportOutput.report.isDraft}
-                  isPreview={false}
-                  geography={reportOutput.report.geography}
-                  controls={{
-                    parentFilter: filterState[0],
-                    visibleCategories: visibilityToggleState[0],
-                  }}
-                  tokens={tokens}
-                  noWrapper={false}
-                />
+            {_.map(chartChunk, (chart, key) => (
+              <div key={key} className='lg:flex-1 z-10 w-full text-black'>
+                {/standard-charts/.test(chart.library) && (
+                  <StandardChartComponent
+                    key={chart.id}
+                    chart={chart}
+                    target={'web'}
+                    boundaries={boundaries || {}}
+                    isDraft={reportOutput.report.isDraft}
+                    isPreview={false}
+                    geography={reportOutput.report.geography}
+                    controls={{
+                      parentFilter: filterState[0],
+                      visibleCategories: visibilityToggleState[0],
+                    }}
+                    tokens={tokens}
+                    noWrapper={false}
+                  />
+                )}
+                {/broadband-charts/.test(chart.library) && (
+                  <>
+                    <BroadbandChartComponent
+                      key={chart.id}
+                      chart={chart}
+                      boundaries={boundaries || {}}
+                      isDraft={reportOutput.report.isDraft}
+                      isPreview={false}
+                      geography={reportOutput.report.geography}
+                      controls={{
+                        parentFilter: filterState[0],
+                        visibleCategories: visibilityToggleState[0],
+                      }}
+                      tokens={tokens}
+                      noWrapper={false}
+                    />
+                  </>
+                )}
               </div>
             ))}
           </div>

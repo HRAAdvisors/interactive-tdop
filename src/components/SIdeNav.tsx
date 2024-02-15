@@ -1,7 +1,7 @@
 import { useGetSkeletonQuery, usePrefetchDataDashboard } from '@/services/dataDashboard';
 import _ from 'lodash';
 import { Fragment, useEffect, useRef, useState } from 'react';
-import { Link, matchPath, useLocation } from 'react-router-dom';
+import { Link, matchPath, useLocation, useSearchParams } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import { SkeletonSection } from '@hraadvisors/report-api-types';
@@ -69,7 +69,14 @@ const DataDashboardNav = ({
   className?: string;
   isSubNav?: boolean;
 }) => {
-  const { data } = useGetSkeletonQuery();
+  const [searchParams] = useSearchParams();
+  const location = useLocation();
+
+  const { data } = useGetSkeletonQuery({
+    reportId: searchParams.get('reportId') ?? undefined,
+    geoId: searchParams.get('geoId') ?? undefined,
+  });
+
   const prefetchReport = usePrefetchDataDashboard('getReport');
   const { pageId } = useParams();
   const dispatch = useAppDispatch();
@@ -95,7 +102,7 @@ const DataDashboardNav = ({
                 isSubNav ? 'pl-6 pr-2 text-sm' : ' px-4 text-md',
                 'w-full  flex  items-center py-2',
               )}
-              to={`/data-dashboards/${l.first.pageId}`}
+              to={`/data-dashboards/${l.first.pageId}${location.search}`}
               onClick={() => dispatch(setShowSideNav(false))}
               onMouseEnter={() => {
                 prefetchReport({
@@ -190,7 +197,7 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
           ))}
         </ul>
         {showOnLarge && matchPath('/data-dashboards/*', location.pathname) && (
-          <DataDashboardNav className='w-full hidden lg:block' />
+          <DataDashboardNav className='w-full hidden xl:block' />
         )}
       </div>
     </aside>

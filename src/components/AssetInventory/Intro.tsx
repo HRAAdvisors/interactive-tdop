@@ -5,13 +5,13 @@ import { QuestionMarkCircleIcon, PlusCircleIcon } from '@heroicons/react/24/outl
 
 export default function Intro() {
   return (
-    <div className='mx-auto max-w-7xl px-4 pt-16 sm:px-6 lg:px-8'>
+    <div className='mx-auto w-full px-4 pt-16 sm:px-6 lg:px-8'>
       <h1 className='text-3xl font-bold tracking-tight text-gray-900 mb-2'>
         Texas Digital Opportunity Resource Hub
       </h1>
       <Popover.Group className='flex'>
         <Popover className='relative'>
-          <Popover.Button className=''>
+          <Popover.Button>
             <QuestionMarkCircleIcon className='w-6 h-6' />
           </Popover.Button>
 
@@ -64,23 +64,25 @@ export default function Intro() {
           </Transition>
         </Popover>
       </Popover.Group>
-      <p className='mt-2 max-w-xl text-sm text-gray-700'>
-        Looking for organizations or local governments providing digital resources like free wi-fi
-        access, internet skills classes, or hotspot devices? The Texas Digital Opportunity Resource
-        Hub is designed to help anyone find digital opportunity resources.
-      </p>
-      <p className='mt-2 max-w-xl text-sm text-gray-700'>
-        Digital Opportunity Resources are things like public computer centers, device access
-        programs, sources of funding, or digital literacy training programs. This hub will enable
-        Texans to find resources in their communities or learn about what people in other parts of
-        the state are doing. It is a work in progress and will expand as people interested in
-        advancing digital opportunity add information.
-      </p>
-      <p className='mt-2 max-w-xl text-sm text-gray-700'>
-        To use the hub, start by using the drop-down menus below to filter resources for a type of
-        service (i.e., broadband access), organization (i.e., library), or population group served
-        (i.e., low-income households).
-      </p>
+      <article className='prose-sm text-gray-700'>
+        <p>
+          Looking for organizations or local governments providing digital resources like free wi-fi
+          access, internet skills classes, or hotspot devices? The Texas Digital Opportunity
+          Resource Hub is designed to help anyone find digital opportunity resources.
+        </p>
+        <p>
+          Digital Opportunity Resources are things like public computer centers, device access
+          programs, sources of funding, or digital literacy training programs. This hub will enable
+          Texans to find resources in their communities or learn about what people in other parts of
+          the state are doing. It is a work in progress and will expand as people interested in
+          advancing digital opportunity add information.
+        </p>
+        <p>
+          To use the hub, start by using the drop-down menus below to filter resources for a type of
+          service (i.e., broadband access), organization (i.e., library), or population group served
+          (i.e., low-income households).
+        </p>
+      </article>
     </div>
   );
 }
