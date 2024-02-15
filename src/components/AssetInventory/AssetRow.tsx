@@ -22,6 +22,8 @@ export default function AssetRow({ asset, filters }: any) {
     setIsOpen(true);
   }
 
+  console.log(asset);
+
   return (
     <li className='relative border border-1 border-slate-200 shadow mb-4 rounded'>
       <div className='text-left py-4 px-4'>
@@ -110,26 +112,24 @@ export default function AssetRow({ asset, filters }: any) {
             </span>
           </span>
           <span className='flex gap-1'>
-            <span className='flex flex-wrap text-ellipsis overflow-hidden'>
-              {asset['Website'] ? (
-                <>
-                  <ArrowTopRightOnSquareIcon
-                    className='h-5 w-5 flex-none text-gray-400 mr-1'
-                    aria-hidden='true'
-                  />
-                  <span className='text-xs leading-5 text-gray-500'>
-                    <a
-                      className='text-blue-600 underline pt-0.5'
-                      target='_blank'
-                      rel='noreferrer'
-                      href={`http://${asset.fields['Website']}`}
-                    >
-                      {asset.fields['Website']}
-                    </a>
-                  </span>
-                </>
-              ) : null}
-            </span>
+            {asset.fields['Website'] && (
+              <span className='flex flex-wrap text-ellipsis overflow-hidden'>
+                <ArrowTopRightOnSquareIcon
+                  className='h-5 w-5 flex-none text-gray-400 mr-1'
+                  aria-hidden='true'
+                />
+                <span className='text-xs leading-5 text-gray-500'>
+                  <a
+                    className='text-blue-600 underline pt-0.5'
+                    target='_blank'
+                    rel='noreferrer'
+                    href={`http://${asset.fields['Website']}`}
+                  >
+                    {asset.fields['Website']}
+                  </a>
+                </span>
+              </span>
+            )}
           </span>
           <span className='flex flex-wrap text-ellipsis overflow-hidden gap-2'>
             {asset.fields['Organization Sub-Type']
