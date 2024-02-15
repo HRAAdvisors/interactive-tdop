@@ -16,7 +16,7 @@ export default function ActiveFilters({ filters, activeFilters, setActiveFilters
             {activeFilters.map((activeFilter: any) => (
               <span
                 key={Math.random()}
-                className='m-1 inline-flex items-center rounded-full bg-gray-500 border border-gray-200 text-white py-1.5 pl-3 pr-2 text-sm font-medium text-gray-900'
+                className='m-1 inline-flex items-center rounded-full bg-gray-500 border border-gray-200 text-white py-1.5 pl-3 pr-2 text-sm font-medium'
                 style={{
                   background: activeFilter.color,
                 }}
