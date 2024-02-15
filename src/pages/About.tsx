@@ -1,7 +1,12 @@
+import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import SideNav from '@/components/SIdeNav';
 
 const AboutPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className='flex flex-col'>
       <Navbar shouldShowAllTime={true} />

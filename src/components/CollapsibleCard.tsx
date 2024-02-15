@@ -47,20 +47,20 @@ const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
         className='flex md:grid md:grid-cols-12 cursor-pointer align-center md:hover:shadow-md md:hover:scale-[101%] duration-300 py-4 '
         onClick={toggleAccordion}
       >
-        <div className='flex md:grid md:col-start-0 px-8 text-lg font-bold'>
-          <p>{taskNumber}</p>
-        </div>
-        <div className='flex items-center md:col-span-8 pl-0 md:pl-8 lg:pl-2 md:col-start-2 text-lg font-bold'>
-          <p>{goalTitle}</p>
-        </div>
         <div
-          className='w-4 h-4 md:col-span-1 mx-10 transition-transform duration-300'
+          className='w-4 h-4 md:col-span-1 mx-4 md:mx-8 my-1 transition-transform duration-300'
           style={{
             transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
             transformOrigin: 'center',
           }}
         >
           <Chevron />
+        </div>
+        <div className='flex md:grid md:col-start-0 px-4 text-lg font-bold'>
+          <p>{taskNumber}</p>
+        </div>
+        <div className='flex items-center md:col-span-9 px-4 md:pl-8 lg:pl-2 text-lg font-semibold'>
+          <p>{goalTitle}</p>
         </div>
       </div>
 
@@ -76,15 +76,15 @@ const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
         <div className='p-2 block md:grid md:grid-cols-12'>
           {/* Left Panel Content */}
           <div className='h-full col-span-12 md:col-span-6 md:col-start-2'>
-            <p className='uppercase underline font-medium my-4'>{mapTitle}</p>
+            <p className='uppercase font-semibold my-4'>{mapTitle}</p>
             <div className='h-[50vh]'>{leftPanelContent}</div>
           </div>
           {/* Right Panel Content */}
-          <div className='mt-20 md:mt-0 col-span-12 md:col-span-3 md:col-start-9'>
-            <p className='uppercase underline font-medium my-4'>2030 Target</p>
+          <div className='mt-28 md:mt-0 col-span-12 md:col-span-3 md:col-start-9'>
+            <p className='uppercase font-semibold md:my-4'>2030 Target</p>
             <div className='my-4'>{targetText}</div>
             <StackedBar data={stackedBarData} goal={stackedBarGoal} isOpen={isOpen} />
-            <p className='uppercase underline font-medium mt-12'>How Will Texas Get There?</p>
+            <p className='uppercase font-semibold mt-12'>How Will Texas Get There?</p>
             <div className='my-4'>
               {/* <p className='my-4'>Implementation Strategies</p> */}
               <ol className='list-decimal list-inside'>
