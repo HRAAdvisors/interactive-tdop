@@ -65,14 +65,14 @@ export default function FiltersDesktop({
                 <Popover.Panel className='absolute left-0 top-5 z-10 mt-2 overflow-y-auto max-h-96 origin-top-left rounded-md bg-white p-4 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none'>
                   <form className='space-y-4'>
                     {section.options.map((option: any, optionIdx: number) => (
-                      <div key={Math.random()} className='flex items-center'>
+                      <div key={Math.random()} className='flex items-center cursor-pointer'>
                         <input
                           id={`filter-${section.id}-${optionIdx}`}
                           name={`${section.id}[]`}
                           defaultValue={option.value}
                           type='checkbox'
                           defaultChecked={option.checked}
-                          className='h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-500'
+                          className='h-4 w-4 rounded border-gray-300 cursor-pointer text-slate-600 focus:ring-slate-500'
                           onChange={() => {
                             if (!option.checked) {
                               option.checked = true;
@@ -88,7 +88,7 @@ export default function FiltersDesktop({
                         />
                         <label
                           htmlFor={`filter-${section.id}-${optionIdx}`}
-                          className='ml-3 whitespace-nowrap pr-6 text-sm font-medium text-gray-900 flex gap-2 leading-6'
+                          className='ml-3 cursor-pointer whitespace-nowrap pr-6 text-sm font-medium text-gray-900 flex gap-2 leading-6'
                         >
                           {option.icon ? (
                             <span

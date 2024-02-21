@@ -1,4 +1,4 @@
-import { EventHandler, MouseEventHandler, SyntheticEvent, useRef, useState } from 'react';
+import { EventHandler, SyntheticEvent, useRef, useState } from 'react';
 import ChoroplethMap, { ChoroplethMapProps } from './ChoroplethMap';
 import mapboxgl from 'mapbox-gl';
 
