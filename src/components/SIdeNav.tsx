@@ -36,7 +36,7 @@ const ScrollLinkWrapper = ({ section }: { section: SkeletonSection; isSubNav?: b
     <li
       ref={refScrollLink}
       key={section.id}
-      className={`pl-10 break-normal	 cursor-pointer text-xs`}
+      className={`pl-10 break-normal cursor-pointer text-xs`}
     >
       <ScrollLink
         to={`section${section.id}`}
@@ -114,13 +114,13 @@ const DataDashboardNav = ({
               <span className='ms-3'>{l.first.title}</span>
             </Link>
             {_.isEqual(pageId, l.first.pageId) && (
-              <ul className='space-y-3 py-2 px-4 max-h-72 overflow-y-auto w-full drop-shadow'>
+              <ul className='space-y-3 py-2 px-4 bg-gray-100 shadow-inner max-h-72 overflow-y-auto w-full'>
                 {_.map(l.chapters, (chapter, j) => (
                   <Fragment key={j}>
                     {_.size(l.chapters) > 1 && (
                       <li
                         key={chapter.id}
-                        className='px-2  text-gray-700 text-sm cursor-pointer hover:bg-gray-100'
+                        className='pr-2 pl-4 text-gray-700 text-sm  hover:bg-gray-100'
                       >
                         {chapter.title}
                       </li>
