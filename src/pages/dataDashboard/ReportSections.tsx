@@ -27,8 +27,6 @@ const ReportSections = ({
 
   const { boundaries } = reportOutput;
 
-  console.log(filteredCharts);
-
   return (
     <ScrollElement name={`section${section.id}`} className='pt-28'>
       <h3 className='text-2xl font-semibold pb-6'>{section.title}</h3>

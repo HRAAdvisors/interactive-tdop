@@ -1,4 +1,8 @@
-import { useGetSkeletonQuery, usePrefetchDataDashboard } from '@/services/dataDashboard';
+import {
+  useGetBoundariesQuery,
+  useGetSkeletonQuery,
+  usePrefetchDataDashboard,
+} from '@/services/dataDashboard';
 import _ from 'lodash';
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { Link, matchPath, useLocation, useSearchParams } from 'react-router-dom';
@@ -11,6 +15,7 @@ import { navbarLinks } from './Navbar';
 import { useOnScreen } from '@/utils/customHooks';
 import { AiOutlineDown, AiOutlineRight } from 'react-icons/ai';
 import classNames from '@/utils/helper';
+import { Select } from '@mantine/core';
 
 const ScrollLinkWrapper = ({ section }: { section: SkeletonSection; isSubNav?: boolean }) => {
   const refScrollLink = useRef<HTMLLIElement>(null);
@@ -144,12 +149,38 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
   const showSideNav = useAppSelector((store) => store.ui.showSideNav);
   const sideNavRef = useRef<HTMLElement>(null);
   const dispatch = useAppDispatch();
+  const [_searchParams, setSearchParams] = useSearchParams();
 
   const handleClickOutside: EventListener = (event) => {
     if (sideNavRef.current && !sideNavRef.current?.contains(event.target as any)) {
       dispatch(setShowSideNav(false));
     }
   };
+
+  const { data: boundaryData } = useGetBoundariesQuery();
+
+  const boundaries = _.first(_.toArray(boundaryData?.boundaries));
+
+  const geoIdSelectOptions = _(boundaries)
+    .groupBy((b) => {
+      const props = b.feature.properties as any;
+      if (props.GEOID === props.STATEFP) {
+        return 'State';
+      } else if (props.GEOID === `${props.STATEFP}${props.COUNTYFP}`) {
+        return 'County';
+      } else if (props.GEOID === `${props.STATEFP}${props.COUNTYFP}${props.TRACTCE}`) {
+        return 'Tract';
+      }
+      return 'Region';
+    })
+    .map((options, index) => ({
+      group: index,
+      items: _.map(options, (option) => ({
+        value: (option.feature.properties as any).GEOID,
+        label: (option.feature.properties as any).NAME,
+      })),
+    }))
+    .value();
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
@@ -165,6 +196,19 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
       aria-label='Sidebar'
     >
       <div className='h-full py-4 overflow-y-auto border-r border-gray-100'>
+        {matchPath('/data-dashboards/*', location.pathname) && (
+          <div className='w-full px-4'>
+            <Select
+              onChange={(geoId) => {
+                setSearchParams((prev) => _.merge(Object.fromEntries(prev.entries()), { geoId }));
+              }}
+              placeholder='Select State'
+              data={geoIdSelectOptions}
+              searchable
+            />
+          </div>
+        )}
+
         <ul className='lg:hidden'>
           {_.map(navbarLinks, (l, i) => (
             <li className='w-full' key={i}>
@@ -197,7 +241,7 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
           ))}
         </ul>
         {showOnLarge && matchPath('/data-dashboards/*', location.pathname) && (
-          <DataDashboardNav className='w-full hidden xl:block' />
+          <DataDashboardNav className='w-full hidden lg:block' />
         )}
       </div>
     </aside>
