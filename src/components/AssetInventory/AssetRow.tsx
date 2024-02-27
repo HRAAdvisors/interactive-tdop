@@ -7,9 +7,9 @@ import {
   ArrowPathIcon,
 } from '@heroicons/react/20/solid';
 import FocusArea from './FocusArea';
-import classNames from 'classnames';
 
 import CoveredPopulation from './CoveredPopulation';
+import { classNames } from '@/utils/helper';
 
 export default function AssetRow({ asset, filters }: any) {
   let [isOpen, setIsOpen] = useState(false);

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { uiData, countyFilter } from './uidata';
+import { uiData, countyFilter } from '../assetInventoryNew/uidata';
 import AssetRow from './AssetRow';
 import FiltersMobile from './FiltersMobile';
 import FiltersDesktop from './FiltersDesktop';
@@ -7,52 +7,44 @@ import ActiveFilters from './ActiveFilters';
 import Search from './Search';
 import Intro from './Intro';
 import AssetRowSkelton from './AssetRowSkeleton';
+import { useGetAssetInventoryQuery } from '@/services/dataDashboard';
 
 export default function AssetInventory() {
+  const { data, isLoading } = useGetAssetInventoryQuery();
   const [assets, setAssets] = useState<any[]>([]);
   const [allAssets, setAllAssets] = useState<any[]>([]);
   const [activeFilters, setActiveFilters] = useState<any[]>([]);
   const [activeCounties, setActiveCounties] = useState<any[]>([]);
   const [filters] = useState(uiData);
   let filteredCount = 1;
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('https://us-central1-airtable-texas.cloudfunctions.net/airtable_data')
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-      })
-      .then((data) => {
-        return data.records
-          .filter((asset: any) => {
-            if (
-              asset.fields.Asset &&
-              asset.fields['County (from Org County)'] &&
-              asset.fields['Asset Broadband Focus Area'] &&
-              asset.fields['Asset Covered Population'] &&
-              asset.fields['Organization Sub-Type']
-            ) {
-              return asset;
-            }
-          })
-          .sort((a: any, b: any) => {
-            if (a.fields.Asset < b.fields.Asset) {
-              return -1;
-            }
-            if (a.fields.Asset > b.fields.Asset) {
-              return 1;
-            }
-            return 0;
-          });
-      })
-      .then((assets) => {
-        setAssets(assets);
-        setAllAssets(assets);
-        setLoading(false);
-      });
-  }, []);
+    if (data) {
+      const assets = data.records
+        .filter((asset: any) => {
+          if (
+            asset.fields.Asset &&
+            asset.fields['County (from Org County)'] &&
+            asset.fields['Asset Broadband Focus Area'] &&
+            asset.fields['Asset Covered Population'] &&
+            asset.fields['Organization Sub-Type']
+          ) {
+            return asset;
+          }
+        })
+        .sort((a: any, b: any) => {
+          if (a.fields.Asset < b.fields.Asset) {
+            return -1;
+          }
+          if (a.fields.Asset > b.fields.Asset) {
+            return 1;
+          }
+          return 0;
+        });
+      setAssets(assets);
+      setAllAssets(assets);
+    }
+  }, [data]);
 
   useEffect(() => {
     const show = [] as any[];
@@ -106,7 +98,7 @@ export default function AssetInventory() {
           <h2 id='filter-heading' className='sr-only'>
             Filters
           </h2>
-          {!loading ? (
+          {!isLoading ? (
             <>
               <FiltersMobile
                 activeFilters={activeFilters}
@@ -142,7 +134,7 @@ export default function AssetInventory() {
       </div>
 
       <div className='h-full min-h-screen max-w-full p-5'>
-        {loading ? (
+        {isLoading ? (
           <ul>
             {Array(15)
               .fill(null)

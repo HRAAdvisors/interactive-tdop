@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { classNames } from '@/utils/helper';
 
 export default function FocusArea({ category, filters }: any) {
   const option = filters

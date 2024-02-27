@@ -3,7 +3,7 @@ import { Popover, Transition } from '@headlessui/react';
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import Select from 'react-select';
-import classNames from '@/utils/helper';
+import { classNames } from '@/utils/helper';
 
 export default function FiltersDesktop({
   filters,
