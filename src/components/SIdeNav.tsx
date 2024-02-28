@@ -202,7 +202,7 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
               onChange={(geoId) => {
                 setSearchParams((prev) => _.merge(Object.fromEntries(prev.entries()), { geoId }));
               }}
-              placeholder='Select State'
+              placeholder='Select Geography'
               data={geoIdSelectOptions}
               searchable
             />
