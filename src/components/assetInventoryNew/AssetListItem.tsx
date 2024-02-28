@@ -19,7 +19,7 @@ const AssetListItem = ({ asset, viewType }: { asset: AssetInfo; viewType: ViewTy
   return (
     <div
       className={classNames(
-        'flex flex-col font-inter border bg-white drop-shadow border-primary-800 rounded-3xl p-6 overflow-hidden',
+        'flex flex-col justify-between font-inter border bg-white drop-shadow border-primary-800 rounded-3xl p-6 overflow-hidden',
         viewType === ViewType.GRID && 'self-center min-h-72',
       )}
     >
@@ -62,7 +62,7 @@ const AssetListItem = ({ asset, viewType }: { asset: AssetInfo; viewType: ViewTy
           >
             <LocationIcon /> {asset.fields['County (from Org County)'][0]} County
           </div>
-          {asset.fields['Website'] && (
+          {asset.fields['Website'] ? (
             <a
               target='_blank'
               href={addHttpsPrefix(asset.fields['Website'])}
@@ -73,6 +73,15 @@ const AssetListItem = ({ asset, viewType }: { asset: AssetInfo; viewType: ViewTy
             >
               <LinkIcon /> {addHttpsPrefix(asset.fields['Website'])}
             </a>
+          ) : (
+            <div
+              className={classNames(
+                'cursor-pointer self-start text-xs flex gap-2 justify-center items-center px-3 py-1 rounded-xl border border-gray-200 text-gray-700',
+                viewType === ViewType.LIST && 'lg:self-center lg:justify-items-end',
+              )}
+            >
+              <LinkIcon /> No Link Found
+            </div>
           )}
         </div>
       </div>
