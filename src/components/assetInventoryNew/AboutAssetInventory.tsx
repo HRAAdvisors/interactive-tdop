@@ -1,18 +1,17 @@
-import abboutAsset from '@/assets/aboutAsset.png';
+import abboutAsset from '@/assets/aboutAsset.jpg';
 
 const AboutAssetInventory = () => (
-  <div className='flex min-h-screen  max-w-screen-xl px-8 m-auto py-10 items-center'>
-    <div className='flex w-full flex-col gap-16'>
-      <div className='flex flex-col w-full'>
-        <h2 className='text-4xl'>About the Resource Hub</h2>
-        <p className='py-3 text-gray-600'>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper mattis lorem
-          non.{' '}
-        </p>
-      </div>
-
-      <div className='flex flex-col-reverse lg:flex-row  w-full gap-12'>
-        <div className='flex flex-col w-full lg:w-1/2'>
+  <div className='flex min-h-screen max-w-screen-xl px-8 m-auto py-10 items-center'>
+    <div className='flex w-full flex-col lg:flex-row gap-16'>
+      <div className='flex flex-col w-full lg:w-1/2'>
+        <div className='flex flex-col'>
+          <h2 className='text-4xl'>About the Resource Hub</h2>
+          <p className='py-3 text-gray-600'>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper mattis lorem
+            non.{' '}
+          </p>
+        </div>
+        <div className='flex flex-col'>
           <p className='text-gray-600'>
             Dolor enim eu tortor urna sed duis nulla. Aliquam vestibulum, nulla odio nisl vitae. In
             aliquet pellentesque aenean hac vestibulum turpis mi bibendum diam. Tempor integer
@@ -34,9 +33,9 @@ const AboutAssetInventory = () => (
             </p>
           </div>
         </div>
-        <div className='w-full lg:w-1/2'>
-          <img src={abboutAsset} className='w-full' />
-        </div>
+      </div>
+      <div className='w-full lg:w-1/2 flex justify-center'>
+        <img src={abboutAsset} className='max-h-full w-auto' />
       </div>
     </div>
   </div>

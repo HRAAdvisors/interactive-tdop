@@ -88,8 +88,8 @@ export default function AssetInventory() {
       </div>
       <div className='py-2 text-slate-600 text-sm'>Search and filter below.</div>
 
-      <div className='flex flex-wrap w-full p-8 border-y border-gray-200'>
-        <div className='px-4 py-2 lg:w-1/4 md:w-1/2 w-full'>
+      <div className='flex flex-wrap w-full py-8 border-y border-gray-200'>
+        <div className='pr-8 py-2 lg:w-1/4 md:w-1/2 w-full'>
           <MultiSelect
             classNames={{
               label: 'text-gray-700 text-sm font-medium',
@@ -122,7 +122,7 @@ export default function AssetInventory() {
         </div>
 
         {_.map(filterDataAssetInventory, (filter, i) => (
-          <div key={i} className='px-4 py-2 lg:w-1/4 md:w-1/2 w-full'>
+          <div key={i} className='pr-8 py-2 lg:w-1/4 md:w-1/2 w-full'>
             <MultiSelect
               classNames={{
                 label: 'text-gray-700 text-sm font-medium',
