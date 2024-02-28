@@ -11,86 +11,102 @@ import {
   PencilIcon,
 } from '@heroicons/react/24/outline';
 
-export const uiData = [
+export interface FilterOption {
+  type: string;
+  label: string;
+  checked: boolean;
+  icon?: JSX.Element;
+  color?: string;
+  value?: string;
+}
+
+export interface FilterData {
+  id: string;
+  name: string;
+  explanation: string;
+  options: FilterOption[];
+}
+
+export const filterDataAssetInventory: FilterData[] = [
   {
     id: 'focus',
-    name: 'Type Of Service',
+    name: 'Service Type',
     explanation: `Looking for information on services such as local computer access? Click on “Computer Device
-    Access“ to see resources that provide this service. You may select more than one type of service to
+    Access“ to see resources that provide this service. You may select more than one Service Type to
     search for.`,
     options: [
       {
-        type: 'Type Of Service',
+        type: 'Service Type',
         label: 'Affordability and Adoption',
         checked: false,
         icon: <CurrencyDollarIcon className='w-5 h-5 text-bold' />,
         color: '#df3636',
       },
       {
-        type: 'Type Of Service',
+        type: 'Service Type',
         label: 'Broadband Access',
         checked: false,
         icon: <GlobeAltIcon className='w-5 h-5 text-bold' />,
         color: '#df3636',
       },
       {
-        type: 'Type Of Service',
+        type: 'Service Type',
         label: 'Computer Device Access',
         checked: false,
         icon: <DevicePhoneMobileIcon className=' w-5 h-5 text-bold' />,
         color: '#df3636',
       },
       {
-        type: 'Type Of Service',
+        type: 'Service Type',
         label: 'Cybersecurity and Privacy Training',
         checked: false,
         icon: <LockClosedIcon className=' w-5 h-5 text-bold' />,
         color: '#df3636',
       },
       {
-        type: 'Type Of Service',
+        type: 'Service Type',
         label: 'Digital Opportunity Program Funding',
         checked: false,
         icon: <BanknotesIcon className=' w-5 h-5 text-bold' />,
         color: '#df3636',
       },
       {
-        type: 'Type Of Service',
+        type: 'Service Type',
         label: 'Digital Opportunity Research',
         checked: false,
         icon: <PresentationChartBarIcon className=' w-5 h-5 text-bold' />,
         color: '#df3636',
       },
       {
-        type: 'Type Of Service',
+        type: 'Service Type',
         label: 'Digital Skills and Technical Support',
         checked: false,
         icon: <BookOpenIcon className=' w-5 h-5 text-bold' />,
         color: '#df3636',
       },
       {
-        type: 'Type Of Service',
+        type: 'Service Type',
         label: 'Planning or Organizing',
         checked: false,
         icon: <ListBulletIcon className=' w-5 h-5 text-bold' />,
         color: '#df3636',
       },
       {
-        type: 'Type Of Service',
+        type: 'Service Type',
         label: 'Public Computer Center',
         checked: false,
         icon: <ListBulletIcon className=' w-5 h-5 text-bold' />,
         color: '#df3636',
       },
       {
-        type: 'Type Of Service',
+        type: 'Service Type',
         label: 'Publicly Accessible Online Services',
         checked: false,
         icon: <BuildingLibraryIcon className=' w-5 h-5 text-bold' />,
         color: '#df3636',
       },
       {
-        type: 'Type Of Service',
+        type: 'Service Type',
         label: 'Workforce Development',
         checked: false,
         icon: <PencilIcon className=' w-5 h-5 text-bold' />,
@@ -100,157 +116,157 @@ export const uiData = [
   },
   {
     id: 'type',
-    name: 'Type of Organization',
+    name: 'Organization Type',
     explanation: `Looking for information on organizations that provide services and resources, such as a school?
     Click on “K-12 School“ in this filter to see K-12 Schools that provide digital opportunity resources.
-    You may select more than one type of organization.`,
+    You may select more than one Organization Type.`,
     options: [
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'City Government',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'Community Support or Community Based Organization',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'Community College',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'Council or Metropolitan Planning Organization',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'County Government',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'County Office of Education',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'For Profit Corporation or Business',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'Foundation Philanthropic Organization',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'Health Clinic or Health Center',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'Hospital or Other Medical Provider',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'Internet Service Provider',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'Labor Organization',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'Library',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'Local or Regional Authority',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'Non Profit Organization',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'Private University',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'Public Housing or Affordable Housing Organization',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'Public or State University',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'Public Safety Entity Government',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'Public Safety Entity Non Government',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'School K-12',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'Special District',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'State Government',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'Tribal Government',
       },
       {
-        type: 'Type of Organization',
+        type: 'Organization Type',
         checked: false,
         color: '#1ba331',
         label: 'Workforce Development Organization',
@@ -317,7 +333,7 @@ export const uiData = [
   },
 ];
 
-export const countyFilter = {
+export const countyFilter: FilterData = {
   id: 'County',
   name: 'County',
   explanation: 'The county in which this resource is located.',
@@ -1843,6 +1859,8 @@ export const countyFilter = {
     {
       value: 'Zavala',
       label: 'Zavala',
+      checked: false,
+      type: 'County',
     },
   ],
 };

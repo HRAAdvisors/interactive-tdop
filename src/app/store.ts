@@ -1,6 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import baseApi from './baseApi';
-import uiSlice from '@/stores/uiSlice';
+import  { uiReducer } from '@/stores/uiSlice';
+import { persistStore } from 'redux-persist';
 
 export const store = configureStore({
   // eslint-disable-next-line no-undef
@@ -9,9 +10,12 @@ export const store = configureStore({
     getDefaultMiddleware({ serializableCheck: false }).concat(baseApi.middleware),
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
-     ui: uiSlice.reducer,
+     ui: uiReducer,
   },
 });
+
+
+export const persistor = persistStore(store);
 
 
 export type AppDispatch = typeof store.dispatch;

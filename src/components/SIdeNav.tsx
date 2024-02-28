@@ -14,7 +14,7 @@ import { setShowSideNav } from '@/stores/uiSlice';
 import { navbarLinks } from './Navbar';
 import { useOnScreen } from '@/utils/customHooks';
 import { AiOutlineDown, AiOutlineRight } from 'react-icons/ai';
-import classNames from '@/utils/helper';
+import { classNames } from '@/utils/helper';
 import { Select } from '@mantine/core';
 
 const ScrollLinkWrapper = ({ section }: { section: SkeletonSection; isSubNav?: boolean }) => {
