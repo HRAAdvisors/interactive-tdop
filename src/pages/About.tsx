@@ -12,7 +12,7 @@ const AboutPage = () => {
       <Navbar shouldShowAllTime={true} />
       <SideNav />
       <div className='z-20 w-full h-full bg-[#FFFDF6] md:overflow-x-hidden'>
-        <div className='block md:grid md:grid-cols-12'>
+        <div className='block lg:grid lg:grid-cols-12'>
           <div className='flex flex-col justify-center content-center pt-24 md:pt-20 p-4 lg:pt-20 md:col-span-5 md:col-start-2'>
             <p className='text-[#111] text-xs uppercase tracking-widest'>
               Texas Broadband Development Office

@@ -4,7 +4,7 @@ import SideNav from '@/components/SIdeNav';
 import AssetInventory from '@/components/assetInventoryNew';
 
 import HeroLayout from '@/components/HeroLayout';
-import assetInventoryHero from '@/assets/assetInventoryHero.png';
+import assetInventoryHero from '@/assets/AssetHero.jpg';
 import AboutAssetInventory from '@/components/assetInventoryNew/AboutAssetInventory';
 
 const AssetInventoryPage = () => {
@@ -19,8 +19,14 @@ const AssetInventoryPage = () => {
         landingText={
           <>
             <p>
-              The Texas Digital Opportunity Resource Hub is designed to help anyone find digital
-              opportunity resources.
+              <strong>
+                Welcome! This site offers an interactive tool to explore the digital opportunity
+                resources currently operating in the state of Texas.
+              </strong>{' '}
+              <br></br>
+              <br></br>
+              Scroll below, filter using the dropdown menus, and click through the results to find
+              support for your digital opportunity need across Texas.
             </p>
           </>
         }
