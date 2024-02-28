@@ -119,3 +119,27 @@ export const UpArrowIcon = () => (
     />
   </svg>
 );
+
+export const DownCaretIcon = () => (
+  <svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <path
+      d='M5 7.5L10 12.5L15 7.5'
+      stroke='#667085'
+      strokeWidth='1.66667'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </svg>
+);
+
+export const QuestionCircleIcon = () => (
+  <svg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <path
+      d='M6.06016 5.99998C6.2169 5.55442 6.52626 5.17872 6.93347 4.9394C7.34067 4.70009 7.81943 4.61261 8.28495 4.69245C8.75047 4.7723 9.17271 5.01433 9.47688 5.37567C9.78106 5.737 9.94753 6.19433 9.94683 6.66665C9.94683 7.99998 7.94683 8.66665 7.94683 8.66665M8.00016 11.3333H8.00683M14.6668 7.99998C14.6668 11.6819 11.6821 14.6666 8.00016 14.6666C4.31826 14.6666 1.3335 11.6819 1.3335 7.99998C1.3335 4.31808 4.31826 1.33331 8.00016 1.33331C11.6821 1.33331 14.6668 4.31808 14.6668 7.99998Z'
+      stroke='#98A2B3'
+      strokeWidth='1.33333'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </svg>
+);

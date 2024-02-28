@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { uiData, countyFilter } from '../assetInventoryNew/uidata';
+import { uiData, countyFilter } from '../../static/filterDataAssetInventory';
 import AssetRow from './AssetRow';
 import FiltersMobile from './FiltersMobile';
 import FiltersDesktop from './FiltersDesktop';

@@ -11,7 +11,23 @@ import {
   PencilIcon,
 } from '@heroicons/react/24/outline';
 
-export const uiData = [
+export interface FilterOption {
+  type: string;
+  label: string;
+  checked: boolean;
+  icon?: JSX.Element;
+  color?: string;
+  value?: string;
+}
+
+export interface FilterData {
+  id: string;
+  name: string;
+  explanation: string;
+  options: FilterOption[];
+}
+
+export const filterDataAssetInventory: FilterData[] = [
   {
     id: 'focus',
     name: 'Service Type',
@@ -317,7 +333,7 @@ export const uiData = [
   },
 ];
 
-export const countyFilter = {
+export const countyFilter: FilterData = {
   id: 'County',
   name: 'County',
   explanation: 'The county in which this resource is located.',
@@ -1843,6 +1859,8 @@ export const countyFilter = {
     {
       value: 'Zavala',
       label: 'Zavala',
+      checked: false,
+      type: 'County',
     },
   ],
 };

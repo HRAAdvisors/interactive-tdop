@@ -1,16 +1,11 @@
-// App.js
-// import { useEffect, useState } from 'react';
-// import HeroLayout from '@/components/HeroLayout';
-// import { animateScroll as scroll } from 'react-scroll';
-// import GeoScrollytelling from '@/pages/geoScrollytelling/GeoScrollytelling';
-// import Navbar from '@/components/Navbar';
 import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import SideNav from '@/components/SIdeNav';
 import AssetInventory from '@/components/assetInventoryNew';
-import AssetInventoryOld from '@/components/AssetInventory/Index';
 
 import HeroLayout from '@/components/HeroLayout';
+import assetInventoryHero from '@/assets/assetInventoryHero.png';
+import AboutAssetInventory from '@/components/assetInventoryNew/AboutAssetInventory';
 
 const AssetInventoryPage = () => {
   useEffect(() => {
@@ -24,24 +19,17 @@ const AssetInventoryPage = () => {
         landingText={
           <>
             <p>
-              <strong>
-                Welcome! This site provides in-depth information about the digital divide and
-                digital opportunity in Texas.
-              </strong>{' '}
-              <br></br>
-              <br></br>
-              Scroll to explore the big picture, read Texas's plan, access the Digital Opportunity
-              Resource Finder, or dive deeper into data for your community.
+              The Texas Digital Opportunity Resource Hub is designed to help anyone find digital
+              opportunity resources.
             </p>
           </>
         }
-        imageHero='img/Cover.webp'
+        imageHero={assetInventoryHero}
       />
       <div className='w-full  pt-16 mx-auto'>
-        <div className='w-full flex'>
-          {/* <AssetInventoryOld /> */}
-
+        <div className='w-full flex flex-col'>
           <AssetInventory />
+          <AboutAssetInventory />
         </div>
       </div>
     </>
