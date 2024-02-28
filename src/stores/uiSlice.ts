@@ -2,13 +2,15 @@ import { DataDashboardApi } from '@/services/dataDashboard';
 import { AssetInfo } from '@/types/AssetInventory';
 import {  PayloadAction, createSlice } from '@reduxjs/toolkit';
 import _ from 'lodash';
+import persistReducer from 'redux-persist/es/persistReducer';
+import storage from 'redux-persist/lib/storage';
 
-interface MapSliceState {
+interface UiSliceState {
   showSideNav: boolean;
   assets: AssetInfo[]
 }
 
-const initialState: MapSliceState = {
+const initialState: UiSliceState = {
   showSideNav: false,
   assets: []
 };
@@ -55,7 +57,16 @@ const uiSlice = createSlice({
 
 export const { reset, setShowSideNav } = uiSlice.actions;
 
-export const uiReducer = uiSlice.reducer;
+
+
+export const uiReducer = persistReducer(
+  {
+    key: 'ui',
+    storage,
+    whitelist: ['assets'],
+  },
+  uiSlice.reducer,
+);
 
 export default uiSlice;
 

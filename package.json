@@ -17,7 +17,6 @@
     "@ap.cx/react-scrollama-wrapper": "^3.3.0",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
     "@hraadvisors/broadband-charts": "0.0.29",
     "@hraadvisors/standard-charts": "1.0.15",
@@ -48,8 +47,8 @@
     "react-router-dom": "^6.14.1",
     "react-scroll": "^1.9.0",
     "react-scrollama": "^2.3.3",
-    "react-select": "^5.8.0",
     "recharts": "^2.10.3",
+    "redux-persist": "^6.0.0",
     "scrollama": "^3.2.0",
     "styled-components": "^6.1.8",
     "yup": "^1.2.0"

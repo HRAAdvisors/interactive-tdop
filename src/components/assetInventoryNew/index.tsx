@@ -69,7 +69,7 @@ export default function AssetInventory() {
           <div
             onClick={() => setViewType(ViewType.GRID)}
             className={classNames(
-              'p-3 border  rounded-lg cursor-pointer',
+              'p-3 border bg-white drop-shadow rounded-lg cursor-pointer',
               viewType === ViewType.GRID ? 'border-blue-400' : 'border-gray-400',
             )}
           >
@@ -78,7 +78,7 @@ export default function AssetInventory() {
           <div
             onClick={() => setViewType(ViewType.LIST)}
             className={classNames(
-              'p-3 border  rounded-lg cursor-pointer',
+              'p-3 border bg-white drop-shadow rounded-lg cursor-pointer',
               viewType === ViewType.LIST ? 'border-blue-400' : 'border-gray-400',
             )}
           >
@@ -186,7 +186,9 @@ export default function AssetInventory() {
           viewType == ViewType.GRID && 'sm:grid-cols-2 lg:grid-cols-3 ',
         )}
       >
-        {isFetching && _.map(_.range(LIMIT), () => <AssetListItemSkeleton viewType={viewType} />)}
+        {isFetching &&
+          _.size(filteredAssets) < 1 &&
+          _.map(_.range(LIMIT), () => <AssetListItemSkeleton viewType={viewType} />)}
 
         {_.map(filteredAssets[currentPage - 1], (asset, i) => (
           <div key={i}>
