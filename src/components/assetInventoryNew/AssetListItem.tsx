@@ -105,14 +105,14 @@ const AssetListItem = ({ asset, viewType }: { asset: AssetInfo; viewType: ViewTy
           <div className='pt-3 transition-transform translate-y-0'>
             {asset.fields['Asset Description'] && (
               <>
-                <h4 className='text-sm font-semibold text-blue-800'>DESCRIPTION</h4>
+                <h3 className='text-sm font-semibold text-blue-800'>DESCRIPTION</h3>
                 <p className='text-xs leading-[18px] py-2'>{asset.fields['Asset Description']}</p>
               </>
             )}
 
             {_.size(asset.fields['Asset Broadband Focus Area']) > 0 && (
               <>
-                <h4 className='text-sm font-semibold text-blue-800'>SERVICES OFFERED</h4>
+                <h3 className='text-sm font-semibold text-blue-800'>SERVICES OFFERED</h3>
                 <div className='flex flex-wrap py-2 gap-2'>
                   {_.map(asset.fields['Asset Broadband Focus Area'], (focus, i) => (
                     <div

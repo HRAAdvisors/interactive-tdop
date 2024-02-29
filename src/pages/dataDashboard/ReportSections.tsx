@@ -29,9 +29,11 @@ const ReportSections = ({
 
   return (
     <ScrollElement name={`section${section.id}`} className='pt-28'>
-      <h3 className='text-2xl font-semibold pb-6'>{section.title}</h3>
+      <h3 className='text-black font-inter text-[1.5rem] font-normal tracking-normal leading-42 pb-6 uppercase'>
+        {section.title}
+      </h3>
       <article
-        className='prose max-w-none py-2'
+        className='max-w-none py-2 text-[1rem] leading-6'
         dangerouslySetInnerHTML={{ __html: section.summary.text }}
       />
       <div className='flex flex-wrap flex-col w-full justify-center p-2'>
