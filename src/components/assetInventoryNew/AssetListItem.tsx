@@ -45,7 +45,7 @@ const AssetListItem = ({ asset, viewType }: { asset: AssetInfo; viewType: ViewTy
               </span>
             ))}
           </div>
-          <h2 className='font-semibold text-base'>{asset.fields.Asset}</h2>
+          <h3 className='font-semibold text-base'>{asset.fields.Asset}</h3>
         </div>
 
         <div

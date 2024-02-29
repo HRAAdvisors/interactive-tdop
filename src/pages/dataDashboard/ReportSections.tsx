@@ -33,10 +33,10 @@ const ReportSections = ({
         {section.title}
       </h3>
       <article
-        className='max-w-none py-2 text-[1rem] leading-6'
+        className='max-w-none py-2 text-[0.9rem] leading-6'
         dangerouslySetInnerHTML={{ __html: section.summary.text }}
       />
-      <div className='flex flex-wrap flex-col w-full justify-center p-2'>
+      <div className='flex flex-wrap flex-col w-full justify-center py-2'>
         {_.map(_.chunk(filteredCharts, 2), (chartChunk) => (
           <div className='py-4 flex flex-wrap gap-8 w-full'>
             {_.map(chartChunk, (chart, key) => (

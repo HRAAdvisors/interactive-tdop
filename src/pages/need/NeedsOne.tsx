@@ -32,14 +32,14 @@ const NeedsOne = () => {
               </p>
               <div className='flex py-4'>
                 <div className='w-1/2 border-r pr-4'>
-                  <h2 className='border-b pb-2 uppercase'>Goal</h2>
+                  <h3 className='border-b pb-2 uppercase'>Goal</h3>
                   <strong>
                     Expand adoption of reliable, affordable broadband internet service at home for
                     all Texans, including individuals belonging to covered populations.
                   </strong>
                 </div>
                 <div className='w-1/2 pl-4'>
-                  <h2 className='uppercase border-b pb-2'>Task</h2>
+                  <h3 className='uppercase border-b pb-2'>Task</h3>
                   <i>
                     Increase the percentage of Texans with reliable broadband available in their
                     homes from 68% to 80% by 2030.

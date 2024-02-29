@@ -5,7 +5,7 @@ const AboutAssetInventory = () => (
     <div className='flex w-full flex-col lg:flex-row gap-16'>
       <div className='flex flex-col w-full lg:w-1/2'>
         <div className='flex flex-col'>
-          <h2 className='font-semibold text-[28px] subpixel-antialiased'>About the Resource Hub</h2>
+          <h3 className='font-semibold text-[28px] subpixel-antialiased'>About the Resource Hub</h3>
           <p className='py-3 text-gray-600'>
             Looking for organizations or local governments providing digital resources like free
             Wi-Fi access, internet skills class, or device loaning programs? The Texas Digital
