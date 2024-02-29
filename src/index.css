@@ -183,3 +183,12 @@ text-align: left !important;
 border-bottom: 1px solid #000 !important;
 padding-bottom: 0.5rem !important;
 }
+
+.css-1edathh {
+  color: #000 !important;
+  font-family: Inter !important;
+  font-size: 0.75rem !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: 150% !important; /* 18px */
+}
