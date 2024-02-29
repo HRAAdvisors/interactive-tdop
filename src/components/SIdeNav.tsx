@@ -201,6 +201,13 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
           <div className='w-full px-4 pb-10'>
             <p className='text-[0.9rem] pb-[0.375rem] font-semibold leading-5 uppercase'>
               Geography
+              <sup
+                className='text-red-500'
+                style={{ verticalAlign: 'bottom', lineHeight: 'normal' }}
+              >
+                {' '}
+                *
+              </sup>
             </p>
             <Select
               onChange={(geoId) => {
