@@ -20,13 +20,13 @@ const AssetInventoryPage = () => {
           <>
             <p>
               <strong>
-                Welcome! This site offers an interactive tool to explore the digital opportunity
-                resources currently operating in the state of Texas.
+                Welcome to the Resource Finder - an interactive tool for exploring the digital
+                opportunity resources available in Texas.
               </strong>{' '}
               <br></br>
               <br></br>
-              Scroll below, filter using the dropdown menus, and click through the results to find
-              support for your digital opportunity need across Texas.
+              Scroll, filter using the dropdown menus, and click through the results to find support
+              for digital opportunity needs across Texas.
             </p>
           </>
         }
@@ -38,11 +38,11 @@ const AssetInventoryPage = () => {
           <AboutAssetInventory />
         </div>
       </div>
-      {/* <div className='bg-[#ececec] grid md:grid-cols-12'>
+      <div className='bg-[#ececec] grid md:grid-cols-12'>
         <div className='flex flex-col md:col-start-3 px-4 md:px-0 md:col-span-12'>
           <p className='py-8'>© 2024 Texas Broadband Development Office | All rights reserved</p>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };

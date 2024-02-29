@@ -81,7 +81,7 @@ const ConclusionOne = () => {
   return (
     <div>
       <ScrollingSection contents={contents} id='unique-id-2' />
-      <div className='bg-[#FFFDF6] w-screen h-full px-4'>
+      <div className='bg-[#ececec] w-screen h-full px-4'>
         <div className='grid md:grid-cols-12'>
           <div className='flex flex-col md:col-start-3 px-4 md:px-0 md:col-span-12'>
             <p className='py-8'>© 2024 Texas Broadband Development Office | All rights reserved</p>
