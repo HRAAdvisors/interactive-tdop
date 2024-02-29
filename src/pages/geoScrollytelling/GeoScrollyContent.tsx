@@ -340,7 +340,7 @@ const contents: GeoScrollContent[] = [
         click below:
         <div className='py-8 justify-between'>
           <ButtonDark
-            className='mr-2'
+            className='mr-auto'
             text='Texas Digital Opportunity Plan'
             link='/interactivetdop'
           ></ButtonDark>

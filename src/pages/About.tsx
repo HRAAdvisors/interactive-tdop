@@ -22,13 +22,19 @@ const AboutPage = () => {
             </h1>
             <hr className='h-1 my-6'></hr>
             <p className='text-md my-2'>
-              <a href='https://comptroller.texas.gov/programs/broadband/' className='underline'>
+              <a
+                href='https://comptroller.texas.gov/programs/broadband/'
+                className='underline md:hover:text-[#ececec] transition-colors duration-300'
+              >
                 The State of Texas Broadband Development Office (BDO)
               </a>{' '}
               developed this hub to create an immersive, interactive platform to compliment the
               publication of the Texas Digital Opportunity Plan. This product was developed in
               partnership with{' '}
-              <a href='https://www.hraadvisors.com/' className='underline'>
+              <a
+                href='https://www.hraadvisors.com/'
+                className='underline md:hover:text-[#ececec] transition-colors duration-300'
+              >
                 HR&A Advisors.
               </a>
             </p>
@@ -37,10 +43,10 @@ const AboutPage = () => {
               Texas Digital Opportunity Survey, and the 2023 Texas Digital Resources Mapping Tool
               Survey (DRMTS).
             </p>
-            <p className='text-md my-2 font-bold'>
+            {/* <p className='text-md my-2 font-bold'>
               This is a work in progress. Do not share this product without the consent of the BDO.
-            </p>
-            <p className='text-md my-2'>
+            </p> */}
+            <p className='text-md my-2 font-bold'>
               Join us in creating a greater state of digital opportunity.
             </p>
           </div>

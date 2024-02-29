@@ -32,6 +32,11 @@ const GeoIntro = () => {
         imageHero='img/Cover.webp'
       />
       <GeoScrollytelling />
+      <div className='grid md:grid-cols-12'>
+        <div className='flex flex-col md:col-start-3 px-4 md:px-0 md:col-span-12'>
+          <p className='py-8'>© 2024 Texas Broadband Development Office | All rights reserved</p>
+        </div>
+      </div>
     </>
   );
 };

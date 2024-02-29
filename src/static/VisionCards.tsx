@@ -51,7 +51,7 @@ const VisionCards = {
         broadband access, Internet adoption, and health outcomes” in{' '}
         <a
           href='https://www.fcc.gov/health/SDOH'
-          className=' text-blue-600 text-sm hover:underline'
+          className=' underline md:hover:text-[#ececec] transition-colors duration-300'
         >
           recent reports
         </a>

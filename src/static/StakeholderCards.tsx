@@ -15,7 +15,7 @@ const StakeholderCards = {
           The plan is designed to reach Texans who historically have less digital opportunity – it
           refers to these groups as “covered populations”. Covered populations are specified in the{' '}
           <a
-            className='text-blue-600 text-sm hover:underline hover:font-medium'
+            className='underline md:hover:text-[#ececec] transition-colors duration-300'
             href='https://broadbandusa.ntia.doc.gov/sites/default/files/2022-06/DE-FAQs.pdf'
           >
             Digital Equity Act of 2021
@@ -50,7 +50,7 @@ const StakeholderCards = {
         The BDO created groups of experts and informed citizens to work on{' '}
         <a
           href='https://infinite-peak-70034.herokuapp.com/images/app_a.pdf'
-          className=' text-blue-600 text-sm hover:underline'
+          className='underline md:hover:text-[#ececec] transition-colors duration-300'
         >
           the six areas
         </a>{' '}
