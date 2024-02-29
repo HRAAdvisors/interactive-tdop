@@ -30,7 +30,7 @@ const DataDashboards = () => {
     <div className='flex flex-col'>
       <Navbar shouldShowAllTime={true} />
       <SideNav showOnLarge={true} />
-      <main className='lg:pl-80 min-h-screen' id='dashboardMain'>
+      <main className='lg:pl-80 xl:pl-96 min-h-screen' id='dashboardMain'>
         <ReportChapters isLoading={isLoading} reportOutput={reportData} />
       </main>
     </div>

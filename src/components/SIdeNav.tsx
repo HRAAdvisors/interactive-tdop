@@ -119,7 +119,7 @@ const DataDashboardNav = ({
               <span className='ms-3'>{l.first.title}</span>
             </Link>
             {_.isEqual(pageId, l.first.pageId) && (
-              <ul className='space-y-3 py-2 px-4 bg-gray-100 shadow-inner max-h-72 overflow-y-auto w-full'>
+              <ul className='space-y-3 py-2 px-4  shadow-inner max-h-72 overflow-y-auto w-full'>
                 {_.map(l.chapters, (chapter, j) => (
                   <Fragment key={j}>
                     {_.size(l.chapters) > 1 && (
@@ -192,12 +192,20 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
   return (
     <aside
       ref={sideNavRef}
-      className={`fixed inset-y-0 left-0 pt-16 bg-gray-50 z-40 w-[80vw] lg:w-80  transition-transform ${showSideNav ? 'translate-x-0' : `-translate-x-full ${showOnLarge && 'lg:translate-x-0'}`} `}
+      className={classNames(
+        'fixed inset-y-0 left-0 pt-16 z-40 w-[80vw] lg:bg-basic bg-gray-50 lg:w-80 xl:w-96  transition-transform ',
+        showSideNav ? 'translate-x-0' : `-translate-x-full ${showOnLarge && 'lg:translate-x-0'}`,
+      )}
       aria-label='Sidebar'
     >
-      <div className='h-full py-4 overflow-y-auto border-r border-gray-100'>
+      <div
+        className={classNames('h-full lg:mt-12 py-4 overflow-y-auto lg:border-r lg:border-black')}
+      >
         {matchPath('/data-dashboards/*', location.pathname) && (
-          <div className='w-full px-4'>
+          <div className='w-full px-4 py-8'>
+            <div className='font-semibold text-sm py-2'>
+              GEOGRAPHY<sup className='text-red-600'>*</sup>
+            </div>
             <Select
               onChange={(geoId) => {
                 setSearchParams((prev) => _.merge(Object.fromEntries(prev.entries()), { geoId }));
@@ -215,7 +223,12 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
               <div className='w-full'>
                 <Link
                   onClick={() => dispatch(setShowSideNav(false))}
-                  className={`w-full flex flex-row items-center text-md md:text-lg px-3 py-2  ${matchPath(`${l.link}/*`, location.pathname) ? 'font-semibold bg-gray-100 text-blue-900' : 'hover:bg-gray-100 text-gray-700'}`}
+                  className={classNames(
+                    'w-full flex flex-row items-center text-md md:text-lg px-3 py-2',
+                    matchPath(`${l.link}/*`, location.pathname)
+                      ? 'font-semibold bg-gray-100 text-blue-900'
+                      : 'hover:bg-gray-100 text-gray-700',
+                  )}
                   to={`${l.link}`}
                 >
                   {l.hasChildren ? (
@@ -230,7 +243,7 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
                     <div className='w-4'>&nbsp;&nbsp;</div>
                   )}
 
-                  <span className='ml-4'>{l.text}</span>
+                  <span className='ml-4 text-base'>{l.text}</span>
                 </Link>
                 {_.isEqual(l.link, '/data-dashboards') &&
                   matchPath('/data-dashboards/*', location.pathname) && (
