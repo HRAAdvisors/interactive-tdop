@@ -203,7 +203,7 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
           'h-full md:h-[90%] lg:mt-8 py-4 md:mb-10 overflow-y-auto lg:border-r lg:border-black',
         )}
       >
-        {matchPath('/data-dashboards/*', location.pathname) && (
+        {/* {matchPath('/data-dashboards/*', location.pathname) && (
           <div className='w-full px-4 py-8 md:pt-0'>
             <div className='font-semibold text-sm py-2'>
               GEOGRAPHY<sup className='text-red-600'>*</sup>
@@ -217,7 +217,7 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
               searchable
             />
           </div>
-        )}
+        )} */}
 
         <ul className='lg:hidden'>
           {_.map(navbarLinks, (l, i) => (
