@@ -228,6 +228,7 @@ const dataPointGenerator = (
     dataPointGeneratorName === DataPointGeneratorName.cybersecurityAwareness &&
     ChartId.TXCybersecurityAwareness === chartId
   ) {
+    console.log(aggregatedChoroplethData);
     return (
       parseFloat(aggregatedChoroplethData?.[geoId]?.['hid11']?.['percent'])
     ).toFixed(0);
