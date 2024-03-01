@@ -103,7 +103,7 @@ const DataDashboardNav = ({
             <Link
               className={classNames(
                 _.isEqual(pageId, l.first?.pageId)
-                  ? 'font-bold bg-gray-100'
+                  ? 'font-bold bg-gray-50'
                   : 'hover:bg-gray-100 text-gray-600 ',
                 isSubNav ? 'pl-6 pr-2 text-sm' : ' px-4 text-md',
                 'w-full  flex  items-center py-2',
@@ -120,7 +120,7 @@ const DataDashboardNav = ({
               <span className='ms-6'>{l.first.title}</span>
             </Link>
             {_.isEqual(pageId, l.first.pageId) && (
-              <ul className='space-y-3 py-2 md:px-10 px-11  shadow-inner max-h-72 overflow-y-auto w-full'>
+              <ul className='space-y-3 py-2 md:px-10 px-11 thin-scrollbar shadow-inner max-h-72 overflow-y-auto w-full'>
                 {_.map(l.chapters, (chapter, j) => (
                   <Fragment key={j}>
                     {_.size(l.chapters) > 1 && (
@@ -229,7 +229,7 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
                   className={classNames(
                     'w-full flex flex-row items-center text-md md:text-lg px-3 py-2',
                     matchPath(`${l.link}/*`, location.pathname)
-                      ? 'font-bold bg-gray-100'
+                      ? 'font-bold bg-gray-50'
                       : 'hover:bg-gray-100 text-gray-700',
                   )}
                   to={`${l.link}`}
