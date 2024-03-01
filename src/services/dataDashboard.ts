@@ -8,20 +8,20 @@ import { AssetInfo } from '@/types/AssetInventory';
 export const DataDashboardApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getSkeleton: builder.query<ReportSkeleton, { geoId?: number | string, reportId?: string } | void>({
-      query: ({ reportId ='65ca21e530f4721b57e203d8',  geoId = 48 } = {}) => ({
+      query: ({ reportId ='65e0bdac580dd5243152feff',  geoId = 48 } = {}) => ({
         method: 'GET',
         url: `reports/${reportId}/output/${ geoId }/skeleton`,
       }),
     }),
     getReport: builder.query<ReportOutput<StandardChart>, { geoId?: number| string, reportId?: string , pick: string  } >({
-      query: ({ reportId ='65ca21e530f4721b57e203d8',  geoId = 48, pick }) => ({
+      query: ({ reportId ='65e0bdac580dd5243152feff',  geoId = 48, pick }) => ({
         method: 'GET',
         url: `reports/${reportId}/output/${ geoId }`,
         params: { pick }
       }),
     }),
     getBoundaries: builder.query<{ boundaries: Boundaries}, { geoId?: number| string, reportId?: string  } | void >({
-      query: ({ reportId ='65ca21e530f4721b57e203d8',  geoId = 48 }  = {}) => ({
+      query: ({ reportId ='65e0bdac580dd5243152feff',  geoId = 48 }  = {}) => ({
         method: 'GET',
         url: `reports/${reportId}/output/${ geoId }/boundaries?container=state&peers=65428489b4440631aad90229&segments=county`,
       }),
