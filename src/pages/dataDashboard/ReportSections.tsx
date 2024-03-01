@@ -37,8 +37,8 @@ const ReportSections = ({
         dangerouslySetInnerHTML={{ __html: section.summary.text }}
       />
       <div className='flex flex-wrap flex-col w-full justify-center py-2'>
-        {_.map(_.chunk(filteredCharts, 2), (chartChunk) => (
-          <div className='py-4 flex flex-wrap gap-8 w-full'>
+        {_.map(_.chunk(filteredCharts, 2), (chartChunk, i) => (
+          <div key={i} className='py-4 flex flex-wrap gap-8 w-full'>
             {_.map(chartChunk, (chart, key) => (
               <div key={key} className='lg:flex-1 bg-white shadow-lg p-6 z-10 w-full text-black'>
                 {/standard-charts/.test(chart.library) && (
