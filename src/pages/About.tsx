@@ -30,9 +30,10 @@ const AboutPage = () => {
               >
                 The State of Texas Broadband Development Office (BDO)
               </a>{' '}
-              developed this hub to create an immersive, interactive platform to compliment the
-              publication of the Texas Digital Opportunity Plan. The BDO developed this site in
-              partnership with{' '}
+              developed this accessible, interactive platform to invite participation in the
+              advancement of digital opportunity for all Texans. The Hub complements the publication
+              of the Texas Digital Opportunity Plan. The BDO developed this site in partnership
+              with {' '}
               <a
                 href='https://www.hraadvisors.com/'
                 className='underline md:hover:text-[#ececec] transition-colors duration-300'
@@ -74,7 +75,7 @@ const AboutPage = () => {
             </p>
             <p className='text-md my-2'>
               The Hub offers resources to understand the current state of digital opportunity in
-              Texas and the State's plan to expand it for all Texas; to build opportunities and
+              Texas and the State’s plan to expand it for all Texans; to build opportunities and
               solutions for Texas communities and geographies; and to find digital opportunity
               resources across the state.
             </p>
