@@ -6,7 +6,7 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import _ from 'lodash';
 
 const DataDashboards = () => {
-  const { pageId = 'home' } = useParams();
+  const { pageId = 'the-texas-digital-opportunity-survey' } = useParams();
   let [searchParams] = useSearchParams();
 
   const { data: skeletonData, isLoading: isLoadingSkeleton } = useGetSkeletonQuery({
