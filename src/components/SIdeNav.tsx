@@ -102,7 +102,7 @@ const DataDashboardNav = ({
             <Link
               className={classNames(
                 _.isEqual(pageId, l.first?.pageId)
-                  ? 'font-semibold bg-gray-100 text-blue-900'
+                  ? 'font-bold bg-gray-100'
                   : 'hover:bg-gray-100 text-gray-600 ',
                 isSubNav ? 'pl-6 pr-2 text-sm' : ' px-4 text-md',
                 'w-full  flex  items-center py-2',
@@ -116,10 +116,10 @@ const DataDashboardNav = ({
               }}
             >
               {_.isEqual(pageId, l.first?.pageId) ? <AiOutlineDown /> : <AiOutlineRight />}
-              <span className='ms-3'>{l.first.title}</span>
+              <span className='ms-6'>{l.first.title}</span>
             </Link>
             {_.isEqual(pageId, l.first.pageId) && (
-              <ul className='space-y-3 py-2 px-4  shadow-inner max-h-72 overflow-y-auto w-full'>
+              <ul className='space-y-3 py-2 md:px-10 px-11  shadow-inner max-h-72 overflow-y-auto w-full'>
                 {_.map(l.chapters, (chapter, j) => (
                   <Fragment key={j}>
                     {_.size(l.chapters) > 1 && (
@@ -199,7 +199,9 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
       aria-label='Sidebar'
     >
       <div
-        className={classNames('h-full lg:mt-8 py-4 overflow-y-auto lg:border-r lg:border-black')}
+        className={classNames(
+          'h-full md:h-[90%] lg:mt-8 py-4 md:mb-10 overflow-y-auto lg:border-r lg:border-black',
+        )}
       >
         {matchPath('/data-dashboards/*', location.pathname) && (
           <div className='w-full px-4 py-8 md:pt-0'>
@@ -226,7 +228,7 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
                   className={classNames(
                     'w-full flex flex-row items-center text-md md:text-lg px-3 py-2',
                     matchPath(`${l.link}/*`, location.pathname)
-                      ? 'font-semibold bg-gray-100 text-blue-900'
+                      ? 'font-bold bg-gray-100'
                       : 'hover:bg-gray-100 text-gray-700',
                   )}
                   to={`${l.link}`}
