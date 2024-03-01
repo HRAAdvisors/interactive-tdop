@@ -1,8 +1,9 @@
-import {
-  useGetBoundariesQuery,
-  useGetSkeletonQuery,
-  usePrefetchDataDashboard,
-} from '@/services/dataDashboard';
+// import {
+//   useGetBoundariesQuery,
+//   useGetSkeletonQuery,
+//   usePrefetchDataDashboard,
+// } from '@/services/dataDashboard';
+import { useGetSkeletonQuery, usePrefetchDataDashboard } from '@/services/dataDashboard';
 import _ from 'lodash';
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { Link, matchPath, useLocation, useSearchParams } from 'react-router-dom';
@@ -15,7 +16,7 @@ import { navbarLinks } from './Navbar';
 import { useOnScreen } from '@/utils/customHooks';
 import { AiOutlineDown, AiOutlineRight } from 'react-icons/ai';
 import { classNames } from '@/utils/helper';
-import { Select } from '@mantine/core';
+// import { Select } from '@mantine/core';
 
 const ScrollLinkWrapper = ({ section }: { section: SkeletonSection; isSubNav?: boolean }) => {
   const refScrollLink = useRef<HTMLLIElement>(null);
@@ -149,7 +150,7 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
   const showSideNav = useAppSelector((store) => store.ui.showSideNav);
   const sideNavRef = useRef<HTMLElement>(null);
   const dispatch = useAppDispatch();
-  const [_searchParams, setSearchParams] = useSearchParams();
+  // const [_searchParams, setSearchParams] = useSearchParams();
 
   const handleClickOutside: EventListener = (event) => {
     if (sideNavRef.current && !sideNavRef.current?.contains(event.target as any)) {
@@ -157,30 +158,30 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
     }
   };
 
-  const { data: boundaryData } = useGetBoundariesQuery();
+  // const { data: boundaryData } = useGetBoundariesQuery();
 
-  const boundaries = _.first(_.toArray(boundaryData?.boundaries));
+  // const boundaries = _.first(_.toArray(boundaryData?.boundaries));
 
-  const geoIdSelectOptions = _(boundaries)
-    .groupBy((b) => {
-      const props = b.feature.properties as any;
-      if (props.GEOID === props.STATEFP) {
-        return 'State';
-      } else if (props.GEOID === `${props.STATEFP}${props.COUNTYFP}`) {
-        return 'County';
-      } else if (props.GEOID === `${props.STATEFP}${props.COUNTYFP}${props.TRACTCE}`) {
-        return 'Tract';
-      }
-      return 'Region';
-    })
-    .map((options, index) => ({
-      group: index,
-      items: _.map(options, (option) => ({
-        value: (option.feature.properties as any).GEOID,
-        label: (option.feature.properties as any).NAME,
-      })),
-    }))
-    .value();
+  // const geoIdSelectOptions = _(boundaries)
+  //   .groupBy((b) => {
+  //     const props = b.feature.properties as any;
+  //     if (props.GEOID === props.STATEFP) {
+  //       return 'State';
+  //     } else if (props.GEOID === `${props.STATEFP}${props.COUNTYFP}`) {
+  //       return 'County';
+  //     } else if (props.GEOID === `${props.STATEFP}${props.COUNTYFP}${props.TRACTCE}`) {
+  //       return 'Tract';
+  //     }
+  //     return 'Region';
+  //   })
+  //   .map((options, index) => ({
+  //     group: index,
+  //     items: _.map(options, (option) => ({
+  //       value: (option.feature.properties as any).GEOID,
+  //       label: (option.feature.properties as any).NAME,
+  //     })),
+  //   }))
+  //   .value();
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
