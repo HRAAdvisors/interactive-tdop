@@ -202,6 +202,14 @@ const dataPointGenerator = (
     dataPointGeneratorName === DataPointGeneratorName.costAsBarrier &&
     ChartId.TXCostBarrier === chartId
   ) {
+    console.log(aggregatedChoroplethData);
+    // const costBarrier = aggregatedChoroplethData?.[geoId]?.['hid11']?.['percent'];    
+    // if( costBarrier) {  
+    //   return (parseFloat(costBarrier)
+    //   ).toFixed(0);
+    //   } else {
+    //       return null;
+    //   }
     return (
       parseFloat(aggregatedChoroplethData?.[geoId]?.['hid13_1']?.['percent'])
     ).toFixed(0);
