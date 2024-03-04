@@ -91,7 +91,7 @@ const AboutPage = () => {
             </p>
           </div>
           <div className='flex flex-col md:col-start-8 md:col-span-5 object-cover'>
-            <img src='img/About.jpg' className='h-[50vh] md:h-full object-cover' />
+            <img src='img/About.jpg' className='h-[50vh] md:h-full 2xl:h-screen object-cover' />
           </div>
         </div>
       </div>
