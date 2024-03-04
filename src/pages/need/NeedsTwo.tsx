@@ -21,15 +21,20 @@ const NeedsTwo = () => {
               <CollapsibleCard
                 defaultOpen={true}
                 taskNumber='1.1'
-                goalTitle='Increase the percentage of Texans with reliable high-speed internet subscriptions, including Texans belonging to all covered population groups (except those currently incarcerated).'
+                goalTitle='Increase the
+                percentage of Texans with
+                reliable broadband
+                subscriptions, including
+                Texans belonging to all
+                covered population groups
+                (except those currently
+                incarcerated).'
                 mapTitle='Households with High-speed Internet'
                 description={
                   <div>
                     <p className='mb-2'>
                       Today,{' '}
-                      <strong>
-                        32% of Texan households do not subscribe to broadband internet.
-                      </strong>
+                      <strong>68% of Texas households subscribe to broadband internet.</strong>
                     </p>{' '}
                     <p>
                       Certain regions of Texas have higher rates of subscription, while others are
@@ -141,8 +146,9 @@ const NeedsTwo = () => {
             <div className='mx-auto mb-20'>
               <h1 className='md:text-4xl text-2xl uppercase my-5 font-montserrat'>Goal No. 2</h1>
               <p>
-                All Texans have access to affordable computers and other internet-enabled devices in
-                their home, with corresponding technical support services.
+                All Texans, including those belonging to covered population groups, have access to
+                affordable computers and other internet-enabled devices in the home, with
+                corresponding technical support services.
               </p>
               <hr className='my-5' />
               <CollapsibleCard
@@ -166,8 +172,8 @@ const NeedsTwo = () => {
                 }
                 targetText={
                   <p>
-                    <strong>90% of Texans</strong> have a smartphone only and no other computing
-                    device by 2030.
+                    <strong>90% of Texans</strong> have a computing device other than a smartphone
+                    by 2030.
                   </p>
                 }
                 stackedBarData={89}
@@ -229,8 +235,9 @@ const NeedsTwo = () => {
             <div className='mx-auto mb-20'>
               <h1 className='md:text-4xl text-2xl uppercase my-5 font-montserrat'>Goal No. 3</h1>
               <p>
-                All Texans have a broad foundation of digital literacy skills and access to a
-                continuum of digital skills development programs.
+                All Texans, including those belonging to covered population groups, have a broad
+                foundation of digital literacy skills and access to a continuum of digital skills
+                development programs.
               </p>
               <hr className='my-5' />
               <CollapsibleCard
@@ -277,7 +284,10 @@ const NeedsTwo = () => {
               />
               <CollapsibleCard
                 taskNumber='3.2'
-                goalTitle='Increase the availability of digital literacy programs and services.'
+                goalTitle='Increase the
+                availability of digital
+                literacy programs and
+                services.'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -311,7 +321,14 @@ const NeedsTwo = () => {
               />
               <CollapsibleCard
                 taskNumber='3.3'
-                goalTitle='Increase the percentage of Texas workers who have the level of digital skills training jobs require.'
+                goalTitle='Increase the
+                percentage of Texas
+                workers who have the level
+                of skills training jobs
+                require by supporting a
+                continuum of digital
+                literacy skills beyond basic
+                digital literacy.'
                 description={
                   <div>
                     <p className='mb-2'>
@@ -348,8 +365,8 @@ const NeedsTwo = () => {
             <div className='mx-auto mb-20'>
               <h1 className='md:text-4xl text-2xl uppercase my-5 font-montserrat'>Goal No. 4</h1>
               <p>
-                All Texans feel safe online and are familiar with cybersecurity and online privacy
-                measures.
+                All Texans, including those belonging to covered population groups, feel safe online
+                and are familiar with cybersecurity and online privacy measures
               </p>
               <hr className='my-5' />
               <CollapsibleCard
@@ -399,13 +416,14 @@ const NeedsTwo = () => {
             <div className='mx-auto mb-20'>
               <h1 className='md:text-4xl text-2xl uppercase my-5 font-montserrat'>Goal No. 5</h1>
               <p>
-                Increase the percentage of Texans who utilize the internet for public resources and
-                services.
+                Improve access to online public resources and services for all Texans, including
+                those belonging to covered population groups.
               </p>
               <hr className='my-5' />
               <CollapsibleCard
                 taskNumber='5.1'
-                goalTitle='Increase the percentage of Texans who utilize and understand how to use the internet for public resources and services (using accessing healthcare as a baseline).'
+                goalTitle='Increase the
+                percentage of Texans who utilize the internet to access public resources and services (using health care access as a baseline).'
                 mapTitle='Texans Reporting Usage of the Internet to Access Healthcare'
                 description={
                   <div>
