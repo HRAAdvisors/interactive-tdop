@@ -50,6 +50,12 @@ export default function AssetInventory() {
           ) {
             return false;
           }
+          // Check if the 'Hide' field equals 'true'
+          if (asset.fields['Hide'] === true) {
+            console.log('Hidden!');
+
+            return false;
+          }
 
           return true;
         }),
