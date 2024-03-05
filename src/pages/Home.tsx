@@ -66,6 +66,7 @@ const Home = () => {
             </>
           }
           imageHero='img/HeroTwo.jpg'
+          title='Texas Digital Opportunity Plan'
         />
       </Element>
       <Element name='intro'>

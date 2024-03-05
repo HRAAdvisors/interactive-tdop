@@ -30,6 +30,7 @@ const GeoIntro = () => {
           </>
         }
         imageHero='img/Cover.webp'
+        title='Digital Opportunity for Texans'
       />
       <GeoScrollytelling />
       <div className='grid bg-[#ececec] md:grid-cols-12'>

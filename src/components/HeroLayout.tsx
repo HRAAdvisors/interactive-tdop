@@ -4,9 +4,11 @@ import ScrollArrowSolid from './ScrollArrowSolid';
 const HeroLayout = ({
   landingText,
   imageHero,
+  title,
 }: {
   landingText: string | JSX.Element;
   imageHero: string;
+  title: string;
 }) => {
   // Specify the type of elements the ref will refer to - HTMLDivElement in this case
   const heroLayoutRef = useRef<HTMLDivElement | null>(null);
@@ -30,7 +32,7 @@ const HeroLayout = ({
             Texas Broadband Development Office
           </p>
           <h1 className='md:text-6xl sm:text-2xl text-2xl font-semibold pt-6 uppercase tracking-widest z-10'>
-            Texas Digital Opportunity Hub
+            {title}
           </h1>
           <hr className='h-1 my-6'></hr>
           <p className='text-md'>{landingText}</p>
