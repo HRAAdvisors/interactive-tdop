@@ -17,6 +17,8 @@ const StakeholderCards = {
           <a
             className='underline md:hover:text-[#ececec] transition-colors duration-300'
             href='https://broadbandusa.ntia.doc.gov/sites/default/files/2022-06/DE-FAQs.pdf'
+            target='_blank'
+            rel='noopener'
           >
             Digital Equity Act of 2021
           </a>{' '}
@@ -50,6 +52,8 @@ const StakeholderCards = {
         The BDO created groups of experts and informed citizens to work on{' '}
         <a
           href='https://infinite-peak-70034.herokuapp.com/images/app_a.pdf'
+          target='_blank'
+          rel='noopener'
           className='underline md:hover:text-[#ececec] transition-colors duration-300'
         >
           the six areas

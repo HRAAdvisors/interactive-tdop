@@ -65,6 +65,7 @@ const AssetListItem = ({ asset, viewType }: { asset: AssetInfo; viewType: ViewTy
           {asset.fields['Website'] ? (
             <a
               target='_blank'
+              rel='noopener'
               href={addHttpsPrefix(asset.fields['Website'])}
               className={classNames(
                 'cursor-pointer self-start text-xs flex gap-2 justify-center items-center px-3 py-1 rounded-xl border border-gray-200 text-gray-700',

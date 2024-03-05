@@ -51,6 +51,8 @@ const VisionCards = {
         broadband access, Internet adoption, and health outcomes” in{' '}
         <a
           href='https://www.fcc.gov/health/SDOH'
+          target='_blank'
+          rel='noopener'
           className=' underline md:hover:text-[#ececec] transition-colors duration-300'
         >
           recent reports
