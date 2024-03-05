@@ -29,7 +29,7 @@ export const DataDashboardApi = baseApi.injectEndpoints({
     getAssetInventory: builder.query<{ records: AssetInfo[]}, void >({
       query: () => ({
         method: 'GET',
-        url: `https://us-central1-airtable-texas.cloudfunctions.net/airtable_data`,
+        url: `https://resourcefinder-qqszjokhaq-uc.a.run.app/`,
       }),
     }),
   }),
