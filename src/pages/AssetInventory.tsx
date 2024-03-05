@@ -31,6 +31,7 @@ const AssetInventoryPage = () => {
           </>
         }
         imageHero={assetInventoryHero}
+        title='Texas Resource Finder'
       />
       <div className='w-full  pt-16 mx-auto'>
         <div className='w-full flex flex-col'>
