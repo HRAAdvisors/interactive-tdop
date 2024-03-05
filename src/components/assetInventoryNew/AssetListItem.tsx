@@ -135,6 +135,24 @@ const AssetListItem = ({ asset, viewType }: { asset: AssetInfo; viewType: ViewTy
                 </div>
               </>
             )}
+            {_.size(asset.fields['Asset Broadband Focus Area']) > 0 && (
+              <>
+                <h3 className='text-sm font-semibold text-blue-800'>COVERED POPULATIONS</h3>
+                <div className='flex flex-wrap py-2 gap-2'>
+                  {_.map(asset.fields['Asset Covered Population'], (focus, i) => (
+                    <div
+                      key={i}
+                      className={classNames(
+                        'flex gap-2 text-xs leading-5 justify-center items-center px-3 py-1 rounded-lg border border-gray-200 text-gray-700',
+                        viewType === ViewType.LIST ? 'lg:self-center' : '',
+                      )}
+                    >
+                      {focus}
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         )}
       </div>
