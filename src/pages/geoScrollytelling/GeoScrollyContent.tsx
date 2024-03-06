@@ -51,7 +51,8 @@ const contents: GeoScrollContent[] = [
     containerClassNames: 'text-white text-lg bg-[#111]',
     getContent: () => (
       <p className='lg:w-[60vw] md:p-60 w-90vw p-5'>
-        Texas ranks <strong>32 out of 50</strong> for internet adoption.
+        According to the US Census Bureau, Texas ranks <strong>32 out of 50</strong> for internet
+        adoption.
       </p>
     ),
   },
