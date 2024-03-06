@@ -23,7 +23,7 @@ export const DataDashboardApi = baseApi.injectEndpoints({
     getBoundaries: builder.query<{ boundaries: Boundaries}, { geoId?: number| string, reportId?: string  } | void >({
       query: ({ reportId ='65e0bdac580dd5243152feff',  geoId = 48 }  = {}) => ({
         method: 'GET',
-        url: `reports/${reportId}/output/${ geoId }/boundaries?container=state&peers=65428489b4440631aad90229&segments=county`,
+        url: `reports/${reportId}/output/${ geoId }/boundaries?container=state&peers=65428489b4440631aad90229&segments=65428489b4440631aad90229`,
       }),
     }),
     getAssetInventory: builder.query<{ records: AssetInfo[]}, void >({
