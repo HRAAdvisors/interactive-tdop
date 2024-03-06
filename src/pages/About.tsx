@@ -26,6 +26,8 @@ const AboutPage = () => {
             <p className='text-md my-2'>
               <a
                 href='https://comptroller.texas.gov/programs/broadband/'
+                target='_blank'
+                rel='noopener'
                 className='underline md:hover:text-[#ececec] transition-colors duration-300'
               >
                 The State of Texas Broadband Development Office (BDO)
@@ -36,6 +38,8 @@ const AboutPage = () => {
               with {' '}
               <a
                 href='https://www.hraadvisors.com/'
+                target='_blank'
+                rel='noopener'
                 className='underline md:hover:text-[#ececec] transition-colors duration-300'
               >
                 HR&A Advisors.
@@ -46,6 +50,8 @@ const AboutPage = () => {
               Census Bureau's{' '}
               <a
                 href='https://www.census.gov/data/developers/data-sets/acs-5year/2021.html'
+                target='_blank'
+                rel='noopener'
                 className='underline md:hover:text-[#ececec] transition-colors duration-300'
               >
                 American Community Survey 5-Year Estimates
@@ -53,6 +59,8 @@ const AboutPage = () => {
               and the Federal Communication Commission's{' '}
               <a
                 href='https://www.fcc.gov/BroadbandData'
+                target='_blank'
+                rel='noopener'
                 className='underline md:hover:text-[#ececec] transition-colors duration-300'
               >
                 Broadband Data Collection
@@ -60,6 +68,8 @@ const AboutPage = () => {
               , as well as the{' '}
               <a
                 href='https://comptroller.texas.gov/programs/broadband/outreach/communities/docs/tdops-survey.pdf'
+                target='_blank'
+                rel='noopener'
                 className='underline md:hover:text-[#ececec] transition-colors duration-300'
               >
                 2023 Texas Digital Opportunity Survey
@@ -67,6 +77,8 @@ const AboutPage = () => {
               and the{' '}
               <a
                 href='https://comptroller.texas.gov/programs/broadband/outreach/communities/docs/drmts-preview.pdf'
+                target='_blank'
+                rel='noopener'
                 className='underline md:hover:text-[#ececec] transition-colors duration-300'
               >
                 2023 Texas Digital Resources Mapping Tool Survey (DRMTS)
@@ -84,6 +96,8 @@ const AboutPage = () => {
               <a
                 className='underline md:hover:text-[#ececec] transition-colors duration-300'
                 href='mailto:digital.opportunity@cpa.texas.gov'
+                target='_blank'
+                rel='noopener'
               >
                 here
               </a>

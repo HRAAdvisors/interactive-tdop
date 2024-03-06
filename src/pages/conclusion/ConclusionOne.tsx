@@ -40,6 +40,8 @@ const contents = [
             <a
               className='underline md:hover:text-[#999] transition-colors duration-300'
               href='https://infinite-peak-70034.herokuapp.com/'
+              target='_blank'
+              rel='noopener'
             >
               this link
             </a>
@@ -49,6 +51,8 @@ const contents = [
             <a
               className='underline md:hover:text-[#999] transition-colors duration-300'
               href='mailto:digital.opportunity@cpa.texas.gov'
+              target='_blank'
+              rel='noopener'
             >
               email address
             </a>

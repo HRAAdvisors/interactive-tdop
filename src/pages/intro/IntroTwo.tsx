@@ -10,6 +10,8 @@ const IntroTwo = () => {
             <a
               className='underline md:hover:text-[#ececec] transition-colors duration-300'
               href='https://comptroller.texas.gov/programs/broadband/'
+              target='_blank'
+              rel='noopener'
             >
               The Texas Digital Opportunity Plan
             </a>{' '}
