@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 export function getColorStops(
   geoJson: GeoJSON.FeatureCollection<GeoJSON.Geometry>,
-  color: 'blue' | 'red' = 'blue',
+  color: 'blue' | 'red' | 'neutral' = 'blue',
 ) {
   // Step 1: Sort the data
   const sortedData = _.map(geoJson.features, (feature) =>
@@ -34,6 +34,15 @@ export function getColorStops(
       { step: q3, color: '#C92C4D' },
       { step: q4, color: '#BE0B31' },
       { step: maxStep, color: '#BE0B31' },
+    ];
+  } else if (color === 'neutral'){
+    return [
+      { step: 0, color: '#D7D4C8' },
+      { step: q1, color: '#BCB7A6' },
+      { step: q2, color: '#9F9985' },
+      { step: q3, color: '#817B66' },
+      { step: q4, color: '#413E32' },
+      { step: maxStep, color: '#413E32' },
     ];
   } else {
     return [
