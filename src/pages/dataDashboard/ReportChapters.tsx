@@ -11,7 +11,7 @@ const ReportChapters = ({
   reportOutput?: ReportOutput<StandardChart>;
 }) => {
   return (
-    <div className='flex flex-col w-full h-full px-4 md:px-8'>
+    <div className='flex flex-col w-full h-full px-4 pt-12 md:px-8'>
       {isLoading && (
         <div className='flex justify-center items-center min-h-screen h-full w-full'>
           <div className='loader' />
