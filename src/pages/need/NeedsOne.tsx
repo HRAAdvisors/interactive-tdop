@@ -33,10 +33,10 @@ const NeedsOne = () => {
               <div className='flex py-4'>
                 <div className='w-1/2 border-r pr-4'>
                   <h3 className='border-b pb-2 uppercase'>Goal</h3>
-                  <strong>
+                  <i>
                     Expand adoption of reliable, affordable broadband internet service at home for
                     all Texans, including individuals belonging to covered populations.
-                  </strong>
+                  </i>
                 </div>
                 <div className='w-1/2 pl-4'>
                   <h3 className='uppercase border-b pb-2'>Task</h3>
@@ -46,7 +46,9 @@ const NeedsOne = () => {
                   </i>
                 </div>
               </div>
-              <div className='pt-4 pb-12'>Scroll on to learn more about the BDO’s five goals.</div>
+              <div className='pt-4 pb-12'>
+                <strong>Click on the cards below</strong> to learn more about the BDO’s five goals.
+              </div>
             </div>
           </div>
         </div>

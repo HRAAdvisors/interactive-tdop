@@ -124,8 +124,8 @@ const contents: GeoScrollContent[] = [
         <div className='mt-2 text-md'>
           <p className='py-2'>
             Why do people not subscribe? In some cases, there’s no internet service where they live.
-            Separate from the TDOP, there is another program building new high-speed networks across
-            the state.{' '}
+            The BEAD program, a different program administered by the BDO, is building new
+            high-speed networks across the state.{' '}
           </p>
           <div className='mt-2'></div>
           {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}

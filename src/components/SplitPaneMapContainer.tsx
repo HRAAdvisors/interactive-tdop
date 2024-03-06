@@ -48,9 +48,12 @@ const SplitPaneMapContainer = () => {
           <div className='mt-2'>
             <h3 className='text-xl font-bold uppercase my-5'>Money Matters</h3>
             <div className='mt-2 text-md'>
+              <p className='pt-2'>
+                Many people do not have high speed internet because it's too expensive.
+              </p>
               <p className='pt-2 mb-4'>
-                Many people do not have high speed internet because it's too expensive. Scrub left
-                to right in the adjacent map to see two datasets compared in the same geography.
+                In the adjacent map, click and drag the white bar to see two datasets compared in
+                the same geography.
               </p>
               <div className='flex w-full'>
                 <div className='w-1/2 pr-4'>
