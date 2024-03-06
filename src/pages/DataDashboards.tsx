@@ -1,6 +1,7 @@
 import ReportChapters from './dataDashboard/ReportChapters';
 import SideNav from '@/components/SIdeNav';
 import Navbar from '@/components/Navbar';
+import { useEffect } from 'react';
 import { useGetReportQuery, useGetSkeletonQuery } from '@/services/dataDashboard';
 import { useParams, useSearchParams } from 'react-router-dom';
 import _ from 'lodash';
@@ -25,6 +26,11 @@ const DataDashboards = () => {
   );
 
   const isLoading = isLoadingReport || isLoadingSkeleton;
+
+  useEffect(() => {
+    // Scroll to the top of the page when pageId changes
+    window.scrollTo(0, 0);
+  }, [pageId]);
 
   return (
     <div className='flex flex-col'>
