@@ -29,7 +29,7 @@ const ReportSections = ({
 
   return (
     <ScrollElement name={`section${section.id}`}>
-      <h3 className='text-black font-inter text-[1.5rem] font-normal tracking-normal leading-42 pt-16 pb-6 uppercase'>
+      <h3 className='text-black font-inter text-[1.5rem] font-normal tracking-normal leading-42 pt-12 pb-6 uppercase'>
         {section.title}
       </h3>
       <article
