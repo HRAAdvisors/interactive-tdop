@@ -12,7 +12,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "postinstall": "npm link @hraadvisors/standard-charts"
+    "postinstall": "npm link @hraadvisors/standard-charts @hraadvisors/broadband-charts"
   },
   "dependencies": {
     "@ap.cx/react-scrollama-wrapper": "^3.3.0",
