@@ -202,7 +202,6 @@ const dataPointGenerator = (
     dataPointGeneratorName === DataPointGeneratorName.costAsBarrier &&
     ChartId.TXCostBarrier === chartId
   ) {
-    console.log(aggregatedChoroplethData);
     // const costBarrier = aggregatedChoroplethData?.[geoId]?.['hid11']?.['percent'];    
     // if( costBarrier) {  
     //   return (parseFloat(costBarrier)
@@ -236,7 +235,6 @@ const dataPointGenerator = (
     dataPointGeneratorName === DataPointGeneratorName.cybersecurityAwareness &&
     ChartId.TXCybersecurityAwareness === chartId
   ) {
-    console.log(aggregatedChoroplethData);
     return (
       parseFloat(aggregatedChoroplethData?.[geoId]?.['hid11']?.['percent'])
     ).toFixed(0);
