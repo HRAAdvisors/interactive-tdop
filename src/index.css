@@ -170,6 +170,7 @@ h2 {
   font-weight: 700 !important;
   line-height: 150% !important; /* 150% */
   padding-bottom: 1rem;
+  padding-top: 1rem;
 }
 
 h4 {
@@ -226,4 +227,15 @@ article a {
   transition-property: color;
   transition-duration: 300ms;
   transition-timing-function: ease-in-out;
+}
+
+article img {
+  padding-top: 2rem;
+  object-fit: cover;
+}
+
+article ul {
+  padding-top: 0.5rem;
+  padding-left: 1.5rem;
+  list-style-type: circle;
 }
