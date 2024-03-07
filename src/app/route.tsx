@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import loadable from '@loadable/component';
-import AssetInventory from '@/pages/AssetInventory';
 
 const GeoIntro = loadable(() => import('@/pages/GeoIntro'));
 const HomePage = loadable(() => import('@/pages/Home'));
 const DataDashboards = loadable(() => import('@/pages/DataDashboards'));
 const AboutPage = loadable(() => import('@/pages/About'));
+const AssetInventory = loadable(() => import('@/pages/AssetInventory'));
 
 const TheRoutes = () => {
   return (
