@@ -42,7 +42,7 @@ const ReportSections = ({
             {_.map(chartChunk, (chart, key) => (
               <div
                 key={key}
-                className='bg-white shadow-lg p-6 md:z-40 w-full text-black'
+                className='bg-white shadow-lg p-6 lg:z-40 w-full text-black'
                 // className='2xl:flex-1 bg-white shadow-lg p-6 md:z-40 w-full text-black'
               >
                 {/standard-charts/.test(chart.library) && (
