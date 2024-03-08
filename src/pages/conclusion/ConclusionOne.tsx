@@ -35,18 +35,7 @@ const contents = [
     content: (
       <div>
         <p>
-          We welcome your comments at{' '}
-          <strong>
-            <a
-              className='underline md:hover:text-[#999] transition-colors duration-300'
-              href='https://infinite-peak-70034.herokuapp.com/'
-              target='_blank'
-              rel='noopener'
-            >
-              this link
-            </a>
-          </strong>
-          , your feedback at our{' '}
+          We welcome your comments and feedback{' '}
           <strong>
             <a
               className='underline md:hover:text-[#999] transition-colors duration-300'
@@ -54,11 +43,11 @@ const contents = [
               target='_blank'
               rel='noopener'
             >
-              email address
+              here
             </a>
-          </strong>
-          , and your continued participation in the expansion of digital opportunity in Texas
-          through public events or other forums.
+          </strong>{' '}
+          and your continued participation in the expansion of digital opportunity in Texas through
+          public events or other forums.
         </p>
       </div>
     ),

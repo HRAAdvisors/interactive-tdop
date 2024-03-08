@@ -372,7 +372,7 @@ const NeedsTwo = () => {
               <CollapsibleCard
                 taskNumber='4.1'
                 goalTitle='Increase the percentage of Texans who have cybersecurity and online privacy measures set up on their devices.'
-                mapTitle='Texans Reporting Awareness and Usage Cybersecurity Measures'
+                mapTitle='Texans Reporting Awareness and Usage of Cybersecurity Measures'
                 description={
                   <div>
                     <p className='mb-2'>
