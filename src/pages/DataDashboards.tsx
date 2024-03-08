@@ -10,8 +10,11 @@ const DataDashboards = () => {
   const { pageId = 'the-texas-digital-opportunity-survey' } = useParams();
   let [searchParams] = useSearchParams();
 
+  // Get the selected reportId along with geoId
+  const reportId = searchParams.get('reportId') ?? '65e79e754feb9e71f4052169'; // Default to the new reportID if not provided
+
   const { data: skeletonData, isLoading: isLoadingSkeleton } = useGetSkeletonQuery({
-    reportId: searchParams.get('reportId') ?? undefined,
+    reportId,
     geoId: searchParams.get('geoId') ?? undefined,
   });
   const activeChapters = _.filter(skeletonData?.chapters, { pageId: pageId });
@@ -19,7 +22,7 @@ const DataDashboards = () => {
   const { data: reportData, isLoading: isLoadingReport } = useGetReportQuery(
     {
       pick: _.map(activeChapters, (c) => c.id).join(','),
-      reportId: searchParams.get('reportId') ?? undefined,
+      reportId,
       geoId: searchParams.get('geoId') ?? undefined,
     },
     { skip: !_.size(activeChapters) },
