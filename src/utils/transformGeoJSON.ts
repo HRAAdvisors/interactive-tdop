@@ -270,6 +270,8 @@ const dataPointGenerator = (
     dataPointGeneratorName === DataPointGeneratorName.cybersecurityConfidence &&
     ChartId.TXCybersecurityConfidence === chartId
   ) {    
+    console.log(aggregatedChoroplethData);
+    
     return (
       parseFloat(aggregatedChoroplethData?.[geoId]?.['Yes']?.['percent'])
     ).toFixed(0);

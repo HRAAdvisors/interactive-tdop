@@ -51,7 +51,7 @@ const StakeholderCards = {
       <>
         The BDO created groups of experts and informed citizens to work on{' '}
         <a
-          href='https://infinite-peak-70034.herokuapp.com/images/app_a.pdf'
+          href='https://comptroller.texas.gov/programs/broadband/funding/digital-opportunity/'
           target='_blank'
           rel='noopener'
           className='underline md:hover:text-[#ececec] transition-colors duration-300'
