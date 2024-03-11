@@ -283,40 +283,40 @@ const contents: GeoScrollContent[] = [
   //     </div>
   //   ),
   // },
-  {
-    id: 7,
-    mapData: {
-      args: [
-        {
-          geoId: '48',
-          id: ChartId.TXCybersecurityConfidence,
-          regionSetup: {
-            peers: 'none',
-            segments: SegmentId.regions,
-          },
-        },
-      ],
-      dataPointName: DataPointGeneratorName.cybersecurityConfidence,
-    },
-    getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
-      <div className='mt-2'>
-        <h3 className='text-xl font-bold uppercase my-5'>Cybersecurity Matters</h3>
-        <div className='mt-2 text-md'>
-          <p className='py-2'>
-            The Internet can be an intimidating and even a risky place unless people have the
-            resources and skills to navigate it safely. For true digital opportunity, users need to
-            have skills and tools to use the internet safely and easily.
-          </p>
-          <div className='mt-4'></div>
-          {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
-          <p className='mt-2 font-bold text-xs'>
-            Percent of Individuals Confident in Protecting Themselves from Online Threats
-          </p>
-          <p className='text-xs my-2'>Source: 2023 Texas Digital Opportunity Survey</p>
-        </div>
-      </div>
-    ),
-  },
+  // {
+  //   id: 7,
+  //   mapData: {
+  //     args: [
+  //       {
+  //         geoId: '48',
+  //         id: ChartId.TXCybersecurityConfidence,
+  //         regionSetup: {
+  //           peers: 'none',
+  //           segments: SegmentId.regions,
+  //         },
+  //       },
+  //     ],
+  //     dataPointName: DataPointGeneratorName.cybersecurityConfidence,
+  //   },
+  //   getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
+  //     <div className='mt-2'>
+  //       <h3 className='text-xl font-bold uppercase my-5'>Cybersecurity Matters</h3>
+  //       <div className='mt-2 text-md'>
+  //         <p className='py-2'>
+  //           The Internet can be an intimidating and even a risky place unless people have the
+  //           resources and skills to navigate it safely. For true digital opportunity, users need to
+  //           have skills and tools to use the internet safely and easily.
+  //         </p>
+  //         <div className='mt-4'></div>
+  //         {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
+  //         <p className='mt-2 font-bold text-xs'>
+  //           Percent of Individuals Confident in Protecting Themselves from Online Threats
+  //         </p>
+  //         <p className='text-xs my-2'>Source: 2023 Texas Digital Opportunity Survey</p>
+  //       </div>
+  //     </div>
+  //   ),
+  // },
   {
     id: 8,
     containerClassNames: 'text-white text-lg bg-[#111]',

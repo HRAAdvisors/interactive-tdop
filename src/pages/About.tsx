@@ -30,12 +30,12 @@ const AboutPage = () => {
                 rel='noopener'
                 className='underline md:hover:text-[#ececec] transition-colors duration-300'
               >
-                The State of Texas Broadband Development Office (BDO)
+                The Texas Broadband Development Office (BDO)
               </a>{' '}
               developed this accessible, interactive platform to invite participation in the
               advancement of digital opportunity for all Texans. The Hub complements the publication
-              of the Texas Digital Opportunity Plan. The BDO developed this site in partnership
-              with {' '}
+              of the Texas Digital Opportunity Plan (TDOP). The BDO developed this site in
+              partnership with {' '}
               <a
                 href='https://www.hraadvisors.com/'
                 target='_blank'
@@ -46,8 +46,8 @@ const AboutPage = () => {
               </a>
             </p>
             <p className='text-md my-2'>
-              The Texas Digital Opportunity Hub utilizes data from public datasets including the
-              Census Bureau's{' '}
+              The Texas Digital Opportunity Hub uses data from public datasets including the Census
+              Bureau's{' '}
               <a
                 href='https://www.census.gov/data/developers/data-sets/acs-5year/2021.html'
                 target='_blank'
@@ -86,20 +86,20 @@ const AboutPage = () => {
               .
             </p>
             <p className='text-md my-2'>
-              The Hub offers resources to understand the current state of digital opportunity in
-              Texas and the State’s plan to expand it for all Texans; to build opportunities and
-              solutions for Texas communities and geographies; and to find digital opportunity
-              resources across the state.
+              The Hub offers resources in support of three outcomes: to understand the current state
+              of digital opportunity in Texas and the State’s plan to expand it for all Texans; to
+              build opportunities and solutions for Texas communities and geographies; and to assist
+              users in finding digital opportunity resources across the state.
             </p>
             <p className='text-md mt-2 mb-8'>
-              BDO invites your feedback on the Hub{' '}
+              BDO invites your feedback on the Hub at{' '}
               <a
                 className='underline md:hover:text-[#ececec] transition-colors duration-300'
                 href='mailto:digital.opportunity@cpa.texas.gov'
                 target='_blank'
                 rel='noopener'
               >
-                here
+                digital.opportunity@cpa.texas.gov.
               </a>
               .
             </p>

@@ -26,7 +26,7 @@ export const DataDashboardApi = baseApi.injectEndpoints({
         url: `reports/${reportId}/output/${ geoId }/boundaries?container=state&peers=65428489b4440631aad90229&segments=county`,
       }),
     }),
-    getAssetInventory: builder.query<{ records: AssetInfo[]}, void >({
+    getAssetInventory: builder.query<{ records: AssetInfo[]}, void >({  
       query: () => ({
         method: 'GET',
         url: `https://resourcefinder-qqszjokhaq-uc.a.run.app/`,
