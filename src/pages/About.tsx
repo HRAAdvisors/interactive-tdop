@@ -32,7 +32,7 @@ const AboutPage = () => {
               >
                 The Texas Broadband Development Office (BDO)
               </a>{' '}
-              developed this accessible, interactive platform to invite participation in the
+              developed this interactive tool to track progress to invite participation in the
               advancement of digital opportunity for all Texans. The Hub complements the publication
               of the Texas Digital Opportunity Plan (TDOP). The BDO developed this site in
               partnership with {' '}

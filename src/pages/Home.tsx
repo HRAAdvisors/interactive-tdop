@@ -55,7 +55,7 @@ const Home = () => {
             <>
               <p>
                 <strong>
-                  Welcome! This site provides an interactive platform to explore Texas' Digital
+                  Welcome! This site provides an interactive tool to explore Texas' Digital
                   Opportunity Plan.
                 </strong>{' '}
                 <br></br>
