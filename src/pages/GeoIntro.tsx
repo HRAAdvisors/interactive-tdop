@@ -24,7 +24,7 @@ const GeoIntro = () => {
               </strong>{' '}
               <br></br>
               <br></br>
-              Scroll to explore the big picture, read Texas's plan, access the Digital Opportunity
+              Scroll to explore the big picture, read the Texas plan, access the Digital Opportunity
               Resource Finder, or dive deeper into data for your community.
             </p>
           </>
