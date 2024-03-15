@@ -5,7 +5,7 @@ const AboutAssetInventory = () => (
     <div className='flex w-full flex-col lg:flex-row gap-16'>
       <div className='flex flex-col w-full lg:w-1/2'>
         <div className='flex flex-col'>
-          <h3 className='font-semibold text-[28px] subpixel-antialiased'>
+          <h3 className='font-semibold text-[1.8rem] subpixel-antialiased'>
             About the Resource Finder
           </h3>
           <p className='py-3 text-gray-600'>
@@ -22,7 +22,7 @@ const AboutAssetInventory = () => (
             information up to date and as comprehensive as possible.
           </p>
           <div className='pt-6'>
-            <h3 className='font-semibold text-[28px] subpixel-antialiased py-4'>
+            <h3 className='font-semibold text-[1.8rem] subpixel-antialiased py-4'>
               What Makes the Resource Finder Unique
             </h3>
             <p className='py-2 text-gray-600'>
@@ -33,6 +33,32 @@ const AboutAssetInventory = () => (
               helps the BDO deliver on its commitment to maintaining a living digital opportunity
               plan for all Texans.
             </p>
+          </div>
+          <div className='pt-6'>
+            <h3 className='font-semibold text-[1.8rem] subpixel-antialiased py-4'>
+              Contributing to the Resource Finder
+            </h3>
+            <p className='pt-2 pb-4 text-gray-600'>
+              The DRMTS was widely disseminated over a four-month period, from April to August 2023,
+              and leveraged the BDO public engagement model to reach state, county and local
+              agencies, councils of governments (COGs), CBOs, nonprofits, faith-based groups, CAIs
+              and private sector companies. The BDO conducted desktop research to supplement survey
+              responses with publicly available information on organizations.
+            </p>
+            <p className='pt-2 pb-4 text-gray-600'>
+              However, not every digital resource is represented by this dataset. The BDO welcomes
+              your continued engagement on the task of gathering resources across the state. If you
+              are aware of a digital resource that is not listed on this site, you are welcome to
+              submit it for review at the below link.
+            </p>
+            <a
+              href='https://airtable.com/appbal6AbAyP6G2la/shrrej5ygBW70ekxL'
+              target='_blank'
+              rel='noopener'
+              className='bg-blue-100 gap-2 md:hover:bg-blue-800 md:hover:text-white transition-colors duration-300 text-blue-800 text-[1rem]  me-2 px-2.5 py-1 rounded-xl border  border-blue-400 inline-flex items-center justify-center'
+            >
+              Contribute an Asset
+            </a>
           </div>
         </div>
       </div>

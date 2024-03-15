@@ -39,7 +39,7 @@ const AssetListItem = ({ asset, viewType }: { asset: AssetInfo; viewType: ViewTy
             {_.map(asset.fields['Organization Sub-Type'], (orgType, i) => (
               <span
                 key={i}
-                className='bg-green-100 hover:bg-green-200 text-green-800 text-[8px]  me-2 px-2.5 py-0.5 rounded-xl border  border-green-400 inline-flex items-center justify-center'
+                className='bg-green-100 hover:bg-green-200 transition-colors duration-300 text-green-800 text-[8px]  me-2 px-2.5 py-0.5 rounded-xl border  border-green-400 inline-flex items-center justify-center'
               >
                 {orgType}
               </span>
@@ -68,7 +68,7 @@ const AssetListItem = ({ asset, viewType }: { asset: AssetInfo; viewType: ViewTy
               rel='noopener'
               href={addHttpsPrefix(asset.fields['Website'])}
               className={classNames(
-                'cursor-pointer self-start text-xs flex gap-2 justify-center items-center px-3 py-1 rounded-xl border border-gray-200 text-gray-700',
+                'cursor-pointer md:hover:bg-[#ececec] transition-colors duration-300 self-start text-xs flex gap-2 justify-center items-center px-3 py-1 rounded-xl border border-gray-200 text-gray-700',
                 viewType === ViewType.LIST && 'lg:self-center lg:justify-items-end',
               )}
             >
@@ -89,7 +89,7 @@ const AssetListItem = ({ asset, viewType }: { asset: AssetInfo; viewType: ViewTy
       <div className='py-2'>
         <button
           onClick={() => setShowMore((m) => !m)}
-          className='bg-blue-100 gap-2 hover:bg-blue-200 text-blue-800 text-xs  me-2 px-2.5 py-1 rounded-xl border  border-blue-400 inline-flex items-center justify-center'
+          className='bg-blue-100 gap-2 hover:bg-blue-200 transition-colors duration-300 text-blue-800 text-xs  me-2 px-2.5 py-1 rounded-xl border  border-blue-400 inline-flex items-center justify-center'
         >
           {showMore ? (
             <>
