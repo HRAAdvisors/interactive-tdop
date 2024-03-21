@@ -39,9 +39,22 @@ const AssetInventoryPage = () => {
           <AboutAssetInventory />
         </div>
       </div>
-      <div className='bg-[#ececec] grid md:grid-cols-12'>
+      <div className='grid bg-[#ececec] md:grid-cols-12'>
         <div className='flex flex-col md:col-start-3 px-4 md:px-0 md:col-span-12'>
-          <p className='py-8'>© 2024 Texas Broadband Development Office | All rights reserved</p>
+          <p className='pt-8 pb-4'>
+            © 2024 Texas Broadband Development Office and Texas Comptroller of Public Accounts
+          </p>
+          <p className='pb-8'>
+            All Rights Reserved |{' '}
+            <a
+              href='https://comptroller.texas.gov/about/policies/privacy.php'
+              target='_blank'
+              rel='noopener'
+              className='underline md:hover:text-[#ececec] transition-colors duration-300'
+            >
+              Privacy Policy
+            </a>
+          </p>
         </div>
       </div>
     </>

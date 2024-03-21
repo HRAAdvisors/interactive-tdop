@@ -105,7 +105,7 @@ const AboutPage = () => {
           <div className='flex flex-col md:col-start-8 md:col-span-5 object-cover'>
             <img src='img/About.jpg' className='h-[50vh] md:h-full 2xl:h-screen object-cover' />
           </div>
-          <div className='flex flex-col justify-center content-center pt-12 md:pt-18 p-4 lg:pt-[5.5rem] md:col-span-10 md:col-start-2'>
+          <div className='flex flex-col justify-center content-center py-12 md:py-18 p-4 lg:py-[5.5rem] md:col-span-10 md:col-start-2'>
             <hr className='h-1 mt-0 mb-8'></hr>
             <h1 className='md:text-6xl sm:text-2xl text-2xl font-semibold uppercase tracking-widest'>
               Frequently Asked Questions
@@ -220,9 +220,22 @@ const AboutPage = () => {
           </div>
         </div>
       </div>
-      <div className='bg-[#ececec] grid md:grid-cols-12'>
+      <div className='grid bg-[#ececec] md:grid-cols-12'>
         <div className='flex flex-col md:col-start-3 px-4 md:px-0 md:col-span-12'>
-          <p className='py-8'>© 2024 Texas Broadband Development Office | All rights reserved</p>
+          <p className='pt-8 pb-4'>
+            © 2024 Texas Broadband Development Office and Texas Comptroller of Public Accounts
+          </p>
+          <p className='pb-8'>
+            All Rights Reserved |{' '}
+            <a
+              href='https://comptroller.texas.gov/about/policies/privacy.php'
+              target='_blank'
+              rel='noopener'
+              className='underline md:hover:text-[#ececec] transition-colors duration-300'
+            >
+              Privacy Policy
+            </a>
+          </p>
         </div>
       </div>
     </>
