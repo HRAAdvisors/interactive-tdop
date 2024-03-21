@@ -110,7 +110,9 @@ export const Navbar = ({ shouldShowAllTime = false }: { shouldShowAllTime?: bool
         <div className='w-full flex items-center justify-between'>
           <div className='flex'>
             <div className='hidden lg:flex w-contain pr-20 2xl:pr-32'>
-              <Logo />
+              <Link to='https://comptroller.texas.gov/programs/broadband/'>
+                <Logo />
+              </Link>
             </div>
             <Link to='/' className='flex items-center'>
               <h1
