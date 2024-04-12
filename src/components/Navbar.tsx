@@ -124,18 +124,17 @@ export const Navbar = ({ shouldShowAllTime = false }: { shouldShowAllTime?: bool
             </Link>
           </div>
           <div className='h-full'>
-            <ul className='hidden lg:flex items-center'>
-              {navbarLinks.map((navLink, index) => (
-                <li
-                  key={index}
-                  className='md:p-2 lg:p-5 2xl:p-8 uppercase tracking-widest text-xs md:hover:text-[#ececec] transition-colors duration-300'
-                >
-                  <Link className='block' to={navLink.link}>
-                    {navLink.text}
+            <div className='navbar-content'>
+              <ul className='hidden lg:flex items-center'>
+                {navbarLinks.map((navLink, index) => (
+                  <Link className='block' to={navLink.link} key={index}>
+                    <li className='md:px-2 lg:px-5 2xl:px-8 py-6 uppercase tracking-widest text-xs md:hover:text-[#fff] md:hover:bg-[#002768] transition-colors duration-300'>
+                      {navLink.text}
+                    </li>
                   </Link>
-                </li>
-              ))}
-            </ul>
+                ))}
+              </ul>
+            </div>
             <div onClick={handleNav} className='z-20 lg:hidden cursor-pointer'>
               {showSideNav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
             </div>

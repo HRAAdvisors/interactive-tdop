@@ -53,7 +53,7 @@ const VisionCards = {
           href='https://www.fcc.gov/health/SDOH'
           target='_blank'
           rel='noopener'
-          className=' underline md:hover:text-[#ececec] transition-colors duration-300'
+          className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
         >
           recent reports
         </a>

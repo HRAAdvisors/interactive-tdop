@@ -96,6 +96,8 @@ body {
 
 .button-dark__btn:hover, .button-dark__btn:active {
   background-color: white;
+  transition-property: color, background-color;
+  transition-duration: 300ms;
   color: black;
 }
 
@@ -129,6 +131,8 @@ body {
 
 .button-light__btn:hover, .button-light__btn:active {
   background-color: white;
+  transition-property: color, background-color;
+  transition-duration: 300ms;
   color: black;
 }
 
