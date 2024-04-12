@@ -1,13 +1,13 @@
 const StakeholderCards = {
   Header: {
     img: 'img/StakeholderEngagement.jpg',
-    altText: 'Stakeholder Engagement',
+    altText: 'A group of people sitting around tables in a room.',
     title: 'Stakeholder Engagement',
     description: '',
   },
   Covered_Populations: {
     img: 'img/Covered Populations.jpg',
-    altText: 'Covered Populations',
+    altText: 'A group of people dancing.',
     title: 'Covered Populations',
     description: (
       <>
@@ -45,7 +45,7 @@ const StakeholderCards = {
   },
   Outcome_Areas: {
     img: 'img/Outcome Area Task Forces.jpg',
-    altText: 'Outcome Area Task Forces',
+    altText: 'A view of the Texas Capitol building.',
     title: 'Outcome Area Task Forces',
     description: (
       <>
@@ -70,7 +70,7 @@ const StakeholderCards = {
   },
   Tribal_Engagements: {
     img: 'img/Tribal Engagements.jpg',
-    altText: 'Tribal Engagements',
+    altText: 'A group of purple flowers.',
     title: 'Tribal Engagements',
     description:
       'The BDO talked with leaders of tribal nations in Texas to ensure the plan fits well with what tribal communities need and the plans they already have in place to address digital opportunity on tribal lands.',

@@ -5,10 +5,12 @@ const HeroLayout = ({
   landingText,
   imageHero,
   title,
+  altText,
 }: {
   landingText: string | JSX.Element;
   imageHero: string;
   title: string;
+  altText: string;
 }) => {
   // Specify the type of elements the ref will refer to - HTMLDivElement in this case
   const heroLayoutRef = useRef<HTMLDivElement | null>(null);
@@ -47,7 +49,7 @@ const HeroLayout = ({
           </div>
         </div>
         <div className='flex flex-col md:col-start-8 md:col-span-5 object-cover'>
-          <img src={imageHero} className='h-[50vh] md:h-screen object-cover' />
+          <img src={imageHero} alt={altText} className='h-[50vh] md:h-screen object-cover' />
         </div>
       </div>
     </div>

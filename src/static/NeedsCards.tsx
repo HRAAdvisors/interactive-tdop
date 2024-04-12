@@ -1,7 +1,7 @@
 const NeedsCards = {
   Header: {
     img: 'img/NeedsAndAssets.jpeg',
-    altText: 'Goals, Targets and Tasks ',
+    altText: 'A street with a Texas flag and buildings.',
     title: 'Goals, Targets and Tasks ',
     description: '',
   },

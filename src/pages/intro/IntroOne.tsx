@@ -5,17 +5,23 @@ const scrollingContents = [
   {
     img: 'img/Capitol.svg',
     content: (
-      <p>
-        More and more each day, our lives depend on using the internet. Once a luxury, the internet
-        has now become{' '}
-        <strong>a necessity for access to health, education, employment, and many services.</strong>
-      </p>
+      <div>
+        <span role='img' aria-label='A shadow of the Texas Capitol building.'></span>
+        <p>
+          More and more each day, our lives depend on using the internet. Once a luxury, the
+          internet has now become{' '}
+          <strong>
+            a necessity for access to health, education, employment, and many services.
+          </strong>
+        </p>
+      </div>
     ),
   },
   {
     img: 'img/LivingPlan.webp',
     content: (
       <div>
+        <span role='img' aria-label='A view of the Texas Alamo building.'></span>
         <p>
           Yet{' '}
           <strong>not all Texas residents experience the same kind of digital opportunity.</strong>{' '}
@@ -29,6 +35,7 @@ const scrollingContents = [
     img: 'img/2.webp',
     content: (
       <div>
+        <span role='img' aria-label='A group of people attending a Texas BDO presentation.'></span>
         <p>
           In 2023, the Texas Broadband Development Office (BDO) brought together people and
           communities from across the state to ask about the barriers and challenges that Texans
@@ -45,6 +52,7 @@ const scrollingContents = [
     img: 'img/Statewide.jpg',
     content: (
       <div>
+        <span role='img' aria-label='A Texas flag waving.'></span>
         <p>
           <strong>Based on what the BDO heard from you,</strong> they wrote the Texas Digital
           Opportunity Plan or TDOP, which shares a vision for digital opportunity in Texas in which
@@ -63,6 +71,7 @@ const scrollingContents = [
     img: 'img/Vision.webp',
     content: (
       <div>
+        <span role='img' aria-label='A utility vehicle driving down a rural road.'></span>
         <p>Scroll on to learn more about the Texas Digital Opportunity Plan!</p>
       </div>
     ),

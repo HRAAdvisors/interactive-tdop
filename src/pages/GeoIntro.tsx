@@ -30,6 +30,7 @@ const GeoIntro = () => {
           </>
         }
         imageHero='img/Cover.webp'
+        altText='A row of powerlines'
         title='Digital Opportunity for Texans'
       />
       <GeoScrollytelling />

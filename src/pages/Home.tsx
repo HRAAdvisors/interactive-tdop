@@ -66,6 +66,7 @@ const Home = () => {
             </>
           }
           imageHero='img/HeroTwo.jpg'
+          altText='A child sitting at a desk with a laptop.'
           title='Texas Digital Opportunity Plan'
         />
       </Element>

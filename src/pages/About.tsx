@@ -103,7 +103,11 @@ const AboutPage = () => {
             </p>
           </div>
           <div className='flex flex-col md:col-start-8 md:col-span-5 object-cover'>
-            <img src='img/About.jpg' className='h-[50vh] md:h-full 2xl:h-screen object-cover' />
+            <img
+              src='img/About.jpg'
+              alt='Two children using laptops.'
+              className='h-[50vh] md:h-full 2xl:h-screen object-cover'
+            />
           </div>
           <div className='flex flex-col justify-center content-center py-12 md:py-18 p-4 lg:py-[5.5rem] md:col-span-10 md:col-start-2'>
             <hr className='h-1 mt-0 mb-8'></hr>
