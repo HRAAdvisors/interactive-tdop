@@ -7,7 +7,11 @@ import StakeholderCards from '@/static/StakeholderCards.tsx';
 
 const StakeholderEngagementPage = () => {
   const header = (
-    <ScrollableTitle img={StakeholderCards.Header.img} title={StakeholderCards.Header.title} />
+    <ScrollableTitle
+      img={StakeholderCards.Header.img}
+      altText={StakeholderCards.Header.altText}
+      title={StakeholderCards.Header.title}
+    />
   );
   const sections = [header, <StakeholderOne />, <StakeholderTwo />];
   // const [activeSection, setActiveSection] = useState(0);
