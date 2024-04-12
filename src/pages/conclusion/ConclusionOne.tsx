@@ -38,7 +38,7 @@ const contents = [
           We welcome your comments and feedback{' '}
           <strong>
             <a
-              className='underline md:hover:text-[#999] transition-colors duration-300'
+              className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
               href='mailto:digital.opportunity@cpa.texas.gov'
               target='_blank'
               rel='noopener'
@@ -85,7 +85,7 @@ const ConclusionOne = () => {
               href='https://comptroller.texas.gov/about/policies/privacy.php'
               target='_blank'
               rel='noopener'
-              className='underline md:hover:text-[#ececec] transition-colors duration-300'
+              className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
             >
               Privacy Policy
             </a>

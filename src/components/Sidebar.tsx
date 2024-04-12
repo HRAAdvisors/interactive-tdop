@@ -49,11 +49,13 @@ function Sidebar({}: { currentPage?: any }) {
           smooth={true}
           offset={0}
           duration={500}
-          className={`p-1 text-xs hover:text-[#dedede]`}
+          className={`p-1 text-xs`}
           activeClass='font-bold'
           onSetActive={() => setActiveIndex(index)}
         >
-          <p className='cursor-pointer'>{item.name}</p>
+          <p className='cursor-pointer hover:text-[#fff] hover:bg-[#002768] transition-colors duration-300 p-[1vh]'>
+            {item.name}
+          </p>
         </Link>
       ))}
     </div>

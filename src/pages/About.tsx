@@ -26,7 +26,7 @@ const AboutPage = () => {
                 href='https://comptroller.texas.gov/programs/broadband/'
                 target='_blank'
                 rel='noopener'
-                className='underline md:hover:text-[#ececec] transition-colors duration-300'
+                className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
               >
                 The Texas Broadband Development Office (BDO)
               </a>{' '}
@@ -38,7 +38,7 @@ const AboutPage = () => {
                 href='https://www.hraadvisors.com/'
                 target='_blank'
                 rel='noopener'
-                className='underline md:hover:text-[#ececec] transition-colors duration-300'
+                className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
               >
                 HR&A Advisors.
               </a>
@@ -50,7 +50,7 @@ const AboutPage = () => {
                 href='https://www.census.gov/data/developers/data-sets/acs-5year/2021.html'
                 target='_blank'
                 rel='noopener'
-                className='underline md:hover:text-[#ececec] transition-colors duration-300'
+                className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
               >
                 American Community Survey 5-Year Estimates
               </a>{' '}
@@ -59,7 +59,7 @@ const AboutPage = () => {
                 href='https://www.fcc.gov/BroadbandData'
                 target='_blank'
                 rel='noopener'
-                className='underline md:hover:text-[#ececec] transition-colors duration-300'
+                className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
               >
                 Broadband Data Collection
               </a>
@@ -68,7 +68,7 @@ const AboutPage = () => {
                 href='https://comptroller.texas.gov/programs/broadband/outreach/communities/docs/tdops-survey.pdf'
                 target='_blank'
                 rel='noopener'
-                className='underline md:hover:text-[#ececec] transition-colors duration-300'
+                className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
               >
                 2023 Texas Digital Opportunity Survey
               </a>{' '}
@@ -77,7 +77,7 @@ const AboutPage = () => {
                 href='https://comptroller.texas.gov/programs/broadband/outreach/communities/docs/drmts-preview.pdf'
                 target='_blank'
                 rel='noopener'
-                className='underline md:hover:text-[#ececec] transition-colors duration-300'
+                className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
               >
                 2023 Texas Digital Resources Mapping Tool Survey (DRMTS)
               </a>
@@ -92,7 +92,7 @@ const AboutPage = () => {
             <p className='text-md mt-2 mb-8'>
               BDO invites your feedback on the Hub at{' '}
               <a
-                className='underline md:hover:text-[#ececec] transition-colors duration-300'
+                className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
                 href='mailto:digital.opportunity@cpa.texas.gov'
                 target='_blank'
                 rel='noopener'
@@ -119,7 +119,7 @@ const AboutPage = () => {
                 href='https://www.census.gov/data/developers/data-sets/acs-5year/2021.html'
                 target='_blank'
                 rel='noopener'
-                className='underline md:hover:text-[#ececec] transition-colors duration-300'
+                className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
               >
                 American Community Survey 5-Year Estimates
               </a>{' '}
@@ -128,7 +128,7 @@ const AboutPage = () => {
                 href='https://www.fcc.gov/BroadbandData'
                 target='_blank'
                 rel='noopener'
-                className='underline md:hover:text-[#ececec] transition-colors duration-300'
+                className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
               >
                 Broadband Data Collection
               </a>
@@ -137,7 +137,7 @@ const AboutPage = () => {
                 href='https://comptroller.texas.gov/programs/broadband/outreach/communities/docs/tdops-survey.pdf'
                 target='_blank'
                 rel='noopener'
-                className='underline md:hover:text-[#ececec] transition-colors duration-300'
+                className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
               >
                 2023 Texas Digital Opportunity Survey
               </a>{' '}
@@ -146,7 +146,7 @@ const AboutPage = () => {
                 href='https://comptroller.texas.gov/programs/broadband/outreach/communities/docs/drmts-preview.pdf'
                 target='_blank'
                 rel='noopener'
-                className='underline md:hover:text-[#ececec] transition-colors duration-300'
+                className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
               >
                 2023 Texas Digital Resources Mapping Tool Survey (DRMTS)
               </a>
@@ -156,7 +156,7 @@ const AboutPage = () => {
                 href='https://www.digitalopportunityfortexas.com/data-dashboards/data-sources-and-methodology'
                 target='_blank'
                 rel='noopener'
-                className='underline md:hover:text-[#ececec] transition-colors duration-300'
+                className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
               >
                 Data tab
               </a>{' '}
@@ -179,7 +179,7 @@ const AboutPage = () => {
             <p className='text-md my-2'>
               The Hub can be used to{' '}
               <a
-                className='underline md:hover:text-[#ececec] transition-colors duration-300'
+                className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
                 href='https://www.digitalopportunityfortexas.com/'
                 target='_blank'
                 rel='noopener'
@@ -188,7 +188,7 @@ const AboutPage = () => {
               </a>{' '}
               It can be used to{' '}
               <a
-                className='underline md:hover:text-[#ececec] transition-colors duration-300'
+                className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
                 href='https://www.digitalopportunityfortexas.com/interactivetdop'
                 target='_blank'
                 rel='noopener'
@@ -197,7 +197,7 @@ const AboutPage = () => {
               </a>{' '}
               with the State’s Digital Opportunity Plan. Users can{' '}
               <a
-                className='underline md:hover:text-[#ececec] transition-colors duration-300'
+                className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
                 href='https://www.digitalopportunityfortexas.com/data-dashboards'
                 target='_blank'
                 rel='noopener'
@@ -207,7 +207,7 @@ const AboutPage = () => {
               related to internet adoption, device access, digital literacy and skills,
               cybersecurity, and essential online services. The Hub can also be used to{' '}
               <a
-                className='underline md:hover:text-[#ececec] transition-colors duration-300'
+                className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
                 href='https://www.digitalopportunityfortexas.com/data-dashboards'
                 target='_blank'
                 rel='noopener'
@@ -231,7 +231,7 @@ const AboutPage = () => {
               href='https://comptroller.texas.gov/about/policies/privacy.php'
               target='_blank'
               rel='noopener'
-              className='underline md:hover:text-[#ececec] transition-colors duration-300'
+              className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.25rem] transition-colors duration-300'
             >
               Privacy Policy
             </a>

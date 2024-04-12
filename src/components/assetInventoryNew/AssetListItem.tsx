@@ -19,7 +19,7 @@ const AssetListItem = ({ asset, viewType }: { asset: AssetInfo; viewType: ViewTy
   return (
     <div
       className={classNames(
-        'flex flex-col justify-between font-inter border bg-white drop-shadow border-primary-800 rounded-3xl p-6 overflow-hidden',
+        'flex flex-col justify-between font-inter border bg-white drop-shadow border-primary-800 rounded-md p-6 overflow-hidden',
         viewType === ViewType.GRID && 'self-center min-h-72',
       )}
     >
@@ -39,7 +39,7 @@ const AssetListItem = ({ asset, viewType }: { asset: AssetInfo; viewType: ViewTy
             {_.map(asset.fields['Organization Sub-Type'], (orgType, i) => (
               <span
                 key={i}
-                className='bg-green-100 hover:bg-green-200 transition-colors duration-300 text-green-800 text-[8px]  me-2 px-2.5 py-0.5 rounded-xl border  border-green-400 inline-flex items-center justify-center'
+                className='bg-[#256B28] text-white text-xs  me-2 px-2.5 py-0.5 rounded-md border  border-[#256B28] inline-flex items-center justify-center'
               >
                 {orgType}
               </span>
@@ -56,7 +56,7 @@ const AssetListItem = ({ asset, viewType }: { asset: AssetInfo; viewType: ViewTy
         >
           <div
             className={classNames(
-              'flex self-start gap-2 text-[10px] justify-center items-center px-3 py-1 rounded-xl border border-gray-200 text-gray-700',
+              'flex self-start gap-2 text-xs justify-center items-center px-3 py-1 rounded-lg border border-gray-200 text-gray-700',
               viewType === ViewType.LIST && 'lg:self-center',
             )}
           >
@@ -68,7 +68,7 @@ const AssetListItem = ({ asset, viewType }: { asset: AssetInfo; viewType: ViewTy
               rel='noopener'
               href={addHttpsPrefix(asset.fields['Website'])}
               className={classNames(
-                'cursor-pointer md:hover:bg-[#ececec] transition-colors duration-300 self-start text-xs flex gap-2 justify-center items-center px-3 py-1 rounded-xl border border-gray-200 text-gray-700',
+                'cursor-pointer md:hover:bg-[#ececec] transition-colors duration-300 self-start text-xs flex gap-2 justify-center items-center px-3 py-1 rounded-md border border-gray-200 text-gray-700',
                 viewType === ViewType.LIST && 'lg:self-center lg:justify-items-end',
               )}
             >
@@ -77,7 +77,7 @@ const AssetListItem = ({ asset, viewType }: { asset: AssetInfo; viewType: ViewTy
           ) : (
             <div
               className={classNames(
-                'cursor-pointer self-start text-xs flex gap-2 justify-center items-center px-3 py-1 rounded-xl border border-gray-200 text-gray-700',
+                'cursor-pointer self-start text-xs flex gap-2 justify-center items-center px-3 py-1 rounded-lg border border-gray-200 text-gray-700',
                 viewType === ViewType.LIST && 'lg:self-center lg:justify-items-end',
               )}
             >
@@ -89,7 +89,7 @@ const AssetListItem = ({ asset, viewType }: { asset: AssetInfo; viewType: ViewTy
       <div className='py-2'>
         <button
           onClick={() => setShowMore((m) => !m)}
-          className='bg-blue-100 gap-2 hover:bg-blue-200 transition-colors duration-300 text-blue-800 text-xs  me-2 px-2.5 py-1 rounded-xl border  border-blue-400 inline-flex items-center justify-center'
+          className='bg-[#002768] gap-2 md:hover:bg-[#fff] md:hover:text-[#002768] text-white transition-colors duration-300  text-xs  me-2 px-2.5 py-1 rounded-md border-2 border-[#002768] inline-flex items-center justify-center'
         >
           {showMore ? (
             <>
@@ -167,7 +167,7 @@ export const AssetListItemSkeleton = ({ viewType }: { viewType: ViewType }) => {
   return (
     <div
       className={classNames(
-        'flex flex-col font-inter border bg-white drop-shadow-md border-primary-800 rounded-3xl p-6 ',
+        'flex flex-col font-inter border bg-white drop-shadow-md border-primary-800 rounded-md p-6 ',
         viewType === ViewType.GRID && 'self-center min-h-72',
       )}
     >

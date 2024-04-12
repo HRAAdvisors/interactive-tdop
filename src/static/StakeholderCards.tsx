@@ -15,7 +15,7 @@ const StakeholderCards = {
           The plan is designed to reach Texans who historically have less digital opportunity – it
           refers to these groups as “covered populations”. Covered populations are specified in the{' '}
           <a
-            className='underline md:hover:text-[#ececec] transition-colors duration-300'
+            className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
             href='https://broadbandusa.ntia.doc.gov/sites/default/files/2022-06/DE-FAQs.pdf'
             target='_blank'
             rel='noopener'
@@ -54,7 +54,7 @@ const StakeholderCards = {
           href='https://comptroller.texas.gov/programs/broadband/funding/digital-opportunity/'
           target='_blank'
           rel='noopener'
-          className='underline md:hover:text-[#ececec] transition-colors duration-300'
+          className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
         >
           the six areas
         </a>{' '}

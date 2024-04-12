@@ -73,7 +73,7 @@ export default function AssetInventory() {
           <div
             onClick={() => setViewType(ViewType.GRID)}
             className={classNames(
-              'p-3 border bg-white drop-shadow rounded-lg cursor-pointer',
+              'p-3 border bg-white drop-shadow rounded-md cursor-pointer',
               viewType === ViewType.GRID ? 'border-blue-400' : 'border-gray-400',
             )}
           >
@@ -82,7 +82,7 @@ export default function AssetInventory() {
           <div
             onClick={() => setViewType(ViewType.LIST)}
             className={classNames(
-              'p-3 border bg-white drop-shadow rounded-lg cursor-pointer',
+              'p-3 border bg-white drop-shadow rounded-md cursor-pointer',
               viewType === ViewType.LIST ? 'border-blue-400' : 'border-gray-400',
             )}
           >

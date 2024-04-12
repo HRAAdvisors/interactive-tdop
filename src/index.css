@@ -96,6 +96,8 @@ body {
 
 .button-dark__btn:hover, .button-dark__btn:active {
   background-color: white;
+  transition-property: color, background-color;
+  transition-duration: 300ms;
   color: black;
 }
 
@@ -129,6 +131,8 @@ body {
 
 .button-light__btn:hover, .button-light__btn:active {
   background-color: white;
+  transition-property: color, background-color;
+  transition-duration: 300ms;
   color: black;
 }
 
@@ -211,23 +215,19 @@ padding-bottom: 0.5rem !important;
 /* Apply styles to links within article elements on medium screens */
 @media (min-width: 768px) {
   article a {
+    color: #111;
     text-decoration: underline;
-    transition-property: color;
+    transition-property: color, background-color; /* Define transition properties */
     transition-duration: 300ms;
-    transition-timing-function: ease-in-out;
   }
 
   article a:hover {
-    color: #ececec;
+    background-color: #002768;
+    color: #fff;
+    text-decoration: none;
   }
 }
 
-article a {
-  text-decoration: underline;
-  transition-property: color;
-  transition-duration: 300ms;
-  transition-timing-function: ease-in-out;
-}
 
 article img {
   padding-top: 2rem;

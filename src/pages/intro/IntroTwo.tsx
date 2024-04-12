@@ -8,7 +8,7 @@ const IntroTwo = () => {
         <div className='flex flex-col col-start-4 col-span-6 justify-center pt-20 pb-20 gap-2'>
           <p className='px-2'>
             <a
-              className='underline md:hover:text-[#ececec] transition-colors duration-300'
+              className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
               href='https://comptroller.texas.gov/programs/broadband/'
               target='_blank'
               rel='noopener'
