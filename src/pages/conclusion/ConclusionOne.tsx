@@ -9,6 +9,7 @@ const contents = [
     img: 'img/Capitol.svg',
     content: (
       <div>
+        <span role='img' aria-label='A shadow of the Texas Capitol building.'></span>
         <p>
           The Texas Digital Opportunity Plan offers strategies to help with digital needs across the
           state,{' '}
@@ -24,6 +25,7 @@ const contents = [
     img: 'img/LivingPlan.webp',
     content: (
       <div>
+        <span role='img' aria-label='A view of the Texas Alamo building.'></span>
         <p>
           The plan is a <strong>a living document.</strong>
         </p>
@@ -34,6 +36,10 @@ const contents = [
     img: 'img/Promotion.jpg',
     content: (
       <div>
+        <span
+          role='img'
+          aria-label='A white router with a person on the computer behind it.'
+        ></span>
         <p>
           We welcome your comments and feedback{' '}
           <strong>
@@ -56,6 +62,7 @@ const contents = [
     img: 'img/Needs.jpg',
     content: (
       <div>
+        <span role='img' aria-label='A utility vehicle driving down a rural road.'></span>
         <p> Click to dive deeper into the state of digital opportunity in Texas.</p>
         <div className='flex mx-auto my-8'>
           <div className='mr-auto'>

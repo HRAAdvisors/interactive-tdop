@@ -35,6 +35,7 @@ const CardTerms = ({
   img,
   title,
   description,
+  altText,
 }: {
   img: string;
   title: string;
@@ -59,7 +60,7 @@ const CardTerms = ({
       >
         {/* Front of the card */}
         <div style={flipCardStyles.front} className='bg-white shadow-sm md:hover:shadow-md'>
-          <img src={img} alt={title} className='w-full h-[30vh] object-cover' />
+          <img src={img} alt={altText} className='w-full h-[30vh] object-cover' />
           <div className='p-4'>
             <p className='text-md'>{title}</p> {/* Updated this line */}
           </div>

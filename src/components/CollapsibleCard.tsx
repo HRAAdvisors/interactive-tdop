@@ -6,8 +6,10 @@ interface CollapsibleCardProps {
   taskNumber: string;
   goalTitle: string;
   description: ReactNode;
+  mapLabel?: string;
   mapTitle?: string; // If this is optional, mark it as such
   targetText: ReactNode;
+  chartLabel: string;
   stackedBarData: number;
   stackedBarGoal: number;
   leftPanelContent: ReactNode;
@@ -20,8 +22,10 @@ const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
   taskNumber,
   goalTitle,
   description,
+  mapLabel,
   mapTitle,
   targetText,
+  chartLabel,
   stackedBarData,
   stackedBarGoal,
   leftPanelContent,
@@ -77,13 +81,19 @@ const CollapsibleCard: React.FC<CollapsibleCardProps> = ({
           {/* Left Panel Content */}
           <div className='h-full col-span-12 md:col-span-6 md:col-start-2'>
             <p className='uppercase font-semibold my-4'>{mapTitle}</p>
+            <span aria-label={mapLabel} />
             <div className='h-[50vh]'>{leftPanelContent}</div>
           </div>
           {/* Right Panel Content */}
           <div className='mt-28 md:mt-0 col-span-12 md:col-span-3 md:col-start-9'>
             <p className='uppercase font-semibold md:my-4'>2030 Target</p>
             <div className='my-4'>{targetText}</div>
-            <StackedBar data={stackedBarData} goal={stackedBarGoal} isOpen={isOpen} />
+            <StackedBar
+              data={stackedBarData}
+              aria-label={chartLabel}
+              goal={stackedBarGoal}
+              isOpen={isOpen}
+            />
             <p className='uppercase font-semibold mt-12'>How Will Texas Get There?</p>
             <div className='my-4'>
               {/* <p className='my-4'>Implementation Strategies</p> */}

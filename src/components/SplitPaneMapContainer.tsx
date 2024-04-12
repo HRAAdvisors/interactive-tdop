@@ -48,6 +48,7 @@ const SplitPaneMapContainer = () => {
           <div className='mt-2'>
             <h3 className='text-xl font-bold uppercase my-5'>Money Matters</h3>
             <div className='mt-2 text-md'>
+              <span aria-label='A map of San Antonio comparing the percent of low-income households to the percent of all households without high-speed internet.' />
               <p className='pt-2'>
                 Many people do not have high speed internet because it's too expensive.
               </p>
@@ -57,12 +58,14 @@ const SplitPaneMapContainer = () => {
               </p>
               <div className='flex w-full'>
                 <div className='w-1/2 pr-4'>
+                  <span aria-label='A scale for the percent of low-income households.' />
                   {geoJsonFeaturesLeft && (
                     <Legend colorStops={getColorStops(geoJsonFeaturesLeft)} />
                   )}
                   <p className='mt-4 font-bold text-xs'>Percent of Low-Income Households </p>
                 </div>
                 <div className='w-1/2 pl-4'>
+                  <span aria-label='A scale for the percent of all households without high-speed internet.' />
                   {geoJsonFeaturesRight && (
                     <Legend colorStops={getColorStops(geoJsonFeaturesRight, 'red')} />
                   )}

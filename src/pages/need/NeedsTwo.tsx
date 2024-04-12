@@ -29,6 +29,7 @@ const NeedsTwo = () => {
                 covered population groups
                 (except those currently
                 incarcerated).'
+                mapLabel='A map of Texas showing the percent of households with high-speed internet.'
                 mapTitle='Households with High-speed Internet'
                 description={
                   <div>
@@ -49,6 +50,7 @@ const NeedsTwo = () => {
                     2030.
                   </p>
                 }
+                chartLabel='A scale for the percent of households with high-speed internet compared to the target percent.'
                 stackedBarData={68}
                 stackedBarGoal={80}
                 leftPanelContent={
@@ -83,12 +85,14 @@ const NeedsTwo = () => {
                     </p>
                   </div>
                 }
+                mapLabel='A map of Texas showing the percent of Texans reporting cost as a barrier to subscription. '
                 targetText={
                   <p>
                     <strong>Fewer than 50% of Texans</strong> cite cost as a barrier to home
                     internet service by 2030.
                   </p>
                 }
+                chartLabel='A scale for the percent of Texans reporting cost as a barrier to subscription compared to the target percent. '
                 stackedBarData={59}
                 stackedBarGoal={50}
                 leftPanelContent={
@@ -119,12 +123,14 @@ const NeedsTwo = () => {
                     </p>
                   </div>
                 }
+                mapLabel='A map of Texas showing the percent of Texans reporting awareness of the Affordable Connectivity Program (ACP).'
                 targetText={
                   <p>
                     <strong>50% of households</strong> are aware of discounted services like ACP by
                     2030.
                   </p>
                 }
+                chartLabel=' A scale for the percent of Texans reporting awareness of the Affordable Connectivity Program (ACP) compared to the target percentage. '
                 stackedBarData={40}
                 stackedBarGoal={50}
                 leftPanelContent={
@@ -170,12 +176,14 @@ const NeedsTwo = () => {
                     </p>
                   </div>
                 }
+                mapLabel='A map of Texas showing the percent of households with smartphones only.'
                 targetText={
                   <p>
                     <strong>90% of Texans</strong> have a computing device other than a smartphone
                     by 2030.
                   </p>
                 }
+                chartLabel='A scale for the percent of households with smartphones only compared to the target percentage. '
                 stackedBarData={89}
                 stackedBarGoal={90}
                 leftPanelContent={
@@ -203,12 +211,14 @@ const NeedsTwo = () => {
                     </p>{' '}
                   </div>
                 }
+                mapLabel='A quote block.'
                 targetText={
                   <p>
                     <strong>50% of organizations</strong> offer digital skills and technical support
                     by 2030.
                   </p>
                 }
+                chartLabel='A scale for the percent of organizations surveyed that offer digital skills and technical support compared to the target percentage. '
                 stackedBarData={39}
                 stackedBarGoal={50}
                 leftPanelContent={
@@ -260,12 +270,14 @@ const NeedsTwo = () => {
                     </p>
                   </div>
                 }
+                mapLabel='A map of Texas showing the percent of Texans reporting comfort with basic digital literacy skills. '
                 targetText={
                   <p>
                     <strong>95% of Texans</strong> are comfortable with basic digital literacy
                     skills by 2030.
                   </p>
                 }
+                chartLabel='A scale for the percent of Texans reporting comfort with basic digital literacy skills compared to the target percentage. '
                 stackedBarData={88}
                 stackedBarGoal={95}
                 leftPanelContent={
@@ -296,12 +308,14 @@ const NeedsTwo = () => {
                     </p>
                   </div>
                 }
+                mapLabel='A quote block.'
                 targetText={
                   <p>
                     <strong>50% of organizations</strong> offer digital literacy skills and support
                     by 2030.
                   </p>
                 }
+                chartLabel='A scale for the percent of organizations surveyed that offer digital skills and technical support compared to the target percentage. '
                 stackedBarData={39}
                 stackedBarGoal={50}
                 leftPanelContent={
@@ -337,12 +351,14 @@ const NeedsTwo = () => {
                     </p>
                   </div>
                 }
+                mapLabel='A quote block.'
                 targetText={
                   <p>
                     <strong>55% of Texas workers</strong> have the digital skills training required
                     for most jobs statewide by 2030.
                   </p>
                 }
+                chartLabel='A scale for the percent of Texas workers that have the digital skills training required for most jobs statewide compared to the target percentage.'
                 stackedBarData={45}
                 stackedBarGoal={55}
                 leftPanelContent={
@@ -386,12 +402,14 @@ const NeedsTwo = () => {
                     </p>
                   </div>
                 }
+                mapLabel='A map of Texas showing the percent of Texans reporting awareness and usage of cybersecurity measures.'
                 targetText={
                   <p>
                     <strong>At least 90% of Texans</strong> have cybersecurity measures set up on
                     their devices by 2030.
                   </p>
                 }
+                chartLabel='A scale for the percent of Texans reporting awareness and usage of cybersecurity measures.'
                 stackedBarData={86}
                 stackedBarGoal={90}
                 leftPanelContent={
@@ -438,12 +456,14 @@ const NeedsTwo = () => {
                     </p>
                   </div>
                 }
+                mapLabel='A map of Texas showing the percent of Texans reporting usage of the internet to access healthcare.'
                 targetText={
                   <p>
                     <strong>95% of Texans</strong> utilize the internet to access healthcare by
                     2030.
                   </p>
                 }
+                chartLabel='A scale for the percent of Texans reporting usage of the internet to access healthcare compare to the target percentage.'
                 stackedBarData={89}
                 stackedBarGoal={95}
                 leftPanelContent={

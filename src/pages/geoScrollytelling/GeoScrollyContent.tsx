@@ -87,6 +87,7 @@ const contents: GeoScrollContent[] = [
       <div className='mt-2'>
         <h3 className='text-xl font-bold uppercase my-5'>Adoption Matters</h3>
         <div className='mt-2 text-md'>
+          <span aria-label='A map of Texas showing the percent of households with high-speed internet at home.' />
           <p className='py-2'>
             Internet adoption refers to full access to and use of the internet for everyday life
             needs and goals.
@@ -95,6 +96,7 @@ const contents: GeoScrollContent[] = [
             31% of Texas households do not subscribe to high-speed internet at home.
           </p>
           <div className='mt-2'></div>
+          <span aria-label='A scale for the percent of households with high-speed internet at home.' />
           {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
           <p className='mt-2 font-bold text-xs'>
             Percent of Households with High-speed Internet at Home
@@ -123,12 +125,14 @@ const contents: GeoScrollContent[] = [
       <div className='mt-2'>
         <h3 className='text-xl font-bold uppercase my-5'>Availability Matters</h3>
         <div className='mt-2 text-md'>
+          <span aria-label='A map of Texas showing the percent of locations served by high-speed internet.' />
           <p className='py-2'>
             Why do people not subscribe? In some cases, there’s no internet service where they live.
             The BEAD program, a different program administered by the BDO, is building new
             high-speed networks across the state.{' '}
           </p>
           <div className='mt-2'></div>
+          <span aria-label='A scale for the percent of locations served by high-speed internet.' />
           {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
           <p className='mt-2 font-bold text-xs'>
             Percent of Locations Served by High-speed Internet
@@ -159,11 +163,13 @@ const contents: GeoScrollContent[] = [
       <div className='mt-2'>
         <h3 className='text-xl font-bold uppercase my-5'>Money Matters</h3>
         <div className='mt-2 text-md'>
+          <span aria-label='A map of Texas showing the percent of individuals paying over $100/month for internet.' />
           <p className='py-2'>
             Many households pay over $100/month for high-speed internet service, a price may be out
             of reach for households without home internet.
           </p>
           <div className='mt-2'></div>
+          <span aria-label='A scale for the percent of individuals paying over $100/month for internet.' />
           {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
           <p className='mt-2 font-bold text-xs'>
             Percent of Individuals Paying Over $100/month for Internet
@@ -200,11 +206,13 @@ const contents: GeoScrollContent[] = [
       <div className='mt-2'>
         <h3 className='text-xl font-bold uppercase my-5'>Speed and Reliability Matter</h3>
         <div className='mt-2 text-md'>
+          <span aria-label='A map of Texas showing the percent of households underserved by high-speed internet.' />
           <p className='py-2'>
             People who do not have reliable high-speed internet may struggle to access online
             resources, educational opportunities, and digital services like telehealth appointments.
           </p>
           <div className='mt-4'></div>
+          <span aria-label='A scale for the percent of households underserved by high-speed internet.' />
           {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
           <p className='mt-2 font-bold text-xs'>
             Percent of Households Underserved by High-Speed Internet
@@ -235,11 +243,13 @@ const contents: GeoScrollContent[] = [
       <div className='mt-2'>
         <h3 className='text-xl font-bold uppercase my-5'>Devices Matter</h3>
         <div className='mt-2 text-md'>
+          <span aria-label='A map of Texas showing the percent of households with internet subscriptions and only smartphones.' />
           <p className='py-2'>
             People who do not have computers or internet-enabled devices at home are left out of
             digital opportunity.
           </p>
           <div className='mt-4'></div>
+          <span aria-label='A scale for the percent of households with internet subscriptions and only smartphones.' />
           {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
           <p className='mt-2 font-bold text-xs'>
             Percent of Households With Internet Subscriptions and Only Smartphones
@@ -300,6 +310,7 @@ const contents: GeoScrollContent[] = [
     },
     getContent: (geoJSONData?: GeoJSON.FeatureCollection<GeoJSON.Geometry>) => (
       <div className='mt-2'>
+        <span aria-label='A map of Texas showing the percent of individuals confident in protecting themselves from online threats.' />
         <h3 className='text-xl font-bold uppercase my-5'>Cybersecurity Matters</h3>
         <div className='mt-2 text-md'>
           <p className='py-2'>
@@ -308,6 +319,7 @@ const contents: GeoScrollContent[] = [
             have skills and tools to use the internet safely and easily.
           </p>
           <div className='mt-4'></div>
+          <span aria-label='A scale for the percent of individuals confident in protecting themselves from online threats.' />
           {geoJSONData && <Legend colorStops={getColorStops(geoJSONData)} />}
           <p className='mt-2 font-bold text-xs'>
             Percent of Individuals Confident in Protecting Themselves from Online Threats

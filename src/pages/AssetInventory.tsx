@@ -31,6 +31,7 @@ const AssetInventoryPage = () => {
           </>
         }
         imageHero={assetInventoryHero}
+        altText='A bridge with lights on it.'
         title='Texas Resource Finder'
       />
       <div className='w-full  pt-16 mx-auto'>
