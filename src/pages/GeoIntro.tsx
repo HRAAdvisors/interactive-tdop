@@ -45,9 +45,18 @@ const GeoIntro = () => {
               href='https://comptroller.texas.gov/about/policies/privacy.php'
               target='_blank'
               rel='noopener'
-              className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
+              className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.25rem] transition-colors duration-300'
             >
               Privacy Policy
+            </a>
+            |{' '}
+            <a
+              href='https://texas-dashboard-data.s3.amazonaws.com/Texas+Digital+Opportunity+Hub_Data.xlsx'
+              target='_blank'
+              rel='noopener'
+              className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.25rem] transition-colors duration-300'
+            >
+              Data Download
             </a>
           </p>
         </div>
