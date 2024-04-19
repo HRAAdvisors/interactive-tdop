@@ -1,4 +1,4 @@
-import abboutAsset from '@/assets/ResourceFinder.jpg';
+import aboutAsset from '@/assets/ResourceFinder.jpg';
 import { RightArrowIcon } from '../IconSvg';
 
 const AboutAssetInventory = () => (
@@ -64,11 +64,7 @@ const AboutAssetInventory = () => (
         </div>
       </div>
       <div className='w-full lg:w-1/2 flex justify-center'>
-        <img
-          src={abboutAsset}
-          alt='An image of the San Antonio skyline.'
-          className='object-cover'
-        />
+        <img src={aboutAsset} alt='An image of the San Antonio skyline.' className='object-cover' />
       </div>
     </div>
   </div>

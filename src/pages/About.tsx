@@ -176,8 +176,32 @@ const AboutPage = () => {
             </p>
             <p className='text-xl font-bold mt-4 mb-2'>How to Print / Download</p>
             <p className='text-md my-2'>
-              Data can be downloaded directly from the Texas Data Dashboards page. All charts
-              include a button that triggers a local download.
+              A human-readable spreadsheet with all data is available at{' '}
+              <a
+                className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
+                href='https://texas-dashboard-data.s3.amazonaws.com/Texas+Digital+Opportunity+Hub_Data.xlsx'
+                target='_blank'
+                rel='noopener'
+              >
+                this link.
+              </a>{' '}
+              Users can reference the first tab for instructions on how to cross-reference data with
+              the relevant visualizations across the Texas Digital Opportunity Hub.
+            </p>
+            <p className='text-md my-2'>
+              To use the data, please follow the below steps:
+              <ul className='list-disc px-8 py-2'>
+                <li>Open the file (in Excel or a similar application)</li>
+                <li>
+                  The first sheet is the index. It lists all the table numbers and chart titles.
+                </li>
+                <li>Click the tab for the desired table number described on the index sheet.</li>
+                <li>
+                  Each sheet contains data corresponding to a chart on the website, organized in
+                  rows and columns.
+                </li>
+                <li>Utilize sort, filter, or search functions to manage the data.</li>
+              </ul>
             </p>
             <p className='text-xl font-bold mt-4 mb-2'>How can I / my organization use the Hub?</p>
             <p className='text-md my-2'>
@@ -212,7 +236,7 @@ const AboutPage = () => {
               cybersecurity, and essential online services. The Hub can also be used to{' '}
               <a
                 className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.05rem] transition-colors duration-300'
-                href='https://www.digitalopportunityfortexas.com/data-dashboards'
+                href='https://www.digitalopportunityfortexas.com/assetinventory'
                 target='_blank'
                 rel='noopener'
               >
@@ -238,6 +262,15 @@ const AboutPage = () => {
               className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.25rem] transition-colors duration-300'
             >
               Privacy Policy
+            </a>
+            |{' '}
+            <a
+              href='https://texas-dashboard-data.s3.amazonaws.com/Texas+Digital+Opportunity+Hub_Data.xlsx'
+              target='_blank'
+              rel='noopener'
+              className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.25rem] transition-colors duration-300'
+            >
+              Data Download
             </a>
           </p>
         </div>

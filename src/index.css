@@ -227,7 +227,12 @@ padding-bottom: 0.5rem !important;
     text-decoration: none;
   }
 }
-
+article a {
+  color: #111;
+  text-decoration: underline;
+  transition-property: color, background-color; /* Define transition properties */
+  transition-duration: 300ms;
+}
 
 article img {
   padding-top: 2rem;
