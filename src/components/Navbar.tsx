@@ -110,7 +110,10 @@ export const Navbar = ({ shouldShowAllTime = false }: { shouldShowAllTime?: bool
         <div className='w-full flex items-center justify-between'>
           <div className='flex'>
             <div className='hidden lg:flex w-contain pr-20 2xl:pr-32'>
-              <Link to='https://comptroller.texas.gov/programs/broadband/'>
+              <Link
+                to='https://comptroller.texas.gov/programs/broadband/'
+                aria-label="A link to the Texas Comptroller's Website"
+              >
                 <Logo />
               </Link>
             </div>
@@ -128,9 +131,11 @@ export const Navbar = ({ shouldShowAllTime = false }: { shouldShowAllTime?: bool
               <ul className='hidden lg:flex items-center'>
                 {navbarLinks.map((navLink, index) => (
                   <Link className='block' to={navLink.link} key={index}>
-                    <li className='md:px-2 lg:px-5 2xl:px-8 py-6 uppercase tracking-widest text-xs md:hover:text-[#fff] md:hover:bg-[#002768] transition-colors duration-300'>
-                      {navLink.text}
-                    </li>
+                    <ul>
+                      <li className='md:px-2 lg:px-5 2xl:px-8 py-6 uppercase tracking-widest text-xs md:hover:text-[#fff] md:hover:bg-[#002768] transition-colors duration-300'>
+                        {navLink.text}
+                      </li>
+                    </ul>
                   </Link>
                 ))}
               </ul>
