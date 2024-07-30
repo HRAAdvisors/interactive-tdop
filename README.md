@@ -15,7 +15,8 @@ The Hub uses the following technologies:
 - [Mapbox Studio](https://www.mapbox.com/mapbox-studio) for map tile rendering.
 - [Prettier](https://prettier.io) for code formatting.
 - [ESLint](https://eslint.org) for linting.
-- [Vercel](https://vercel.com/) for app deployment and hosting. 
+- [Vercel](https://vercel.com/) for app deployment and hosting.
+- [Google Analytics](https://analytics.google.com/) for user analytics. 
 
 ## Development Workflow
 This app requires [Node.js](https://nodejs.org/en), [Git](https://git-scm.com/), and [Yarn](https://yarnpkg.com/). Please install prior to starting development. 
