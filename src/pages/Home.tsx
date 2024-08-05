@@ -1,28 +1,31 @@
-// App.js
+if (typeof global === 'undefined') {
+  window.global = window;
+}
+
 import { useEffect, useState } from 'react';
 import { Element } from 'react-scroll';
 import HeroLayout from '@/components/HeroLayout';
 import Sidebar from '@/components/Sidebar';
 import Navbar from '@/components/Navbar';
 import { ScrollableTitleProvider } from '@/components/ScrollableTitleContext';
-import loadable from '@loadable/component';
 import SideNav from '@/components/SIdeNav';
 
-const IntroPage = loadable(() => import('./intro'));
-const VisionPage = loadable(() => import('./vision'));
-const NeedsAndAssetsPage = loadable(() => import('./need'));
-const StrategiesPage = loadable(() => import('./strategies'));
-const ConclusionPage = loadable(() => import('./conclusion'));
-const StakeholderEngagementPage = loadable(() => import('./stakeholder'));
+import IntroPage from './intro';
+import VisionPage from './vision';
+import NeedsAndAssetsPage from './need';
+import StrategiesPage from './strategies';
+import ConclusionPage from './conclusion';
+import StakeholderEngagementPage from './stakeholder';
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState({});
   const [showSidebar, setShowSidebar] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handlePageChange = (pageName: number, sections: any[]) => {
+  const handlePageChange = (pageName: string, sections: number) => {
     setCurrentPage({ name: pageName, sections });
   };
 

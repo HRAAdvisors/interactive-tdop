@@ -1,12 +1,11 @@
-import { MantineProvider } from '@mantine/core';
-import '@mantine/core/styles.css';
+import { MantineProvider, Button } from '@mantine/core';
 import './App.css';
 import AppRoutes from './app/route';
 
 function App() {
   return (
     <div className='App w-full min-h-screen'>
-      <MantineProvider>
+      <MantineProvider withGlobalStyles withNormalizeCSS>
         <AppRoutes />
       </MantineProvider>
     </div>

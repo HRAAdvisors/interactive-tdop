@@ -1,15 +1,10 @@
+import React, { useEffect, useRef } from 'react';
+import { useLocation, useParams, useSearchParams, Link, matchPath } from 'react-router-dom';
 import {
   useGetBoundariesQuery,
   useGetSkeletonQuery,
   usePrefetchDataDashboard,
 } from '@/services/dataDashboard';
-// import { useGetSkeletonQuery, usePrefetchDataDashboard } from '@/services/dataDashboard';
-import _ from 'lodash';
-import { Fragment, useEffect, useRef, useState } from 'react';
-import { Link, matchPath, useLocation, useSearchParams } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-import { Link as ScrollLink } from 'react-scroll';
-import { SkeletonSection } from '@hraadvisors/report-api-types';
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { setShowSideNav } from '@/stores/uiSlice';
 import { navbarLinks } from './Navbar';
@@ -17,6 +12,8 @@ import { useOnScreen } from '@/utils/customHooks';
 import { AiOutlineDown, AiOutlineRight } from 'react-icons/ai';
 import { classNames } from '@/utils/helper';
 import { Select } from '@mantine/core';
+import _ from 'lodash';
+import { SkeletonSection } from '@hraadvisors/report-api-types';
 
 const ScrollLinkWrapper = ({ section }: { section: SkeletonSection; isSubNav?: boolean }) => {
   const refScrollLink = useRef<HTMLLIElement>(null);
@@ -174,13 +171,12 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
       }
       return 'Region';
     })
-    .map((options, index) => ({
-      group: index,
-      items: _.map(options, (option) => ({
+    .flatMap((options, index) =>
+      _.map(options, (option) => ({
         value: (option.feature.properties as any).GEOID,
         label: (option.feature.properties as any).NAME,
       })),
-    }))
+    )
     .value();
 
   useEffect(() => {
