@@ -369,40 +369,42 @@ const DataDashboards = () => {
   }, [pageId]);
 
   return (
-    <div className='flex flex-col'>
-      <Navbar shouldShowAllTime={true} />
-      <SideNav showOnLarge={true} />
-      <main className='lg:pl-80 xl:pl-96 min-h-screen' id='dashboardMain'>
-        <ReportChapters isLoading={isLoading} reportOutput={reportData} />
-      </main>
-      <div className='grid bg-[#ececec] md:grid-cols-12'>
-        <div className='flex flex-col md:col-start-5 px-4 md:px-0 md:col-span-12'>
-          <p className='pt-8 pb-4'>
-            © 2024 Texas Broadband Development Office and Texas Comptroller of Public Accounts
-          </p>
-          <p className='pb-8'>
-            All Rights Reserved |{' '}
-            <a
-              href='https://comptroller.texas.gov/about/policies/privacy.php'
-              target='_blank'
-              rel='noopener'
-              className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.25rem] transition-colors duration-300'
-            >
-              Privacy Policy
-            </a>
-            |{' '}
-            <a
-              href='https://texas-dashboard-data.s3.amazonaws.com/Texas+Digital+Opportunity+Hub_Data.xlsx'
-              target='_blank'
-              rel='noopener'
-              className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.25rem] transition-colors duration-300'
-            >
-              Data Download
-            </a>
-          </p>
+    <>
+      <div className='flex flex-col bg-[#fffdf6]'>
+        <Navbar shouldShowAllTime={true} />
+        <SideNav showOnLarge={true} />
+        <main className='lg:pl-80 xl:pl-96 min-h-screen' id='dashboardMain'>
+          <ReportChapters isLoading={isLoading} reportOutput={reportData} />
+        </main>
+        <div className='grid bg-[#ececec] md:grid-cols-12'>
+          <div className='flex flex-col md:col-start-5 px-4 md:px-0 md:col-span-12'>
+            <p className='pt-8 pb-4'>
+              © 2024 Texas Broadband Development Office and Texas Comptroller of Public Accounts
+            </p>
+            <p className='pb-8'>
+              All Rights Reserved |{' '}
+              <a
+                href='https://comptroller.texas.gov/about/policies/privacy.php'
+                target='_blank'
+                rel='noopener'
+                className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.25rem] transition-colors duration-300'
+              >
+                Privacy Policy
+              </a>
+              |{' '}
+              <a
+                href='https://texas-dashboard-data.s3.amazonaws.com/Texas+Digital+Opportunity+Hub_Data.xlsx'
+                target='_blank'
+                rel='noopener'
+                className='underline md:hover:text-[#fff] md:hover:bg-[#002768] md:hover:no-underline p-[0.25rem] transition-colors duration-300'
+              >
+                Data Download
+              </a>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

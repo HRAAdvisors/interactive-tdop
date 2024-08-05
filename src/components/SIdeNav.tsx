@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState, Fragment } from 'react';
 import { useLocation, useParams, useSearchParams, Link, matchPath } from 'react-router-dom';
 import {
   useGetBoundariesQuery,
@@ -7,6 +7,7 @@ import {
 } from '@/services/dataDashboard';
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { setShowSideNav } from '@/stores/uiSlice';
+import { Link as ScrollLink } from 'react-scroll';
 import { navbarLinks } from './Navbar';
 import { useOnScreen } from '@/utils/customHooks';
 import { AiOutlineDown, AiOutlineRight } from 'react-icons/ai';
@@ -101,7 +102,7 @@ const DataDashboardNav = ({
               className={classNames(
                 _.isEqual(pageId, l.first?.pageId)
                   ? 'font-bold bg-gray-50'
-                  : 'hover:bg-gray-100 text-gray-600 ',
+                  : 'hover:bg-gray-100 text-gray-600',
                 isSubNav ? 'pl-6 pr-2 text-sm' : ' px-4 text-md',
                 'w-full  flex  items-center py-2',
               )}
