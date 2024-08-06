@@ -1,3 +1,5 @@
+// Add back Avatar from mantine/core and FilterOptions from static/filterDataAssetInventory
+
 import { useAppSelector } from '@/app/hooks';
 import { useGetAssetInventoryQuery } from '@/services/dataDashboard';
 import _ from 'lodash';
@@ -5,13 +7,9 @@ import { GridIcon, ListIcon, QuestionCircleIcon } from '../IconSvg';
 import { useMemo, useRef, useState } from 'react';
 import { classNames } from '@/utils/helper';
 import { AssetInfo } from '@/types/AssetInventory';
-import { Avatar, Group, MultiSelect, Pagination, Popover } from '@mantine/core';
+import { Group, MultiSelect, Pagination, Popover } from '@mantine/core';
 import AssetListItem, { ViewType, AssetListItemSkeleton } from './AssetListItem';
-import {
-  FilterOption,
-  countyFilter,
-  filterDataAssetInventory,
-} from '@/static/filterDataAssetInventory';
+import { countyFilter, filterDataAssetInventory } from '@/static/filterDataAssetInventory';
 
 export default function AssetInventory() {
   const containerRef = useRef<HTMLDivElement>(null);
