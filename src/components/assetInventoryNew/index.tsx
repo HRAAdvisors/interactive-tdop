@@ -116,7 +116,9 @@ export default function AssetInventory() {
                     <QuestionCircleIcon />
                   </span>
                 </Popover.Target>
-                <Popover.Dropdown>{countyFilter.explanation}</Popover.Dropdown>
+                <Popover.Dropdown style={{ maxHeight: '400px', overflowY: 'auto' }}>
+                  {countyFilter.explanation}
+                </Popover.Dropdown>
               </Popover>
             }
             clearable
@@ -133,45 +135,46 @@ export default function AssetInventory() {
                 input: 'rounded-md',
               }}
               label={filter.name}
-              itemComponent={(data) => {
-                const option = data.option as FilterOption;
-                return option.icon ? (
-                  <Group
-                    className='flex w-full gap-2 justify-start items-center'
-                    style={{ flexWrap: 'nowrap' }}
-                  >
-                    <div className=''>
-                      {option?.icon && (
-                        <Avatar src={null} size={20}>
-                          {option?.icon}
-                        </Avatar>
-                      )}
-                    </div>
-                    <div className='inline'>{option.value} </div>
-                  </Group>
-                ) : (
-                  <div> {option.value}</div>
-                );
-              }}
+              // itemComponent={(data) => {
+              //   const option = data.option as FilterOption;
+              //   return option.icon ? (
+              //     <Group
+              //       className='flex w-full gap-2 justify-start items-center'
+              //       style={{ flexWrap: 'nowrap' }}
+              //     >
+              //       <div className=''>
+              //         {option?.icon && (
+              //           <Avatar src={null} size={20}>
+              //             {option?.icon}
+              //           </Avatar>
+              //         )}
+              //       </div>
+              //       <div className='inline'>{option.value} </div>
+              //     </Group>
+              //   ) : (
+              //     <div> {option.value}</div>
+              //   );
+              // }}
               value={selectedFilters[filter.id]}
               onChange={(value) => {
                 setSelectedFilters((s) => _.clone(_.assign(s, { [filter.id]: value })));
               }}
               data={_.map(filter.options, (option) => ({
-                icon: option?.icon,
+                // icon: option?.icon,
                 label: option.label,
                 value: option.label,
                 color: option?.color,
               }))}
-              // rightSectionPointerEvents='auto'
               rightSection={
-                <Popover width={200} position='right-start' withArrow shadow='md'>
+                <Popover position='right-start' width={200} shadow='md'>
                   <Popover.Target>
                     <span className='cursor-pointer'>
                       <QuestionCircleIcon />
                     </span>
                   </Popover.Target>
-                  <Popover.Dropdown>{filter.explanation}</Popover.Dropdown>
+                  <Popover.Dropdown style={{ maxHeight: '400px', overflowY: 'auto' }}>
+                    {filter.explanation}
+                  </Popover.Dropdown>
                 </Popover>
               }
               clearable
