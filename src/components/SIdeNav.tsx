@@ -4,19 +4,18 @@ import {
   usePrefetchDataDashboard,
 } from '@/services/dataDashboard';
 // import { useGetSkeletonQuery, usePrefetchDataDashboard } from '@/services/dataDashboard';
-import _ from 'lodash';
-import { Fragment, useEffect, useRef, useState } from 'react';
-import { Link, matchPath, useLocation, useSearchParams } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-import { Link as ScrollLink } from 'react-scroll';
-import { SkeletonSection } from '@hraadvisors/report-api-types';
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { setShowSideNav } from '@/stores/uiSlice';
-import { navbarLinks } from './Navbar';
 import { useOnScreen } from '@/utils/customHooks';
-import { AiOutlineDown, AiOutlineRight } from 'react-icons/ai';
 import { classNames } from '@/utils/helper';
-import { Select } from '@mantine/core';
+import { SkeletonSection } from '@hraadvisors/report-api-types';
+import { Select, SelectItem } from '@mantine/core';
+import _ from 'lodash';
+import { Fragment, useEffect, useRef, useState } from 'react';
+import { AiOutlineDown, AiOutlineRight } from 'react-icons/ai';
+import { Link, matchPath, useLocation, useParams, useSearchParams } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll';
+import { navbarLinks } from './Navbar';
 
 const ScrollLinkWrapper = ({ section }: { section: SkeletonSection; isSubNav?: boolean }) => {
   const refScrollLink = useRef<HTMLLIElement>(null);
@@ -162,7 +161,7 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
 
   const boundaries = _.first(_.toArray(boundaryData?.boundaries));
 
-  const geoIdSelectOptions = _(boundaries)
+  const geoIdSelectOptions: SelectItem[] = _(boundaries)
     .groupBy((b) => {
       const props = b.feature.properties as any;
       if (props.GEOID === props.STATEFP) {
@@ -181,7 +180,9 @@ const SideNav = ({ showOnLarge = false }: { showOnLarge?: boolean }) => {
         label: (option.feature.properties as any).NAME,
       })),
     }))
-    .value();
+    .value()
+    .map((group) => group.items.map((item) => ({ ...item, group: group.group })))
+    .flat();
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);

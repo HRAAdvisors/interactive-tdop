@@ -109,7 +109,6 @@ export default function AssetInventory() {
               label: option.label,
               value: option.label,
             }))}
-            rightSectionPointerEvents='auto'
             rightSection={
               <Popover width={200} position='right-end' withArrow shadow='md'>
                 <Popover.Target>
@@ -134,7 +133,7 @@ export default function AssetInventory() {
                 input: 'rounded-md',
               }}
               label={filter.name}
-              renderOption={(data) => {
+              itemComponent={(data) => {
                 const option = data.option as FilterOption;
                 return option.icon ? (
                   <Group
@@ -164,7 +163,7 @@ export default function AssetInventory() {
                 value: option.label,
                 color: option?.color,
               }))}
-              rightSectionPointerEvents='auto'
+              // rightSectionPointerEvents='auto'
               rightSection={
                 <Popover width={200} position='right-start' withArrow shadow='md'>
                   <Popover.Target>
@@ -214,7 +213,7 @@ export default function AssetInventory() {
               dots: 'bg-white outline outline-1 outline-gray-300',
             }}
           >
-            <Group className=' w-full border-collapse rounded-md' gap={0} mt='xl'>
+            <Group className=' w-full border-collapse rounded-md' spacing={0} mt='xl'>
               <Pagination.Previous className='border-0 outline rounded-l-md rounde outline-gray-300 rounded-none' />
               <Pagination.Items />
               <Pagination.Next className='border-0 oultine outline-gray-300 rounded-r-md rounded-none' />
