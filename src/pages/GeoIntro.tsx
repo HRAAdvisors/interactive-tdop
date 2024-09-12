@@ -29,7 +29,7 @@ const GeoIntro = () => {
             </p>
           </>
         }
-        imageHero='img/Cover.webp'
+        imageHero='img/HomeHero.jpg'
         altText='A row of powerlines'
         title='Digital Opportunity for Texans'
       />
