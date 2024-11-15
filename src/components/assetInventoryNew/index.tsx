@@ -1,67 +1,74 @@
-// Add back Avatar from mantine/core and FilterOptions from static/filterDataAssetInventory
-
-import { useAppSelector } from '@/app/hooks';
 import { useGetAssetInventoryQuery } from '@/services/dataDashboard';
 import _ from 'lodash';
-import { GridIcon, ListIcon, QuestionCircleIcon } from '../IconSvg';
+import { GridIcon, ListIcon } from '../IconSvg';
 import { useMemo, useRef, useState } from 'react';
 import { classNames } from '@/utils/helper';
 import { AssetInfo } from '@/types/AssetInventory';
-import { Group, MultiSelect, Pagination, Popover } from '@mantine/core';
+import { MultiSelect, Pagination } from '@mantine/core';
 import AssetListItem, { ViewType, AssetListItemSkeleton } from './AssetListItem';
 import { countyFilter, filterDataAssetInventory } from '@/static/filterDataAssetInventory';
 
 export default function AssetInventory() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { isFetching } = useGetAssetInventoryQuery();
   const [viewType, setViewType] = useState<ViewType>(ViewType.GRID);
-  const allAssets = useAppSelector((s) => s.ui.assets);
   const [selectedFilters, setSelectedFilters] = useState<{ [key: string]: string[] }>({});
   const [activeCounties, setActiveCounties] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   const LIMIT = viewType === ViewType.LIST ? 20 : 21;
 
+  const { data, isFetching, error } = useGetAssetInventoryQuery();
+
   const filteredAssets: AssetInfo[][] = useMemo(() => {
-    setCurrentPage(1);
-    if (allAssets) {
-      const activeFilters = _.flatMap(_.toArray(selectedFilters), (f) => f);
+    if (!data || !data.records) return [];
 
-      return _.chunk(
-        _.filter(allAssets, (asset: any) => {
-          if (
-            _.size(activeCounties) > 0 &&
-            !_.some(activeCounties, (ac) => asset.fields['County (from Org County)'].includes(ac))
-          ) {
-            return false;
-          }
+    // Filter assets, ensuring "Hide" is not true
+    const allAssets = data.records
+      .filter((asset) => {
+        // Ensure required fields exist and "Hide" is not true
+        const isValid =
+          asset.fields.Asset &&
+          asset.fields.County &&
+          asset.fields['Asset Broadband Focus Area'] &&
+          asset.fields['Asset Covered Population'] &&
+          asset.fields['Organization Sub-Type'] &&
+          asset.fields.Hide !== true; // Exclude if "Hide" is true
 
-          if (
-            _.size(activeFilters) > 0 &&
-            !_.some(
-              activeFilters,
-              (af) =>
-                asset.fields['Asset Broadband Focus Area'].includes(af) ||
-                asset.fields['Asset Covered Population'].includes(af) ||
-                asset.fields['Organization Sub-Type'].includes(af),
-            )
-          ) {
-            return false;
-          }
-          // Check if the 'Hide' field equals 'true'
-          if (asset.fields['Hide'] === true) {
-            return false;
-          }
+        return isValid;
+      })
+      .sort((a, b) => a.fields.Asset.localeCompare(b.fields.Asset));
 
-          return true;
-        }),
-        LIMIT,
-      );
-    }
-    return [];
-  }, [allAssets, selectedFilters, activeCounties]);
+    const activeFilters = _.flatMap(_.toArray(selectedFilters), (f) => f);
+
+    return _.chunk(
+      _.filter(allAssets, (asset) => {
+        // Apply additional filters for counties and active filters
+        const matchesCounty =
+          _.size(activeCounties) === 0 ||
+          _.some(activeCounties, (ac) => asset.fields.County?.includes(ac));
+
+        const matchesFilters =
+          _.size(activeFilters) === 0 ||
+          _.some(
+            activeFilters,
+            (af) =>
+              asset.fields['Asset Broadband Focus Area']?.includes(af) ||
+              asset.fields['Asset Covered Population']?.includes(af) ||
+              asset.fields['Organization Sub-Type']?.includes(af),
+          );
+
+        const isIncluded = matchesCounty && matchesFilters;
+        return isIncluded;
+      }),
+      LIMIT,
+    );
+  }, [data, selectedFilters, activeCounties]);
 
   const totalPage = _.size(filteredAssets);
+
+  if (error) {
+    return <div className='text-red-500'>Failed to load assets. Please try again later.</div>;
+  }
 
   return (
     <div ref={containerRef} className='w-full h-full max-w-screen-xl m-auto px-8 py-4'>
@@ -107,18 +114,6 @@ export default function AssetInventory() {
               label: option.label,
               value: option.label,
             }))}
-            rightSection={
-              <Popover width={200} position='right-end' withArrow shadow='md'>
-                <Popover.Target>
-                  <span className='cursor-pointer'>
-                    <QuestionCircleIcon />
-                  </span>
-                </Popover.Target>
-                <Popover.Dropdown style={{ maxHeight: '400px', overflowY: 'auto' }}>
-                  {countyFilter.explanation}
-                </Popover.Dropdown>
-              </Popover>
-            }
             clearable
             searchable
           />
@@ -133,73 +128,37 @@ export default function AssetInventory() {
                 input: 'rounded-md',
               }}
               label={filter.name}
-              // itemComponent={(data) => {
-              //   const option = data.option as FilterOption;
-              //   return option.icon ? (
-              //     <Group
-              //       className='flex w-full gap-2 justify-start items-center'
-              //       style={{ flexWrap: 'nowrap' }}
-              //     >
-              //       <div className=''>
-              //         {option?.icon && (
-              //           <Avatar src={null} size={20}>
-              //             {option?.icon}
-              //           </Avatar>
-              //         )}
-              //       </div>
-              //       <div className='inline'>{option.value} </div>
-              //     </Group>
-              //   ) : (
-              //     <div> {option.value}</div>
-              //   );
-              // }}
               value={selectedFilters[filter.id]}
-              onChange={(value) => {
-                setSelectedFilters((s) => _.clone(_.assign(s, { [filter.id]: value })));
-              }}
+              onChange={(value) => setSelectedFilters((s) => ({ ...s, [filter.id]: value }))}
               data={_.map(filter.options, (option) => ({
-                // icon: option?.icon,
                 label: option.label,
                 value: option.label,
-                color: option?.color,
               }))}
-              rightSection={
-                <Popover position='right-start' width={200} shadow='md'>
-                  <Popover.Target>
-                    <span className='cursor-pointer'>
-                      <QuestionCircleIcon />
-                    </span>
-                  </Popover.Target>
-                  <Popover.Dropdown style={{ maxHeight: '400px', overflowY: 'auto' }}>
-                    {filter.explanation}
-                  </Popover.Dropdown>
-                </Popover>
-              }
               clearable
               searchable
             />
           </div>
         ))}
       </div>
+
       <div className='py-2 text-slate-600 text-sm'>
         Showing {_.size(_.flatten(filteredAssets))} results.
       </div>
       <div
         className={classNames(
           'grid min-h-96 grid-cols-1 py-4 w-full gap-4',
-          viewType == ViewType.GRID && 'sm:grid-cols-2 lg:grid-cols-3 ',
+          viewType === ViewType.GRID && 'sm:grid-cols-2 lg:grid-cols-3 ',
         )}
       >
         {isFetching &&
           _.size(filteredAssets) < 1 &&
-          _.map(_.range(LIMIT), () => <AssetListItemSkeleton viewType={viewType} />)}
+          _.map(_.range(LIMIT), (_, i) => <AssetListItemSkeleton key={i} viewType={viewType} />)}
 
         {_.map(filteredAssets[currentPage - 1], (asset, i) => (
-          <div key={i}>
-            <AssetListItem asset={asset} viewType={viewType} />
-          </div>
+          <AssetListItem key={i} asset={asset} viewType={viewType} />
         ))}
       </div>
+
       <div className='flex justify-center'>
         {_.size(filteredAssets) > 1 && (
           <Pagination.Root
@@ -209,16 +168,10 @@ export default function AssetInventory() {
               setCurrentPage(val);
             }}
             total={totalPage}
-            classNames={{
-              control: 'border-0 rounded-none outline outline-1 outline-gray-300',
-              dots: 'bg-white outline outline-1 outline-gray-300',
-            }}
           >
-            <Group className=' w-full border-collapse rounded-md' spacing={0} mt='xl'>
-              <Pagination.Previous className='border-0 outline rounded-l-md rounde outline-gray-300 rounded-none' />
-              <Pagination.Items />
-              <Pagination.Next className='border-0 oultine outline-gray-300 rounded-r-md rounded-none' />
-            </Group>
+            <Pagination.Previous />
+            <Pagination.Items />
+            <Pagination.Next />
           </Pagination.Root>
         )}
       </div>

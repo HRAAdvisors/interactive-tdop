@@ -26,7 +26,8 @@ const uiSlice = createSlice({
 
       state.assets = action.payload.records.filter(asset =>  
         asset.fields.Asset &&
-        asset.fields['County (from Org County)'] &&
+        asset.fields.County &&
+        asset.fields.Hide &&
         asset.fields['Asset Broadband Focus Area'] &&
         asset.fields['Asset Covered Population'] &&
         asset.fields['Organization Sub-Type'])
