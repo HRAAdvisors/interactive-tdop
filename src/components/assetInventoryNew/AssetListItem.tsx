@@ -60,8 +60,12 @@ const AssetListItem = ({ asset, viewType }: { asset: AssetInfo; viewType: ViewTy
               viewType === ViewType.LIST && 'lg:self-center',
             )}
           >
-            <LocationIcon /> {asset.fields['County (from Org County)'][0]} County
+            <LocationIcon />
+            {Array.isArray(asset.fields.County) && asset.fields.County[0]
+              ? `${asset.fields.County[0]} County`
+              : 'County information unavailable'}
           </div>
+
           {asset.fields['Website'] ? (
             <a
               target='_blank'

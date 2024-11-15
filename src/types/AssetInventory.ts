@@ -11,8 +11,9 @@ interface AssetFields {
     "Key Contact": string;
     "Contact Email": string;
     "Org County": string[];
-    "County (from Org County)": string[];
+    County: string[];
     Website?: string;
+    Hide: boolean;
 }
 
 export interface AssetInfo {
